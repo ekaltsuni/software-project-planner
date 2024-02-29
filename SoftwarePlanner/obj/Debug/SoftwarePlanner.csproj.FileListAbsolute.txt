@@ -1,0 +1,12 @@
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\bin\Debug\SoftwarePlanner.exe.config
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\bin\Debug\SoftwarePlanner.exe
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\bin\Debug\SoftwarePlanner.pdb
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.AssemblyReference.cache
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.SuggestedBindingRedirects.cache
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.ParentForm.resources
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.Properties.Resources.resources
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.GenerateResource.cache
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.CoreCompileInputs.cache
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.exe
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.pdb
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.HomeForm.resources
