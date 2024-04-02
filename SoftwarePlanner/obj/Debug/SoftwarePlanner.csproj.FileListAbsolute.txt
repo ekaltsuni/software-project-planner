@@ -10,3 +10,16 @@ C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\Soft
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.exe
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.pdb
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.HomeForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\SoftwarePlanner.exe.config
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\SoftwarePlanner.exe
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\SoftwarePlanner.pdb
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.AssemblyReference.cache
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.HomeForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.LoginForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.ParentForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.Properties.Resources.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.UserProfileForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.GenerateResource.cache
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.CoreCompileInputs.cache
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.exe
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.pdb
