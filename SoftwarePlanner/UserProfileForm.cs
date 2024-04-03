@@ -16,5 +16,10 @@ namespace SoftwarePlanner
         {
             InitializeComponent();
         }
+
+        private void UserProfileForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
