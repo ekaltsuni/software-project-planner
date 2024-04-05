@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfileForm));
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.emailBox = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -42,7 +43,7 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.surnameBox = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.profileImageTextBox = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
@@ -61,6 +62,12 @@
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.projectsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.αρχικήToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.προφίλToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profileImagePictureBox = new System.Windows.Forms.PictureBox();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox3
@@ -74,6 +81,7 @@
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(200, 17);
             this.textBox3.TabIndex = 2;
+            this.textBox3.TabStop = false;
             this.textBox3.Text = "Email";
             // 
             // emailBox
@@ -112,15 +120,18 @@
             // 
             this.comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox.FormattingEnabled = true;
+            this.comboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboBox.Items.AddRange(new object[] {
             "Πελάτης",
             "Developer"});
             this.comboBox.Location = new System.Drawing.Point(50, 175);
             this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(132, 26);
+            this.comboBox.Size = new System.Drawing.Size(157, 26);
             this.comboBox.TabIndex = 7;
-            this.comboBox.Text = "Επιλέξτε Ρόλο";
+            this.comboBox.TabStop = false;
+            this.comboBox.Text = "Ρόλος";
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            this.comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // textBox1
             // 
@@ -170,7 +181,7 @@
             this.textBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox7.Location = new System.Drawing.Point(188, 175);
+            this.textBox7.Location = new System.Drawing.Point(211, 175);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(27, 15);
@@ -232,22 +243,23 @@
             "Προτιμώ να μην πω"});
             this.comboBox1.Location = new System.Drawing.Point(50, 391);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(132, 26);
+            this.comboBox1.Size = new System.Drawing.Size(157, 26);
             this.comboBox1.TabIndex = 16;
             this.comboBox1.Text = "Φύλο";
+            this.comboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
             // 
-            // textBox9
+            // profileImageTextBox
             // 
-            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(50, 453);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(200, 17);
-            this.textBox9.TabIndex = 17;
-            this.textBox9.Text = "Εικόνα Προφίλ";
+            this.profileImageTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.profileImageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.profileImageTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.profileImageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileImageTextBox.Location = new System.Drawing.Point(50, 453);
+            this.profileImageTextBox.Name = "profileImageTextBox";
+            this.profileImageTextBox.ReadOnly = true;
+            this.profileImageTextBox.Size = new System.Drawing.Size(112, 17);
+            this.profileImageTextBox.TabIndex = 17;
+            this.profileImageTextBox.Text = "Εικόνα Προφίλ";
             // 
             // textBox10
             // 
@@ -255,7 +267,7 @@
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(50, 530);
+            this.textBox10.Location = new System.Drawing.Point(50, 543);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(200, 17);
@@ -269,12 +281,13 @@
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(50, 553);
+            this.textBox11.Location = new System.Drawing.Point(50, 555);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(200, 17);
             this.textBox11.TabIndex = 19;
             this.textBox11.Text = "Δεξιότητες";
+            this.textBox11.Visible = false;
             // 
             // textBox12
             // 
@@ -288,6 +301,7 @@
             this.textBox12.Size = new System.Drawing.Size(200, 17);
             this.textBox12.TabIndex = 20;
             this.textBox12.Text = "Υποβολή Βιογραφικού";
+            this.textBox12.Visible = false;
             // 
             // textBox13
             // 
@@ -301,6 +315,7 @@
             this.textBox13.Size = new System.Drawing.Size(200, 17);
             this.textBox13.TabIndex = 21;
             this.textBox13.Text = "Portfolio";
+            this.textBox13.Visible = false;
             // 
             // textBox14
             // 
@@ -460,7 +475,7 @@
             // projectsRichTextBox
             // 
             this.projectsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.projectsRichTextBox.Location = new System.Drawing.Point(881, 301);
+            this.projectsRichTextBox.Location = new System.Drawing.Point(881, 300);
             this.projectsRichTextBox.Name = "projectsRichTextBox";
             this.projectsRichTextBox.Size = new System.Drawing.Size(350, 116);
             this.projectsRichTextBox.TabIndex = 34;
@@ -478,6 +493,43 @@
             this.button1.Text = "Αποθήκευση";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(231)))), ((int)(((byte)(246)))));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.αρχικήToolStripMenuItem,
+            this.προφίλToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
+            this.menuStrip1.TabIndex = 36;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // αρχικήToolStripMenuItem
+            // 
+            this.αρχικήToolStripMenuItem.Name = "αρχικήToolStripMenuItem";
+            this.αρχικήToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.αρχικήToolStripMenuItem.Text = "Κεντρική";
+            this.αρχικήToolStripMenuItem.Click += new System.EventHandler(this.αρχικήToolStripMenuItem_Click);
+            // 
+            // προφίλToolStripMenuItem
+            // 
+            this.προφίλToolStripMenuItem.Name = "προφίλToolStripMenuItem";
+            this.προφίλToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.προφίλToolStripMenuItem.Text = "Προφίλ";
+            // 
+            // profileImagePictureBox
+            // 
+            this.profileImagePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.profileImagePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("profileImagePictureBox.Image")));
+            this.profileImagePictureBox.Location = new System.Drawing.Point(169, 453);
+            this.profileImagePictureBox.Name = "profileImagePictureBox";
+            this.profileImagePictureBox.Size = new System.Drawing.Size(69, 70);
+            this.profileImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profileImagePictureBox.TabIndex = 38;
+            this.profileImagePictureBox.TabStop = false;
+            this.profileImagePictureBox.Click += new System.EventHandler(this.profileImagePictureBox_Click);
+            // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,6 +537,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.profileImagePictureBox);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.projectsRichTextBox);
@@ -504,7 +557,7 @@
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.profileImageTextBox);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.surnameBox);
             this.Controls.Add(this.textBox8);
@@ -518,10 +571,16 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.emailBox);
             this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Προφίλ Χρήστη";
             this.Load += new System.EventHandler(this.UserProfileForm_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,7 +601,7 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox surnameBox;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox profileImageTextBox;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox12;
@@ -561,5 +620,9 @@
         private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.RichTextBox projectsRichTextBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem αρχικήToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem προφίλToolStripMenuItem;
+        private System.Windows.Forms.PictureBox profileImagePictureBox;
     }
 }
