@@ -54,68 +54,77 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.clientCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.developerCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.newsFeedTextBox = new System.Windows.Forms.TextBox();
+            this.newsFeedRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.projectsTextBox = new System.Windows.Forms.TextBox();
+            this.ratingsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.projectsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(50, 72);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(200, 19);
+            this.textBox3.Size = new System.Drawing.Size(200, 17);
             this.textBox3.TabIndex = 2;
             this.textBox3.Text = "Email";
             // 
             // emailBox
             // 
-            this.emailBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailBox.Location = new System.Drawing.Point(50, 97);
+            this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailBox.Location = new System.Drawing.Point(140, 72);
             this.emailBox.MaxLength = 40;
             this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(200, 19);
+            this.emailBox.Size = new System.Drawing.Size(200, 24);
             this.emailBox.TabIndex = 3;
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(50, 150);
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(50, 127);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(200, 19);
+            this.textBox4.Size = new System.Drawing.Size(200, 17);
             this.textBox4.TabIndex = 4;
             this.textBox4.Text = "Password";
             // 
             // passwordBox
             // 
-            this.passwordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(50, 175);
+            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordBox.Location = new System.Drawing.Point(140, 127);
             this.passwordBox.MaxLength = 32;
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
-            this.passwordBox.Size = new System.Drawing.Size(200, 19);
+            this.passwordBox.Size = new System.Drawing.Size(200, 24);
             this.passwordBox.TabIndex = 5;
             // 
             // comboBox
             // 
-            this.comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
             "Πελάτης",
             "Developer"});
-            this.comboBox.Location = new System.Drawing.Point(50, 230);
+            this.comboBox.Location = new System.Drawing.Point(50, 175);
             this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(132, 28);
+            this.comboBox.Size = new System.Drawing.Size(132, 26);
             this.comboBox.TabIndex = 7;
             this.comboBox.Text = "Επιλέξτε Ρόλο";
+            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -129,11 +138,11 @@
             // 
             // textBox5
             // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.textBox5.Location = new System.Drawing.Point(50, 314);
+            this.textBox5.Location = new System.Drawing.Point(50, 245);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(200, 13);
@@ -142,24 +151,26 @@
             // 
             // textBox6
             // 
+            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox6.Location = new System.Drawing.Point(122, 150);
+            this.textBox6.Location = new System.Drawing.Point(124, 127);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(27, 15);
+            this.textBox6.Size = new System.Drawing.Size(20, 15);
             this.textBox6.TabIndex = 10;
             this.textBox6.Text = "*";
             // 
             // textBox7
             // 
+            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox7.Location = new System.Drawing.Point(188, 230);
+            this.textBox7.Location = new System.Drawing.Point(188, 175);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(27, 15);
@@ -168,134 +179,142 @@
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(425, 72);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(50, 284);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(200, 19);
+            this.textBox2.Size = new System.Drawing.Size(200, 17);
             this.textBox2.TabIndex = 12;
             this.textBox2.Text = "Όνομα";
             // 
             // nameBox
             // 
-            this.nameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameBox.Location = new System.Drawing.Point(425, 97);
+            this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameBox.Location = new System.Drawing.Point(140, 284);
             this.nameBox.MaxLength = 40;
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(200, 19);
+            this.nameBox.Size = new System.Drawing.Size(200, 24);
             this.nameBox.TabIndex = 13;
             // 
             // textBox8
             // 
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(425, 146);
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(50, 344);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(200, 19);
+            this.textBox8.Size = new System.Drawing.Size(200, 17);
             this.textBox8.TabIndex = 14;
             this.textBox8.Text = "Επίθετο";
             // 
             // surnameBox
             // 
-            this.surnameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.surnameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.surnameBox.Location = new System.Drawing.Point(425, 175);
+            this.surnameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.surnameBox.Location = new System.Drawing.Point(140, 344);
             this.surnameBox.MaxLength = 40;
             this.surnameBox.Name = "surnameBox";
-            this.surnameBox.Size = new System.Drawing.Size(200, 19);
+            this.surnameBox.Size = new System.Drawing.Size(200, 24);
             this.surnameBox.TabIndex = 15;
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Άντρας",
             "Γυναίκα",
             "Άλλο",
             "Προτιμώ να μην πω"});
-            this.comboBox1.Location = new System.Drawing.Point(425, 230);
+            this.comboBox1.Location = new System.Drawing.Point(50, 391);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(132, 28);
+            this.comboBox1.Size = new System.Drawing.Size(132, 26);
             this.comboBox1.TabIndex = 16;
             this.comboBox1.Text = "Φύλο";
             // 
             // textBox9
             // 
+            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(425, 293);
+            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.Location = new System.Drawing.Point(50, 453);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(200, 19);
+            this.textBox9.Size = new System.Drawing.Size(200, 17);
             this.textBox9.TabIndex = 17;
             this.textBox9.Text = "Εικόνα Προφίλ";
             // 
             // textBox10
             // 
+            this.textBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(425, 405);
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(50, 530);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(200, 19);
+            this.textBox10.Size = new System.Drawing.Size(200, 17);
             this.textBox10.TabIndex = 18;
             this.textBox10.Text = "Ημερομηνία Γέννησης";
+            this.textBox10.Visible = false;
             // 
             // textBox11
             // 
+            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(425, 452);
+            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.Location = new System.Drawing.Point(50, 553);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(200, 19);
+            this.textBox11.Size = new System.Drawing.Size(200, 17);
             this.textBox11.TabIndex = 19;
             this.textBox11.Text = "Δεξιότητες";
             // 
             // textBox12
             // 
+            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox12.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(425, 499);
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.Location = new System.Drawing.Point(492, 453);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(200, 19);
+            this.textBox12.Size = new System.Drawing.Size(200, 17);
             this.textBox12.TabIndex = 20;
             this.textBox12.Text = "Υποβολή Βιογραφικού";
             // 
             // textBox13
             // 
+            this.textBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox13.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(425, 557);
+            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox13.Location = new System.Drawing.Point(492, 506);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(200, 19);
+            this.textBox13.Size = new System.Drawing.Size(200, 17);
             this.textBox13.TabIndex = 21;
             this.textBox13.Text = "Portfolio";
             // 
             // textBox14
             // 
+            this.textBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
             this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(805, 68);
+            this.textBox14.ForeColor = System.Drawing.Color.White;
+            this.textBox14.Location = new System.Drawing.Point(492, 72);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(200, 19);
+            this.textBox14.Size = new System.Drawing.Size(246, 19);
             this.textBox14.TabIndex = 22;
-            this.textBox14.Text = "Ρυθμίσεις Προφίλ";
+            this.textBox14.Text = " Ρυθμίσεις Προφίλ";
             // 
             // checkedListBox1
             // 
@@ -304,29 +323,31 @@
             "Email",
             "Όνομα Χρήστη",
             "Κωδικός Χρήστη"});
-            this.checkedListBox1.Location = new System.Drawing.Point(805, 175);
+            this.checkedListBox1.Location = new System.Drawing.Point(492, 179);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(246, 49);
             this.checkedListBox1.TabIndex = 23;
             // 
             // textBox15
             // 
+            this.textBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(805, 107);
+            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox15.Location = new System.Drawing.Point(492, 111);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(200, 19);
+            this.textBox15.Size = new System.Drawing.Size(200, 17);
             this.textBox15.TabIndex = 24;
             this.textBox15.Text = "Επιλέξτε Ορατά Πεδία";
             // 
             // textBox16
             // 
+            this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox16.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(805, 150);
+            this.textBox16.Location = new System.Drawing.Point(492, 154);
             this.textBox16.Name = "textBox16";
             this.textBox16.ReadOnly = true;
             this.textBox16.Size = new System.Drawing.Size(200, 15);
@@ -335,10 +356,11 @@
             // 
             // textBox17
             // 
+            this.textBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox17.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox17.Location = new System.Drawing.Point(805, 243);
+            this.textBox17.Location = new System.Drawing.Point(492, 268);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
             this.textBox17.Size = new System.Drawing.Size(200, 15);
@@ -354,7 +376,7 @@
             "Φύλο",
             "Εικόνα Προφίλ",
             "Ημερομηνία Γέννησης"});
-            this.clientCheckedListBox.Location = new System.Drawing.Point(805, 264);
+            this.clientCheckedListBox.Location = new System.Drawing.Point(492, 289);
             this.clientCheckedListBox.Name = "clientCheckedListBox";
             this.clientCheckedListBox.Size = new System.Drawing.Size(246, 79);
             this.clientCheckedListBox.TabIndex = 27;
@@ -370,16 +392,107 @@
             "Δεξιότητες",
             "Βιογραφικό",
             "Portfolio"});
-            this.developerCheckedListBox.Location = new System.Drawing.Point(805, 284);
+            this.developerCheckedListBox.Location = new System.Drawing.Point(492, 309);
             this.developerCheckedListBox.Name = "developerCheckedListBox";
             this.developerCheckedListBox.Size = new System.Drawing.Size(246, 79);
             this.developerCheckedListBox.TabIndex = 28;
+            // 
+            // newsFeedTextBox
+            // 
+            this.newsFeedTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.newsFeedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newsFeedTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.newsFeedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newsFeedTextBox.ForeColor = System.Drawing.Color.White;
+            this.newsFeedTextBox.Location = new System.Drawing.Point(881, 65);
+            this.newsFeedTextBox.Name = "newsFeedTextBox";
+            this.newsFeedTextBox.ReadOnly = true;
+            this.newsFeedTextBox.Size = new System.Drawing.Size(350, 19);
+            this.newsFeedTextBox.TabIndex = 29;
+            this.newsFeedTextBox.Text = " Νέα";
+            // 
+            // newsFeedRichTextBox
+            // 
+            this.newsFeedRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newsFeedRichTextBox.Location = new System.Drawing.Point(881, 85);
+            this.newsFeedRichTextBox.Name = "newsFeedRichTextBox";
+            this.newsFeedRichTextBox.Size = new System.Drawing.Size(350, 116);
+            this.newsFeedRichTextBox.TabIndex = 30;
+            this.newsFeedRichTextBox.Text = "";
+            // 
+            // projectsTextBox
+            // 
+            this.projectsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.projectsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.projectsTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.projectsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.projectsTextBox.ForeColor = System.Drawing.Color.White;
+            this.projectsTextBox.Location = new System.Drawing.Point(881, 280);
+            this.projectsTextBox.Name = "projectsTextBox";
+            this.projectsTextBox.ReadOnly = true;
+            this.projectsTextBox.Size = new System.Drawing.Size(350, 19);
+            this.projectsTextBox.TabIndex = 31;
+            this.projectsTextBox.Text = " Έργα";
+            // 
+            // ratingsRichTextBox
+            // 
+            this.ratingsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ratingsRichTextBox.Location = new System.Drawing.Point(881, 514);
+            this.ratingsRichTextBox.Name = "ratingsRichTextBox";
+            this.ratingsRichTextBox.Size = new System.Drawing.Size(350, 116);
+            this.ratingsRichTextBox.TabIndex = 32;
+            this.ratingsRichTextBox.Text = "";
+            // 
+            // textBox20
+            // 
+            this.textBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox20.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox20.ForeColor = System.Drawing.Color.White;
+            this.textBox20.Location = new System.Drawing.Point(881, 494);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
+            this.textBox20.Size = new System.Drawing.Size(350, 19);
+            this.textBox20.TabIndex = 33;
+            this.textBox20.Text = " Αξιολογήσεις";
+            // 
+            // projectsRichTextBox
+            // 
+            this.projectsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.projectsRichTextBox.Location = new System.Drawing.Point(881, 301);
+            this.projectsRichTextBox.Name = "projectsRichTextBox";
+            this.projectsRichTextBox.Size = new System.Drawing.Size(350, 116);
+            this.projectsRichTextBox.TabIndex = 34;
+            this.projectsRichTextBox.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(206)))), ((int)(((byte)(246)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.button1.Location = new System.Drawing.Point(287, 590);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 53);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Αποθήκευση";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.passwordBox);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.projectsRichTextBox);
+            this.Controls.Add(this.textBox20);
+            this.Controls.Add(this.ratingsRichTextBox);
+            this.Controls.Add(this.projectsTextBox);
+            this.Controls.Add(this.newsFeedRichTextBox);
+            this.Controls.Add(this.newsFeedTextBox);
             this.Controls.Add(this.developerCheckedListBox);
             this.Controls.Add(this.clientCheckedListBox);
             this.Controls.Add(this.textBox17);
@@ -402,7 +515,6 @@
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox);
-            this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.emailBox);
             this.Controls.Add(this.textBox3);
@@ -442,5 +554,12 @@
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.CheckedListBox clientCheckedListBox;
         private System.Windows.Forms.CheckedListBox developerCheckedListBox;
+        private System.Windows.Forms.TextBox newsFeedTextBox;
+        private System.Windows.Forms.RichTextBox newsFeedRichTextBox;
+        private System.Windows.Forms.TextBox projectsTextBox;
+        private System.Windows.Forms.RichTextBox ratingsRichTextBox;
+        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.RichTextBox projectsRichTextBox;
+        private System.Windows.Forms.Button button1;
     }
 }

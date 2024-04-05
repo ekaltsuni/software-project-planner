@@ -21,5 +21,20 @@ namespace SoftwarePlanner
         {
 
         }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox.SelectedIndex == 0)
+            {
+                textBox10.Visible = true;
+            }
+            else if (comboBox.SelectedIndex == 1)
+            {
+                textBox10.Visible = false;
+                textBox11.Visible = true;
+                textBox12.Visible = true;
+                textBox13.Visible = true;
+            }
+        }
     }
 }
