@@ -24,7 +24,7 @@ namespace SoftwarePlanner
 
         public enum ProjectCategory
         {
-            WERBSITE,
+            WEBSITE,
             ESHOP
         }
 

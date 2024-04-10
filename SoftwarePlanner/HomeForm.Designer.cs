@@ -32,7 +32,6 @@
             this.searchProjectBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.searchDevBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.userFilter = new System.Windows.Forms.ComboBox();
@@ -51,6 +50,10 @@
             this.dateAfter = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.advancedSearchGroup = new System.Windows.Forms.GroupBox();
+            this.categoryDropdown = new System.Windows.Forms.ComboBox();
+            this.subcategoryDropdown = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.devAdvancedSearchGroup.SuspendLayout();
             this.advancedSearchGroup.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +92,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(660, 222);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(660, 168);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 10;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.39175F));
@@ -102,16 +105,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(520, 433);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(520, 487);
             this.tableLayoutPanel2.TabIndex = 4;
-            // 
-            // searchDevBox
-            // 
-            this.searchDevBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.searchDevBox.Location = new System.Drawing.Point(660, 86);
-            this.searchDevBox.Name = "searchDevBox";
-            this.searchDevBox.Size = new System.Drawing.Size(520, 31);
-            this.searchDevBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -281,17 +276,60 @@
             this.advancedSearchGroup.TabStop = false;
             this.advancedSearchGroup.Visible = false;
             // 
+            // categoryDropdown
+            // 
+            this.categoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.categoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.categoryDropdown.FormattingEnabled = true;
+            this.categoryDropdown.Location = new System.Drawing.Point(660, 123);
+            this.categoryDropdown.Name = "categoryDropdown";
+            this.categoryDropdown.Size = new System.Drawing.Size(245, 26);
+            this.categoryDropdown.TabIndex = 20;
+            // 
+            // subcategoryDropdown
+            // 
+            this.subcategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.subcategoryDropdown.FormattingEnabled = true;
+            this.subcategoryDropdown.Location = new System.Drawing.Point(935, 123);
+            this.subcategoryDropdown.Name = "subcategoryDropdown";
+            this.subcategoryDropdown.Size = new System.Drawing.Size(245, 26);
+            this.subcategoryDropdown.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label9.Location = new System.Drawing.Point(657, 86);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 18);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Κατηγορία";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label10.Location = new System.Drawing.Point(932, 86);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 18);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Υποκατηγορία";
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.subcategoryDropdown);
+            this.Controls.Add(this.categoryDropdown);
             this.Controls.Add(this.advancedSearchGroup);
             this.Controls.Add(this.advancedSearchCheckBox);
             this.Controls.Add(this.userFilter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.searchDevBox);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.searchProjectBox);
@@ -304,12 +342,15 @@
             this.Controls.SetChildIndex(this.searchProjectBox, 0);
             this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
             this.Controls.SetChildIndex(this.tableLayoutPanel2, 0);
-            this.Controls.SetChildIndex(this.searchDevBox, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.userFilter, 0);
             this.Controls.SetChildIndex(this.advancedSearchCheckBox, 0);
             this.Controls.SetChildIndex(this.advancedSearchGroup, 0);
+            this.Controls.SetChildIndex(this.categoryDropdown, 0);
+            this.Controls.SetChildIndex(this.subcategoryDropdown, 0);
+            this.Controls.SetChildIndex(this.label9, 0);
+            this.Controls.SetChildIndex(this.label10, 0);
             this.devAdvancedSearchGroup.ResumeLayout(false);
             this.devAdvancedSearchGroup.PerformLayout();
             this.advancedSearchGroup.ResumeLayout(false);
@@ -324,7 +365,6 @@
         private System.Windows.Forms.TextBox searchProjectBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TextBox searchDevBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox userFilter;
@@ -343,5 +383,9 @@
         private System.Windows.Forms.GroupBox advancedSearchGroup;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox categoryDropdown;
+        private System.Windows.Forms.ComboBox subcategoryDropdown;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
