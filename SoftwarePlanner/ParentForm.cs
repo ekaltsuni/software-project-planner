@@ -12,14 +12,35 @@ namespace SoftwarePlanner
 {
     public partial class ParentForm : Form
     {
+        // TODO: change when actual login is implemented
+        bool isLoggedIn = true;
+        bool isClient = true;
+
         public ParentForm()
         {
             InitializeComponent();
+            if (isLoggedIn)
+            {
+                loginButton.Text = "Αποσύνδεση";
+                if (isClient)
+                {
+                    ToolStripMenuItem createProjectButton = new ToolStripMenuItem();
+                    createProjectButton.Name = "createProject";
+                    createProjectButton.Text = "Νέο Έργο";
+                    createProjectButton.Click += new EventHandler(CreateProjectClickHandler);
+                    toolStripMenu.Items.Add(createProjectButton);
+                }
+            }
+            else
+            {
+                loginButton.Text = "Σύνδεση";
+            }
         }
 
-        public void setSize()
+        private void CreateProjectClickHandler(object sender, EventArgs e) 
         {
-            this.Size = new Size(1280, 720);
+            ProjectCreationForm projectCreationForm = new ProjectCreationForm();
+            projectCreationForm.Show();
         }
     }
 }

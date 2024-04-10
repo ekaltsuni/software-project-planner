@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SoftwarePlanner
 {
-    public partial class ProjectCreationForm : ParentForm
+    public partial class ProjectCreationForm : Form
     {
         public ProjectCreationForm()
         {
