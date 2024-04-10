@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,13 @@ namespace SoftwarePlanner
 {
     internal class AppConstants
     {
+
+        public enum UserFilterOption
+        {
+            DEVELOPER,
+            CLIENT
+        }
+
         public enum ProjectType
         {
             PUBLIC,
@@ -43,6 +51,5 @@ namespace SoftwarePlanner
             SIX_TO_TWELVE_MONTHS,
             OVER_YEAR
         }
-
     }
 }
