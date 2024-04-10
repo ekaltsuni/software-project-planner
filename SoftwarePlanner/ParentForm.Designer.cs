@@ -36,6 +36,7 @@
             // 
             // toolStripMenu
             // 
+            this.toolStripMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(231)))), ((int)(((byte)(246)))));
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loginButton});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);

@@ -16,5 +16,10 @@ namespace SoftwarePlanner
         {
             InitializeComponent();
         }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            // TODO: save to DB
+        }
     }
 }
