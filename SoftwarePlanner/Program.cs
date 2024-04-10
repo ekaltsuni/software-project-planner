@@ -16,7 +16,7 @@ namespace SoftwarePlanner
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserProfileForm());
+            Application.Run(new HomeForm());
         }
     }
 }

@@ -23,3 +23,5 @@ C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\Softwar
 C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.CoreCompileInputs.cache
 C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.exe
 C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.pdb
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.LoginForm.resources
+C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.UserProfileForm.resources

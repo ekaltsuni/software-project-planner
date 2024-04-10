@@ -102,6 +102,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.searchProjectBox);
             this.Name = "HomeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HomeForm";
             this.Controls.SetChildIndex(this.searchProjectBox, 0);
             this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
