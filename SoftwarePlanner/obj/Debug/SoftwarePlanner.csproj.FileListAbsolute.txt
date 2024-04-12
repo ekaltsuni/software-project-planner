@@ -26,3 +26,13 @@ C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\Softwar
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.LoginForm.resources
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.UserProfileForm.resources
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.ProjectCreationForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\EntityFramework.dll
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\System.Data.SQLite.dll
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\EntityFramework.xml
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\bin\Debug\System.Data.SQLite.xml
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.ProjectCreationForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\Software.84D758C0.Up2Date
