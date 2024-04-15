@@ -72,10 +72,7 @@ namespace SoftwarePlanner
 
         private void searchUserButton_Click(object sender, EventArgs e)
         {
-            while (userTable.Controls.Count > 0)
-            {
-                userTable.Controls[0].Dispose();
-            }
+            userTable.Rows.Clear();
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             {
                 // TODO: sanitize inputs
@@ -118,15 +115,9 @@ namespace SoftwarePlanner
                     connection.Open();
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        int i = 0;
                         while (reader.Read())
                         {
-                            userTable.RowStyles.Add(new RowStyle(SizeType.AutoSize, 100F));
-                            Label label = new Label();
-                            label.Text = reader.GetString(reader.GetOrdinal("username"));
-                            label.Font = new Font(FontFamily.GenericSansSerif, 12);
-                            userTable.Controls.Add(label, 0, i);
-                            i++;
+                            userTable.Rows.Add(reader.GetString(reader.GetOrdinal("username")));
                         }
                     }
                 }
@@ -135,10 +126,7 @@ namespace SoftwarePlanner
 
         private void searchProjectButton_Click(object sender, EventArgs e)
         {
-            while (projectTable.Controls.Count > 0)
-            {
-                projectTable.Controls[0].Dispose();
-            }
+            projectTable.Rows.Clear();
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             {
                 // TODO: sanitize inputs
@@ -163,15 +151,9 @@ namespace SoftwarePlanner
                     connection.Open();
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        int i = 0;
                         while (reader.Read())
                         {
-                            projectTable.RowStyles.Add(new RowStyle(SizeType.AutoSize, 100F));
-                            Label label = new Label();
-                            label.Text = reader.GetString(reader.GetOrdinal("title"));
-                            label.Font = new Font(FontFamily.GenericSansSerif, 12);
-                            projectTable.Controls.Add(label, 0, i);
-                            i++;
+                            projectTable.Rows.Add(reader.GetString(reader.GetOrdinal("title")));
                         }
                     }
                 }

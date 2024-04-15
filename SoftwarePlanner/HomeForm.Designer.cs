@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.searchUserBox = new System.Windows.Forms.TextBox();
-            this.userTable = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.userFilter = new System.Windows.Forms.ComboBox();
@@ -54,18 +53,23 @@
             this.label9 = new System.Windows.Forms.Label();
             this.searchProjectButton = new System.Windows.Forms.Button();
             this.searchUserButton = new System.Windows.Forms.Button();
-            this.projectTable = new System.Windows.Forms.TableLayoutPanel();
             this.advancedProjectSearchBox = new System.Windows.Forms.CheckBox();
             this.searchProjectBox = new System.Windows.Forms.TextBox();
             this.advancedProjectSearchGroup = new System.Windows.Forms.GroupBox();
+            this.projectDateAfter = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.projectDateBefore = new System.Windows.Forms.DateTimePicker();
-            this.projectDateAfter = new System.Windows.Forms.DateTimePicker();
+            this.userTable = new System.Windows.Forms.DataGridView();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectTable = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devAdvancedSearchGroup.SuspendLayout();
             this.advancedSearchGroup.SuspendLayout();
             this.advancedProjectSearchGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTable)).BeginInit();
             this.SuspendLayout();
             // 
             // searchUserBox
@@ -75,28 +79,6 @@
             this.searchUserBox.Name = "searchUserBox";
             this.searchUserBox.Size = new System.Drawing.Size(393, 31);
             this.searchUserBox.TabIndex = 1;
-            // 
-            // userTable
-            // 
-            this.userTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.userTable.ColumnCount = 2;
-            this.userTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.userTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.userTable.Location = new System.Drawing.Point(84, 222);
-            this.userTable.Name = "userTable";
-            this.userTable.RowCount = 10;
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.userTable.Size = new System.Drawing.Size(520, 433);
-            this.userTable.TabIndex = 2;
             // 
             // label1
             // 
@@ -320,28 +302,6 @@
             this.searchUserButton.UseVisualStyleBackColor = true;
             this.searchUserButton.Click += new System.EventHandler(this.searchUserButton_Click);
             // 
-            // projectTable
-            // 
-            this.projectTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.projectTable.ColumnCount = 2;
-            this.projectTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.projectTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.projectTable.Location = new System.Drawing.Point(660, 222);
-            this.projectTable.Name = "projectTable";
-            this.projectTable.RowCount = 10;
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.projectTable.Size = new System.Drawing.Size(520, 433);
-            this.projectTable.TabIndex = 27;
-            // 
             // advancedProjectSearchBox
             // 
             this.advancedProjectSearchBox.AutoSize = true;
@@ -378,6 +338,13 @@
             this.advancedProjectSearchGroup.TabIndex = 30;
             this.advancedProjectSearchGroup.TabStop = false;
             this.advancedProjectSearchGroup.Visible = false;
+            // 
+            // projectDateAfter
+            // 
+            this.projectDateAfter.Location = new System.Drawing.Point(225, 64);
+            this.projectDateAfter.Name = "projectDateAfter";
+            this.projectDateAfter.Size = new System.Drawing.Size(140, 20);
+            this.projectDateAfter.TabIndex = 27;
             // 
             // label12
             // 
@@ -416,22 +383,52 @@
             this.projectDateBefore.Size = new System.Drawing.Size(140, 20);
             this.projectDateBefore.TabIndex = 19;
             // 
-            // projectDateAfter
+            // userTable
             // 
-            this.projectDateAfter.Location = new System.Drawing.Point(225, 64);
-            this.projectDateAfter.Name = "projectDateAfter";
-            this.projectDateAfter.Size = new System.Drawing.Size(140, 20);
-            this.projectDateAfter.TabIndex = 27;
+            this.userTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.userTable.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.userTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.userTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Username});
+            this.userTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.userTable.Location = new System.Drawing.Point(84, 222);
+            this.userTable.Name = "userTable";
+            this.userTable.Size = new System.Drawing.Size(520, 433);
+            this.userTable.TabIndex = 31;
+            // 
+            // Username
+            // 
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            // 
+            // projectTable
+            // 
+            this.projectTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.projectTable.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.projectTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.projectTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.projectTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.projectTable.Location = new System.Drawing.Point(660, 222);
+            this.projectTable.Name = "projectTable";
+            this.projectTable.Size = new System.Drawing.Size(520, 433);
+            this.projectTable.TabIndex = 32;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Title";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.projectTable);
+            this.Controls.Add(this.userTable);
             this.Controls.Add(this.advancedProjectSearchGroup);
             this.Controls.Add(this.advancedProjectSearchBox);
             this.Controls.Add(this.searchProjectBox);
-            this.Controls.Add(this.projectTable);
             this.Controls.Add(this.searchUserButton);
             this.Controls.Add(this.searchProjectButton);
             this.Controls.Add(this.advancedSearchGroup);
@@ -439,7 +436,6 @@
             this.Controls.Add(this.userFilter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.userTable);
             this.Controls.Add(this.searchUserBox);
             this.Controls.Add(this.devAdvancedSearchGroup);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -448,7 +444,6 @@
             this.Text = "Κεντρική";
             this.Controls.SetChildIndex(this.devAdvancedSearchGroup, 0);
             this.Controls.SetChildIndex(this.searchUserBox, 0);
-            this.Controls.SetChildIndex(this.userTable, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.userFilter, 0);
@@ -456,16 +451,19 @@
             this.Controls.SetChildIndex(this.advancedSearchGroup, 0);
             this.Controls.SetChildIndex(this.searchProjectButton, 0);
             this.Controls.SetChildIndex(this.searchUserButton, 0);
-            this.Controls.SetChildIndex(this.projectTable, 0);
             this.Controls.SetChildIndex(this.searchProjectBox, 0);
             this.Controls.SetChildIndex(this.advancedProjectSearchBox, 0);
             this.Controls.SetChildIndex(this.advancedProjectSearchGroup, 0);
+            this.Controls.SetChildIndex(this.userTable, 0);
+            this.Controls.SetChildIndex(this.projectTable, 0);
             this.devAdvancedSearchGroup.ResumeLayout(false);
             this.devAdvancedSearchGroup.PerformLayout();
             this.advancedSearchGroup.ResumeLayout(false);
             this.advancedSearchGroup.PerformLayout();
             this.advancedProjectSearchGroup.ResumeLayout(false);
             this.advancedProjectSearchGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,7 +472,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchUserBox;
-        private System.Windows.Forms.TableLayoutPanel userTable;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox userFilter;
@@ -498,7 +495,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button searchProjectButton;
         private System.Windows.Forms.Button searchUserButton;
-        private System.Windows.Forms.TableLayoutPanel projectTable;
         private System.Windows.Forms.CheckBox advancedProjectSearchBox;
         private System.Windows.Forms.TextBox searchProjectBox;
         private System.Windows.Forms.GroupBox advancedProjectSearchGroup;
@@ -507,5 +503,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker projectDateBefore;
         private System.Windows.Forms.DateTimePicker projectDateAfter;
+        private System.Windows.Forms.DataGridView userTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.DataGridView projectTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
