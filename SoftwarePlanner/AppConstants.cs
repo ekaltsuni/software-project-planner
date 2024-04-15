@@ -11,6 +11,8 @@ namespace SoftwarePlanner
 {
     internal class AppConstants
     {
+        public static readonly string DATE_FORMAT = "yyyy-MM-dd";
+
         public static readonly string CONNECTION_STRING = "Data source=app-data.db;Version=3";
         SQLiteConnection connection;
 
@@ -42,6 +44,19 @@ namespace SoftwarePlanner
         public static readonly string UPDATE_DEVELOPER_VARIABLES = "UPDATE OR IGNORE Developer SET" +
             "skills = ?, cv = ?, portfolio_links = ?" +
             "WHERE id = @id";
+        public static readonly string RETURN_DEV_SIMPLE = @"SELECT u.username
+                                                                FROM User u
+                                                                INNER JOIN Developer d
+                                                                    ON u.id = d.id
+                                                                WHERE u.username LIKE @username";
+        public static readonly string RETURN_DEV_ADVANCED = @"SELECT u.username
+                                                                FROM User u
+                                                                INNER JOIN Developer d
+                                                                    ON u.id = d.id
+                                                                WHERE u.username LIKE @username
+                                                                    AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter
+                                                                    AND d.rating BETWEEN @minRating AND @maxRating
+                                                                    AND d.project_count BETWEEN @minCount AND @maxCount";
 
         // CUSTOMER ONLY FIELDS
         public static readonly string RETURN_CLIENT_VARIABLES = "SELECT date_of_birth, links, description FROM Client" +
@@ -49,7 +64,19 @@ namespace SoftwarePlanner
         public static readonly string UPDATE_CLIENT_VARIABLES = "UPDATE OR IGNORE Client SET" +
             "date_of_birth = ?, links = ?, description = ?" +
             "WHERE id = @ id";
-     
+        public static readonly string RETURN_CLIENT_SIMPLE = @"SELECT u.username
+                                                                FROM User u
+                                                                INNER JOIN Client c
+                                                                    ON u.id = c.id
+                                                                WHERE u.username LIKE @username
+                                                                    OR c.description LIKE @username";
+        public static readonly string RETURN_CLIENT_ADVANCED = @"SELECT u.username
+                                                                FROM User u
+                                                                INNER JOIN Client c
+                                                                    ON u.id = c.id
+                                                                WHERE (u.username LIKE @username
+                                                                    OR c.description LIKE @username)
+                                                                    AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter";
 
         // UPDATE FIELDS VISIBILITY TO-DO
 

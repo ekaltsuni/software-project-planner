@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,72 @@ namespace SoftwarePlanner
             else if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER) && advancedSearchCheckBox.Checked)
             {
                 devAdvancedSearchGroup.Visible = true;
+            }
+        }
+
+        private void searchUserButton_Click(object sender, EventArgs e)
+        {
+            if (searchUserBox.Text.Trim().Equals("")) return;
+            while (userTable.Controls.Count > 0)
+            {
+                userTable.Controls[0].Dispose();
+            }
+
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                // TODO: sanitize inputs
+                SQLiteCommand command = new SQLiteCommand();
+                if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER)) {
+                    if (advancedSearchCheckBox.Checked)
+                    {
+                        command = new SQLiteCommand(RETURN_DEV_ADVANCED, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@minRating", minRating.Text.Trim().Equals("") ? -1 : int.Parse(minRating.Text));
+                        command.Parameters.AddWithValue("@maxRating", maxRating.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxRating.Text));
+                        command.Parameters.AddWithValue("@minCount", minCount.Text.Trim().Equals("") ? -1 : int.Parse(minCount.Text));
+                        command.Parameters.AddWithValue("@maxCount", maxCount.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxCount.Text));
+                    }
+                    else 
+                    {
+                        command = new SQLiteCommand(RETURN_DEV_SIMPLE, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                    }
+                }
+                else
+                {
+                    if (advancedSearchCheckBox.Checked)
+                    {
+                        command = new SQLiteCommand(RETURN_CLIENT_ADVANCED, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
+                    }
+                    else
+                    {
+                        command = new SQLiteCommand(RETURN_CLIENT_SIMPLE, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                    }
+                }
+
+                using (command)
+                {
+                    connection.Open();
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        int i = 0;
+                        while (reader.Read())
+                        {
+                            userTable.RowStyles.Add(new RowStyle(SizeType.AutoSize, 100F));
+                            Label label = new Label();
+                            label.Text = reader.GetString(reader.GetOrdinal("username"));
+                            label.Font = new Font(FontFamily.GenericSansSerif, 12);
+                            userTable.Controls.Add(label, 0, i);
+                            i++;
+                        }
+                    }
+                }
             }
         }
     }
