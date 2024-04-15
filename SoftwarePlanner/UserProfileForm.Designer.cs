@@ -82,11 +82,10 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(75, 272);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox3.Location = new System.Drawing.Point(50, 177);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(300, 23);
+            this.textBox3.Size = new System.Drawing.Size(200, 15);
             this.textBox3.TabIndex = 2;
             this.textBox3.TabStop = false;
             this.textBox3.Text = "Email";
@@ -94,11 +93,10 @@
             // emailBox
             // 
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailBox.Location = new System.Drawing.Point(210, 268);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.emailBox.Location = new System.Drawing.Point(140, 174);
             this.emailBox.MaxLength = 40;
             this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(256, 30);
+            this.emailBox.Size = new System.Drawing.Size(172, 22);
             this.emailBox.TabIndex = 3;
             // 
             // textBox4
@@ -107,23 +105,21 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(75, 195);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox4.Location = new System.Drawing.Point(50, 127);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(300, 23);
+            this.textBox4.Size = new System.Drawing.Size(200, 15);
             this.textBox4.TabIndex = 4;
             this.textBox4.Text = "Password";
             // 
             // passwordBox
             // 
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(210, 189);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.passwordBox.Location = new System.Drawing.Point(140, 123);
             this.passwordBox.MaxLength = 32;
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
-            this.passwordBox.Size = new System.Drawing.Size(256, 30);
+            this.passwordBox.Size = new System.Drawing.Size(172, 22);
             this.passwordBox.TabIndex = 5;
             // 
             // roleComboBox
@@ -134,10 +130,9 @@
             this.roleComboBox.Items.AddRange(new object[] {
             "Πελάτης",
             "Developer"});
-            this.roleComboBox.Location = new System.Drawing.Point(75, 345);
-            this.roleComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.roleComboBox.Location = new System.Drawing.Point(50, 224);
             this.roleComboBox.Name = "roleComboBox";
-            this.roleComboBox.Size = new System.Drawing.Size(234, 33);
+            this.roleComboBox.Size = new System.Drawing.Size(157, 24);
             this.roleComboBox.TabIndex = 7;
             this.roleComboBox.TabStop = false;
             this.roleComboBox.Text = "Ρόλος";
@@ -151,11 +146,10 @@
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox1.Location = new System.Drawing.Point(130, 272);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Location = new System.Drawing.Point(87, 177);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(40, 23);
+            this.textBox1.Size = new System.Drawing.Size(27, 15);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "*";
             // 
@@ -165,11 +159,10 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(75, 452);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox5.Location = new System.Drawing.Point(50, 294);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(300, 19);
+            this.textBox5.Size = new System.Drawing.Size(200, 13);
             this.textBox5.TabIndex = 9;
             this.textBox5.Text = "*Υποχρεωτικό Πεδίο";
             // 
@@ -180,11 +173,10 @@
             this.textBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox6.Location = new System.Drawing.Point(170, 195);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox6.Location = new System.Drawing.Point(113, 127);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(30, 23);
+            this.textBox6.Size = new System.Drawing.Size(20, 15);
             this.textBox6.TabIndex = 10;
             this.textBox6.Text = "*";
             // 
@@ -195,11 +187,10 @@
             this.textBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox7.Location = new System.Drawing.Point(320, 345);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox7.Location = new System.Drawing.Point(213, 224);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(40, 23);
+            this.textBox7.Size = new System.Drawing.Size(27, 15);
             this.textBox7.TabIndex = 11;
             this.textBox7.Text = "*";
             // 
@@ -209,22 +200,20 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(75, 515);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.Location = new System.Drawing.Point(50, 335);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(300, 23);
+            this.textBox2.Size = new System.Drawing.Size(200, 15);
             this.textBox2.TabIndex = 12;
             this.textBox2.Text = "Όνομα";
             // 
             // nameBox
             // 
             this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameBox.Location = new System.Drawing.Point(210, 509);
-            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nameBox.Location = new System.Drawing.Point(140, 331);
             this.nameBox.MaxLength = 40;
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(256, 30);
+            this.nameBox.Size = new System.Drawing.Size(172, 22);
             this.nameBox.TabIndex = 13;
             // 
             // textBox8
@@ -233,22 +222,20 @@
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(75, 591);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox8.Location = new System.Drawing.Point(50, 384);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(300, 23);
+            this.textBox8.Size = new System.Drawing.Size(200, 15);
             this.textBox8.TabIndex = 14;
             this.textBox8.Text = "Επίθετο";
             // 
             // surnameBox
             // 
             this.surnameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.surnameBox.Location = new System.Drawing.Point(210, 586);
-            this.surnameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.surnameBox.Location = new System.Drawing.Point(140, 381);
             this.surnameBox.MaxLength = 40;
             this.surnameBox.Name = "surnameBox";
-            this.surnameBox.Size = new System.Drawing.Size(256, 30);
+            this.surnameBox.Size = new System.Drawing.Size(172, 22);
             this.surnameBox.TabIndex = 15;
             // 
             // genderComboBox
@@ -260,10 +247,9 @@
             "Γυναίκα",
             "Άλλο",
             "Προτιμώ να μην πω"});
-            this.genderComboBox.Location = new System.Drawing.Point(75, 669);
-            this.genderComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.genderComboBox.Location = new System.Drawing.Point(50, 435);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(234, 33);
+            this.genderComboBox.Size = new System.Drawing.Size(157, 24);
             this.genderComboBox.TabIndex = 16;
             this.genderComboBox.Text = "Φύλο";
             this.genderComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
@@ -274,11 +260,10 @@
             this.profileImageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.profileImageTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileImageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileImageTextBox.Location = new System.Drawing.Point(738, 111);
-            this.profileImageTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.profileImageTextBox.Location = new System.Drawing.Point(492, 72);
             this.profileImageTextBox.Name = "profileImageTextBox";
             this.profileImageTextBox.ReadOnly = true;
-            this.profileImageTextBox.Size = new System.Drawing.Size(168, 23);
+            this.profileImageTextBox.Size = new System.Drawing.Size(112, 15);
             this.profileImageTextBox.TabIndex = 17;
             this.profileImageTextBox.Text = "Εικόνα Προφίλ";
             // 
@@ -288,11 +273,10 @@
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(75, 774);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox10.Location = new System.Drawing.Point(50, 503);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(300, 23);
+            this.textBox10.Size = new System.Drawing.Size(200, 15);
             this.textBox10.TabIndex = 18;
             this.textBox10.Text = "Ημερομηνία Γέννησης";
             this.textBox10.Visible = false;
@@ -303,11 +287,10 @@
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(75, 763);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox11.Location = new System.Drawing.Point(50, 496);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(300, 23);
+            this.textBox11.Size = new System.Drawing.Size(200, 15);
             this.textBox11.TabIndex = 19;
             this.textBox11.Text = "Δεξιότητες";
             this.textBox11.Visible = false;
@@ -318,11 +301,10 @@
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox12.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(738, 260);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox12.Location = new System.Drawing.Point(492, 169);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(300, 23);
+            this.textBox12.Size = new System.Drawing.Size(200, 15);
             this.textBox12.TabIndex = 20;
             this.textBox12.Text = "Υποβολή Βιογραφικού";
             this.textBox12.Visible = false;
@@ -333,11 +315,10 @@
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox13.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(738, 378);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox13.Location = new System.Drawing.Point(492, 246);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(300, 23);
+            this.textBox13.Size = new System.Drawing.Size(200, 15);
             this.textBox13.TabIndex = 21;
             this.textBox13.Text = "Portfolio";
             this.textBox13.Visible = false;
@@ -349,11 +330,10 @@
             this.textBox14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox14.ForeColor = System.Drawing.Color.White;
-            this.textBox14.Location = new System.Drawing.Point(738, 515);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox14.Location = new System.Drawing.Point(492, 335);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(369, 26);
+            this.textBox14.Size = new System.Drawing.Size(246, 17);
             this.textBox14.TabIndex = 22;
             this.textBox14.Text = " Ρυθμίσεις Προφίλ";
             // 
@@ -363,10 +343,9 @@
             this.checkedListBox1.Items.AddRange(new object[] {
             "Email",
             "Όνομα Χρήστη"});
-            this.checkedListBox1.Location = new System.Drawing.Point(738, 638);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox1.Location = new System.Drawing.Point(492, 415);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(367, 50);
+            this.checkedListBox1.Size = new System.Drawing.Size(246, 34);
             this.checkedListBox1.TabIndex = 23;
             // 
             // textBox15
@@ -375,11 +354,10 @@
             this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox15.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(738, 554);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox15.Location = new System.Drawing.Point(492, 360);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(300, 23);
+            this.textBox15.Size = new System.Drawing.Size(200, 15);
             this.textBox15.TabIndex = 24;
             this.textBox15.Text = "Επιλέξτε Ορατά Πεδία";
             // 
@@ -389,11 +367,10 @@
             this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox16.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(738, 600);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox16.Location = new System.Drawing.Point(492, 390);
             this.textBox16.Name = "textBox16";
             this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(300, 21);
+            this.textBox16.Size = new System.Drawing.Size(200, 14);
             this.textBox16.TabIndex = 25;
             this.textBox16.Text = "Υποχρεωτικά Πεδία";
             // 
@@ -403,11 +380,10 @@
             this.textBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox17.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox17.Location = new System.Drawing.Point(738, 700);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox17.Location = new System.Drawing.Point(492, 455);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
-            this.textBox17.Size = new System.Drawing.Size(300, 21);
+            this.textBox17.Size = new System.Drawing.Size(200, 14);
             this.textBox17.TabIndex = 26;
             this.textBox17.Text = "Προαιρετικά Πεδία";
             // 
@@ -422,10 +398,9 @@
             "Ημερομηνία Γέννησης",
             "Περιγραφή",
             "Σύνδεσμοι"});
-            this.clientCheckedListBox.Location = new System.Drawing.Point(738, 732);
-            this.clientCheckedListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.clientCheckedListBox.Location = new System.Drawing.Point(492, 476);
             this.clientCheckedListBox.Name = "clientCheckedListBox";
-            this.clientCheckedListBox.Size = new System.Drawing.Size(367, 119);
+            this.clientCheckedListBox.Size = new System.Drawing.Size(246, 79);
             this.clientCheckedListBox.TabIndex = 27;
             this.clientCheckedListBox.Visible = false;
             // 
@@ -440,10 +415,9 @@
             "Δεξιότητες",
             "Βιογραφικό",
             "Portfolio"});
-            this.developerCheckedListBox.Location = new System.Drawing.Point(738, 732);
-            this.developerCheckedListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.developerCheckedListBox.Location = new System.Drawing.Point(492, 476);
             this.developerCheckedListBox.Name = "developerCheckedListBox";
-            this.developerCheckedListBox.Size = new System.Drawing.Size(367, 119);
+            this.developerCheckedListBox.Size = new System.Drawing.Size(246, 79);
             this.developerCheckedListBox.TabIndex = 28;
             this.developerCheckedListBox.Visible = false;
             // 
@@ -454,21 +428,19 @@
             this.newsFeedTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.newsFeedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newsFeedTextBox.ForeColor = System.Drawing.Color.White;
-            this.newsFeedTextBox.Location = new System.Drawing.Point(1322, 100);
-            this.newsFeedTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newsFeedTextBox.Location = new System.Drawing.Point(881, 65);
             this.newsFeedTextBox.Name = "newsFeedTextBox";
             this.newsFeedTextBox.ReadOnly = true;
-            this.newsFeedTextBox.Size = new System.Drawing.Size(525, 26);
+            this.newsFeedTextBox.Size = new System.Drawing.Size(350, 17);
             this.newsFeedTextBox.TabIndex = 29;
             this.newsFeedTextBox.Text = " Νέα";
             // 
             // newsFeedRichTextBox
             // 
             this.newsFeedRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.newsFeedRichTextBox.Location = new System.Drawing.Point(1322, 128);
-            this.newsFeedRichTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newsFeedRichTextBox.Location = new System.Drawing.Point(881, 83);
             this.newsFeedRichTextBox.Name = "newsFeedRichTextBox";
-            this.newsFeedRichTextBox.Size = new System.Drawing.Size(525, 178);
+            this.newsFeedRichTextBox.Size = new System.Drawing.Size(350, 116);
             this.newsFeedRichTextBox.TabIndex = 30;
             this.newsFeedRichTextBox.Text = "";
             // 
@@ -479,21 +451,19 @@
             this.projectsTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.projectsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectsTextBox.ForeColor = System.Drawing.Color.White;
-            this.projectsTextBox.Location = new System.Drawing.Point(1322, 432);
-            this.projectsTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectsTextBox.Location = new System.Drawing.Point(881, 281);
             this.projectsTextBox.Name = "projectsTextBox";
             this.projectsTextBox.ReadOnly = true;
-            this.projectsTextBox.Size = new System.Drawing.Size(525, 26);
+            this.projectsTextBox.Size = new System.Drawing.Size(350, 17);
             this.projectsTextBox.TabIndex = 31;
             this.projectsTextBox.Text = " Έργα";
             // 
             // ratingsRichTextBox
             // 
             this.ratingsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ratingsRichTextBox.Location = new System.Drawing.Point(1322, 791);
-            this.ratingsRichTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ratingsRichTextBox.Location = new System.Drawing.Point(881, 514);
             this.ratingsRichTextBox.Name = "ratingsRichTextBox";
-            this.ratingsRichTextBox.Size = new System.Drawing.Size(525, 178);
+            this.ratingsRichTextBox.Size = new System.Drawing.Size(350, 116);
             this.ratingsRichTextBox.TabIndex = 32;
             this.ratingsRichTextBox.Text = "";
             // 
@@ -504,21 +474,19 @@
             this.textBox20.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox20.ForeColor = System.Drawing.Color.White;
-            this.textBox20.Location = new System.Drawing.Point(1322, 763);
-            this.textBox20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox20.Location = new System.Drawing.Point(881, 496);
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(525, 26);
+            this.textBox20.Size = new System.Drawing.Size(350, 17);
             this.textBox20.TabIndex = 33;
             this.textBox20.Text = " Αξιολογήσεις";
             // 
             // projectsRichTextBox
             // 
             this.projectsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.projectsRichTextBox.Location = new System.Drawing.Point(1322, 460);
-            this.projectsRichTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectsRichTextBox.Location = new System.Drawing.Point(881, 299);
             this.projectsRichTextBox.Name = "projectsRichTextBox";
-            this.projectsRichTextBox.Size = new System.Drawing.Size(525, 178);
+            this.projectsRichTextBox.Size = new System.Drawing.Size(350, 116);
             this.projectsRichTextBox.TabIndex = 34;
             this.projectsRichTextBox.Text = "";
             // 
@@ -527,10 +495,9 @@
             this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(206)))), ((int)(((byte)(246)))));
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
-            this.saveButton.Location = new System.Drawing.Point(430, 908);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.saveButton.Location = new System.Drawing.Point(287, 590);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(188, 82);
+            this.saveButton.Size = new System.Drawing.Size(125, 53);
             this.saveButton.TabIndex = 35;
             this.saveButton.Text = "Αποθήκευση";
             this.saveButton.UseVisualStyleBackColor = false;
@@ -539,7 +506,6 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(231)))), ((int)(((byte)(246)))));
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.αρχικήToolStripMenuItem,
@@ -547,27 +513,29 @@
             this.αποσύνδεσηToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1896, 35);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip1.TabIndex = 36;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // αρχικήToolStripMenuItem
             // 
             this.αρχικήToolStripMenuItem.Name = "αρχικήToolStripMenuItem";
-            this.αρχικήToolStripMenuItem.Size = new System.Drawing.Size(99, 29);
+            this.αρχικήToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
             this.αρχικήToolStripMenuItem.Text = "Κεντρική";
             this.αρχικήToolStripMenuItem.Click += new System.EventHandler(this.αρχικήToolStripMenuItem_Click);
             // 
             // προφίλToolStripMenuItem
             // 
             this.προφίλToolStripMenuItem.Name = "προφίλToolStripMenuItem";
-            this.προφίλToolStripMenuItem.Size = new System.Drawing.Size(90, 29);
+            this.προφίλToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
             this.προφίλToolStripMenuItem.Text = "Προφίλ";
             // 
             // αποσύνδεσηToolStripMenuItem
             // 
             this.αποσύνδεσηToolStripMenuItem.Name = "αποσύνδεσηToolStripMenuItem";
-            this.αποσύνδεσηToolStripMenuItem.Size = new System.Drawing.Size(130, 29);
+            this.αποσύνδεσηToolStripMenuItem.Size = new System.Drawing.Size(88, 22);
             this.αποσύνδεσηToolStripMenuItem.Text = "Αποσύνδεση";
             this.αποσύνδεσηToolStripMenuItem.Visible = false;
             this.αποσύνδεσηToolStripMenuItem.Click += new System.EventHandler(this.αποσύνδεσηToolStripMenuItem_Click);
@@ -576,10 +544,9 @@
             // 
             this.profileImagePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileImagePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("profileImagePictureBox.Image")));
-            this.profileImagePictureBox.Location = new System.Drawing.Point(916, 111);
-            this.profileImagePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.profileImagePictureBox.Location = new System.Drawing.Point(611, 72);
             this.profileImagePictureBox.Name = "profileImagePictureBox";
-            this.profileImagePictureBox.Size = new System.Drawing.Size(104, 108);
+            this.profileImagePictureBox.Size = new System.Drawing.Size(69, 70);
             this.profileImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImagePictureBox.TabIndex = 38;
             this.profileImagePictureBox.TabStop = false;
@@ -591,11 +558,10 @@
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(738, 275);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox9.Location = new System.Drawing.Point(492, 179);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(300, 23);
+            this.textBox9.Size = new System.Drawing.Size(200, 15);
             this.textBox9.TabIndex = 39;
             this.textBox9.Text = "Περιγραφή";
             this.textBox9.Visible = false;
@@ -606,11 +572,10 @@
             this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox18.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox18.Location = new System.Drawing.Point(738, 395);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox18.Location = new System.Drawing.Point(492, 257);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
-            this.textBox18.Size = new System.Drawing.Size(300, 23);
+            this.textBox18.Size = new System.Drawing.Size(200, 15);
             this.textBox18.TabIndex = 40;
             this.textBox18.Text = "Σύνδεσμοι";
             this.textBox18.Visible = false;
@@ -618,11 +583,10 @@
             // usernameBox
             // 
             this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameBox.Location = new System.Drawing.Point(210, 111);
-            this.usernameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.usernameBox.Location = new System.Drawing.Point(140, 72);
             this.usernameBox.MaxLength = 32;
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(256, 30);
+            this.usernameBox.Size = new System.Drawing.Size(172, 22);
             this.usernameBox.TabIndex = 42;
             // 
             // textBox21
@@ -632,11 +596,10 @@
             this.textBox21.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox21.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox21.Location = new System.Drawing.Point(176, 111);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox21.Location = new System.Drawing.Point(117, 72);
             this.textBox21.Name = "textBox21";
             this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(30, 23);
+            this.textBox21.Size = new System.Drawing.Size(20, 15);
             this.textBox21.TabIndex = 43;
             this.textBox21.Text = "*";
             // 
@@ -646,21 +609,20 @@
             this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox22.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox22.Location = new System.Drawing.Point(75, 117);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox22.Location = new System.Drawing.Point(50, 76);
             this.textBox22.Name = "textBox22";
             this.textBox22.ReadOnly = true;
-            this.textBox22.Size = new System.Drawing.Size(300, 23);
+            this.textBox22.Size = new System.Drawing.Size(200, 15);
             this.textBox22.TabIndex = 41;
             this.textBox22.Text = "Username";
             // 
             // UserProfileForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(1896, 1048);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.textBox22);
@@ -703,7 +665,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Προφίλ Χρήστη";

@@ -41,7 +41,7 @@
             this.loginButton});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.toolStripMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.toolStripMenu.Size = new System.Drawing.Size(1264, 25);
             this.toolStripMenu.TabIndex = 0;
             this.toolStripMenu.Text = "toolstripMenu";
