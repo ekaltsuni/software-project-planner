@@ -78,6 +78,23 @@ namespace SoftwarePlanner
                                                                     OR c.description LIKE @username)
                                                                     AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter";
 
+        // PROJECT ONLY FIELDS
+        public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT title
+                                                                FROM Project p
+                                                                WHERE p.title LIKE @title
+                                                                    OR p.description LIKE @title";
+        public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT title
+                                                                FROM Project p
+                                                                INNER JOIN ProjectCategory pc
+                                                                    ON pc.project_id = p.id
+                                                                INNER JOIN ProjectTechnology pt
+                                                                    ON pt.project_id = p.id
+                                                                WHERE (p.title LIKE @title
+                                                                    OR p.description LIKE @title)
+                                                                    AND pc.category LIKE @category AND pc.subcategory LIKE @subcategory
+                                                                    AND p.date >= @dateBefore AND p.date <= @dateAfter
+                                                                    AND pt.category IN @technologies";
+
         // UPDATE FIELDS VISIBILITY TO-DO
 
 

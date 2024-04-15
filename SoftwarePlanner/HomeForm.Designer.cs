@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.searchUserBox = new System.Windows.Forms.TextBox();
             this.userTable = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.userFilter = new System.Windows.Forms.ComboBox();
@@ -46,18 +45,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateBefore = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.advancedSearchCheckBox = new System.Windows.Forms.CheckBox();
+            this.advancedUserSearchCheckBox = new System.Windows.Forms.CheckBox();
             this.dateAfter = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.advancedSearchGroup = new System.Windows.Forms.GroupBox();
             this.categoryDropdown = new System.Windows.Forms.ComboBox();
             this.subcategoryDropdown = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.searchProjectButton = new System.Windows.Forms.Button();
             this.searchUserButton = new System.Windows.Forms.Button();
+            this.projectTable = new System.Windows.Forms.TableLayoutPanel();
+            this.advancedProjectSearchBox = new System.Windows.Forms.CheckBox();
+            this.searchProjectBox = new System.Windows.Forms.TextBox();
+            this.advancedProjectSearchGroup = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.projectDateBefore = new System.Windows.Forms.DateTimePicker();
+            this.projectDateAfter = new System.Windows.Forms.DateTimePicker();
             this.devAdvancedSearchGroup.SuspendLayout();
             this.advancedSearchGroup.SuspendLayout();
+            this.advancedProjectSearchGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchUserBox
@@ -89,27 +97,6 @@
             this.userTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.userTable.Size = new System.Drawing.Size(520, 433);
             this.userTable.TabIndex = 2;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(660, 168);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 10;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.39175F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.60825F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(520, 487);
-            this.tableLayoutPanel2.TabIndex = 4;
             // 
             // label1
             // 
@@ -240,17 +227,17 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Εγγραφή από";
             // 
-            // advancedSearchCheckBox
+            // advancedUserSearchCheckBox
             // 
-            this.advancedSearchCheckBox.AutoSize = true;
-            this.advancedSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.advancedSearchCheckBox.Location = new System.Drawing.Point(483, 100);
-            this.advancedSearchCheckBox.Name = "advancedSearchCheckBox";
-            this.advancedSearchCheckBox.Size = new System.Drawing.Size(128, 17);
-            this.advancedSearchCheckBox.TabIndex = 16;
-            this.advancedSearchCheckBox.Text = "Σύνθετη Αναζήτηση";
-            this.advancedSearchCheckBox.UseVisualStyleBackColor = true;
-            this.advancedSearchCheckBox.CheckedChanged += new System.EventHandler(this.advancedSearchCheckBox_CheckedChanged);
+            this.advancedUserSearchCheckBox.AutoSize = true;
+            this.advancedUserSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.advancedUserSearchCheckBox.Location = new System.Drawing.Point(483, 100);
+            this.advancedUserSearchCheckBox.Name = "advancedUserSearchCheckBox";
+            this.advancedUserSearchCheckBox.Size = new System.Drawing.Size(128, 17);
+            this.advancedUserSearchCheckBox.TabIndex = 16;
+            this.advancedUserSearchCheckBox.Text = "Σύνθετη Αναζήτηση";
+            this.advancedUserSearchCheckBox.UseVisualStyleBackColor = true;
+            this.advancedUserSearchCheckBox.CheckedChanged += new System.EventHandler(this.advancedSearchCheckBox_CheckedChanged);
             // 
             // dateAfter
             // 
@@ -286,9 +273,9 @@
             this.categoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.categoryDropdown.FormattingEnabled = true;
-            this.categoryDropdown.Location = new System.Drawing.Point(660, 123);
+            this.categoryDropdown.Location = new System.Drawing.Point(6, 33);
             this.categoryDropdown.Name = "categoryDropdown";
-            this.categoryDropdown.Size = new System.Drawing.Size(245, 26);
+            this.categoryDropdown.Size = new System.Drawing.Size(140, 26);
             this.categoryDropdown.TabIndex = 20;
             // 
             // subcategoryDropdown
@@ -296,30 +283,20 @@
             this.subcategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.subcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.subcategoryDropdown.FormattingEnabled = true;
-            this.subcategoryDropdown.Location = new System.Drawing.Point(935, 123);
+            this.subcategoryDropdown.Location = new System.Drawing.Point(152, 32);
             this.subcategoryDropdown.Name = "subcategoryDropdown";
-            this.subcategoryDropdown.Size = new System.Drawing.Size(245, 26);
+            this.subcategoryDropdown.Size = new System.Drawing.Size(140, 26);
             this.subcategoryDropdown.TabIndex = 21;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label9.Location = new System.Drawing.Point(657, 86);
+            this.label9.Location = new System.Drawing.Point(3, 12);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(80, 18);
+            this.label9.Size = new System.Drawing.Size(188, 18);
             this.label9.TabIndex = 22;
-            this.label9.Text = "Κατηγορία";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label10.Location = new System.Drawing.Point(932, 86);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 18);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Υποκατηγορία";
+            this.label9.Text = "Κατηγορία / Υποκατηγορία";
             // 
             // searchProjectButton
             // 
@@ -330,6 +307,7 @@
             this.searchProjectButton.TabIndex = 25;
             this.searchProjectButton.Text = "Αναζήτηση";
             this.searchProjectButton.UseVisualStyleBackColor = true;
+            this.searchProjectButton.Click += new System.EventHandler(this.searchProjectButton_Click);
             // 
             // searchUserButton
             // 
@@ -342,23 +320,125 @@
             this.searchUserButton.UseVisualStyleBackColor = true;
             this.searchUserButton.Click += new System.EventHandler(this.searchUserButton_Click);
             // 
+            // projectTable
+            // 
+            this.projectTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.projectTable.ColumnCount = 2;
+            this.projectTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.projectTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.projectTable.Location = new System.Drawing.Point(660, 222);
+            this.projectTable.Name = "projectTable";
+            this.projectTable.RowCount = 10;
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.projectTable.Size = new System.Drawing.Size(520, 433);
+            this.projectTable.TabIndex = 27;
+            // 
+            // advancedProjectSearchBox
+            // 
+            this.advancedProjectSearchBox.AutoSize = true;
+            this.advancedProjectSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.advancedProjectSearchBox.Location = new System.Drawing.Point(1059, 100);
+            this.advancedProjectSearchBox.Name = "advancedProjectSearchBox";
+            this.advancedProjectSearchBox.Size = new System.Drawing.Size(128, 17);
+            this.advancedProjectSearchBox.TabIndex = 29;
+            this.advancedProjectSearchBox.Text = "Σύνθετη Αναζήτηση";
+            this.advancedProjectSearchBox.UseVisualStyleBackColor = true;
+            this.advancedProjectSearchBox.CheckedChanged += new System.EventHandler(this.advancedProjectSearchBox_CheckedChanged);
+            // 
+            // searchProjectBox
+            // 
+            this.searchProjectBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.searchProjectBox.Location = new System.Drawing.Point(660, 86);
+            this.searchProjectBox.Name = "searchProjectBox";
+            this.searchProjectBox.Size = new System.Drawing.Size(393, 31);
+            this.searchProjectBox.TabIndex = 28;
+            // 
+            // advancedProjectSearchGroup
+            // 
+            this.advancedProjectSearchGroup.Controls.Add(this.projectDateAfter);
+            this.advancedProjectSearchGroup.Controls.Add(this.label12);
+            this.advancedProjectSearchGroup.Controls.Add(this.comboBox1);
+            this.advancedProjectSearchGroup.Controls.Add(this.label11);
+            this.advancedProjectSearchGroup.Controls.Add(this.projectDateBefore);
+            this.advancedProjectSearchGroup.Controls.Add(this.categoryDropdown);
+            this.advancedProjectSearchGroup.Controls.Add(this.label9);
+            this.advancedProjectSearchGroup.Controls.Add(this.subcategoryDropdown);
+            this.advancedProjectSearchGroup.Location = new System.Drawing.Point(660, 123);
+            this.advancedProjectSearchGroup.Name = "advancedProjectSearchGroup";
+            this.advancedProjectSearchGroup.Size = new System.Drawing.Size(520, 93);
+            this.advancedProjectSearchGroup.TabIndex = 30;
+            this.advancedProjectSearchGroup.TabStop = false;
+            this.advancedProjectSearchGroup.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label12.Location = new System.Drawing.Point(301, 12);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(92, 18);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Τεχνολογίες";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(304, 33);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(140, 26);
+            this.comboBox1.TabIndex = 25;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label11.Location = new System.Drawing.Point(6, 65);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 18);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Υποβολή";
+            // 
+            // projectDateBefore
+            // 
+            this.projectDateBefore.Location = new System.Drawing.Point(79, 65);
+            this.projectDateBefore.Name = "projectDateBefore";
+            this.projectDateBefore.Size = new System.Drawing.Size(140, 20);
+            this.projectDateBefore.TabIndex = 19;
+            // 
+            // projectDateAfter
+            // 
+            this.projectDateAfter.Location = new System.Drawing.Point(225, 64);
+            this.projectDateAfter.Name = "projectDateAfter";
+            this.projectDateAfter.Size = new System.Drawing.Size(140, 20);
+            this.projectDateAfter.TabIndex = 27;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.advancedProjectSearchGroup);
+            this.Controls.Add(this.advancedProjectSearchBox);
+            this.Controls.Add(this.searchProjectBox);
+            this.Controls.Add(this.projectTable);
             this.Controls.Add(this.searchUserButton);
             this.Controls.Add(this.searchProjectButton);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.subcategoryDropdown);
-            this.Controls.Add(this.categoryDropdown);
             this.Controls.Add(this.advancedSearchGroup);
-            this.Controls.Add(this.advancedSearchCheckBox);
+            this.Controls.Add(this.advancedUserSearchCheckBox);
             this.Controls.Add(this.userFilter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.userTable);
             this.Controls.Add(this.searchUserBox);
             this.Controls.Add(this.devAdvancedSearchGroup);
@@ -369,22 +449,23 @@
             this.Controls.SetChildIndex(this.devAdvancedSearchGroup, 0);
             this.Controls.SetChildIndex(this.searchUserBox, 0);
             this.Controls.SetChildIndex(this.userTable, 0);
-            this.Controls.SetChildIndex(this.tableLayoutPanel2, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.userFilter, 0);
-            this.Controls.SetChildIndex(this.advancedSearchCheckBox, 0);
+            this.Controls.SetChildIndex(this.advancedUserSearchCheckBox, 0);
             this.Controls.SetChildIndex(this.advancedSearchGroup, 0);
-            this.Controls.SetChildIndex(this.categoryDropdown, 0);
-            this.Controls.SetChildIndex(this.subcategoryDropdown, 0);
-            this.Controls.SetChildIndex(this.label9, 0);
-            this.Controls.SetChildIndex(this.label10, 0);
             this.Controls.SetChildIndex(this.searchProjectButton, 0);
             this.Controls.SetChildIndex(this.searchUserButton, 0);
+            this.Controls.SetChildIndex(this.projectTable, 0);
+            this.Controls.SetChildIndex(this.searchProjectBox, 0);
+            this.Controls.SetChildIndex(this.advancedProjectSearchBox, 0);
+            this.Controls.SetChildIndex(this.advancedProjectSearchGroup, 0);
             this.devAdvancedSearchGroup.ResumeLayout(false);
             this.devAdvancedSearchGroup.PerformLayout();
             this.advancedSearchGroup.ResumeLayout(false);
             this.advancedSearchGroup.PerformLayout();
+            this.advancedProjectSearchGroup.ResumeLayout(false);
+            this.advancedProjectSearchGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,7 +475,6 @@
 
         private System.Windows.Forms.TextBox searchUserBox;
         private System.Windows.Forms.TableLayoutPanel userTable;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox userFilter;
@@ -407,7 +487,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateBefore;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox advancedSearchCheckBox;
+        private System.Windows.Forms.CheckBox advancedUserSearchCheckBox;
         private System.Windows.Forms.DateTimePicker dateAfter;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox advancedSearchGroup;
@@ -416,8 +496,16 @@
         private System.Windows.Forms.ComboBox categoryDropdown;
         private System.Windows.Forms.ComboBox subcategoryDropdown;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button searchProjectButton;
         private System.Windows.Forms.Button searchUserButton;
+        private System.Windows.Forms.TableLayoutPanel projectTable;
+        private System.Windows.Forms.CheckBox advancedProjectSearchBox;
+        private System.Windows.Forms.TextBox searchProjectBox;
+        private System.Windows.Forms.GroupBox advancedProjectSearchGroup;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker projectDateBefore;
+        private System.Windows.Forms.DateTimePicker projectDateAfter;
     }
 }

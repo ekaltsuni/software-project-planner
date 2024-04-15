@@ -31,7 +31,7 @@ namespace SoftwarePlanner
 
         private void advancedSearchCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (advancedSearchCheckBox.Checked)
+            if (advancedUserSearchCheckBox.Checked)
             {
                 advancedSearchGroup.Visible = true;
                 if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER))
@@ -46,13 +46,25 @@ namespace SoftwarePlanner
             }    
         }
 
+        private void advancedProjectSearchBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (advancedProjectSearchBox.Checked)
+            {
+                advancedProjectSearchGroup.Visible = true;
+            }
+            else
+            {
+                advancedProjectSearchGroup.Visible = false;
+            }
+        }
+
         private void userFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.CLIENT))
             {
                 devAdvancedSearchGroup.Visible = false;
             }
-            else if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER) && advancedSearchCheckBox.Checked)
+            else if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER) && advancedUserSearchCheckBox.Checked)
             {
                 devAdvancedSearchGroup.Visible = true;
             }
@@ -60,18 +72,16 @@ namespace SoftwarePlanner
 
         private void searchUserButton_Click(object sender, EventArgs e)
         {
-            if (searchUserBox.Text.Trim().Equals("")) return;
             while (userTable.Controls.Count > 0)
             {
                 userTable.Controls[0].Dispose();
             }
-
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             {
                 // TODO: sanitize inputs
                 SQLiteCommand command = new SQLiteCommand();
                 if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER)) {
-                    if (advancedSearchCheckBox.Checked)
+                    if (advancedUserSearchCheckBox.Checked)
                     {
                         command = new SQLiteCommand(RETURN_DEV_ADVANCED, connection);
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
@@ -90,7 +100,7 @@ namespace SoftwarePlanner
                 }
                 else
                 {
-                    if (advancedSearchCheckBox.Checked)
+                    if (advancedUserSearchCheckBox.Checked)
                     {
                         command = new SQLiteCommand(RETURN_CLIENT_ADVANCED, connection);
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
@@ -103,7 +113,6 @@ namespace SoftwarePlanner
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
                     }
                 }
-
                 using (command)
                 {
                     connection.Open();
@@ -117,6 +126,51 @@ namespace SoftwarePlanner
                             label.Text = reader.GetString(reader.GetOrdinal("username"));
                             label.Font = new Font(FontFamily.GenericSansSerif, 12);
                             userTable.Controls.Add(label, 0, i);
+                            i++;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void searchProjectButton_Click(object sender, EventArgs e)
+        {
+            while (projectTable.Controls.Count > 0)
+            {
+                projectTable.Controls[0].Dispose();
+            }
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                // TODO: sanitize inputs
+                SQLiteCommand command = new SQLiteCommand();               
+                if (advancedUserSearchCheckBox.Checked)
+                {
+                    command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
+                    command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
+                    command.Parameters.AddWithValue("@dateBefore", projectDateBefore.Value.ToString(DATE_FORMAT));
+                    command.Parameters.AddWithValue("@dateAfter", projectDateAfter.Value.ToString(DATE_FORMAT));
+                    command.Parameters.AddWithValue("@category", categoryDropdown.SelectedItem);
+                    command.Parameters.AddWithValue("@subcategory", subcategoryDropdown.SelectedItem);
+                    command.Parameters.AddWithValue("@technologies", new List<string>(){"TEST"});
+                }
+                else
+                {
+                    command = new SQLiteCommand(RETURN_PROJECT_SIMPLE, connection);
+                    command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
+                }              
+                using (command)
+                {
+                    connection.Open();
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        int i = 0;
+                        while (reader.Read())
+                        {
+                            projectTable.RowStyles.Add(new RowStyle(SizeType.AutoSize, 100F));
+                            Label label = new Label();
+                            label.Text = reader.GetString(reader.GetOrdinal("title"));
+                            label.Font = new Font(FontFamily.GenericSansSerif, 12);
+                            projectTable.Controls.Add(label, 0, i);
                             i++;
                         }
                     }
