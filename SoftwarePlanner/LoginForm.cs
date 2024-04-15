@@ -83,12 +83,20 @@ namespace SoftwarePlanner
             {
                 Role.isDeveloper = true;
                 Role.isClient = false;
+                Role.isVisitor = false;
 
             }
             else if (User.role.Equals("client"))
             {
                 Role.isDeveloper = false;
                 Role.isClient = true;
+                Role.isVisitor = false;
+            }
+            else
+            {
+                Role.isVisitor = true;
+                Role.isDeveloper = false;
+                Role.isClient = false;
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
@@ -16,7 +17,7 @@ namespace SoftwarePlanner
 {
     public partial class UserProfileForm : Form
     {
-        String email, username, password, role, name, surname, gender;
+        String email, username, password, role, name, surname, gender, skills, cv, portfolio;
         public UserProfileForm()
         {
             InitializeComponent();
@@ -26,37 +27,45 @@ namespace SoftwarePlanner
 
         private void UserProfileForm_Load(object sender, EventArgs e)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(AppConstants.RETURN_USER_VARIABLES, connection))
+            if (Role.isDeveloper || Role.isClient)
             {
-                connection.Open();
-                command.Parameters.AddWithValue("@id", User.id);
-                using (SQLiteDataReader reader = command.ExecuteReader())
+                using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
+                using (SQLiteCommand command = new SQLiteCommand(AppConstants.RETURN_USER_VARIABLES, connection))
                 {
-                    if (reader.Read())
+                    connection.Open();
+                    command.Parameters.AddWithValue("@id", User.id);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        email = reader.GetString(reader.GetOrdinal("email"));
-                        username = reader.GetString(reader.GetOrdinal("username"));
-                        name = reader.GetString(reader.GetOrdinal("name"));
-                        surname = reader.GetString(reader.GetOrdinal("surname"));
+                        if (reader.Read())
+                        {
+                            email = reader.GetString(reader.GetOrdinal("email"));
+                            username = reader.GetString(reader.GetOrdinal("username"));
+                            name = reader.GetString(reader.GetOrdinal("name"));
+                            surname = reader.GetString(reader.GetOrdinal("surname"));
+                            password = reader.GetString(reader.GetOrdinal("password"));
 
+                        }
+
+                        usernameBox.Text = username;
+                        emailBox.Text = email;
+                        nameBox.Text = name;
+                        surnameBox.Text = surname;
+                        passwordBox.Text = password;
+
+                        //command.Dispose();
+                        //connection.Close();
                     }
-
-                    usernameBox.Text = username;
-                    emailBox.Text = email;
-                    nameBox.Text = name;
-                    surnameBox.Text = surname;
-
-                    //command.Dispose();
-                    //connection.Close();
 
                 }
             }
+
         }
 
         private void αποσύνδεσηToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Role.isVisitor = true;
+            Role.isClient = false;
+            Role.isDeveloper = false;
             this.Hide();
             HomeForm home = new HomeForm();
             home.ShowDialog();
@@ -66,9 +75,62 @@ namespace SoftwarePlanner
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            // TO-DO: Updates for existing and Inserts for new users
+            using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
+
+            if (Role.isDeveloper)   
+            {
+
+                using (SQLiteCommand command = new SQLiteCommand(AppConstants.UPDATE_USER_VARIABLES, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@username", usernameBox.Text);
+                    command.Parameters.AddWithValue("@password", passwordBox.Text);
+                    command.Parameters.AddWithValue("@email", emailBox.Text);
+                    command.Parameters.AddWithValue("@name", nameBox.Text);
+                    command.Parameters.AddWithValue("@surname", surnameBox.Text);
+                    command.Parameters.AddWithValue("@gender", genderComboBox.Text);
+
+                    command.Parameters.AddWithValue("@id", User.id);
+                       
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
+
+                }
+            }
+            
+            else if (Role.isClient)
+            {
+
+                using (SQLiteCommand command = new SQLiteCommand(AppConstants.UPDATE_USER_VARIABLES, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@username", usernameBox.Text);
+                    command.Parameters.AddWithValue("@password", passwordBox.Text);
+                    command.Parameters.AddWithValue("@email", emailBox.Text);
+                    command.Parameters.AddWithValue("@name", nameBox.Text);
+                    command.Parameters.AddWithValue("@surname", surnameBox.Text);
+                    command.Parameters.AddWithValue("@gender", genderComboBox.Text);
+
+                    command.Parameters.AddWithValue("@id", User.id);
+
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
+
+                }
+            }
+            else if (Role.isVisitor)
+            {
+                //todo inserts
+            }
         }
 
+        private void updateParameters(String variable, SQLiteCommand command, String value)
+        {
+            if (!string.IsNullOrEmpty(variable))
+                command.Parameters.AddWithValue(value, variable);
+            else
+                command.Parameters.AddWithValue(value, DBNull.Value);
+        }
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (roleComboBox.SelectedIndex == 0)
@@ -85,6 +147,16 @@ namespace SoftwarePlanner
                 textBox12.Visible = true;
                 textBox13.Visible = true;
             }
+        }
+
+        private void updateProfile()
+        {
+
+        }
+
+        private void createProfile()
+        {
+
         }
 
         private void αρχικήToolStripMenuItem_Click(object sender, EventArgs e)

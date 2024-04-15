@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SoftwarePlanner
 {
@@ -27,28 +28,30 @@ namespace SoftwarePlanner
         /* USER PROFILE FORM
          */
 
-        public static readonly string RETURN_USER_VARIABLES = "SELECT email, username, name, surname FROM User WHERE id = @id";
-        public static readonly string UPDATE_EMAIL = "UPDATE User SET email = @email WHERE id = @id";
-        public static readonly string UPDATE_PASSWORD = "UPDATE User SET password = @password WHERE id = @id";
-        public static readonly string UPDATE_NAME = "UPDATE User SET name = @name WHERE id = @id";
-        public static readonly string UPDATE_SURNAME = "UPDATE User SET surname = @surname WHERE id = @id";
-        public static readonly string UPDATE_GENDER = "UPDATE User SET gender = @gender WHERE id = @id";
+        public static readonly string RETURN_USER_VARIABLES = "SELECT email, username, " +
+            "password, name, surname FROM User WHERE id = @id";
+       public static readonly string UPDATE_USER_VARIABLES = 
+            "UPDATE OR IGNORE User SET username = ?, password = ?, " +
+            "email = ?, name = ?, " +
+            "surname = ?, gender = ?" +
+            " WHERE id = @id";
 
         // DEVELOPER ONLY FIELDS
-        public static readonly string UPDATE_SKILLS = "UPDATE Developer SET skills = @skills WHERE id = @id";
-        public static readonly string UPDATE_CV = "UPDATE Developer SET cv = @cv WHERE id = @id";
-        public static readonly string UPDATE_PORTFOLIO = "UPDATE User SET portfolio_links = @portfolio_links WHERE id = @id";
+        public static readonly string RETURN_DEVELOPER_VARIABLES = "SELECT skills, cv, portfolio FROM Developer" +
+            " WHERE id = @id";
+        public static readonly string UPDATE_DEVELOPER_VARIABLES = "UPDATE OR IGNORE Developer SET" +
+            "skills = ?, cv = ?, portfolio_links = ?" +
+            "WHERE id = @id";
 
         // CUSTOMER ONLY FIELDS
-        public static readonly string UPDATE_DATE_OF_BIRTH = "UPDATE Client SET date_of_birth = @date_of_birth WHERE id = @id";
-        public static readonly string UPDATE_LINKS = "UPDATE Client SET links = @links WHERE id = @id";
-        public static readonly string UPDATE_DESCRIPTION = "UPDATE Client SET description = @description WHERE id = @id";
+        public static readonly string RETURN_CLIENT_VARIABLES = "SELECT date_of_birth, links, description FROM Client" +
+            "WHERE id = @ id";
+        public static readonly string UPDATE_CLIENT_VARIABLES = "UPDATE OR IGNORE Client SET" +
+            "date_of_birth = ?, links = ?, description = ?" +
+            "WHERE id = @ id";
+     
 
-        // UPDATE FIELDS VISIBILITY
-
-
-
-
+        // UPDATE FIELDS VISIBILITY TO-DO
 
 
         public static class User
@@ -91,26 +94,6 @@ namespace SoftwarePlanner
                 set { _isVisitor = value; }
             }
         }
-
-        public enum USER_VARIABLES
-        {
-            
-            EMAIL,
-            USERNAME,
-            NAME,
-            SURNAME
-            //GENDER
-
-        }
-
-        public static readonly Dictionary<USER_VARIABLES, string> USER_VARIABLE_CODES = new Dictionary<USER_VARIABLES, string>()
-        {
-            {USER_VARIABLES.EMAIL, "email"},
-            {USER_VARIABLES.USERNAME, "username"},
-            {USER_VARIABLES.NAME, "name"},
-            {USER_VARIABLES.SURNAME, "surname"},
-            //{USER_VARIABLES.GENDER, "gender"},
-        };
 
 
         public enum UserFilterOption
