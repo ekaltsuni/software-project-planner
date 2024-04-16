@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,9 @@ namespace SoftwarePlanner
 {
     public partial class UserProfileForm : Form
     {
-        String email, username, password, role, name, surname, gender, skills, cv, portfolio;
+        String email, username, password, role, name, surname, gender, skills, cv, portfolio, date_of_birth,
+                link, description;
+        DateTime dateOfBirth;
         public UserProfileForm()
         {
             InitializeComponent();
@@ -56,6 +59,29 @@ namespace SoftwarePlanner
                         //connection.Close();
                     }
 
+                }
+            }
+            if (Role.isClient)
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
+                using (SQLiteCommand command = new SQLiteCommand(AppConstants.RETURN_CLIENT_VARIABLES, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@id", User.id);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            date_of_birth = reader.GetString(reader.GetOrdinal("date_of_birth"));
+                            link = reader.GetString(reader.GetOrdinal("link"));
+                            description = reader.GetString(reader.GetOrdinal("description"));
+                            
+                        }
+
+                        datePicker.Value = DateTime.Parse(date_of_birth);
+                        linkBox.Text = link;
+                        descriptionBox.Text = description;
+                    }
                 }
             }
 
@@ -102,6 +128,9 @@ namespace SoftwarePlanner
             {
 
                 using (SQLiteCommand command = new SQLiteCommand(AppConstants.UPDATE_USER_VARIABLES, connection))
+                using (SQLiteCommand clientOnlyCommand = new SQLiteCommand(AppConstants.UPDATE_CLIENT_VARIABLES, connection))
+
+                        
                 {
                     connection.Open();
                     command.Parameters.AddWithValue("@username", usernameBox.Text);
@@ -110,10 +139,19 @@ namespace SoftwarePlanner
                     command.Parameters.AddWithValue("@name", nameBox.Text);
                     command.Parameters.AddWithValue("@surname", surnameBox.Text);
                     command.Parameters.AddWithValue("@gender", genderComboBox.Text);
-
+                        
                     command.Parameters.AddWithValue("@id", User.id);
 
+                    
+                    clientOnlyCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
+                    clientOnlyCommand.Parameters.AddWithValue("@link", linkBox.Text);
+                    clientOnlyCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
+
+                    clientOnlyCommand.Parameters.AddWithValue("@id", User.id);
+                    
                     command.ExecuteNonQuery();
+                    clientOnlyCommand.ExecuteNonQuery();
+
                     MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
 
                 }
@@ -201,6 +239,9 @@ namespace SoftwarePlanner
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Developer";
                 αποσύνδεσηToolStripMenuItem.Visible = true;
+                datePicker.Visible = false;
+                descriptionBox.Visible = false;
+                linkBox.Visible = false;
             }
             else if (Role.isClient == true)
             {
@@ -214,6 +255,9 @@ namespace SoftwarePlanner
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Πελάτης";
                 αποσύνδεσηToolStripMenuItem.Visible = true;
+                datePicker.Visible = true;
+                descriptionBox.Visible = true;
+                linkBox.Visible = true;
             }
             else
             {

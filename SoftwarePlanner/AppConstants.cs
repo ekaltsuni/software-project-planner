@@ -59,11 +59,11 @@ namespace SoftwarePlanner
                                                                     AND d.project_count BETWEEN @minCount AND @maxCount";
 
         // CUSTOMER ONLY FIELDS
-        public static readonly string RETURN_CLIENT_VARIABLES = "SELECT date_of_birth, links, description FROM Client" +
-            "WHERE id = @ id";
-        public static readonly string UPDATE_CLIENT_VARIABLES = "UPDATE OR IGNORE Client SET" +
-            "date_of_birth = ?, links = ?, description = ?" +
-            "WHERE id = @ id";
+        public static readonly string RETURN_CLIENT_VARIABLES = "SELECT date_of_birth, link, description FROM Client " +
+            "WHERE id = @id";
+        public static readonly string UPDATE_CLIENT_VARIABLES = "UPDATE OR IGNORE Client SET " +
+            "date_of_birth = ?, link = ?, description = ? " +
+            "WHERE id = @id";
         public static readonly string RETURN_CLIENT_SIMPLE = @"SELECT u.username
                                                                 FROM User u
                                                                 INNER JOIN Client c
