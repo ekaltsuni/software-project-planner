@@ -82,7 +82,21 @@ namespace SoftwarePlanner
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            // TODO: save to DB
+            // TODO: sanitisation
+            // TODO: fields are missing
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(SAVE_PROJECT, connection))
+            {
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@title", titleBox.Text);
+                    command.Parameters.AddWithValue("@description", descriptionBox.Text);
+                    command.Parameters.AddWithValue("@max_price", int.Parse(maxPriceBox.Text));
+                    command.Parameters.AddWithValue("@price_visibility", 1);
+                    command.Parameters.AddWithValue("@bidding_duration", biddingDurationBox.Text);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         private void projectCategoriesDropdown_SelectedIndexChanged(object sender, EventArgs e)

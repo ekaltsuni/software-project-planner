@@ -101,6 +101,8 @@ namespace SoftwarePlanner
                                                                     AND pc.category LIKE @category AND pc.subcategory LIKE @subcategory
                                                                     AND p.date >= @dateBefore AND p.date <= @dateAfter
                                                                     AND pt.category IN @technologies";
+        public static readonly string SAVE_PROJECT = @"INSERT INTO Project (title, description, price_visibility, max_price, bidding_duration) 
+                                                       VALUES (@title, @description, @price_visibility, @max_price, @bidding_duration)";
 
         // DROPDOWN VALUES
         public static readonly string RETURN_PROJECT_TYPES = "SELECT type FROM ProjectType";

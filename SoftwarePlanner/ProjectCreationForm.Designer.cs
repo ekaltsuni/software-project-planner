@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectCreationForm));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.titleBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.descriptionBox = new System.Windows.Forms.RichTextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,24 +47,24 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.maxPriceBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.projectDurationDropdown = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.biddingDurationBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // titleBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.textBox1.Location = new System.Drawing.Point(242, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(671, 24);
-            this.textBox1.TabIndex = 1;
+            this.titleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.titleBox.Location = new System.Drawing.Point(242, 69);
+            this.titleBox.Name = "titleBox";
+            this.titleBox.Size = new System.Drawing.Size(671, 24);
+            this.titleBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -76,14 +76,14 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Τίτλος Έργου *";
             // 
-            // richTextBox1
+            // descriptionBox
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.richTextBox1.Location = new System.Drawing.Point(89, 166);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(824, 116);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.descriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.descriptionBox.Location = new System.Drawing.Point(89, 166);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(824, 116);
+            this.descriptionBox.TabIndex = 3;
+            this.descriptionBox.Text = "";
             // 
             // radioButton1
             // 
@@ -239,13 +239,13 @@
             this.label8.TabIndex = 20;
             this.label8.Text = "Μέγιστη Τιμή";
             // 
-            // textBox2
+            // maxPriceBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.textBox2.Location = new System.Drawing.Point(713, 321);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 24);
-            this.textBox2.TabIndex = 19;
+            this.maxPriceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.maxPriceBox.Location = new System.Drawing.Point(713, 321);
+            this.maxPriceBox.Name = "maxPriceBox";
+            this.maxPriceBox.Size = new System.Drawing.Size(200, 24);
+            this.maxPriceBox.TabIndex = 19;
             // 
             // label9
             // 
@@ -276,13 +276,13 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "Διάρκεια Προσφορών";
             // 
-            // textBox3
+            // biddingDurationBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.textBox3.Location = new System.Drawing.Point(713, 411);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 24);
-            this.textBox3.TabIndex = 23;
+            this.biddingDurationBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.biddingDurationBox.Location = new System.Drawing.Point(713, 411);
+            this.biddingDurationBox.Name = "biddingDurationBox";
+            this.biddingDurationBox.Size = new System.Drawing.Size(200, 24);
+            this.biddingDurationBox.TabIndex = 23;
             // 
             // label11
             // 
@@ -325,11 +325,11 @@
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.biddingDurationBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.projectDurationDropdown);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.maxPriceBox);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -342,9 +342,9 @@
             this.Controls.Add(this.projectCategoriesDropdown);
             this.Controls.Add(this.projectTypeDropdown);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.descriptionBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.titleBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProjectCreationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -358,9 +358,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox titleBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox descriptionBox;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -376,11 +376,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox maxPriceBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox projectDurationDropdown;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox biddingDurationBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button saveButton;
