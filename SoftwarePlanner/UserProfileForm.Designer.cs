@@ -49,17 +49,17 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.coreVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
-            this.clientCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.developerCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.clientVisibilityFields = new System.Windows.Forms.CheckedListBox();
+            this.developerVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.newsFeedTextBox = new System.Windows.Forms.TextBox();
             this.newsFeedRichTextBox = new System.Windows.Forms.RichTextBox();
             this.projectsTextBox = new System.Windows.Forms.TextBox();
             this.ratingsRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.ratingsTextBox = new System.Windows.Forms.TextBox();
             this.projectsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -75,6 +75,7 @@
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.linkBox = new System.Windows.Forms.TextBox();
             this.descriptionBox = new System.Windows.Forms.TextBox();
+            this.portfolioBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             this.SuspendLayout();
@@ -277,7 +278,7 @@
             this.profileImageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.profileImageTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileImageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileImageTextBox.Location = new System.Drawing.Point(738, 111);
+            this.profileImageTextBox.Location = new System.Drawing.Point(78, 791);
             this.profileImageTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.profileImageTextBox.Name = "profileImageTextBox";
             this.profileImageTextBox.ReadOnly = true;
@@ -291,7 +292,7 @@
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(75, 774);
+            this.textBox10.Location = new System.Drawing.Point(738, 119);
             this.textBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
@@ -306,7 +307,7 @@
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(75, 763);
+            this.textBox11.Location = new System.Drawing.Point(738, 111);
             this.textBox11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
@@ -360,17 +361,18 @@
             this.textBox14.TabIndex = 22;
             this.textBox14.Text = " Ρυθμίσεις Προφίλ";
             // 
-            // checkedListBox1
+            // coreVisibilityFields
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Email",
-            "Όνομα Χρήστη"});
-            this.checkedListBox1.Location = new System.Drawing.Point(738, 638);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(367, 50);
-            this.checkedListBox1.TabIndex = 23;
+            this.coreVisibilityFields.FormattingEnabled = true;
+            this.coreVisibilityFields.Items.AddRange(new object[] {
+            "Username",
+            "Password",
+            "Email"});
+            this.coreVisibilityFields.Location = new System.Drawing.Point(738, 631);
+            this.coreVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.coreVisibilityFields.Name = "coreVisibilityFields";
+            this.coreVisibilityFields.Size = new System.Drawing.Size(367, 73);
+            this.coreVisibilityFields.TabIndex = 23;
             // 
             // textBox15
             // 
@@ -406,7 +408,7 @@
             this.textBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox17.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox17.Location = new System.Drawing.Point(738, 700);
+            this.textBox17.Location = new System.Drawing.Point(738, 725);
             this.textBox17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
@@ -414,28 +416,28 @@
             this.textBox17.TabIndex = 26;
             this.textBox17.Text = "Προαιρετικά Πεδία";
             // 
-            // clientCheckedListBox
+            // clientVisibilityFields
             // 
-            this.clientCheckedListBox.FormattingEnabled = true;
-            this.clientCheckedListBox.Items.AddRange(new object[] {
+            this.clientVisibilityFields.FormattingEnabled = true;
+            this.clientVisibilityFields.Items.AddRange(new object[] {
             "Όνομα",
             "Επίθετο",
             "Φύλο",
             "Εικόνα Προφίλ",
             "Ημερομηνία Γέννησης",
             "Περιγραφή",
-            "Σύνδεσμοι"});
-            this.clientCheckedListBox.Location = new System.Drawing.Point(738, 732);
-            this.clientCheckedListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.clientCheckedListBox.Name = "clientCheckedListBox";
-            this.clientCheckedListBox.Size = new System.Drawing.Size(367, 119);
-            this.clientCheckedListBox.TabIndex = 27;
-            this.clientCheckedListBox.Visible = false;
+            "Σύνδεσμος"});
+            this.clientVisibilityFields.Location = new System.Drawing.Point(738, 757);
+            this.clientVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.clientVisibilityFields.Name = "clientVisibilityFields";
+            this.clientVisibilityFields.Size = new System.Drawing.Size(367, 119);
+            this.clientVisibilityFields.TabIndex = 27;
+            this.clientVisibilityFields.Visible = false;
             // 
-            // developerCheckedListBox
+            // developerVisibilityFields
             // 
-            this.developerCheckedListBox.FormattingEnabled = true;
-            this.developerCheckedListBox.Items.AddRange(new object[] {
+            this.developerVisibilityFields.FormattingEnabled = true;
+            this.developerVisibilityFields.Items.AddRange(new object[] {
             "Όνομα",
             "Επίθετο",
             "Φύλο",
@@ -443,12 +445,12 @@
             "Δεξιότητες",
             "Βιογραφικό",
             "Portfolio"});
-            this.developerCheckedListBox.Location = new System.Drawing.Point(738, 732);
-            this.developerCheckedListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.developerCheckedListBox.Name = "developerCheckedListBox";
-            this.developerCheckedListBox.Size = new System.Drawing.Size(367, 119);
-            this.developerCheckedListBox.TabIndex = 28;
-            this.developerCheckedListBox.Visible = false;
+            this.developerVisibilityFields.Location = new System.Drawing.Point(738, 766);
+            this.developerVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.developerVisibilityFields.Name = "developerVisibilityFields";
+            this.developerVisibilityFields.Size = new System.Drawing.Size(367, 119);
+            this.developerVisibilityFields.TabIndex = 28;
+            this.developerVisibilityFields.Visible = false;
             // 
             // newsFeedTextBox
             // 
@@ -502,20 +504,20 @@
             this.ratingsRichTextBox.TabIndex = 32;
             this.ratingsRichTextBox.Text = "";
             // 
-            // textBox20
+            // ratingsTextBox
             // 
-            this.textBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox20.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox20.ForeColor = System.Drawing.Color.White;
-            this.textBox20.Location = new System.Drawing.Point(1322, 763);
-            this.textBox20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(525, 26);
-            this.textBox20.TabIndex = 33;
-            this.textBox20.Text = " Αξιολογήσεις";
+            this.ratingsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.ratingsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ratingsTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.ratingsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ratingsTextBox.ForeColor = System.Drawing.Color.White;
+            this.ratingsTextBox.Location = new System.Drawing.Point(1322, 763);
+            this.ratingsTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ratingsTextBox.Name = "ratingsTextBox";
+            this.ratingsTextBox.ReadOnly = true;
+            this.ratingsTextBox.Size = new System.Drawing.Size(525, 26);
+            this.ratingsTextBox.TabIndex = 33;
+            this.ratingsTextBox.Text = " Αξιολογήσεις";
             // 
             // projectsRichTextBox
             // 
@@ -533,7 +535,7 @@
             this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(206)))), ((int)(((byte)(246)))));
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
-            this.saveButton.Location = new System.Drawing.Point(430, 908);
+            this.saveButton.Location = new System.Drawing.Point(431, 900);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(188, 82);
@@ -582,7 +584,7 @@
             // 
             this.profileImagePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileImagePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("profileImagePictureBox.Image")));
-            this.profileImagePictureBox.Location = new System.Drawing.Point(916, 111);
+            this.profileImagePictureBox.Location = new System.Drawing.Point(256, 791);
             this.profileImagePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.profileImagePictureBox.Name = "profileImagePictureBox";
             this.profileImagePictureBox.Size = new System.Drawing.Size(104, 108);
@@ -663,7 +665,7 @@
             // datePicker
             // 
             this.datePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.Location = new System.Drawing.Point(75, 825);
+            this.datePicker.Location = new System.Drawing.Point(738, 170);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(200, 26);
             this.datePicker.TabIndex = 44;
@@ -677,8 +679,9 @@
             this.linkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.linkBox.MaxLength = 40;
             this.linkBox.Name = "linkBox";
-            this.linkBox.Size = new System.Drawing.Size(256, 30);
+            this.linkBox.Size = new System.Drawing.Size(441, 30);
             this.linkBox.TabIndex = 45;
+            this.linkBox.Visible = false;
             // 
             // descriptionBox
             // 
@@ -687,8 +690,18 @@
             this.descriptionBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.descriptionBox.MaxLength = 40;
             this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(256, 30);
+            this.descriptionBox.Size = new System.Drawing.Size(441, 30);
             this.descriptionBox.TabIndex = 46;
+            this.descriptionBox.Visible = false;
+            // 
+            // portfolioBox
+            // 
+            this.portfolioBox.Location = new System.Drawing.Point(738, 419);
+            this.portfolioBox.Name = "portfolioBox";
+            this.portfolioBox.Size = new System.Drawing.Size(441, 52);
+            this.portfolioBox.TabIndex = 47;
+            this.portfolioBox.Text = "";
+            this.portfolioBox.Visible = false;
             // 
             // UserProfileForm
             // 
@@ -697,6 +710,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1896, 1048);
+            this.Controls.Add(this.portfolioBox);
             this.Controls.Add(this.descriptionBox);
             this.Controls.Add(this.linkBox);
             this.Controls.Add(this.datePicker);
@@ -709,17 +723,17 @@
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.projectsRichTextBox);
-            this.Controls.Add(this.textBox20);
+            this.Controls.Add(this.ratingsTextBox);
             this.Controls.Add(this.ratingsRichTextBox);
             this.Controls.Add(this.projectsTextBox);
             this.Controls.Add(this.newsFeedRichTextBox);
             this.Controls.Add(this.newsFeedTextBox);
-            this.Controls.Add(this.developerCheckedListBox);
-            this.Controls.Add(this.clientCheckedListBox);
+            this.Controls.Add(this.developerVisibilityFields);
+            this.Controls.Add(this.clientVisibilityFields);
             this.Controls.Add(this.textBox17);
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.textBox15);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.coreVisibilityFields);
             this.Controls.Add(this.textBox14);
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.textBox12);
@@ -777,17 +791,17 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox coreVisibilityFields;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.CheckedListBox clientCheckedListBox;
-        private System.Windows.Forms.CheckedListBox developerCheckedListBox;
+        private System.Windows.Forms.CheckedListBox clientVisibilityFields;
+        private System.Windows.Forms.CheckedListBox developerVisibilityFields;
         private System.Windows.Forms.TextBox newsFeedTextBox;
         private System.Windows.Forms.RichTextBox newsFeedRichTextBox;
         private System.Windows.Forms.TextBox projectsTextBox;
         private System.Windows.Forms.RichTextBox ratingsRichTextBox;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox ratingsTextBox;
         private System.Windows.Forms.RichTextBox projectsRichTextBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -803,5 +817,6 @@
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.TextBox linkBox;
         private System.Windows.Forms.TextBox descriptionBox;
+        private System.Windows.Forms.RichTextBox portfolioBox;
     }
 }

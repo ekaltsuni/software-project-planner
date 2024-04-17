@@ -51,6 +51,7 @@ namespace SoftwarePlanner
                             
                             UserProfileForm userProfile = new UserProfileForm();
                             userProfile.Show();
+                            
 
                         }
                         else MessageBox.Show("Λανθασμένο όνομα χρήστη ή κωδικός.");
@@ -58,23 +59,6 @@ namespace SoftwarePlanner
                 }
             }
             else MessageBox.Show("Παρακαλώ συμπληρώστε όνομα & κωδικό.");
-        }
-
-        private void getRole()
-        {
-            using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(AppConstants.RETURN_ROLE, connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@id", User.id);
-                using (SQLiteDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        User.role = reader.GetString(reader.GetOrdinal("role"));
-                    }
-                }
-            }
         }
 
         private void login()
@@ -98,6 +82,13 @@ namespace SoftwarePlanner
                 Role.isDeveloper = false;
                 Role.isClient = false;
             }
+        }
+
+        private void registerLink_Click(object sender, EventArgs e)
+        {
+            UserProfileForm userProfile = new UserProfileForm();
+            userProfile.ShowDialog();
+            this.Close();
         }
     }
 }

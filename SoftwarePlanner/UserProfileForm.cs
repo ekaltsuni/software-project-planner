@@ -75,7 +75,7 @@ namespace SoftwarePlanner
                             date_of_birth = reader.GetString(reader.GetOrdinal("date_of_birth"));
                             link = reader.GetString(reader.GetOrdinal("link"));
                             description = reader.GetString(reader.GetOrdinal("description"));
-                            
+
                         }
 
                         datePicker.Value = DateTime.Parse(date_of_birth);
@@ -84,7 +84,26 @@ namespace SoftwarePlanner
                     }
                 }
             }
+            if (Role.isDeveloper)
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
+                using (SQLiteCommand command = new SQLiteCommand(AppConstants.RETURN_DEVELOPER_VARIABLES, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@id", User.id);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (!reader.Read())
+                        {
+                            skills = reader.GetString(reader.GetOrdinal("skills"));
+                            portfolio = reader.GetString(reader.GetOrdinal("portfolio_links"));
 
+                        }
+                        //skillsBox.Text = skills;
+                        portfolioBox.Text = portfolio;
+                    }
+                }
+            }
         }
 
         private void αποσύνδεσηToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,88 +122,187 @@ namespace SoftwarePlanner
         {
             using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
 
-            if (Role.isDeveloper)   
-            {
-
-                using (SQLiteCommand command = new SQLiteCommand(AppConstants.UPDATE_USER_VARIABLES, connection))
+                if (Role.isDeveloper)
                 {
-                    connection.Open();
-                    command.Parameters.AddWithValue("@username", usernameBox.Text);
-                    command.Parameters.AddWithValue("@password", passwordBox.Text);
-                    command.Parameters.AddWithValue("@email", emailBox.Text);
-                    command.Parameters.AddWithValue("@name", nameBox.Text);
-                    command.Parameters.AddWithValue("@surname", surnameBox.Text);
-                    command.Parameters.AddWithValue("@gender", genderComboBox.Text);
 
-                    command.Parameters.AddWithValue("@id", User.id);
-                       
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
+                    using (SQLiteCommand command = new SQLiteCommand(AppConstants.UPDATE_USER_VARIABLES, connection))
+                    using (SQLiteCommand developerOnlyCommand = new SQLiteCommand(AppConstants.UPDATE_DEVELOPER_VARIABLES, connection))
+
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@username", usernameBox.Text);
+                        command.Parameters.AddWithValue("@password", passwordBox.Text);
+                        command.Parameters.AddWithValue("@email", emailBox.Text);
+                        command.Parameters.AddWithValue("@name", nameBox.Text);
+                        command.Parameters.AddWithValue("@surname", surnameBox.Text);
+                        command.Parameters.AddWithValue("@gender", genderComboBox.Text);
+                        //developerOnlyCommand.Parameters.AddWithValue("@skills", .Text);
+                        //developerOnlyCommand.Parameters.AddWithValue("@cv", genderComboBox.Text);
+                        developerOnlyCommand.Parameters.AddWithValue("@portfolio_links", portfolioBox.Text);
+
+
+                        command.Parameters.AddWithValue("@id", User.id);
+                        developerOnlyCommand.Parameters.AddWithValue("@id", User.id);
+
+                        command.ExecuteNonQuery();
+                        developerOnlyCommand.ExecuteNonQuery();
+                        MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
+
+                    }
+                }
+
+                else if (Role.isClient)
+                {
+
+                    using (SQLiteCommand command = new SQLiteCommand(AppConstants.UPDATE_USER_VARIABLES, connection))
+                    using (SQLiteCommand clientOnlyCommand = new SQLiteCommand(AppConstants.UPDATE_CLIENT_VARIABLES, connection))
+
+
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@username", usernameBox.Text);
+                        command.Parameters.AddWithValue("@password", passwordBox.Text);
+                        command.Parameters.AddWithValue("@email", emailBox.Text);
+                        command.Parameters.AddWithValue("@name", nameBox.Text);
+                        command.Parameters.AddWithValue("@surname", surnameBox.Text);
+                        command.Parameters.AddWithValue("@gender", genderComboBox.Text);
+
+                        command.Parameters.AddWithValue("@id", User.id);
+
+
+                        clientOnlyCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
+                        clientOnlyCommand.Parameters.AddWithValue("@link", linkBox.Text);
+                        clientOnlyCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
+
+                        clientOnlyCommand.Parameters.AddWithValue("@id", User.id);
+
+                        command.ExecuteNonQuery();
+                        clientOnlyCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
+
+                    }
+                }
+                else 
+                {
+                    if (!string.IsNullOrEmpty(usernameBox.Text) &&
+                       !string.IsNullOrEmpty(passwordBox.Text) &&
+                       !string.IsNullOrEmpty(emailBox.Text) &&
+                       roleComboBox.SelectedItem != null)
+                    {
+                        using (SQLiteCommand command = new SQLiteCommand(AppConstants.CREATE_USER_VARIABLES, connection))
+                        {
+                            connection.Open();
+
+                            command.Parameters.AddWithValue("@username", usernameBox.Text);
+                            command.Parameters.AddWithValue("@password", passwordBox.Text);
+                            command.Parameters.AddWithValue("@email", emailBox.Text);
+                            command.Parameters.AddWithValue("@role", roleComboBox.Text);
+                            command.Parameters.AddWithValue("@name", nameBox.Text);
+                            command.Parameters.AddWithValue("@surname", surnameBox.Text);
+                            command.Parameters.AddWithValue("@gender", genderComboBox.Text);
+
+                            command.Parameters.AddWithValue("@id", User.id);
+                            if (roleComboBox.SelectedIndex == 0)
+                            {
+                                using (SQLiteCommand clientCommand = new SQLiteCommand(AppConstants.CREATE_CLIENT_VARIABLES, connection))
+                                {
+                                    clientCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
+                                    clientCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
+                                    clientCommand.Parameters.AddWithValue("@link", linkBox.Text);
+                                    clientCommand.Parameters.AddWithValue("@id", User.id);
+                                    try
+                                    {
+                                        command.ExecuteNonQuery();
+                                        clientCommand.ExecuteNonQuery();
+                                        MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Σφάλμα κατά την αποθήκευση: " + ex.Message);
+
+                                    }
+                                }
+                            }
+                            else if (roleComboBox.SelectedIndex == 1)
+                            {
+                                using (SQLiteCommand developerCommand = new SQLiteCommand(AppConstants.CREATE_DEVELOPER_VARIABLES, connection))
+                                {
+                                    //to-do
+                                    //developerCommand.Parameters.AddWithValue("@",);
+                                    //developerCommand.Parameters.AddWithValue("@skills",);
+                                    developerCommand.Parameters.AddWithValue("@portfolio_links", portfolioBox.Text);
+                                    developerCommand.Parameters.AddWithValue("@id", User.id);
+                                    try
+                                    {
+                                        command.ExecuteNonQuery();
+                                        developerCommand.ExecuteNonQuery();
+                                        MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Σφάλμα κατά την αποθήκευση: " + ex.Message);
+                                    }
+
+                                }
+                            }
+
+
+
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία.");
+
+                    }
 
                 }
-            }
-            
-            else if (Role.isClient)
-            {
-
-                using (SQLiteCommand command = new SQLiteCommand(AppConstants.UPDATE_USER_VARIABLES, connection))
-                using (SQLiteCommand clientOnlyCommand = new SQLiteCommand(AppConstants.UPDATE_CLIENT_VARIABLES, connection))
-
-                        
-                {
-                    connection.Open();
-                    command.Parameters.AddWithValue("@username", usernameBox.Text);
-                    command.Parameters.AddWithValue("@password", passwordBox.Text);
-                    command.Parameters.AddWithValue("@email", emailBox.Text);
-                    command.Parameters.AddWithValue("@name", nameBox.Text);
-                    command.Parameters.AddWithValue("@surname", surnameBox.Text);
-                    command.Parameters.AddWithValue("@gender", genderComboBox.Text);
-                        
-                    command.Parameters.AddWithValue("@id", User.id);
-
-                    
-                    clientOnlyCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
-                    clientOnlyCommand.Parameters.AddWithValue("@link", linkBox.Text);
-                    clientOnlyCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
-
-                    clientOnlyCommand.Parameters.AddWithValue("@id", User.id);
-                    
-                    command.ExecuteNonQuery();
-                    clientOnlyCommand.ExecuteNonQuery();
-
-                    MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
-
-                }
-            }
-            else if (Role.isVisitor)
-            {
-                //todo inserts
-            }
         }
+    
 
-        private void updateParameters(String variable, SQLiteCommand command, String value)
-        {
-            if (!string.IsNullOrEmpty(variable))
-                command.Parameters.AddWithValue(value, variable);
-            else
-                command.Parameters.AddWithValue(value, DBNull.Value);
-        }
+
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (roleComboBox.SelectedIndex == 0)
             {
+                textBox9.Visible = true;
                 textBox10.Visible = true;
                 textBox11.Visible = false;
                 textBox12.Visible = false;
                 textBox13.Visible = false;
+                textBox18.Visible = true;
+                datePicker.Visible = true;
+                descriptionBox.Visible = true;
+                linkBox.Visible = true;
+                portfolioBox.Visible = false;
+                textBox17.Visible = true;
+                clientVisibilityFields.Visible = true;
+                developerVisibilityFields.Visible = false;
             }
             else if (roleComboBox.SelectedIndex == 1)
             {
+                textBox9.Visible = false;
                 textBox10.Visible = false;
                 textBox11.Visible = true;
                 textBox12.Visible = true;
                 textBox13.Visible = true;
+                textBox18.Visible = false;
+                datePicker.Visible = false;
+                descriptionBox.Visible = false;
+                linkBox.Visible = false;
+                portfolioBox.Visible = true;
+                textBox17.Visible = true;
+                clientVisibilityFields.Visible = false;
+                developerVisibilityFields.Visible = true;
             }
+        }
+
+        private void setVibilityFields ()
+        {
+            // to-do
         }
 
         private void updateProfile()
@@ -227,6 +345,7 @@ namespace SoftwarePlanner
 
         private void initialState()
         {
+            getRole();
             if (Role.isDeveloper == true)
             {
                 textBox9.Visible = false;
@@ -235,13 +354,14 @@ namespace SoftwarePlanner
                 textBox12.Visible = true;
                 textBox13.Visible = true;
                 textBox18.Visible = false;
-                developerCheckedListBox.Visible = true;
+                developerVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Developer";
                 αποσύνδεσηToolStripMenuItem.Visible = true;
                 datePicker.Visible = false;
                 descriptionBox.Visible = false;
                 linkBox.Visible = false;
+                portfolioBox.Visible = true;
             }
             else if (Role.isClient == true)
             {
@@ -251,17 +371,26 @@ namespace SoftwarePlanner
                 textBox12.Visible = false;
                 textBox13.Visible = false;
                 textBox18.Visible = true;
-                clientCheckedListBox.Visible = true;
+                clientVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Πελάτης";
                 αποσύνδεσηToolStripMenuItem.Visible = true;
                 datePicker.Visible = true;
                 descriptionBox.Visible = true;
                 linkBox.Visible = true;
+                portfolioBox.Visible = false;
             }
             else
             {
                 roleComboBox.Enabled = true;
+                αποσύνδεσηToolStripMenuItem.Visible = false;
+                newsFeedTextBox.Visible = false;
+                newsFeedRichTextBox.Visible = false;
+                projectsTextBox.Visible = false;
+                projectsRichTextBox.Visible = false;
+                ratingsTextBox.Visible = false;
+                ratingsRichTextBox.Visible = false;
+                textBox17.Visible = false;
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SoftwarePlanner.AppConstants;
 
 namespace SoftwarePlanner
 {
@@ -37,9 +38,13 @@ namespace SoftwarePlanner
             "email = ?, name = ?, " +
             "surname = ?, gender = ?" +
             " WHERE id = @id";
+        public static readonly string CREATE_USER_VARIABLES = "INSERT OR IGNORE INTO User (username, password, email, role, name, surname, gender, id) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, @id)";
 
         // DEVELOPER ONLY FIELDS
-        public static readonly string RETURN_DEVELOPER_VARIABLES = "SELECT skills, cv, portfolio FROM Developer" +
+        public static readonly string CREATE_DEVELOPER_VARIABLES = "INSERT OR IGNORE INTO Developer (skills, cv, portfolio_links, id) " +
+"VALUES (?, ?, ?, @id)";
+        public static readonly string RETURN_DEVELOPER_VARIABLES = "SELECT skills, cv, portfolio_links FROM Developer" +
             " WHERE id = @id";
         public static readonly string UPDATE_DEVELOPER_VARIABLES = "UPDATE OR IGNORE Developer SET" +
             "skills = ?, cv = ?, portfolio_links = ?" +
@@ -59,6 +64,8 @@ namespace SoftwarePlanner
                                                                     AND d.project_count BETWEEN @minCount AND @maxCount";
 
         // CUSTOMER ONLY FIELDS
+        public static readonly string CREATE_CLIENT_VARIABLES = "INSERT OR IGNORE INTO Client (date_of_birth, description, link, id) " +
+    "VALUES (?, ?, ?, @id)";
         public static readonly string RETURN_CLIENT_VARIABLES = "SELECT date_of_birth, link, description FROM Client " +
             "WHERE id = @id";
         public static readonly string UPDATE_CLIENT_VARIABLES = "UPDATE OR IGNORE Client SET " +
@@ -181,5 +188,22 @@ namespace SoftwarePlanner
             SIX_TO_TWELVE_MONTHS,
             OVER_YEAR
         }
+        public static void getRole()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(AppConstants.CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(AppConstants.RETURN_ROLE, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@id", User.id);
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        User.role = reader.GetString(reader.GetOrdinal("role"));
+                    }
+                }
+            }
+        }
     }
+    
 }
