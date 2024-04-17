@@ -107,6 +107,11 @@ namespace SoftwarePlanner
         public static readonly string RETURN_PROJECT_CATEGORIES = "SELECT name FROM ProjectCategory";
         public static readonly string RETURN_PROJECT_PAYMENT = "SELECT type FROM ProjectPayment";
         public static readonly string RETURN_PROJECT_DURATION = "SELECT type FROM ProjectDuration";
+        public static readonly string RETURN_SUBCATEGORIES_BY_CATEGORY = @"SELECT ps.name
+                                                                           FROM ProjectSubCategory ps
+                                                                           INNER JOIN ProjectCategory pc
+                                                                                ON pc.id = ps.category_id
+                                                                           WHERE pc.name = @categoryName";
 
         // UPDATE FIELDS VISIBILITY TO-DO
 

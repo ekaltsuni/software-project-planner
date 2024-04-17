@@ -84,5 +84,26 @@ namespace SoftwarePlanner
         {
             // TODO: save to DB
         }
+
+        private void projectCategoriesDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            projectSubcategoryDropdown.Items.Clear();
+            projectSubcategoryDropdown.ResetText();
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(RETURN_SUBCATEGORIES_BY_CATEGORY, connection))
+            {
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@categoryName", Translations.FirstOrDefault(x => x.Value == projectCategoriesDropdown.SelectedItem.ToString()).Key);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            projectSubcategoryDropdown.Items.Add(Translations[reader.GetString(reader.GetOrdinal("name"))]);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

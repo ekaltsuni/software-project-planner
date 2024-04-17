@@ -136,6 +136,7 @@
             this.projectCategoriesDropdown.Name = "projectCategoriesDropdown";
             this.projectCategoriesDropdown.Size = new System.Drawing.Size(200, 26);
             this.projectCategoriesDropdown.TabIndex = 9;
+            this.projectCategoriesDropdown.SelectedIndexChanged += new System.EventHandler(this.projectCategoriesDropdown_SelectedIndexChanged);
             // 
             // projectSubcategoryDropdown
             // 
