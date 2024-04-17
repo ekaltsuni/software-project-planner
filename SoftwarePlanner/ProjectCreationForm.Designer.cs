@@ -35,10 +35,10 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.projectTypeDropdown = new System.Windows.Forms.ComboBox();
+            this.projectCategoriesDropdown = new System.Windows.Forms.ComboBox();
+            this.projectSubcategoryDropdown = new System.Windows.Forms.ComboBox();
+            this.projectPaymentDropdown = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.projectDurationDropdown = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -119,47 +119,41 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // comboBox1
+            // projectTypeDropdown
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Ιδιωτικό",
-            "Δημόσιο"});
-            this.comboBox1.Location = new System.Drawing.Point(242, 323);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 26);
-            this.comboBox1.TabIndex = 8;
+            this.projectTypeDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.projectTypeDropdown.FormattingEnabled = true;
+            this.projectTypeDropdown.Location = new System.Drawing.Point(242, 323);
+            this.projectTypeDropdown.Name = "projectTypeDropdown";
+            this.projectTypeDropdown.Size = new System.Drawing.Size(200, 26);
+            this.projectTypeDropdown.TabIndex = 8;
             // 
-            // comboBox2
+            // projectCategoriesDropdown
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(242, 433);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 26);
-            this.comboBox2.TabIndex = 9;
+            this.projectCategoriesDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.projectCategoriesDropdown.FormattingEnabled = true;
+            this.projectCategoriesDropdown.Location = new System.Drawing.Point(242, 433);
+            this.projectCategoriesDropdown.Name = "projectCategoriesDropdown";
+            this.projectCategoriesDropdown.Size = new System.Drawing.Size(200, 26);
+            this.projectCategoriesDropdown.TabIndex = 9;
             // 
-            // comboBox3
+            // projectSubcategoryDropdown
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(242, 488);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(200, 26);
-            this.comboBox3.TabIndex = 10;
+            this.projectSubcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.projectSubcategoryDropdown.FormattingEnabled = true;
+            this.projectSubcategoryDropdown.Location = new System.Drawing.Point(242, 488);
+            this.projectSubcategoryDropdown.Name = "projectSubcategoryDropdown";
+            this.projectSubcategoryDropdown.Size = new System.Drawing.Size(200, 26);
+            this.projectSubcategoryDropdown.TabIndex = 10;
             // 
-            // comboBox4
+            // projectPaymentDropdown
             // 
-            this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "Με την ώρα",
-            "Σύνολο"});
-            this.comboBox4.Location = new System.Drawing.Point(242, 543);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(200, 26);
-            this.comboBox4.TabIndex = 11;
+            this.projectPaymentDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.projectPaymentDropdown.FormattingEnabled = true;
+            this.projectPaymentDropdown.Location = new System.Drawing.Point(242, 543);
+            this.projectPaymentDropdown.Name = "projectPaymentDropdown";
+            this.projectPaymentDropdown.Size = new System.Drawing.Size(200, 26);
+            this.projectPaymentDropdown.TabIndex = 11;
             // 
             // label2
             // 
@@ -262,22 +256,14 @@
             this.label9.TabIndex = 22;
             this.label9.Text = "Διάρκεια Έργου";
             // 
-            // comboBox5
+            // projectDurationDropdown
             // 
-            this.comboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "Δεν ξέρω",
-            "Λιγότερο από 1 εβδομάδα",
-            "1-4 εβδομάδες",
-            "1-3 μήνες",
-            "3-6 μήνες",
-            "6-12 μήνες",
-            "Πάνω από χρόνο"});
-            this.comboBox5.Location = new System.Drawing.Point(713, 364);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(200, 26);
-            this.comboBox5.TabIndex = 21;
+            this.projectDurationDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.projectDurationDropdown.FormattingEnabled = true;
+            this.projectDurationDropdown.Location = new System.Drawing.Point(713, 364);
+            this.projectDurationDropdown.Name = "projectDurationDropdown";
+            this.projectDurationDropdown.Size = new System.Drawing.Size(200, 26);
+            this.projectDurationDropdown.TabIndex = 21;
             // 
             // label10
             // 
@@ -340,7 +326,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.projectDurationDropdown);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox5);
@@ -350,10 +336,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.projectPaymentDropdown);
+            this.Controls.Add(this.projectSubcategoryDropdown);
+            this.Controls.Add(this.projectCategoriesDropdown);
+            this.Controls.Add(this.projectTypeDropdown);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
@@ -377,10 +363,10 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox projectTypeDropdown;
+        private System.Windows.Forms.ComboBox projectCategoriesDropdown;
+        private System.Windows.Forms.ComboBox projectSubcategoryDropdown;
+        private System.Windows.Forms.ComboBox projectPaymentDropdown;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -391,7 +377,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox projectDurationDropdown;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label11;

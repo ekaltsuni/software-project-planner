@@ -21,12 +21,12 @@ namespace SoftwarePlanner
             userFilter.Items.Add(UserFilterOption.CLIENT);
             userFilter.SelectedItem = UserFilterOption.DEVELOPER;
             // TODO: Get these values from DB
-            categoryDropdown.Items.Add(ProjectCategory.WEBSITE);
-            categoryDropdown.Items.Add(ProjectCategory.ESHOP);
+            // categoryDropdown.Items.Add(ProjectCategory.WEBSITE);
+            // categoryDropdown.Items.Add(ProjectCategory.ESHOP);
             // TODO: Filter based on category (will be easy with DB)
-            subcategoryDropdown.Items.Add(ProjectSubCategory.CORPORATE);
-            subcategoryDropdown.Items.Add(ProjectSubCategory.PORTAL);
-            subcategoryDropdown.Items.Add(ProjectSubCategory.WORDPRESS);
+            // subcategoryDropdown.Items.Add(ProjectSubCategory.CORPORATE);
+            // subcategoryDropdown.Items.Add(ProjectSubCategory.PORTAL);
+            // subcategoryDropdown.Items.Add(ProjectSubCategory.WORDPRESS);
         }
 
         private void advancedSearchCheckBox_CheckedChanged(object sender, EventArgs e)
