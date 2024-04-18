@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,14 +39,20 @@ namespace SoftwarePlanner
             "email = ?, name = ?, " +
             "surname = ?, gender = ?" +
             " WHERE id = @id";
-        public static readonly string CREATE_USER_VARIABLES = "INSERT OR IGNORE INTO User (username, password, email, role, name, surname, gender, id) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, @id)";
+        public static readonly string CREATE_USER_VARIABLES = "INSERT OR IGNORE INTO User (username, password, email, role, name, surname, gender, signing_date, id) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, @id)";
 
         // DEVELOPER ONLY FIELDS
-        public static readonly string CREATE_DEVELOPER_VARIABLES = "INSERT OR IGNORE INTO Developer (skills, cv, portfolio_links, id) " +
-"VALUES (?, ?, ?, @id)";
-        public static readonly string RETURN_DEVELOPER_VARIABLES = "SELECT skills, cv, portfolio_links FROM Developer" +
-            " WHERE id = @id";
+        //public static readonly string CREATE_DEVELOPER_VARIABLES = "INSERT OR IGNORE INTO Developer (skills, cv, portfolio_links, id) " +
+//"VALUES (?, ?, ?, @id)";
+        //public static readonly string RETURN_DEVELOPER_VARIABLES = "SELECT skills, cv, portfolio_links FROM Developer" +
+          //  " WHERE id = @id";
+        public static readonly string RETURN_SKILLS = "SELECT * FROM Skills WHERE id = @id";
+        public static readonly string UPDATE_SKILLS = "UPDATE Skills SET c = ?, css = ?, " +
+            "html = ?, java = ?, javascript = ?, php = ?, python = ?, ruby = ?, other = ? " +
+            "WHERE id = @id";
+        public static readonly string CREATE_SKILLS = "INSERT INTO Skills (c, css, html, java, javascript, php, python, ruby, other) VALUES " +
+            "(?, ?, ?, ?, ?, ?, ?, ?, @id)";
         public static readonly string UPDATE_DEVELOPER_VARIABLES = "UPDATE OR IGNORE Developer SET" +
             "skills = ?, cv = ?, portfolio_links = ?" +
             "WHERE id = @id";

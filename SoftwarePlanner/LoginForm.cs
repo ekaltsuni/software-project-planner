@@ -63,14 +63,14 @@ namespace SoftwarePlanner
 
         private void login()
         {
-            if (User.role.Equals("developer"))
+            if (User.role.Equals("Developer"))
             {
                 Role.isDeveloper = true;
                 Role.isClient = false;
                 Role.isVisitor = false;
 
             }
-            else if (User.role.Equals("client"))
+            else if (User.role.Equals("Πελάτης"))
             {
                 Role.isDeveloper = false;
                 Role.isClient = true;

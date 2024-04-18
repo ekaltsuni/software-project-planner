@@ -74,8 +74,10 @@
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.linkBox = new System.Windows.Forms.TextBox();
-            this.descriptionBox = new System.Windows.Forms.TextBox();
             this.portfolioBox = new System.Windows.Forms.RichTextBox();
+            this.descriptionBox = new System.Windows.Forms.RichTextBox();
+            this.skillsBox = new System.Windows.Forms.RichTextBox();
+            this.skillsListBox = new System.Windows.Forms.CheckedListBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +88,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(75, 272);
+            this.textBox3.Location = new System.Drawing.Point(75, 247);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -98,12 +100,12 @@
             // emailBox
             // 
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailBox.Location = new System.Drawing.Point(210, 268);
+            this.emailBox.Location = new System.Drawing.Point(210, 243);
             this.emailBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.emailBox.MaxLength = 40;
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(256, 30);
-            this.emailBox.TabIndex = 3;
+            this.emailBox.TabIndex = 2;
             // 
             // textBox4
             // 
@@ -111,7 +113,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(75, 195);
+            this.textBox4.Location = new System.Drawing.Point(75, 181);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
@@ -122,13 +124,13 @@
             // passwordBox
             // 
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(210, 189);
+            this.passwordBox.Location = new System.Drawing.Point(210, 175);
             this.passwordBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.passwordBox.MaxLength = 32;
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(256, 30);
-            this.passwordBox.TabIndex = 5;
+            this.passwordBox.TabIndex = 1;
             // 
             // roleComboBox
             // 
@@ -138,11 +140,11 @@
             this.roleComboBox.Items.AddRange(new object[] {
             "Πελάτης",
             "Developer"});
-            this.roleComboBox.Location = new System.Drawing.Point(75, 345);
+            this.roleComboBox.Location = new System.Drawing.Point(74, 311);
             this.roleComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.roleComboBox.Name = "roleComboBox";
             this.roleComboBox.Size = new System.Drawing.Size(234, 33);
-            this.roleComboBox.TabIndex = 7;
+            this.roleComboBox.TabIndex = 3;
             this.roleComboBox.TabStop = false;
             this.roleComboBox.Text = "Ρόλος";
             this.roleComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
@@ -155,7 +157,7 @@
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox1.Location = new System.Drawing.Point(130, 272);
+            this.textBox1.Location = new System.Drawing.Point(130, 247);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -169,7 +171,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(75, 452);
+            this.textBox5.Location = new System.Drawing.Point(75, 400);
             this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
@@ -184,7 +186,7 @@
             this.textBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox6.Location = new System.Drawing.Point(170, 195);
+            this.textBox6.Location = new System.Drawing.Point(170, 181);
             this.textBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
@@ -199,7 +201,7 @@
             this.textBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox7.Location = new System.Drawing.Point(320, 345);
+            this.textBox7.Location = new System.Drawing.Point(320, 310);
             this.textBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
@@ -213,7 +215,7 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(75, 515);
+            this.textBox2.Location = new System.Drawing.Point(75, 457);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -224,12 +226,12 @@
             // nameBox
             // 
             this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameBox.Location = new System.Drawing.Point(210, 509);
+            this.nameBox.Location = new System.Drawing.Point(210, 451);
             this.nameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nameBox.MaxLength = 40;
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(256, 30);
-            this.nameBox.TabIndex = 13;
+            this.nameBox.TabIndex = 4;
             // 
             // textBox8
             // 
@@ -237,7 +239,7 @@
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(75, 591);
+            this.textBox8.Location = new System.Drawing.Point(75, 525);
             this.textBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
@@ -248,12 +250,12 @@
             // surnameBox
             // 
             this.surnameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.surnameBox.Location = new System.Drawing.Point(210, 586);
+            this.surnameBox.Location = new System.Drawing.Point(210, 520);
             this.surnameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.surnameBox.MaxLength = 40;
             this.surnameBox.Name = "surnameBox";
             this.surnameBox.Size = new System.Drawing.Size(256, 30);
-            this.surnameBox.TabIndex = 15;
+            this.surnameBox.TabIndex = 5;
             // 
             // genderComboBox
             // 
@@ -264,11 +266,11 @@
             "Γυναίκα",
             "Άλλο",
             "Προτιμώ να μην πω"});
-            this.genderComboBox.Location = new System.Drawing.Point(75, 669);
+            this.genderComboBox.Location = new System.Drawing.Point(75, 597);
             this.genderComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(234, 33);
-            this.genderComboBox.TabIndex = 16;
+            this.genderComboBox.TabIndex = 6;
             this.genderComboBox.Text = "Φύλο";
             this.genderComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
             // 
@@ -278,7 +280,7 @@
             this.profileImageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.profileImageTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileImageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileImageTextBox.Location = new System.Drawing.Point(78, 791);
+            this.profileImageTextBox.Location = new System.Drawing.Point(78, 698);
             this.profileImageTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.profileImageTextBox.Name = "profileImageTextBox";
             this.profileImageTextBox.ReadOnly = true;
@@ -292,7 +294,7 @@
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(738, 119);
+            this.textBox10.Location = new System.Drawing.Point(78, 839);
             this.textBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
@@ -307,7 +309,7 @@
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(738, 111);
+            this.textBox11.Location = new System.Drawing.Point(761, 432);
             this.textBox11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
@@ -322,7 +324,7 @@
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox12.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(738, 260);
+            this.textBox12.Location = new System.Drawing.Point(761, 608);
             this.textBox12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
@@ -337,7 +339,7 @@
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox13.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(738, 378);
+            this.textBox13.Location = new System.Drawing.Point(761, 726);
             this.textBox13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
@@ -353,7 +355,7 @@
             this.textBox14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox14.ForeColor = System.Drawing.Color.White;
-            this.textBox14.Location = new System.Drawing.Point(738, 515);
+            this.textBox14.Location = new System.Drawing.Point(761, 70);
             this.textBox14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
@@ -368,7 +370,7 @@
             "Username",
             "Password",
             "Email"});
-            this.coreVisibilityFields.Location = new System.Drawing.Point(738, 631);
+            this.coreVisibilityFields.Location = new System.Drawing.Point(761, 186);
             this.coreVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.coreVisibilityFields.Name = "coreVisibilityFields";
             this.coreVisibilityFields.Size = new System.Drawing.Size(367, 73);
@@ -380,7 +382,7 @@
             this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox15.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(738, 554);
+            this.textBox15.Location = new System.Drawing.Point(761, 109);
             this.textBox15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
@@ -394,7 +396,7 @@
             this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox16.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(738, 600);
+            this.textBox16.Location = new System.Drawing.Point(761, 155);
             this.textBox16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox16.Name = "textBox16";
             this.textBox16.ReadOnly = true;
@@ -408,7 +410,7 @@
             this.textBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox17.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox17.Location = new System.Drawing.Point(738, 725);
+            this.textBox17.Location = new System.Drawing.Point(761, 280);
             this.textBox17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
@@ -427,10 +429,10 @@
             "Ημερομηνία Γέννησης",
             "Περιγραφή",
             "Σύνδεσμος"});
-            this.clientVisibilityFields.Location = new System.Drawing.Point(738, 757);
+            this.clientVisibilityFields.Location = new System.Drawing.Point(761, 312);
             this.clientVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clientVisibilityFields.Name = "clientVisibilityFields";
-            this.clientVisibilityFields.Size = new System.Drawing.Size(367, 119);
+            this.clientVisibilityFields.Size = new System.Drawing.Size(367, 73);
             this.clientVisibilityFields.TabIndex = 27;
             this.clientVisibilityFields.Visible = false;
             // 
@@ -445,10 +447,10 @@
             "Δεξιότητες",
             "Βιογραφικό",
             "Portfolio"});
-            this.developerVisibilityFields.Location = new System.Drawing.Point(738, 766);
+            this.developerVisibilityFields.Location = new System.Drawing.Point(761, 318);
             this.developerVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.developerVisibilityFields.Name = "developerVisibilityFields";
-            this.developerVisibilityFields.Size = new System.Drawing.Size(367, 119);
+            this.developerVisibilityFields.Size = new System.Drawing.Size(367, 73);
             this.developerVisibilityFields.TabIndex = 28;
             this.developerVisibilityFields.Visible = false;
             // 
@@ -535,7 +537,7 @@
             this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(206)))), ((int)(((byte)(246)))));
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
-            this.saveButton.Location = new System.Drawing.Point(431, 900);
+            this.saveButton.Location = new System.Drawing.Point(473, 912);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(188, 82);
@@ -584,7 +586,7 @@
             // 
             this.profileImagePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileImagePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("profileImagePictureBox.Image")));
-            this.profileImagePictureBox.Location = new System.Drawing.Point(256, 791);
+            this.profileImagePictureBox.Location = new System.Drawing.Point(256, 698);
             this.profileImagePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.profileImagePictureBox.Name = "profileImagePictureBox";
             this.profileImagePictureBox.Size = new System.Drawing.Size(104, 108);
@@ -599,7 +601,7 @@
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(738, 275);
+            this.textBox9.Location = new System.Drawing.Point(761, 424);
             this.textBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
@@ -614,7 +616,7 @@
             this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox18.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox18.Location = new System.Drawing.Point(738, 395);
+            this.textBox18.Location = new System.Drawing.Point(761, 615);
             this.textBox18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
@@ -631,7 +633,7 @@
             this.usernameBox.MaxLength = 32;
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(256, 30);
-            this.usernameBox.TabIndex = 42;
+            this.usernameBox.TabIndex = 0;
             // 
             // textBox21
             // 
@@ -665,7 +667,7 @@
             // datePicker
             // 
             this.datePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.Location = new System.Drawing.Point(738, 170);
+            this.datePicker.Location = new System.Drawing.Point(74, 882);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(200, 26);
             this.datePicker.TabIndex = 44;
@@ -675,33 +677,63 @@
             // linkBox
             // 
             this.linkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkBox.Location = new System.Drawing.Point(738, 432);
+            this.linkBox.Location = new System.Drawing.Point(761, 648);
             this.linkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.linkBox.MaxLength = 40;
             this.linkBox.Name = "linkBox";
             this.linkBox.Size = new System.Drawing.Size(441, 30);
-            this.linkBox.TabIndex = 45;
+            this.linkBox.TabIndex = 8;
             this.linkBox.Visible = false;
-            // 
-            // descriptionBox
-            // 
-            this.descriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionBox.Location = new System.Drawing.Point(738, 308);
-            this.descriptionBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.descriptionBox.MaxLength = 40;
-            this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(441, 30);
-            this.descriptionBox.TabIndex = 46;
-            this.descriptionBox.Visible = false;
             // 
             // portfolioBox
             // 
-            this.portfolioBox.Location = new System.Drawing.Point(738, 419);
+            this.portfolioBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.portfolioBox.Location = new System.Drawing.Point(761, 763);
             this.portfolioBox.Name = "portfolioBox";
             this.portfolioBox.Size = new System.Drawing.Size(441, 52);
-            this.portfolioBox.TabIndex = 47;
+            this.portfolioBox.TabIndex = 10;
             this.portfolioBox.Text = "";
             this.portfolioBox.Visible = false;
+            // 
+            // descriptionBox
+            // 
+            this.descriptionBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.descriptionBox.Location = new System.Drawing.Point(761, 463);
+            this.descriptionBox.MaxLength = 300;
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(441, 46);
+            this.descriptionBox.TabIndex = 7;
+            this.descriptionBox.Text = "";
+            this.descriptionBox.Visible = false;
+            // 
+            // skillsBox
+            // 
+            this.skillsBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.skillsBox.Location = new System.Drawing.Point(928, 463);
+            this.skillsBox.MaxLength = 300;
+            this.skillsBox.Name = "skillsBox";
+            this.skillsBox.Size = new System.Drawing.Size(274, 96);
+            this.skillsBox.TabIndex = 9;
+            this.skillsBox.Text = "";
+            this.skillsBox.Visible = false;
+            // 
+            // skillsListBox
+            // 
+            this.skillsListBox.CheckOnClick = true;
+            this.skillsListBox.FormattingEnabled = true;
+            this.skillsListBox.Items.AddRange(new object[] {
+            "C",
+            "CSS",
+            "HTML",
+            "Java",
+            "JavaScript",
+            "PHP",
+            "Python",
+            "Ruby"});
+            this.skillsListBox.Location = new System.Drawing.Point(761, 463);
+            this.skillsListBox.Name = "skillsListBox";
+            this.skillsListBox.Size = new System.Drawing.Size(161, 96);
+            this.skillsListBox.TabIndex = 45;
             // 
             // UserProfileForm
             // 
@@ -710,8 +742,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1896, 1048);
-            this.Controls.Add(this.portfolioBox);
+            this.Controls.Add(this.skillsListBox);
+            this.Controls.Add(this.skillsBox);
             this.Controls.Add(this.descriptionBox);
+            this.Controls.Add(this.portfolioBox);
             this.Controls.Add(this.linkBox);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.usernameBox);
@@ -816,7 +850,9 @@
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.TextBox linkBox;
-        private System.Windows.Forms.TextBox descriptionBox;
         private System.Windows.Forms.RichTextBox portfolioBox;
+        private System.Windows.Forms.RichTextBox descriptionBox;
+        private System.Windows.Forms.RichTextBox skillsBox;
+        private System.Windows.Forms.CheckedListBox skillsListBox;
     }
 }
