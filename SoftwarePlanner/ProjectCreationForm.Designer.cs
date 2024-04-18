@@ -32,11 +32,11 @@
             this.titleBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.descriptionBox = new System.Windows.Forms.RichTextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.visiblePriceRadioButton = new System.Windows.Forms.RadioButton();
+            this.invisiblePriceRadioButton = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.projectTypeDropdown = new System.Windows.Forms.ComboBox();
-            this.projectCategoriesDropdown = new System.Windows.Forms.ComboBox();
+            this.projectCategoryDropdown = new System.Windows.Forms.ComboBox();
             this.projectSubcategoryDropdown = new System.Windows.Forms.ComboBox();
             this.projectPaymentDropdown = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.biddingDurationBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.technologyBox = new System.Windows.Forms.RichTextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -85,34 +85,34 @@
             this.descriptionBox.TabIndex = 3;
             this.descriptionBox.Text = "";
             // 
-            // radioButton1
+            // visiblePriceRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(50, 22);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Ναι";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.visiblePriceRadioButton.AutoSize = true;
+            this.visiblePriceRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.visiblePriceRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.visiblePriceRadioButton.Name = "visiblePriceRadioButton";
+            this.visiblePriceRadioButton.Size = new System.Drawing.Size(50, 22);
+            this.visiblePriceRadioButton.TabIndex = 4;
+            this.visiblePriceRadioButton.TabStop = true;
+            this.visiblePriceRadioButton.Text = "Ναι";
+            this.visiblePriceRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // invisiblePriceRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.radioButton2.Location = new System.Drawing.Point(62, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(50, 22);
-            this.radioButton2.TabIndex = 5;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Όχι";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.invisiblePriceRadioButton.AutoSize = true;
+            this.invisiblePriceRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.invisiblePriceRadioButton.Location = new System.Drawing.Point(62, 19);
+            this.invisiblePriceRadioButton.Name = "invisiblePriceRadioButton";
+            this.invisiblePriceRadioButton.Size = new System.Drawing.Size(50, 22);
+            this.invisiblePriceRadioButton.TabIndex = 5;
+            this.invisiblePriceRadioButton.TabStop = true;
+            this.invisiblePriceRadioButton.Text = "Όχι";
+            this.invisiblePriceRadioButton.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.visiblePriceRadioButton);
+            this.groupBox1.Controls.Add(this.invisiblePriceRadioButton);
             this.groupBox1.Location = new System.Drawing.Point(322, 361);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(120, 48);
@@ -128,15 +128,15 @@
             this.projectTypeDropdown.Size = new System.Drawing.Size(200, 26);
             this.projectTypeDropdown.TabIndex = 8;
             // 
-            // projectCategoriesDropdown
+            // projectCategoryDropdown
             // 
-            this.projectCategoriesDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.projectCategoriesDropdown.FormattingEnabled = true;
-            this.projectCategoriesDropdown.Location = new System.Drawing.Point(242, 433);
-            this.projectCategoriesDropdown.Name = "projectCategoriesDropdown";
-            this.projectCategoriesDropdown.Size = new System.Drawing.Size(200, 26);
-            this.projectCategoriesDropdown.TabIndex = 9;
-            this.projectCategoriesDropdown.SelectedIndexChanged += new System.EventHandler(this.projectCategoriesDropdown_SelectedIndexChanged);
+            this.projectCategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.projectCategoryDropdown.FormattingEnabled = true;
+            this.projectCategoryDropdown.Location = new System.Drawing.Point(242, 433);
+            this.projectCategoryDropdown.Name = "projectCategoryDropdown";
+            this.projectCategoryDropdown.Size = new System.Drawing.Size(200, 26);
+            this.projectCategoryDropdown.TabIndex = 9;
+            this.projectCategoryDropdown.SelectedIndexChanged += new System.EventHandler(this.projectCategoriesDropdown_SelectedIndexChanged);
             // 
             // projectSubcategoryDropdown
             // 
@@ -294,14 +294,14 @@
             this.label11.TabIndex = 25;
             this.label11.Text = "Προτεινόμενες Τεχνολογίες";
             // 
-            // richTextBox2
+            // technologyBox
             // 
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.richTextBox2.Location = new System.Drawing.Point(560, 507);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(353, 116);
-            this.richTextBox2.TabIndex = 26;
-            this.richTextBox2.Text = "";
+            this.technologyBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.technologyBox.Location = new System.Drawing.Point(560, 507);
+            this.technologyBox.Name = "technologyBox";
+            this.technologyBox.Size = new System.Drawing.Size(353, 116);
+            this.technologyBox.TabIndex = 26;
+            this.technologyBox.Text = "";
             // 
             // saveButton
             // 
@@ -322,7 +322,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.technologyBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.biddingDurationBox);
@@ -339,7 +339,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.projectPaymentDropdown);
             this.Controls.Add(this.projectSubcategoryDropdown);
-            this.Controls.Add(this.projectCategoriesDropdown);
+            this.Controls.Add(this.projectCategoryDropdown);
             this.Controls.Add(this.projectTypeDropdown);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.descriptionBox);
@@ -361,11 +361,11 @@
         private System.Windows.Forms.TextBox titleBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox descriptionBox;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton visiblePriceRadioButton;
+        private System.Windows.Forms.RadioButton invisiblePriceRadioButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox projectTypeDropdown;
-        private System.Windows.Forms.ComboBox projectCategoriesDropdown;
+        private System.Windows.Forms.ComboBox projectCategoryDropdown;
         private System.Windows.Forms.ComboBox projectSubcategoryDropdown;
         private System.Windows.Forms.ComboBox projectPaymentDropdown;
         private System.Windows.Forms.Label label2;
@@ -382,7 +382,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox biddingDurationBox;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox technologyBox;
         private System.Windows.Forms.Button saveButton;
     }
 }

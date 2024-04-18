@@ -25,6 +25,7 @@ namespace SoftwarePlanner
                                                                 (username, password, email, role, name, surname, gender, signing_date) VALUES 
                                                                 (@username, @password, @email, @role, @name, @surname, @gender, @signing_date)";
         public static readonly string RETURN_LATEST_USER_ID = "SELECT id FROM User ORDER BY id DESC LIMIT 1";
+        public static readonly string RETURN_LATEST_PROJECT_ID = "SELECT project_id FROM Project ORDER BY project_id DESC LIMIT 1";
         // DEVELOPER
         //public static readonly string CREATE_DEVELOPER_VARIABLES = "INSERT OR IGNORE INTO Developer (skills, cv, portfolio_links, id) " +
         //"VALUES (?, ?, ?, @id)";
@@ -94,18 +95,31 @@ namespace SoftwarePlanner
                                                                     AND pc.category LIKE @category AND pc.subcategory LIKE @subcategory
                                                                     AND p.date >= @dateBefore AND p.date <= @dateAfter
                                                                     AND pt.category IN @technologies";
-        public static readonly string SAVE_PROJECT = @"INSERT INTO Project (title, description, price_visibility, max_price, bidding_duration) 
-                                                       VALUES (@title, @description, @price_visibility, @max_price, @bidding_duration)";
+        public static readonly string SAVE_PROJECT = 
+            @"INSERT INTO Project 
+             (title, description, type, price_visibility, category, subcategory, payment, max_price, duration, bidding_duration) VALUES
+             (@title, @description, @type, @price_visibility, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration)";
+        public static readonly string UPDATE_PROJECT_TECHNOLOGY = @"INSERT INTO ProjectTechnology (project_id, technology_id) VALUES
+                                                                    (@project_id, @technology_id)";
         // DROPDOWNS
         public static readonly string RETURN_PROJECT_TYPES = "SELECT type FROM ProjectType";
+        public static readonly string RETURN_ID_BY_PROJECT_TYPE = "SELECT id FROM ProjectType WHERE type = @type";
         public static readonly string RETURN_PROJECT_CATEGORIES = "SELECT name FROM ProjectCategory";
+        public static readonly string RETURN_ID_BY_PROJECT_CATEGORY = "SELECT id FROM ProjectCategory WHERE name = @name";
         public static readonly string RETURN_PROJECT_PAYMENT = "SELECT type FROM ProjectPayment";
+        public static readonly string RETURN_ID_BY_PROJECT_PAYMENT = "SELECT id FROM ProjectPayment WHERE type = @type";
         public static readonly string RETURN_PROJECT_DURATION = "SELECT type FROM ProjectDuration";
+        public static readonly string RETURN_ID_BY_PROJECT_DURATION = "SELECT id FROM ProjectDuration WHERE type = @type";
         public static readonly string RETURN_SUBCATEGORIES_BY_CATEGORY = @"SELECT ps.name
                                                                            FROM ProjectSubCategory ps
                                                                            INNER JOIN ProjectCategory pc
                                                                                 ON pc.id = ps.category_id
                                                                            WHERE pc.name = @categoryName";
+        public static readonly string RETURN_ID_BY_PROJECT_SUBCATEGORY = "SELECT id FROM ProjectSubCategory WHERE name = @name";
+        public static readonly string UPDATE_TECHNOLOGY = "INSERT OR IGNORE INTO Technology (description) VALUES (@description)";      
+        public static readonly string RETURN_ID_BY_TECHNOLOGY = "SELECT id FROM Technology WHERE description = @description";
+
+
         // UPDATE FIELDS VISIBILITY TO-DO
     }
 }

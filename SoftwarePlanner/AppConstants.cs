@@ -7,8 +7,6 @@ namespace SoftwarePlanner
     {
         public static readonly string DATE_FORMAT = "yyyy-MM-dd";
 
-
-
         public static class User
         {
             private static int _id;

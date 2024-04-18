@@ -237,7 +237,8 @@ namespace SoftwarePlanner
                             skillsCommand.Parameters.AddWithValue("@ruby", returnFlag(7));
                             skillsCommand.ExecuteNonQuery();
 
-                        }                        
+                            MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
+                        }
                     }
                 }
             }

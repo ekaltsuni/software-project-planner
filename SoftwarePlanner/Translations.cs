@@ -26,5 +26,10 @@ namespace SoftwarePlanner
             { "SIX_TO_TWELVE_MONTHS", "6 - 12 μήνες"},
             { "OVER_YEAR", "1+ χρόνος"}
         };
+
+        public static string getTranslationKey(string translation)
+        {
+            return TranslationDictionary.FirstOrDefault(x => x.Value == translation).Key;
+        }
     }
 }
