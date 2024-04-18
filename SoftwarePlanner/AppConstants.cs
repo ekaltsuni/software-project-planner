@@ -39,8 +39,8 @@ namespace SoftwarePlanner
             "email = ?, name = ?, " +
             "surname = ?, gender = ?" +
             " WHERE id = @id";
-        public static readonly string CREATE_USER_VARIABLES = "INSERT OR IGNORE INTO User (username, password, email, role, name, surname, gender, signing_date, id) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, @id)";
+        public static readonly string CREATE_USER_VARIABLES = "INSERT OR IGNORE INTO User (username, password, email, role, name, surname, gender, signing_date) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         // DEVELOPER ONLY FIELDS
         //public static readonly string CREATE_DEVELOPER_VARIABLES = "INSERT OR IGNORE INTO Developer (skills, cv, portfolio_links, id) " +
@@ -51,11 +51,12 @@ namespace SoftwarePlanner
         public static readonly string UPDATE_SKILLS = "UPDATE Skills SET c = ?, css = ?, " +
             "html = ?, java = ?, javascript = ?, php = ?, python = ?, ruby = ?, other = ? " +
             "WHERE id = @id";
-        public static readonly string CREATE_SKILLS = "INSERT INTO Skills (c, css, html, java, javascript, php, python, ruby, other) VALUES " +
-            "(?, ?, ?, ?, ?, ?, ?, ?, @id)";
+        public static readonly string CREATE_SKILLS = "INSERT OR IGNORE INTO Skills (c, css, html, java, javascript, php, python, ruby, other, id) VALUES " +
+            "(?, ?, ?, ?, ?, ?, ?, ?, ?, @id)";
         public static readonly string UPDATE_DEVELOPER_VARIABLES = "UPDATE OR IGNORE Developer SET" +
             "skills = ?, cv = ?, portfolio_links = ?" +
             "WHERE id = @id";
+        public static readonly string RETURN_USER_ID = "SELECT id FROM User WHERE id = @id";
         public static readonly string RETURN_DEV_SIMPLE = @"SELECT u.username
                                                                 FROM User u
                                                                 INNER JOIN Developer d

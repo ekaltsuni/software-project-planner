@@ -22,7 +22,7 @@ namespace SoftwarePlanner
         String email, username, password, role, name, surname, gender, skills, cv, portfolio, date_of_birth,
                 link, description, other;
         DateTime dateOfBirth;
-        int c, css, html, java, javascript, php, python, ruby, skillFlag;
+        int c, css, html, java, javascript, php, python, ruby, skillFlag, currentID;
   
 
         public UserProfileForm()
@@ -304,14 +304,13 @@ namespace SoftwarePlanner
 
                         command.Parameters.AddWithValue("@id", User.id);
 
-
+                        command.ExecuteNonQuery();
                         clientOnlyCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
                         clientOnlyCommand.Parameters.AddWithValue("@link", linkBox.Text);
                         clientOnlyCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
 
                         clientOnlyCommand.Parameters.AddWithValue("@id", User.id);
 
-                        command.ExecuteNonQuery();
                         clientOnlyCommand.ExecuteNonQuery();
 
                         MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
@@ -338,6 +337,7 @@ namespace SoftwarePlanner
                             command.Parameters.AddWithValue("@name", nameBox.Text);
                             command.Parameters.AddWithValue("@surname", surnameBox.Text);
                             command.Parameters.AddWithValue("@gender", genderComboBox.Text);
+                            command.Parameters.AddWithValue("@signing_date", DateTime.Now.ToString("yyyy-MM-dd"));
                             clientCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
                             clientCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
                             clientCommand.Parameters.AddWithValue("@link", linkBox.Text);
@@ -363,7 +363,8 @@ namespace SoftwarePlanner
                        roleComboBox.SelectedIndex == 1)
                     {
                         using (SQLiteCommand command = new SQLiteCommand(AppConstants.CREATE_USER_VARIABLES, connection))
-                        //using (SQLiteCommand skillsCommand = new SQLiteCommand(AppConstants.CREATE_SKILLS, connection))
+                        using (SQLiteCommand userIDcommand = new SQLiteCommand(AppConstants.RETURN_USER_ID, connection))
+                        using (SQLiteCommand skillsCommand = new SQLiteCommand(AppConstants.CREATE_SKILLS, connection))
                         {
                             connection.Open();
 
@@ -379,30 +380,20 @@ namespace SoftwarePlanner
                             command.Parameters.AddWithValue("@id", User.id);
 
                             command.ExecuteNonQuery();
-                            /* try
-                             {
-                                 command.ExecuteNonQuery();
-                                 MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
-                             }
-                             catch (Exception ex)
-                             {
-                                 MessageBox.Show("Σφάλμα κατά την αποθήκευση: " + ex.Message);
 
-                             }*/
-
-
-                            // Retrieve the ID of the newly inserted user
-                            int userId;
-                            using (SQLiteCommand getUserIdCommand = new SQLiteCommand("SELECT last_insert_rowid()", connection))
+                            using (SQLiteDataReader reader = userIDcommand.ExecuteReader())
                             {
-                                userId = Convert.ToInt32(getUserIdCommand.ExecuteScalar());
-                            }
+                                if (reader.Read())
+                                {
+                                    currentID = reader.GetInt32(0);
+                                    User.id = currentID;
+
+                                }
+
+                                skillsCommand.Parameters.AddWithValue("@id", User.id);
+                                skillsCommand.Parameters.AddWithValue("@other", skillsBox.Text);
 
 
-                            // Create the command and set its parameters
-                            using (SQLiteCommand skillsCommand = new SQLiteCommand(CREATE_SKILLS, connection))
-                            {
-                                skillsCommand.Parameters.AddWithValue("@id", userId);
                                 if (returnFlag(0) == 1)
                                 {
                                     skillsCommand.Parameters.AddWithValue("@c", 1);
@@ -491,14 +482,39 @@ namespace SoftwarePlanner
 
 
                                 }
-                                skillsCommand.Parameters.AddWithValue("@other", skillsBox.Text);
 
                                 skillsCommand.ExecuteNonQuery();
                             }
-
                         }
-
                     }
+                    /* try
+                     {
+                         command.ExecuteNonQuery();
+                         MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
+                     }
+                     catch (Exception ex)
+                     {
+                         MessageBox.Show("Σφάλμα κατά την αποθήκευση: " + ex.Message);
+
+                     }*/
+
+
+                    // select ids from User limit 1 order descending
+                    // 
+
+                    /*                            // Retrieve the ID of the newly inserted user
+                                                int userId;
+                                                using (SQLiteCommand getUserIdCommand = new SQLiteCommand("SELECT last_insert_rowid()", connection))
+                                                {
+                                                    userId = Convert.ToInt32(getUserIdCommand.ExecuteScalar());
+                                                    MessageBox.Show(userId.ToString());
+                                                }
+                    */
+
+                    // Create the command and set its parameters
+
+
+
                     else
                     {
                         MessageBox.Show("Παρακαλώ συμπληρώστε τα υποχρεωτικά πεδία.");

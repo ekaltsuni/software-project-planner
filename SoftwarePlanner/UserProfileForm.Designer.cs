@@ -734,6 +734,7 @@
             this.skillsListBox.Name = "skillsListBox";
             this.skillsListBox.Size = new System.Drawing.Size(161, 96);
             this.skillsListBox.TabIndex = 45;
+            this.skillsListBox.Visible = false;
             // 
             // UserProfileForm
             // 
