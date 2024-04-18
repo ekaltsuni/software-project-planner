@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SoftwarePlanner.AppConstants;
+using static SoftwarePlanner.SQLConstants;
+using static SoftwarePlanner.Translations;
 
 namespace SoftwarePlanner
 {
@@ -31,7 +26,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectTypeDropdown.Items.Add(Translations[reader.GetString(reader.GetOrdinal("type"))]);
+                            projectTypeDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("type"))]);
                         }
                     }
                 }
@@ -45,7 +40,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectCategoriesDropdown.Items.Add(Translations[reader.GetString(reader.GetOrdinal("name"))]);
+                            projectCategoriesDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
                         }
                     }
                 }
@@ -59,7 +54,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectPaymentDropdown.Items.Add(Translations[reader.GetString(reader.GetOrdinal("type"))]);
+                            projectPaymentDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("type"))]);
                         }
                     }
                 }
@@ -73,7 +68,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectDurationDropdown.Items.Add(Translations[reader.GetString(reader.GetOrdinal("type"))]);
+                            projectDurationDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("type"))]);
                         }
                     }
                 }
@@ -108,12 +103,12 @@ namespace SoftwarePlanner
             {
                 {
                     connection.Open();
-                    command.Parameters.AddWithValue("@categoryName", Translations.FirstOrDefault(x => x.Value == projectCategoriesDropdown.SelectedItem.ToString()).Key);
+                    command.Parameters.AddWithValue("@categoryName", TranslationDictionary.FirstOrDefault(x => x.Value == projectCategoriesDropdown.SelectedItem.ToString()).Key);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            projectSubcategoryDropdown.Items.Add(Translations[reader.GetString(reader.GetOrdinal("name"))]);
+                            projectSubcategoryDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
                         }
                     }
                 }
