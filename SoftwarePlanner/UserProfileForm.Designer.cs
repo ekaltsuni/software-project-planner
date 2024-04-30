@@ -585,7 +585,7 @@
             // profileImagePictureBox
             // 
             this.profileImagePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profileImagePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("profileImagePictureBox.Image")));
+            this.profileImagePictureBox.Image = global::SoftwarePlanner.Properties.Resources.upload_icon;
             this.profileImagePictureBox.Location = new System.Drawing.Point(256, 698);
             this.profileImagePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.profileImagePictureBox.Name = "profileImagePictureBox";
@@ -743,6 +743,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1896, 1048);
+            this.Controls.Add(this.profileImagePictureBox);
             this.Controls.Add(this.skillsListBox);
             this.Controls.Add(this.skillsBox);
             this.Controls.Add(this.descriptionBox);
@@ -754,7 +755,6 @@
             this.Controls.Add(this.textBox22);
             this.Controls.Add(this.textBox18);
             this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.profileImagePictureBox);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.projectsRichTextBox);

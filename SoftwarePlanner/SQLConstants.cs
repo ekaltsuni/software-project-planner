@@ -13,7 +13,7 @@ namespace SoftwarePlanner
         public static readonly string RETURN_USER = "SELECT id FROM User WHERE username = @username AND password = @password";
         public static readonly string RETURN_ROLE = "SELECT role FROM User WHERE id = @id";
 
-        public static readonly string RETURN_USER_VARIABLES = @"SELECT email, username, password, name, surname 
+        public static readonly string RETURN_USER_VARIABLES = @"SELECT email, username, password, name, surname, image_data 
                                                                 FROM User 
                                                                 WHERE id = @id";
         public static readonly string UPDATE_USER_VARIABLES = @"UPDATE OR IGNORE User SET 

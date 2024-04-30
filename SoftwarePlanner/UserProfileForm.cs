@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using static SoftwarePlanner.AppConstants;
 using static SoftwarePlanner.SQLConstants;
@@ -11,6 +12,7 @@ namespace SoftwarePlanner
     {
         string email, username, password, role, name, surname, gender, skills, cv, portfolio, date_of_birth,
                 link, description, other;
+        string selectedImagePath = "";
         DateTime dateOfBirth;
         int[] skillArray = new int[8];
   
@@ -50,18 +52,51 @@ namespace SoftwarePlanner
                     {
                         email = reader.GetString(reader.GetOrdinal("email"));
                         username = reader.GetString(reader.GetOrdinal("username"));
-                        name = reader.GetString(reader.GetOrdinal("name"));
-                        surname = reader.GetString(reader.GetOrdinal("surname"));
                         password = reader.GetString(reader.GetOrdinal("password"));
 
-                    }
-                    usernameBox.Text = username;
-                    emailBox.Text = email;
-                    nameBox.Text = name;
-                    surnameBox.Text = surname;
-                    passwordBox.Text = password;
-                }
+                        if (!reader.IsDBNull(reader.GetOrdinal("name"))) 
+                        {
+                            name = reader.GetString(reader.GetOrdinal("name"));
+                            nameBox.Text = name;
 
+                        }
+                        else
+                        {
+                            nameBox.Text = "";
+                        }
+                        if (!reader.IsDBNull(reader.GetOrdinal("surname")))
+                        {
+                            surname = reader.GetString(reader.GetOrdinal("surname"));
+                            surnameBox.Text = surname;
+                        }
+                        else
+                        {
+                            surnameBox.Text = "";
+                        }
+
+                        if (reader["image_data"] != DBNull.Value)
+                        {
+                            byte[] imageData = (byte[])reader["image_data"];
+                            if (imageData != null && imageData.Length > 0)
+                            {
+                                using (MemoryStream ms = new MemoryStream(imageData))
+                                {
+                                    profileImagePictureBox.Image = Image.FromStream(ms);
+                                    profileImagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                                }
+                            }
+                            else
+                            {
+                                profileImagePictureBox.Image = SoftwarePlanner.Properties.Resources.upload_icon;
+                                profileImagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                            }
+                        }
+                        usernameBox.Text = username;
+                        emailBox.Text = email;
+                        passwordBox.Text = password;
+                    }
+
+                }
             }
         }
 
@@ -76,13 +111,35 @@ namespace SoftwarePlanner
                 {
                     if (reader.Read())
                     {
-                        date_of_birth = reader.GetString(reader.GetOrdinal("date_of_birth"));
-                        link = reader.GetString(reader.GetOrdinal("link"));
-                        description = reader.GetString(reader.GetOrdinal("description"));
+                        if (!reader.IsDBNull(reader.GetOrdinal("date_of_birth")))
+                        {
+                            date_of_birth = reader.GetString(reader.GetOrdinal("date_of_birth"));
+                            datePicker.Value = DateTime.Parse(date_of_birth);
+                        }
+                        else
+                        {
+                            datePicker.Value = DateTime.Today;
+                        }
+                        if (!reader.IsDBNull(reader.GetOrdinal("link")))
+                        {
+                            link = reader.GetString(reader.GetOrdinal("link"));
+                            linkBox.Text = link;
+                        }
+                        else
+                        {
+                            linkBox.Text = "";
+
+                        }
+                        if (!reader.IsDBNull(reader.GetOrdinal("description")))
+                        {
+                            description = reader.GetString(reader.GetOrdinal("description"));
+                            descriptionBox.Text = description;
+                        }
+                        else
+                        {
+                            descriptionBox.Text = "";
+                        }
                     }
-                    datePicker.Value = DateTime.Parse(date_of_birth);
-                    linkBox.Text = link;
-                    descriptionBox.Text = description;
                 }
             }
         }
@@ -165,6 +222,7 @@ namespace SoftwarePlanner
                 }
                 else MessageBox.Show("Παρακαλώ συμπληρώστε τα υποχρεωτικά πεδία.");
             }
+            updateProfileImage();
         }
 
         private void updateDeveloper()
@@ -361,16 +419,6 @@ namespace SoftwarePlanner
             // to-do
         }
 
-        private void updateProfile()
-        {
-
-        }
-
-        private void createProfile()
-        {
-
-        }
-
         private void αρχικήToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -391,13 +439,43 @@ namespace SoftwarePlanner
 
         private void profileImagePictureBox_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.bmp; *.png)|*.jpg; *.jpeg; *.bmp; *.png";
-            if (open.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                profileImagePictureBox.Image = new Bitmap(open.FileName);
+                selectedImagePath = openFileDialog.FileName;
+                profileImagePictureBox.Image = Image.FromFile(selectedImagePath);
             }
         }
+
+        private void updateProfileImage()
+        {
+            if (!string.IsNullOrEmpty(selectedImagePath))
+            {
+                byte[] imageData;
+                using (Image image = Image.FromFile(selectedImagePath))
+                {
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    {
+                        image.Save(ms, image.RawFormat);
+                        imageData = ms.ToArray();
+                    }
+                }
+
+                using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    string query = "UPDATE User SET image_data = @image_data WHERE id = @userId";
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@image_data", imageData);
+                        cmd.Parameters.AddWithValue("@userId", User.id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+    
 
         private void initialState()
         {

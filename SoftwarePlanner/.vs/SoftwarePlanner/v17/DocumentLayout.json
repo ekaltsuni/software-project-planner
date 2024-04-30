@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|c:\\users\\dr_gi\\documents\\texnologia-logismikou\\softwareplanner\\sqlconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:sqlconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\appconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:appconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AppConstants.cs",
               "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\AppConstants.cs",
               "RelativeDocumentMoniker": "AppConstants.cs",
               "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\AppConstants.cs",
               "RelativeToolTip": "AppConstants.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADAAAAAgAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAqwDwAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T18:38:50.608Z",
               "IsPinned": true,
@@ -44,15 +48,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "SQLConstants.cs",
+              "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\SQLConstants.cs",
+              "RelativeDocumentMoniker": "SQLConstants.cs",
+              "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\SQLConstants.cs",
+              "RelativeToolTip": "SQLConstants.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAB7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T15:45:34.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "LoginForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\LoginForm.cs",
               "RelativeDocumentMoniker": "LoginForm.cs",
               "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\LoginForm.cs [Design]",
               "RelativeToolTip": "LoginForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T09:35:58.532Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-18T09:35:58.532Z"
             },
             {
               "$type": "Document",
@@ -62,7 +78,7 @@
               "RelativeDocumentMoniker": "UserProfileForm.cs",
               "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\UserProfileForm.cs",
               "RelativeToolTip": "UserProfileForm.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAQwPwBAABvAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-18T08:14:54.109Z",
               "EditorCaption": ""
