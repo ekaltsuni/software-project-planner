@@ -27,10 +27,13 @@ namespace SoftwarePlanner
         public static readonly string RETURN_LATEST_USER_ID = "SELECT id FROM User ORDER BY id DESC LIMIT 1";
         public static readonly string RETURN_LATEST_PROJECT_ID = "SELECT project_id FROM Project ORDER BY project_id DESC LIMIT 1";
         // DEVELOPER
-        //public static readonly string CREATE_DEVELOPER_VARIABLES = "INSERT OR IGNORE INTO Developer (skills, cv, portfolio_links, id) " +
-        //"VALUES (?, ?, ?, @id)";
-        //public static readonly string RETURN_DEVELOPER_VARIABLES = "SELECT skills, cv, portfolio_links FROM Developer" +
-        //  " WHERE id = @id";
+        public static readonly string RETURN_PORTFOLIO_VARIABLES = "SELECT portfolio_title, portfolio_link FROM Portfolio" +
+          " WHERE id = @id";
+        public static readonly string CREATE_PORTFOLIO_VARIABLES = "INSERT or IGNORE INTO Portfolio (portfolio_title, portfolio_link, id) " +
+            "VALUES (@portfolio_title, @portfolio_link, @id)";
+        //public static readonly string CREATE_PORTFOLIO_ENTRY = "INSERT or IGNORE INTO Portfolio (portfolio_title, portfolio_link, id) " +
+    //"VALUES (@portfolio_title, @portfolio_link, @id)";
+        public static readonly string UPDATE_PORTFOLIO_ENTRY = "UPDATE Portfolio SET portfolio_link = @portfolio_link WHERE id = @id AND portfolio_title = @portfolio_title";
         public static readonly string RETURN_SKILLS = "SELECT * FROM Skills WHERE id = @id";
         public static readonly string CREATE_SKILLS = @"INSERT OR IGNORE INTO Skills 
                                                         (c, css, html, java, javascript, php, python, ruby, other, id) VALUES 

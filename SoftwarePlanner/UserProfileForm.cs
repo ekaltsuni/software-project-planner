@@ -11,7 +11,7 @@ namespace SoftwarePlanner
     public partial class UserProfileForm : Form
     {
         string email, username, password, role, name, surname, gender, skills, cv, portfolio, date_of_birth,
-                link, description, other;
+                link, description, other, portfolio_title, portfolio_link;
         string selectedImagePath = "";
         DateTime dateOfBirth;
         int[] skillArray = new int[8];
@@ -149,12 +149,12 @@ namespace SoftwarePlanner
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand skillsCommand = new SQLiteCommand(RETURN_SKILLS, connection))
             //using (SQLiteCommand cvCommand = new SQLiteCommand(AppConstants.RETURN_CV, connection))
-            //using (SQLiteCommand portfolioCommand = new SQLiteCommand(AppConstants.RETURN_PORTFOLIO, connection))
+            using (SQLiteCommand portfolioCommand = new SQLiteCommand(RETURN_PORTFOLIO_VARIABLES, connection))
             {
                 connection.Open();
                 skillsCommand.Parameters.AddWithValue("@id", User.id);
                 //cvCommand.Parameters.AddWithValue("@id", User.id);
-                //portfolioCommand.Parameters.AddWithValue("@id", User.id);
+                portfolioCommand.Parameters.AddWithValue("@id", User.id);
                 using (SQLiteDataReader reader = skillsCommand.ExecuteReader())
                 {
                     if (reader.Read())
@@ -173,20 +173,21 @@ namespace SoftwarePlanner
                     {
                         //cv
                     }
-                }
+                } */
                 using (SQLiteDataReader reader = portfolioCommand.ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        portfolio = reader.GetString(reader.GetOrdinal("portfolio_links"));
-
+                        portfolio_title = reader.IsDBNull(reader.GetOrdinal("portfolio_title")) ? "" : reader.GetString(reader.GetOrdinal("portfolio_title"));
+                        portfolio_link = reader.IsDBNull(reader.GetOrdinal("portfolio_link")) ? "" : reader.GetString(reader.GetOrdinal("portfolio_link"));
+                        dataGridView.Rows.Add(portfolio_title, portfolio_link);
                     }
-                    portfolioBox.Text = portfolio;
 
-                }*/
+                }
 
             }
         }
+
 
         private void αποσύνδεσηToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -231,6 +232,9 @@ namespace SoftwarePlanner
             {
                 using (SQLiteCommand command = new SQLiteCommand(UPDATE_USER_VARIABLES, connection))
                 using (SQLiteCommand skillsCommand = new SQLiteCommand(UPDATE_SKILLS, connection))
+                using (SQLiteCommand portfolioUpdateEntryCommand = new SQLiteCommand(UPDATE_PORTFOLIO_ENTRY, connection))
+
+
                 {
                     connection.Open();
                     // Update user related fields
@@ -254,6 +258,12 @@ namespace SoftwarePlanner
                     skillsCommand.Parameters.AddWithValue("@ruby", returnFlag(7));
                     skillsCommand.Parameters.AddWithValue("@other", skillsBox.Text);
                     skillsCommand.ExecuteNonQuery();
+                    // Update portfolio related fields
+                    readPortfolio();
+                    portfolioUpdateEntryCommand.Parameters.AddWithValue("@id", User.id);
+                    portfolioUpdateEntryCommand.Parameters.AddWithValue("@portfolio_title", portfolio_title);
+                    portfolioUpdateEntryCommand.Parameters.AddWithValue("@portfolio_link", portfolio_link);
+                    portfolioUpdateEntryCommand.ExecuteNonQuery();
 
                     MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                 }
@@ -267,6 +277,8 @@ namespace SoftwarePlanner
                 using (SQLiteCommand command = new SQLiteCommand(CREATE_USER_VARIABLES, connection))
                 using (SQLiteCommand userIDcommand = new SQLiteCommand(RETURN_LATEST_USER_ID, connection))
                 using (SQLiteCommand skillsCommand = new SQLiteCommand(CREATE_SKILLS, connection))
+                using (SQLiteCommand portfolioCommand = new SQLiteCommand(CREATE_PORTFOLIO_VARIABLES, connection))
+
                 {
                     connection.Open();
                     command.Parameters.AddWithValue("@username", usernameBox.Text);
@@ -294,6 +306,12 @@ namespace SoftwarePlanner
                             skillsCommand.Parameters.AddWithValue("@python", returnFlag(6));
                             skillsCommand.Parameters.AddWithValue("@ruby", returnFlag(7));
                             skillsCommand.ExecuteNonQuery();
+
+                            readPortfolio();
+                            portfolioCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
+                            portfolioCommand.Parameters.AddWithValue("@portfolio_title", portfolio_title);
+                            portfolioCommand.Parameters.AddWithValue("@portfolio_link", portfolio_link);
+                            portfolioCommand.ExecuteNonQuery();
 
                             MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
                         }
@@ -386,7 +404,7 @@ namespace SoftwarePlanner
                 datePicker.Visible = true;
                 descriptionBox.Visible = true;
                 linkBox.Visible = true;
-                portfolioBox.Visible = false;
+                dataGridView.Visible = false;
                 textBox17.Visible = true;
                 clientVisibilityFields.Visible = true;
                 developerVisibilityFields.Visible = false;
@@ -405,7 +423,7 @@ namespace SoftwarePlanner
                 datePicker.Visible = false;
                 descriptionBox.Visible = false;
                 linkBox.Visible = false;
-                portfolioBox.Visible = true;
+                dataGridView.Visible = true;
                 textBox17.Visible = true;
                 clientVisibilityFields.Visible = false;
                 developerVisibilityFields.Visible = true;
@@ -476,6 +494,23 @@ namespace SoftwarePlanner
             }
         }
     
+        private void readPortfolio()
+        {
+
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                portfolio_title = row.Cells[0].Value?.ToString();
+                portfolio_link = row.Cells[1].Value?.ToString();
+
+                if (string.IsNullOrWhiteSpace(portfolio_title) || string.IsNullOrWhiteSpace(portfolio_link))
+                {
+                    continue;
+                }
+
+            }
+        }
 
         private void initialState()
         {
@@ -495,7 +530,7 @@ namespace SoftwarePlanner
                 datePicker.Visible = false;
                 descriptionBox.Visible = false;
                 linkBox.Visible = false;
-                portfolioBox.Visible = true;
+                dataGridView.Visible = true;
                 skillsBox.Visible = true;
                 skillsListBox.Visible = true;
             }
@@ -514,7 +549,7 @@ namespace SoftwarePlanner
                 datePicker.Visible = true;
                 descriptionBox.Visible = true;
                 linkBox.Visible = true;
-                portfolioBox.Visible = false;
+                dataGridView.Visible = false;
                 skillsBox.Visible= false;
                 skillsListBox.Visible = false;
             }

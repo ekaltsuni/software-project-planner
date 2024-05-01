@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|c:\\users\\dr_gi\\documents\\texnologia-logismikou\\softwareplanner\\userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|c:\\users\\dr_gi\\documents\\texnologia-logismikou\\softwareplanner\\userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\sqlconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:sqlconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|c:\\users\\dr_gi\\documents\\texnologia-logismikou\\softwareplanner\\sqlconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:sqlconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|c:\\users\\dr_gi\\documents\\texnologia-logismikou\\softwareplanner\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:userprofileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\appconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:appconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{031E1DC7-8EB8-4077-B43B-F09B110249B1}|SoftwarePlanner.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,13 +34,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AppConstants.cs",
               "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\AppConstants.cs",
               "RelativeDocumentMoniker": "AppConstants.cs",
               "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\AppConstants.cs",
               "RelativeToolTip": "AppConstants.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAqwDwAAABDAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T18:38:50.608Z",
               "IsPinned": true,
@@ -49,26 +49,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "HomeForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\HomeForm.cs",
+              "RelativeDocumentMoniker": "HomeForm.cs",
+              "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\HomeForm.cs [Design]",
+              "RelativeToolTip": "HomeForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T11:54:51.879Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SQLConstants.cs",
               "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\SQLConstants.cs",
               "RelativeDocumentMoniker": "SQLConstants.cs",
               "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\SQLConstants.cs",
               "RelativeToolTip": "SQLConstants.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAB7AAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAwCIAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-30T15:45:34.739Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\LoginForm.cs",
-              "RelativeDocumentMoniker": "LoginForm.cs",
-              "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\LoginForm.cs [Design]",
-              "RelativeToolTip": "LoginForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T09:35:58.532Z"
             },
             {
               "$type": "Document",
@@ -78,14 +79,14 @@
               "RelativeDocumentMoniker": "UserProfileForm.cs",
               "ToolTip": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\UserProfileForm.cs",
               "RelativeToolTip": "UserProfileForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAJAAAA",
+              "ViewState": "AQIAAOAAAAAAAAAAAAAuwOoAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-18T08:14:54.109Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UserProfileForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\dr_gi\\Documents\\texnologia-logismikou\\SoftwarePlanner\\UserProfileForm.cs",
               "RelativeDocumentMoniker": "UserProfileForm.cs",

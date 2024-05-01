@@ -74,12 +74,15 @@
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.linkBox = new System.Windows.Forms.TextBox();
-            this.portfolioBox = new System.Windows.Forms.RichTextBox();
             this.descriptionBox = new System.Windows.Forms.RichTextBox();
             this.skillsBox = new System.Windows.Forms.RichTextBox();
             this.skillsListBox = new System.Windows.Forms.CheckedListBox();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox3
@@ -685,16 +688,6 @@
             this.linkBox.TabIndex = 8;
             this.linkBox.Visible = false;
             // 
-            // portfolioBox
-            // 
-            this.portfolioBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.portfolioBox.Location = new System.Drawing.Point(761, 763);
-            this.portfolioBox.Name = "portfolioBox";
-            this.portfolioBox.Size = new System.Drawing.Size(441, 52);
-            this.portfolioBox.TabIndex = 10;
-            this.portfolioBox.Text = "";
-            this.portfolioBox.Visible = false;
-            // 
             // descriptionBox
             // 
             this.descriptionBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -736,6 +729,35 @@
             this.skillsListBox.TabIndex = 45;
             this.skillsListBox.Visible = false;
             // 
+            // dataGridView
+            // 
+            this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Title,
+            this.Column1});
+            this.dataGridView.Location = new System.Drawing.Point(761, 757);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersWidth = 62;
+            this.dataGridView.RowTemplate.Height = 28;
+            this.dataGridView.Size = new System.Drawing.Size(441, 151);
+            this.dataGridView.TabIndex = 47;
+            this.dataGridView.Visible = false;
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Title";
+            this.Title.MinimumWidth = 8;
+            this.Title.Name = "Title";
+            this.Title.Width = 150;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Link";
+            this.Column1.MinimumWidth = 8;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 250;
+            // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -743,11 +765,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1896, 1048);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.profileImagePictureBox);
             this.Controls.Add(this.skillsListBox);
             this.Controls.Add(this.skillsBox);
             this.Controls.Add(this.descriptionBox);
-            this.Controls.Add(this.portfolioBox);
             this.Controls.Add(this.linkBox);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.usernameBox);
@@ -800,6 +822,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -851,9 +874,11 @@
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.TextBox linkBox;
-        private System.Windows.Forms.RichTextBox portfolioBox;
         private System.Windows.Forms.RichTextBox descriptionBox;
         private System.Windows.Forms.RichTextBox skillsBox;
         private System.Windows.Forms.CheckedListBox skillsListBox;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
