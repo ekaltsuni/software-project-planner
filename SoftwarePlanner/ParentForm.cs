@@ -42,5 +42,10 @@ namespace SoftwarePlanner
             ProjectCreationForm projectCreationForm = new ProjectCreationForm();
             projectCreationForm.Show();
         }
+
+        protected void OnClosing()
+        {
+            Application.Exit();
+        }
     }
 }

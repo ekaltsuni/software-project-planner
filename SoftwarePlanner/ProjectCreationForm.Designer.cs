@@ -349,6 +349,7 @@
             this.Name = "ProjectCreationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Δημιουργία Έργου";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectCreationForm_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

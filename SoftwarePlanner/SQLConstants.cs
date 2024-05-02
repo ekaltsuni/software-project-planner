@@ -83,6 +83,11 @@ namespace SoftwarePlanner
                                                                     OR c.description LIKE @username)
                                                                     AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter";
         // PROJECT
+        public static readonly string RETURN_PROJECT_FULL = @"SELECT * 
+                                                              FROM Project p
+                                                              INNER JOIN ProjectPayment pp
+                                                                ON p.payment = pp.id  
+                                                              WHERE p.title = @title";
         public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT title
                                                                 FROM Project p
                                                                 WHERE p.title LIKE @title

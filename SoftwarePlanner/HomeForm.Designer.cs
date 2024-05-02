@@ -76,20 +76,18 @@
             // searchUserBox
             // 
             this.searchUserBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.searchUserBox.Location = new System.Drawing.Point(126, 132);
-            this.searchUserBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchUserBox.Location = new System.Drawing.Point(84, 86);
             this.searchUserBox.Name = "searchUserBox";
-            this.searchUserBox.Size = new System.Drawing.Size(588, 43);
+            this.searchUserBox.Size = new System.Drawing.Size(393, 31);
             this.searchUserBox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label1.Location = new System.Drawing.Point(118, 60);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(79, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 40);
+            this.label1.Size = new System.Drawing.Size(111, 29);
             this.label1.TabIndex = 6;
             this.label1.Text = "Χρήστες";
             // 
@@ -97,10 +95,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label2.Location = new System.Drawing.Point(982, 60);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(655, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 40);
+            this.label2.Size = new System.Drawing.Size(70, 29);
             this.label2.TabIndex = 7;
             this.label2.Text = "Έργα";
             // 
@@ -108,19 +105,17 @@
             // 
             this.userFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userFilter.FormattingEnabled = true;
-            this.userFilter.Location = new System.Drawing.Point(524, 74);
-            this.userFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.userFilter.Location = new System.Drawing.Point(349, 48);
             this.userFilter.Name = "userFilter";
-            this.userFilter.Size = new System.Drawing.Size(190, 28);
+            this.userFilter.Size = new System.Drawing.Size(128, 21);
             this.userFilter.TabIndex = 8;
             this.userFilter.SelectedIndexChanged += new System.EventHandler(this.userFilter_SelectedIndexChanged);
             // 
             // minRating
             // 
-            this.minRating.Location = new System.Drawing.Point(108, 29);
-            this.minRating.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.minRating.Location = new System.Drawing.Point(72, 19);
             this.minRating.Name = "minRating";
-            this.minRating.Size = new System.Drawing.Size(70, 26);
+            this.minRating.Size = new System.Drawing.Size(48, 20);
             this.minRating.TabIndex = 9;
             // 
             // devAdvancedSearchGroup
@@ -133,96 +128,85 @@
             this.devAdvancedSearchGroup.Controls.Add(this.label4);
             this.devAdvancedSearchGroup.Controls.Add(this.label3);
             this.devAdvancedSearchGroup.Controls.Add(this.minRating);
-            this.devAdvancedSearchGroup.Location = new System.Drawing.Point(126, 258);
-            this.devAdvancedSearchGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.devAdvancedSearchGroup.Location = new System.Drawing.Point(84, 168);
             this.devAdvancedSearchGroup.Name = "devAdvancedSearchGroup";
-            this.devAdvancedSearchGroup.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.devAdvancedSearchGroup.Size = new System.Drawing.Size(780, 74);
+            this.devAdvancedSearchGroup.Size = new System.Drawing.Size(520, 48);
             this.devAdvancedSearchGroup.TabIndex = 10;
             this.devAdvancedSearchGroup.TabStop = false;
             this.devAdvancedSearchGroup.Visible = false;
             // 
             // maxCount
             // 
-            this.maxCount.Location = new System.Drawing.Point(627, 29);
-            this.maxCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.maxCount.Location = new System.Drawing.Point(418, 19);
             this.maxCount.Name = "maxCount";
-            this.maxCount.Size = new System.Drawing.Size(70, 26);
+            this.maxCount.Size = new System.Drawing.Size(48, 20);
             this.maxCount.TabIndex = 16;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(567, 34);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(378, 22);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 20);
+            this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 15;
             this.label8.Text = "μέχρι";
             // 
             // minCount
             // 
-            this.minCount.Location = new System.Drawing.Point(486, 29);
-            this.minCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.minCount.Location = new System.Drawing.Point(324, 19);
             this.minCount.Name = "minCount";
-            this.minCount.Size = new System.Drawing.Size(70, 26);
+            this.minCount.Size = new System.Drawing.Size(48, 20);
             this.minCount.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(393, 34);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(262, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 20);
+            this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Έργα από";
             // 
             // maxRating
             // 
-            this.maxRating.Location = new System.Drawing.Point(249, 29);
-            this.maxRating.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.maxRating.Location = new System.Drawing.Point(166, 19);
             this.maxRating.Name = "maxRating";
-            this.maxRating.Size = new System.Drawing.Size(70, 26);
+            this.maxRating.Size = new System.Drawing.Size(48, 20);
             this.maxRating.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(189, 34);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(126, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 20);
+            this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 11;
             this.label4.Text = "μέχρι";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 34);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(6, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 20);
+            this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Rating από";
             // 
             // dateBefore
             // 
             this.dateBefore.CustomFormat = "YYYY-MM-DD";
-            this.dateBefore.Location = new System.Drawing.Point(129, 29);
-            this.dateBefore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateBefore.Location = new System.Drawing.Point(86, 19);
             this.dateBefore.Name = "dateBefore";
-            this.dateBefore.Size = new System.Drawing.Size(198, 26);
+            this.dateBefore.Size = new System.Drawing.Size(133, 20);
             this.dateBefore.TabIndex = 11;
             this.dateBefore.Value = new System.DateTime(2024, 4, 15, 0, 0, 0, 0);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 32);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(6, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 20);
+            this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "Εγγραφή από";
             // 
@@ -230,10 +214,9 @@
             // 
             this.advancedUserSearchCheckBox.AutoSize = true;
             this.advancedUserSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.advancedUserSearchCheckBox.Location = new System.Drawing.Point(724, 154);
-            this.advancedUserSearchCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.advancedUserSearchCheckBox.Location = new System.Drawing.Point(483, 100);
             this.advancedUserSearchCheckBox.Name = "advancedUserSearchCheckBox";
-            this.advancedUserSearchCheckBox.Size = new System.Drawing.Size(181, 24);
+            this.advancedUserSearchCheckBox.Size = new System.Drawing.Size(128, 17);
             this.advancedUserSearchCheckBox.TabIndex = 16;
             this.advancedUserSearchCheckBox.Text = "Σύνθετη Αναζήτηση";
             this.advancedUserSearchCheckBox.UseVisualStyleBackColor = true;
@@ -241,19 +224,17 @@
             // 
             // dateAfter
             // 
-            this.dateAfter.Location = new System.Drawing.Point(398, 29);
-            this.dateAfter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateAfter.Location = new System.Drawing.Point(265, 19);
             this.dateAfter.Name = "dateAfter";
-            this.dateAfter.Size = new System.Drawing.Size(198, 26);
+            this.dateAfter.Size = new System.Drawing.Size(133, 20);
             this.dateAfter.TabIndex = 17;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(338, 32);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(225, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 20);
+            this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 18;
             this.label7.Text = "μέχρι";
             // 
@@ -263,11 +244,9 @@
             this.advancedSearchGroup.Controls.Add(this.label7);
             this.advancedSearchGroup.Controls.Add(this.dateBefore);
             this.advancedSearchGroup.Controls.Add(this.dateAfter);
-            this.advancedSearchGroup.Location = new System.Drawing.Point(126, 189);
-            this.advancedSearchGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.advancedSearchGroup.Location = new System.Drawing.Point(84, 123);
             this.advancedSearchGroup.Name = "advancedSearchGroup";
-            this.advancedSearchGroup.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.advancedSearchGroup.Size = new System.Drawing.Size(780, 66);
+            this.advancedSearchGroup.Size = new System.Drawing.Size(520, 43);
             this.advancedSearchGroup.TabIndex = 19;
             this.advancedSearchGroup.TabStop = false;
             this.advancedSearchGroup.Visible = false;
@@ -277,10 +256,9 @@
             this.categoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.categoryDropdown.FormattingEnabled = true;
-            this.categoryDropdown.Location = new System.Drawing.Point(9, 51);
-            this.categoryDropdown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.categoryDropdown.Location = new System.Drawing.Point(6, 33);
             this.categoryDropdown.Name = "categoryDropdown";
-            this.categoryDropdown.Size = new System.Drawing.Size(208, 37);
+            this.categoryDropdown.Size = new System.Drawing.Size(140, 26);
             this.categoryDropdown.TabIndex = 20;
             // 
             // subcategoryDropdown
@@ -288,30 +266,27 @@
             this.subcategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.subcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.subcategoryDropdown.FormattingEnabled = true;
-            this.subcategoryDropdown.Location = new System.Drawing.Point(228, 49);
-            this.subcategoryDropdown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.subcategoryDropdown.Location = new System.Drawing.Point(152, 32);
             this.subcategoryDropdown.Name = "subcategoryDropdown";
-            this.subcategoryDropdown.Size = new System.Drawing.Size(208, 37);
+            this.subcategoryDropdown.Size = new System.Drawing.Size(140, 26);
             this.subcategoryDropdown.TabIndex = 21;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label9.Location = new System.Drawing.Point(4, 18);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(3, 12);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(309, 29);
+            this.label9.Size = new System.Drawing.Size(188, 18);
             this.label9.TabIndex = 22;
             this.label9.Text = "Κατηγορία / Υποκατηγορία";
             // 
             // searchProjectButton
             // 
             this.searchProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.searchProjectButton.Location = new System.Drawing.Point(1590, 74);
-            this.searchProjectButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchProjectButton.Location = new System.Drawing.Point(1060, 48);
             this.searchProjectButton.Name = "searchProjectButton";
-            this.searchProjectButton.Size = new System.Drawing.Size(180, 48);
+            this.searchProjectButton.Size = new System.Drawing.Size(120, 31);
             this.searchProjectButton.TabIndex = 25;
             this.searchProjectButton.Text = "Αναζήτηση";
             this.searchProjectButton.UseVisualStyleBackColor = true;
@@ -320,10 +295,9 @@
             // searchUserButton
             // 
             this.searchUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.searchUserButton.Location = new System.Drawing.Point(726, 74);
-            this.searchUserButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchUserButton.Location = new System.Drawing.Point(484, 48);
             this.searchUserButton.Name = "searchUserButton";
-            this.searchUserButton.Size = new System.Drawing.Size(180, 48);
+            this.searchUserButton.Size = new System.Drawing.Size(120, 31);
             this.searchUserButton.TabIndex = 26;
             this.searchUserButton.Text = "Αναζήτηση";
             this.searchUserButton.UseVisualStyleBackColor = true;
@@ -333,10 +307,9 @@
             // 
             this.advancedProjectSearchBox.AutoSize = true;
             this.advancedProjectSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.advancedProjectSearchBox.Location = new System.Drawing.Point(1588, 154);
-            this.advancedProjectSearchBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.advancedProjectSearchBox.Location = new System.Drawing.Point(1059, 100);
             this.advancedProjectSearchBox.Name = "advancedProjectSearchBox";
-            this.advancedProjectSearchBox.Size = new System.Drawing.Size(181, 24);
+            this.advancedProjectSearchBox.Size = new System.Drawing.Size(128, 17);
             this.advancedProjectSearchBox.TabIndex = 29;
             this.advancedProjectSearchBox.Text = "Σύνθετη Αναζήτηση";
             this.advancedProjectSearchBox.UseVisualStyleBackColor = true;
@@ -345,10 +318,9 @@
             // searchProjectBox
             // 
             this.searchProjectBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.searchProjectBox.Location = new System.Drawing.Point(990, 132);
-            this.searchProjectBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchProjectBox.Location = new System.Drawing.Point(660, 86);
             this.searchProjectBox.Name = "searchProjectBox";
-            this.searchProjectBox.Size = new System.Drawing.Size(588, 43);
+            this.searchProjectBox.Size = new System.Drawing.Size(393, 31);
             this.searchProjectBox.TabIndex = 28;
             // 
             // advancedProjectSearchGroup
@@ -361,31 +333,27 @@
             this.advancedProjectSearchGroup.Controls.Add(this.categoryDropdown);
             this.advancedProjectSearchGroup.Controls.Add(this.label9);
             this.advancedProjectSearchGroup.Controls.Add(this.subcategoryDropdown);
-            this.advancedProjectSearchGroup.Location = new System.Drawing.Point(990, 189);
-            this.advancedProjectSearchGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.advancedProjectSearchGroup.Location = new System.Drawing.Point(660, 123);
             this.advancedProjectSearchGroup.Name = "advancedProjectSearchGroup";
-            this.advancedProjectSearchGroup.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.advancedProjectSearchGroup.Size = new System.Drawing.Size(780, 143);
+            this.advancedProjectSearchGroup.Size = new System.Drawing.Size(520, 93);
             this.advancedProjectSearchGroup.TabIndex = 30;
             this.advancedProjectSearchGroup.TabStop = false;
             this.advancedProjectSearchGroup.Visible = false;
             // 
             // projectDateAfter
             // 
-            this.projectDateAfter.Location = new System.Drawing.Point(338, 98);
-            this.projectDateAfter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectDateAfter.Location = new System.Drawing.Point(225, 64);
             this.projectDateAfter.Name = "projectDateAfter";
-            this.projectDateAfter.Size = new System.Drawing.Size(208, 26);
+            this.projectDateAfter.Size = new System.Drawing.Size(140, 20);
             this.projectDateAfter.TabIndex = 27;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label12.Location = new System.Drawing.Point(452, 18);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(301, 12);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(150, 29);
+            this.label12.Size = new System.Drawing.Size(92, 18);
             this.label12.TabIndex = 26;
             this.label12.Text = "Τεχνολογίες";
             // 
@@ -394,29 +362,26 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(456, 51);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox1.Location = new System.Drawing.Point(304, 33);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(208, 37);
+            this.comboBox1.Size = new System.Drawing.Size(140, 26);
             this.comboBox1.TabIndex = 25;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label11.Location = new System.Drawing.Point(9, 100);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(6, 65);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(110, 29);
+            this.label11.Size = new System.Drawing.Size(67, 18);
             this.label11.TabIndex = 24;
             this.label11.Text = "Υποβολή";
             // 
             // projectDateBefore
             // 
-            this.projectDateBefore.Location = new System.Drawing.Point(118, 100);
-            this.projectDateBefore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectDateBefore.Location = new System.Drawing.Point(79, 65);
             this.projectDateBefore.Name = "projectDateBefore";
-            this.projectDateBefore.Size = new System.Drawing.Size(208, 26);
+            this.projectDateBefore.Size = new System.Drawing.Size(140, 20);
             this.projectDateBefore.TabIndex = 19;
             // 
             // userTable
@@ -428,18 +393,20 @@
             this.userTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Username});
             this.userTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.userTable.Location = new System.Drawing.Point(126, 342);
-            this.userTable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.userTable.Location = new System.Drawing.Point(84, 222);
             this.userTable.Name = "userTable";
+            this.userTable.ReadOnly = true;
             this.userTable.RowHeadersWidth = 62;
-            this.userTable.Size = new System.Drawing.Size(780, 666);
+            this.userTable.Size = new System.Drawing.Size(520, 433);
             this.userTable.TabIndex = 31;
+            this.userTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userTable_CellClick);
             // 
             // Username
             // 
             this.Username.HeaderText = "Username";
             this.Username.MinimumWidth = 8;
             this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
             // 
             // projectTable
             // 
@@ -452,24 +419,26 @@
             this.projectTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
             this.projectTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.projectTable.Location = new System.Drawing.Point(990, 342);
-            this.projectTable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectTable.Location = new System.Drawing.Point(660, 222);
             this.projectTable.Name = "projectTable";
+            this.projectTable.ReadOnly = true;
             this.projectTable.RowHeadersWidth = 62;
-            this.projectTable.Size = new System.Drawing.Size(780, 666);
+            this.projectTable.Size = new System.Drawing.Size(520, 433);
             this.projectTable.TabIndex = 32;
+            this.projectTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectTable_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Title";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // HomeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1896, 1048);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.projectTable);
             this.Controls.Add(this.userTable);
             this.Controls.Add(this.advancedProjectSearchGroup);
@@ -485,10 +454,11 @@
             this.Controls.Add(this.searchUserBox);
             this.Controls.Add(this.devAdvancedSearchGroup);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Κεντρική";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
             this.Controls.SetChildIndex(this.devAdvancedSearchGroup, 0);
             this.Controls.SetChildIndex(this.searchUserBox, 0);
             this.Controls.SetChildIndex(this.label1, 0);

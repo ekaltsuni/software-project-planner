@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Windows.Forms;
 using static SoftwarePlanner.AppConstants;
 using static SoftwarePlanner.SQLConstants;
 
@@ -14,13 +15,6 @@ namespace SoftwarePlanner
             userFilter.Items.Add(UserFilterOption.DEVELOPER);
             userFilter.Items.Add(UserFilterOption.CLIENT);
             userFilter.SelectedItem = UserFilterOption.DEVELOPER;
-            // TODO: Get these values from DB
-            // categoryDropdown.Items.Add(ProjectCategory.WEBSITE);
-            // categoryDropdown.Items.Add(ProjectCategory.ESHOP);
-            // TODO: Filter based on category (will be easy with DB)
-            // subcategoryDropdown.Items.Add(ProjectSubCategory.CORPORATE);
-            // subcategoryDropdown.Items.Add(ProjectSubCategory.PORTAL);
-            // subcategoryDropdown.Items.Add(ProjectSubCategory.WORDPRESS);
         }
 
         private void advancedSearchCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -152,6 +146,26 @@ namespace SoftwarePlanner
                     }
                 }
             }
+        }
+
+        private void userTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            //
+        }
+
+        private void projectTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            if (grid == null || grid.CurrentRow.Cells[0].Value == null) return;
+            this.Hide();
+            ProjectViewForm form = new ProjectViewForm(grid.CurrentRow.Cells[0].Value.ToString().Trim());
+            form.ShowDialog();
+            this.Close();         
+        }
+
+        private void HomeForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            OnClosing();
         }
     }
 }

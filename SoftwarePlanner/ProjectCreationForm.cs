@@ -204,5 +204,10 @@ namespace SoftwarePlanner
                 }
             }
         }
+
+        private void ProjectCreationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

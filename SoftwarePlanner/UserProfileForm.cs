@@ -200,6 +200,11 @@ namespace SoftwarePlanner
             this.Close();
         }
 
+        private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         // Update fields if user exists or create user if visitor
         private void saveButton_Click(object sender, EventArgs e)
         {

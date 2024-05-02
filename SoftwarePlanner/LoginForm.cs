@@ -38,12 +38,10 @@ namespace SoftwarePlanner
                             getRole();
                             login();
                             //HomeForm home = new HomeForm();
-                            //home.Show();
-                            
+                            //home.Show();                          
                             UserProfileForm userProfile = new UserProfileForm();
                             userProfile.Show();
-                            
-
+                            this.Hide();
                         }
                         else MessageBox.Show("Λανθασμένο όνομα χρήστη ή κωδικός.");
                     }
@@ -77,9 +75,10 @@ namespace SoftwarePlanner
 
         private void registerLink_Click(object sender, EventArgs e)
         {
+            this.Opacity = 0;
+            this.ShowInTaskbar = false;
             UserProfileForm userProfile = new UserProfileForm();
             userProfile.ShowDialog();
-            this.Close();
         }
     }
 }
