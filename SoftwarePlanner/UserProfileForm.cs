@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -15,7 +16,11 @@ namespace SoftwarePlanner
         string selectedImagePath = "";
         DateTime dateOfBirth;
         int[] skillArray = new int[8];
-  
+        int email_visibility_flag, username_visibility_flag, name_visibility_flag, surname_visibility_flag,
+            gender_visibility_flag, description_visibility_flag, link_visibility_flag, date_of_birth_visibility_flag,
+            skills_visibility_flag, cv_visibility_flag, portfolio_visibility_flag;
+
+
         public UserProfileForm()
         {
             InitializeComponent();
@@ -23,29 +28,42 @@ namespace SoftwarePlanner
 
         }
 
-        // Show data if user exists in the db
         private void UserProfileForm_Load(object sender, EventArgs e)
         {
-            if (Role.isClient)
+            if (UserSearch.isSearchedUser == true && UserSearchedRole.isDeveloper == true)
             {
-                fillMajorFields();
-                fillClientFields();
-                
+                fillMajorFields(UserSearch.id);
+                fillDeveloperFields(UserSearch.id);
+                // check visibility
             }
-            else if (Role.isDeveloper)
+            else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient == true)
             {
-                fillMajorFields();
-                fillDeveloperFields();
+                fillMajorFields(UserSearch.id);
+                fillClientFields(UserSearch.id);
+                // check visibility
+            }
+            else if (UserSearch.isSearchedUser == false && Role.isClient) 
+            {
+                fillMajorFields(User.id);
+                fillClientFields(User.id);
+
+            }
+            else if (UserSearch.isSearchedUser == false &&  Role.isDeveloper)
+            {
+                fillMajorFields(User.id);
+                fillDeveloperFields(User.id);
             }
         }
+        
 
-        private void fillMajorFields()
+
+        private void fillMajorFields(int id)
         {
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(RETURN_USER_VARIABLES, connection))
             {
                 connection.Open();
-                command.Parameters.AddWithValue("@id", User.id);
+                command.Parameters.AddWithValue("@id", id);
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -100,13 +118,13 @@ namespace SoftwarePlanner
             }
         }
 
-        private void fillClientFields()
+        private void fillClientFields(int id)
         {
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(RETURN_CLIENT_VARIABLES, connection))
             {
                 connection.Open();
-                command.Parameters.AddWithValue("@id", User.id);
+                command.Parameters.AddWithValue("@id", id);
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -144,7 +162,7 @@ namespace SoftwarePlanner
             }
         }
 
-        private void fillDeveloperFields()
+        private void fillDeveloperFields(int id)
         {
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand skillsCommand = new SQLiteCommand(RETURN_SKILLS, connection))
@@ -152,9 +170,9 @@ namespace SoftwarePlanner
             using (SQLiteCommand portfolioCommand = new SQLiteCommand(RETURN_PORTFOLIO_VARIABLES, connection))
             {
                 connection.Open();
-                skillsCommand.Parameters.AddWithValue("@id", User.id);
+                skillsCommand.Parameters.AddWithValue("@id", id);
                 //cvCommand.Parameters.AddWithValue("@id", User.id);
-                portfolioCommand.Parameters.AddWithValue("@id", User.id);
+                portfolioCommand.Parameters.AddWithValue("@id", id);
                 using (SQLiteDataReader reader = skillsCommand.ExecuteReader())
                 {
                     if (reader.Read())
@@ -191,6 +209,7 @@ namespace SoftwarePlanner
 
         private void αποσύνδεσηToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            UserSearch.isSearchedUser = false;
             Role.isVisitor = true;
             Role.isClient = false;
             Role.isDeveloper = false;
@@ -203,6 +222,11 @@ namespace SoftwarePlanner
         private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void UserProfileForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UserSearch.isSearchedUser = false;
         }
 
         // Update fields if user exists or create user if visitor
@@ -444,9 +468,10 @@ namespace SoftwarePlanner
 
         private void αρχικήToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            UserSearch.isSearchedUser = false;
             HomeForm homeForm = new HomeForm();
             homeForm.ShowDialog();
+            this.Hide();
             this.Close();
         }
 
@@ -520,7 +545,7 @@ namespace SoftwarePlanner
         private void initialState()
         {
             getRole();
-            if (Role.isDeveloper == true)
+            if (UserSearch.isSearchedUser == false && Role.isDeveloper == true)           
             {
                 textBox9.Visible = false;
                 textBox10.Visible = false;
@@ -539,7 +564,26 @@ namespace SoftwarePlanner
                 skillsBox.Visible = true;
                 skillsListBox.Visible = true;
             }
-            else if (Role.isClient == true)
+            else if (UserSearch.isSearchedUser == true && UserSearchedRole.isDeveloper)
+            {
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = true;
+                textBox12.Visible = true;
+                textBox13.Visible = true;
+                textBox18.Visible = false;
+                developerVisibilityFields.Visible = true;
+                roleComboBox.Enabled = false;
+                roleComboBox.Text = "Developer";
+                αποσύνδεσηToolStripMenuItem.Visible = true;
+                datePicker.Visible = false;
+                descriptionBox.Visible = false;
+                linkBox.Visible = false;
+                dataGridView.Visible = true;
+                skillsBox.Visible = true;
+                skillsListBox.Visible = true;
+            }
+            else if (UserSearch.isSearchedUser == false && Role.isClient == true)
             {
                 textBox9.Visible = true;
                 textBox10.Visible = true;
@@ -558,6 +602,25 @@ namespace SoftwarePlanner
                 skillsBox.Visible= false;
                 skillsListBox.Visible = false;
             }
+            else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient)
+            {
+                textBox9.Visible = true;
+                textBox10.Visible = true;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox13.Visible = false;
+                textBox18.Visible = true;
+                clientVisibilityFields.Visible = true;
+                roleComboBox.Enabled = false;
+                roleComboBox.Text = "Πελάτης";
+                αποσύνδεσηToolStripMenuItem.Visible = true;
+                datePicker.Visible = true;
+                descriptionBox.Visible = true;
+                linkBox.Visible = true;
+                dataGridView.Visible = false;
+                skillsBox.Visible = false;
+                skillsListBox.Visible = false;
+            }
             else
             {
                 roleComboBox.Enabled = true;
@@ -571,5 +634,6 @@ namespace SoftwarePlanner
                 textBox17.Visible = false;
             }
         }
+
     }
 }

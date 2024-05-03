@@ -46,3 +46,4 @@ C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\Soft
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\bin\Debug\System.Data.SQLite.xml
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.csproj.CopyComplete
 C:\Users\mantr\Desktop\Programming\c_sharp\ASSIGNMENTS\S_T\software_planner\SoftwarePlanner\obj\Debug\SoftwarePlanner.ProjectViewForm.resources
+C:\Users\dr_gi\Documents\texnologia-logismikou\SoftwarePlanner\obj\Debug\SoftwarePlanner.ProjectViewForm.resources

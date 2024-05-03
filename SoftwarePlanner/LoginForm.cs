@@ -13,6 +13,7 @@ namespace SoftwarePlanner
         public LoginForm()
         {
             InitializeComponent();
+            UserSearch.isSearchedUser = false;
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

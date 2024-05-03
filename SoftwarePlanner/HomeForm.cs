@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using static SoftwarePlanner.AppConstants;
 using static SoftwarePlanner.SQLConstants;
@@ -15,6 +16,7 @@ namespace SoftwarePlanner
             userFilter.Items.Add(UserFilterOption.DEVELOPER);
             userFilter.Items.Add(UserFilterOption.CLIENT);
             userFilter.SelectedItem = UserFilterOption.DEVELOPER;
+            UserSearch.isSearchedUser = false;
         }
 
         private void advancedSearchCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -150,8 +152,77 @@ namespace SoftwarePlanner
 
         private void userTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-            //
+            // string userText = userTable.Rows[0].Cells[0].Value?.ToString();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow clickedRow = userTable.Rows[e.RowIndex];
+                DataGridViewCell clickedCell = clickedRow.Cells[e.ColumnIndex];
+
+                string username = clickedCell.Value?.ToString();
+                if (!string.IsNullOrEmpty(username))
+                {
+                    using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                    using (SQLiteCommand command = new SQLiteCommand(RETURN_SEARCH_USER_VARIABLES, connection))
+                    {
+                        try
+                        {
+                            connection.Open();
+                            command.Parameters.AddWithValue("@username", username);
+                            command.Parameters.AddWithValue("@id", UserSearch.id);
+                            command.Parameters.AddWithValue("@username", UserSearch.role);
+
+                            using (SQLiteDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    UserSearch.id = reader.GetInt32(reader.GetOrdinal("id"));
+                                    UserSearch.role = reader.GetString(reader.GetOrdinal("role"));
+
+                                    if (UserSearch.id != User.id && UserSearch.role.Equals("Developer"))
+                                    {
+                                        UserSearch.isSearchedUser = true;
+                                        UserSearchedRole.isDeveloper = true;
+                                        UserSearchedRole.isClient = false;
+                                        UserProfileForm userProfile = new UserProfileForm();
+                                        userProfile.Show();
+                                        this.Hide();
+                                    }
+                                    else if (UserSearch.id != User.id && UserSearch.role.Equals("Πελάτης"))
+                                    {
+                                        UserSearch.isSearchedUser = true;
+                                        UserSearchedRole.isDeveloper = false;
+                                        UserSearchedRole.isClient = true;
+                                        UserProfileForm userProfile = new UserProfileForm();
+                                        userProfile.Show();
+                                        this.Hide();
+
+                                    }
+                                    else if (UserSearch.id == User.id)
+                                    {
+                                        UserSearch.isSearchedUser = false;
+                                        UserProfileForm userProfile = new UserProfileForm();
+                                        userProfile.Show();
+                                        this.Hide();
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("User not found.");
+                                }
+
+                            }
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("An error occurred " + ex.Message);
+                        }
+                    }
+                }
+            }
         }
+
+    
 
         private void projectTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {

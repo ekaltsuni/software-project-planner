@@ -1,4 +1,5 @@
 ﻿using System.Data.SQLite;
+using System.Diagnostics.Eventing.Reader;
 using static SoftwarePlanner.SQLConstants;
 
 namespace SoftwarePlanner
@@ -14,6 +15,29 @@ namespace SoftwarePlanner
             {
                 get { return _id; }
                 set { _id = value; }
+            }
+
+            private static string _role;
+            public static string role
+            {
+                get { return _role; }
+                set { _role = value; }
+            }
+        }
+
+        public static class UserSearch
+        {
+            private static int _id;
+            public static int id
+            {
+                get { return _id; }
+                set { _id = value; }
+            }
+            private static bool _isSearchedUser;
+            public static bool isSearchedUser
+            {
+                get { return _isSearchedUser; }
+                set { _isSearchedUser = value; }
             }
 
             private static string _role;
@@ -48,6 +72,22 @@ namespace SoftwarePlanner
             }
         }
 
+        public static class UserSearchedRole
+        {
+            private static bool _isDeveloper;
+            public static bool isDeveloper
+            {
+                get { return _isDeveloper; }
+                set { _isDeveloper = value; }
+            }
+
+            private static bool _isClient;
+            public static bool isClient
+            {
+                get { return _isClient; }
+                set { _isClient = value; }
+            }
+        }
 
         public enum UserFilterOption
         {
@@ -72,5 +112,4 @@ namespace SoftwarePlanner
             }
         }
     }
-    
 }
