@@ -3,6 +3,7 @@ using System.Data.SQLite;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using static SoftwarePlanner.AppConstants;
 using static SoftwarePlanner.SQLConstants;
@@ -16,9 +17,8 @@ namespace SoftwarePlanner
         string selectedImagePath = "";
         DateTime dateOfBirth;
         int[] skillArray = new int[8];
-        int email_visibility_flag, username_visibility_flag, name_visibility_flag, surname_visibility_flag,
-            gender_visibility_flag, description_visibility_flag, link_visibility_flag, date_of_birth_visibility_flag,
-            skills_visibility_flag, cv_visibility_flag, portfolio_visibility_flag;
+        int[] devVisibilityArray = new int[8];
+        int[] clientVisibilityArray = new int[8];
 
 
         public UserProfileForm()
@@ -42,19 +42,19 @@ namespace SoftwarePlanner
                 fillClientFields(UserSearch.id);
                 // check visibility
             }
-            else if (UserSearch.isSearchedUser == false && Role.isClient) 
+            else if (UserSearch.isSearchedUser == false && Role.isClient)
             {
                 fillMajorFields(User.id);
                 fillClientFields(User.id);
 
             }
-            else if (UserSearch.isSearchedUser == false &&  Role.isDeveloper)
+            else if (UserSearch.isSearchedUser == false && Role.isDeveloper)
             {
                 fillMajorFields(User.id);
                 fillDeveloperFields(User.id);
             }
         }
-        
+
 
 
         private void fillMajorFields(int id)
@@ -72,7 +72,7 @@ namespace SoftwarePlanner
                         username = reader.GetString(reader.GetOrdinal("username"));
                         password = reader.GetString(reader.GetOrdinal("password"));
 
-                        if (!reader.IsDBNull(reader.GetOrdinal("name"))) 
+                        if (!reader.IsDBNull(reader.GetOrdinal("name")))
                         {
                             name = reader.GetString(reader.GetOrdinal("name"));
                             nameBox.Text = name;
@@ -122,9 +122,12 @@ namespace SoftwarePlanner
         {
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(RETURN_CLIENT_VARIABLES, connection))
+            using (SQLiteCommand visibilityCommand = new SQLiteCommand(RETURN_CLIENT_VISIBILITY, connection))
+
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@id", id);
+                visibilityCommand.Parameters.AddWithValue("@id", id);
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -159,6 +162,16 @@ namespace SoftwarePlanner
                         }
                     }
                 }
+                using (SQLiteDataReader reader = visibilityCommand.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        for (int i = 0; i < clientVisibilityArray.Length; i++) clientVisibilityArray[i] = reader.GetInt32(i + 1);
+
+                    }
+                    for (int i = 0; i < clientVisibilityArray.Length; i++) clientVisibilityFields.SetItemChecked(i, clientVisibilityArray[i] == 1);
+                }
+
             }
         }
 
@@ -168,11 +181,14 @@ namespace SoftwarePlanner
             using (SQLiteCommand skillsCommand = new SQLiteCommand(RETURN_SKILLS, connection))
             //using (SQLiteCommand cvCommand = new SQLiteCommand(AppConstants.RETURN_CV, connection))
             using (SQLiteCommand portfolioCommand = new SQLiteCommand(RETURN_PORTFOLIO_VARIABLES, connection))
+            using (SQLiteCommand visibilityCommand = new SQLiteCommand(RETURN_DEVELOPER_VISIBILITY, connection))
+
             {
                 connection.Open();
                 skillsCommand.Parameters.AddWithValue("@id", id);
                 //cvCommand.Parameters.AddWithValue("@id", User.id);
                 portfolioCommand.Parameters.AddWithValue("@id", id);
+                visibilityCommand.Parameters.AddWithValue("@id", id);
                 using (SQLiteDataReader reader = skillsCommand.ExecuteReader())
                 {
                     if (reader.Read())
@@ -184,6 +200,16 @@ namespace SoftwarePlanner
                     }
                     for (int i = 0; i < skillArray.Length; i++) skillsListBox.SetItemChecked(i, skillArray[i] == 1);
                     skillsBox.Text = other;
+                }
+                
+                using (SQLiteDataReader reader = visibilityCommand.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        for (int i = 0; i < devVisibilityArray.Length; i++) devVisibilityArray[i] = reader.GetInt32(i + 1);
+
+                    }
+                    for (int i = 0; i < devVisibilityArray.Length; i++) developerVisibilityFields.SetItemChecked(i, devVisibilityArray[i] == 1);
                 }
                 /*using (SQLiteDataReader reader = cvCommand.ExecuteReader())
                 {
@@ -241,7 +267,7 @@ namespace SoftwarePlanner
                     !string.IsNullOrEmpty(emailBox.Text) &&
                     roleComboBox.SelectedIndex == 0)
                 {
-                    createClient();   
+                    createClient();
                 }
                 else if (!string.IsNullOrEmpty(usernameBox.Text) &&
                     !string.IsNullOrEmpty(passwordBox.Text) &&
@@ -262,6 +288,7 @@ namespace SoftwarePlanner
                 using (SQLiteCommand command = new SQLiteCommand(UPDATE_USER_VARIABLES, connection))
                 using (SQLiteCommand skillsCommand = new SQLiteCommand(UPDATE_SKILLS, connection))
                 using (SQLiteCommand portfolioUpdateEntryCommand = new SQLiteCommand(UPDATE_PORTFOLIO_ENTRY, connection))
+                using (SQLiteCommand visibilityCommand = new SQLiteCommand(UPDATE_DEVELOPER_VISIBILITY, connection))
 
 
                 {
@@ -294,6 +321,18 @@ namespace SoftwarePlanner
                     portfolioUpdateEntryCommand.Parameters.AddWithValue("@portfolio_link", portfolio_link);
                     portfolioUpdateEntryCommand.ExecuteNonQuery();
 
+                    // Update visibility fields
+                    visibilityCommand.Parameters.AddWithValue("@id", User.id);
+                    visibilityCommand.Parameters.AddWithValue("@email_visibility_flag", returnDevVisibilityFlag(0));
+                    visibilityCommand.Parameters.AddWithValue("@username_visibility_flag", returnDevVisibilityFlag(1));
+                    visibilityCommand.Parameters.AddWithValue("@name_visibility_flag", returnDevVisibilityFlag(2));
+                    visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnDevVisibilityFlag(3));
+                    visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnDevVisibilityFlag(4));
+                    visibilityCommand.Parameters.AddWithValue("@skills_visibility_flag", returnDevVisibilityFlag(5));
+                    visibilityCommand.Parameters.AddWithValue("@cv_visibility_flag", returnDevVisibilityFlag(6));
+                    visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(7));
+                    visibilityCommand.ExecuteNonQuery();
+
                     MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                 }
             }
@@ -307,7 +346,7 @@ namespace SoftwarePlanner
                 using (SQLiteCommand userIDcommand = new SQLiteCommand(RETURN_LATEST_USER_ID, connection))
                 using (SQLiteCommand skillsCommand = new SQLiteCommand(CREATE_SKILLS, connection))
                 using (SQLiteCommand portfolioCommand = new SQLiteCommand(CREATE_PORTFOLIO_VARIABLES, connection))
-
+                using (SQLiteCommand visibilityCommand = new SQLiteCommand(CREATE_DEVELOPER_VISIBILITY, connection))
                 {
                     connection.Open();
                     command.Parameters.AddWithValue("@username", usernameBox.Text);
@@ -342,6 +381,18 @@ namespace SoftwarePlanner
                             portfolioCommand.Parameters.AddWithValue("@portfolio_link", portfolio_link);
                             portfolioCommand.ExecuteNonQuery();
 
+                            // Update visibility settings
+                            visibilityCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
+                            visibilityCommand.Parameters.AddWithValue("@email_visibility_flag", returnDevVisibilityFlag(0));
+                            visibilityCommand.Parameters.AddWithValue("@username_visibility_flag", returnDevVisibilityFlag(1));
+                            visibilityCommand.Parameters.AddWithValue("@name_visibility_flag", returnDevVisibilityFlag(2));
+                            visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnDevVisibilityFlag(3));
+                            visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnDevVisibilityFlag(4));
+                            visibilityCommand.Parameters.AddWithValue("@skills_visibility_flag", returnDevVisibilityFlag(5));
+                            visibilityCommand.Parameters.AddWithValue("@cv_visibility_flag", returnDevVisibilityFlag(6));
+                            visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(7));
+                            visibilityCommand.ExecuteNonQuery();
+
                             MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
                         }
                     }
@@ -355,6 +406,9 @@ namespace SoftwarePlanner
             {
                 using (SQLiteCommand command = new SQLiteCommand(UPDATE_USER_VARIABLES, connection))
                 using (SQLiteCommand clientOnlyCommand = new SQLiteCommand(UPDATE_CLIENT_VARIABLES, connection))
+                using (SQLiteCommand userIDcommand = new SQLiteCommand(RETURN_LATEST_USER_ID, connection))
+                using (SQLiteCommand visibilityCommand = new SQLiteCommand(UPDATE_CLIENT_VISIBILITY, connection))
+
                 {
                     connection.Open();
                     // Update user related fields
@@ -373,6 +427,24 @@ namespace SoftwarePlanner
                     clientOnlyCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
                     clientOnlyCommand.ExecuteNonQuery();
 
+                    // Update visibility setting
+                    using (SQLiteDataReader reader = userIDcommand.ExecuteReader())
+                    {
+                        if (reader.Read()) 
+                        {
+                            visibilityCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
+                            visibilityCommand.Parameters.AddWithValue("@email_visibility_flag", returnClientVisibilityFlag(0));
+                            visibilityCommand.Parameters.AddWithValue("@username_visibility_flag", returnClientVisibilityFlag(1));
+                            visibilityCommand.Parameters.AddWithValue("@name_visibility_flag", returnClientVisibilityFlag(2));
+                            visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnClientVisibilityFlag(3));
+                            visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnClientVisibilityFlag(4));
+                            visibilityCommand.Parameters.AddWithValue("@date_of_birth_visibility_flag", returnClientVisibilityFlag(5));
+                            visibilityCommand.Parameters.AddWithValue("@description_visibility_flag", returnClientVisibilityFlag(6));
+                            visibilityCommand.Parameters.AddWithValue("@link_visibility_flag", returnClientVisibilityFlag(7));
+                            visibilityCommand.ExecuteNonQuery();
+                        }
+                    }                   
+
                     MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                 }
             }
@@ -385,6 +457,7 @@ namespace SoftwarePlanner
                 using (SQLiteCommand command = new SQLiteCommand(CREATE_USER_VARIABLES, connection))
                 using (SQLiteCommand userIDcommand = new SQLiteCommand(RETURN_LATEST_USER_ID, connection))
                 using (SQLiteCommand clientCommand = new SQLiteCommand(CREATE_CLIENT_VARIABLES, connection))
+                using (SQLiteCommand visibilityCommand = new SQLiteCommand(CREATE_CLIENT_VISIBILITY, connection))
 
                 {
                     connection.Open();
@@ -405,19 +478,42 @@ namespace SoftwarePlanner
                             clientCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
                             clientCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
                             clientCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
-                            clientCommand.Parameters.AddWithValue("@link", linkBox.Text);                         
+                            clientCommand.Parameters.AddWithValue("@link", linkBox.Text);
                             command.ExecuteNonQuery();
                             clientCommand.ExecuteNonQuery();
-                            MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");                                                      
+
+                            // Update visibility
+                            visibilityCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
+                            visibilityCommand.Parameters.AddWithValue("@email_visibility_flag", returnClientVisibilityFlag(0));
+                            visibilityCommand.Parameters.AddWithValue("@username_visibility_flag", returnClientVisibilityFlag(1));
+                            visibilityCommand.Parameters.AddWithValue("@name_visibility_flag", returnClientVisibilityFlag(2));
+                            visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnClientVisibilityFlag(3));
+                            visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnClientVisibilityFlag(4));
+                            visibilityCommand.Parameters.AddWithValue("@date_of_birth_visibility_flag", returnClientVisibilityFlag(5));
+                            visibilityCommand.Parameters.AddWithValue("@description_visibility_flag", returnClientVisibilityFlag(6));
+                            visibilityCommand.Parameters.AddWithValue("@link_visibility_flag", returnClientVisibilityFlag(7));
+                            visibilityCommand.ExecuteNonQuery();
+
+                            MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
                         }
                     }
                 }
             }
         }
 
-        private int returnFlag (int index) 
+        private int returnFlag(int index)
         {
-             return skillsListBox.GetItemChecked(index) ? 1 : 0;   
+            return skillsListBox.GetItemChecked(index) ? 1 : 0;
+        }
+
+        private int returnDevVisibilityFlag(int index)
+        {
+            return developerVisibilityFields.GetItemChecked(index) ? 1 : 0;
+        }
+
+        private int returnClientVisibilityFlag(int index) 
+        {
+            return clientVisibilityFields.GetItemChecked(index)? 1 : 0;
         }
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -434,7 +530,6 @@ namespace SoftwarePlanner
                 descriptionBox.Visible = true;
                 linkBox.Visible = true;
                 dataGridView.Visible = false;
-                textBox17.Visible = true;
                 clientVisibilityFields.Visible = true;
                 developerVisibilityFields.Visible = false;
                 skillsBox.Visible = false;
@@ -453,17 +548,11 @@ namespace SoftwarePlanner
                 descriptionBox.Visible = false;
                 linkBox.Visible = false;
                 dataGridView.Visible = true;
-                textBox17.Visible = true;
                 clientVisibilityFields.Visible = false;
                 developerVisibilityFields.Visible = true;
                 skillsBox.Visible = true;
                 skillsListBox.Visible = true;
             }
-        }
-
-        private void setVibilityFields ()
-        {
-            // to-do
         }
 
         private void αρχικήToolStripMenuItem_Click(object sender, EventArgs e)
@@ -631,7 +720,6 @@ namespace SoftwarePlanner
                 projectsRichTextBox.Visible = false;
                 ratingsTextBox.Visible = false;
                 ratingsRichTextBox.Visible = false;
-                textBox17.Visible = false;
             }
         }
 

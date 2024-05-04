@@ -49,10 +49,7 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
-            this.coreVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
             this.clientVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.developerVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.newsFeedTextBox = new System.Windows.Forms.TextBox();
@@ -312,7 +309,7 @@
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(760, 432);
+            this.textBox11.Location = new System.Drawing.Point(686, 391);
             this.textBox11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
@@ -327,7 +324,7 @@
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox12.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(760, 608);
+            this.textBox12.Location = new System.Drawing.Point(686, 567);
             this.textBox12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
@@ -342,7 +339,7 @@
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox13.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(760, 726);
+            this.textBox13.Location = new System.Drawing.Point(686, 685);
             this.textBox13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
@@ -358,7 +355,7 @@
             this.textBox14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox14.ForeColor = System.Drawing.Color.White;
-            this.textBox14.Location = new System.Drawing.Point(760, 71);
+            this.textBox14.Location = new System.Drawing.Point(686, 100);
             this.textBox14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
@@ -366,26 +363,13 @@
             this.textBox14.TabIndex = 22;
             this.textBox14.Text = " Ρυθμίσεις Προφίλ";
             // 
-            // coreVisibilityFields
-            // 
-            this.coreVisibilityFields.FormattingEnabled = true;
-            this.coreVisibilityFields.Items.AddRange(new object[] {
-            "Username",
-            "Password",
-            "Email"});
-            this.coreVisibilityFields.Location = new System.Drawing.Point(760, 186);
-            this.coreVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.coreVisibilityFields.Name = "coreVisibilityFields";
-            this.coreVisibilityFields.Size = new System.Drawing.Size(367, 73);
-            this.coreVisibilityFields.TabIndex = 23;
-            // 
             // textBox15
             // 
             this.textBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox15.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(760, 109);
+            this.textBox15.Location = new System.Drawing.Point(686, 138);
             this.textBox15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
@@ -393,49 +377,22 @@
             this.textBox15.TabIndex = 24;
             this.textBox15.Text = "Επιλέξτε Ορατά Πεδία";
             // 
-            // textBox16
-            // 
-            this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox16.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(760, 155);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(300, 21);
-            this.textBox16.TabIndex = 25;
-            this.textBox16.Text = "Υποχρεωτικά Πεδία";
-            // 
-            // textBox17
-            // 
-            this.textBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox17.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox17.Location = new System.Drawing.Point(760, 280);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.ReadOnly = true;
-            this.textBox17.Size = new System.Drawing.Size(300, 21);
-            this.textBox17.TabIndex = 26;
-            this.textBox17.Text = "Προαιρετικά Πεδία";
-            // 
             // clientVisibilityFields
             // 
             this.clientVisibilityFields.FormattingEnabled = true;
             this.clientVisibilityFields.Items.AddRange(new object[] {
+            "Username",
+            "Email",
             "Όνομα",
             "Επίθετο",
             "Φύλο",
-            "Εικόνα Προφίλ",
             "Ημερομηνία Γέννησης",
             "Περιγραφή",
             "Σύνδεσμος"});
-            this.clientVisibilityFields.Location = new System.Drawing.Point(760, 312);
+            this.clientVisibilityFields.Location = new System.Drawing.Point(686, 190);
             this.clientVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clientVisibilityFields.Name = "clientVisibilityFields";
-            this.clientVisibilityFields.Size = new System.Drawing.Size(367, 73);
+            this.clientVisibilityFields.Size = new System.Drawing.Size(367, 119);
             this.clientVisibilityFields.TabIndex = 27;
             this.clientVisibilityFields.Visible = false;
             // 
@@ -443,17 +400,18 @@
             // 
             this.developerVisibilityFields.FormattingEnabled = true;
             this.developerVisibilityFields.Items.AddRange(new object[] {
+            "Username",
+            "Email",
             "Όνομα",
             "Επίθετο",
             "Φύλο",
-            "Εικόνα Προφίλ",
             "Δεξιότητες",
             "Βιογραφικό",
             "Portfolio"});
-            this.developerVisibilityFields.Location = new System.Drawing.Point(760, 318);
+            this.developerVisibilityFields.Location = new System.Drawing.Point(686, 180);
             this.developerVisibilityFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.developerVisibilityFields.Name = "developerVisibilityFields";
-            this.developerVisibilityFields.Size = new System.Drawing.Size(367, 73);
+            this.developerVisibilityFields.Size = new System.Drawing.Size(367, 119);
             this.developerVisibilityFields.TabIndex = 28;
             this.developerVisibilityFields.Visible = false;
             // 
@@ -604,7 +562,7 @@
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(760, 425);
+            this.textBox9.Location = new System.Drawing.Point(686, 384);
             this.textBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
@@ -619,7 +577,7 @@
             this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox18.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox18.Location = new System.Drawing.Point(760, 615);
+            this.textBox18.Location = new System.Drawing.Point(686, 574);
             this.textBox18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
@@ -680,7 +638,7 @@
             // linkBox
             // 
             this.linkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkBox.Location = new System.Drawing.Point(760, 648);
+            this.linkBox.Location = new System.Drawing.Point(686, 607);
             this.linkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.linkBox.MaxLength = 40;
             this.linkBox.Name = "linkBox";
@@ -691,7 +649,7 @@
             // descriptionBox
             // 
             this.descriptionBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.descriptionBox.Location = new System.Drawing.Point(760, 463);
+            this.descriptionBox.Location = new System.Drawing.Point(686, 422);
             this.descriptionBox.MaxLength = 300;
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(440, 46);
@@ -702,7 +660,7 @@
             // skillsBox
             // 
             this.skillsBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.skillsBox.Location = new System.Drawing.Point(928, 463);
+            this.skillsBox.Location = new System.Drawing.Point(854, 422);
             this.skillsBox.MaxLength = 300;
             this.skillsBox.Name = "skillsBox";
             this.skillsBox.Size = new System.Drawing.Size(274, 96);
@@ -723,7 +681,7 @@
             "PHP",
             "Python",
             "Ruby"});
-            this.skillsListBox.Location = new System.Drawing.Point(760, 463);
+            this.skillsListBox.Location = new System.Drawing.Point(686, 422);
             this.skillsListBox.Name = "skillsListBox";
             this.skillsListBox.Size = new System.Drawing.Size(162, 96);
             this.skillsListBox.TabIndex = 45;
@@ -736,7 +694,7 @@
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Title,
             this.Column1});
-            this.dataGridView.Location = new System.Drawing.Point(760, 757);
+            this.dataGridView.Location = new System.Drawing.Point(686, 716);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
@@ -787,10 +745,7 @@
             this.Controls.Add(this.newsFeedTextBox);
             this.Controls.Add(this.developerVisibilityFields);
             this.Controls.Add(this.clientVisibilityFields);
-            this.Controls.Add(this.textBox17);
-            this.Controls.Add(this.textBox16);
             this.Controls.Add(this.textBox15);
-            this.Controls.Add(this.coreVisibilityFields);
             this.Controls.Add(this.textBox14);
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.textBox12);
@@ -850,10 +805,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.CheckedListBox coreVisibilityFields;
         private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.CheckedListBox clientVisibilityFields;
         private System.Windows.Forms.CheckedListBox developerVisibilityFields;
         private System.Windows.Forms.TextBox newsFeedTextBox;
