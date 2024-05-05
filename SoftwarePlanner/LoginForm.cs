@@ -37,9 +37,7 @@ namespace SoftwarePlanner
                         {
                             User.id = reader.GetInt32(reader.GetOrdinal("id"));
                             getRole();
-                            login();
-                            //HomeForm home = new HomeForm();
-                            //home.Show();                          
+                            login();                    
                             UserProfileForm userProfile = new UserProfileForm();
                             userProfile.Show();
                             this.Hide();

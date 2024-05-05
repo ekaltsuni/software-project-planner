@@ -10,7 +10,7 @@ using static SoftwarePlanner.SQLConstants;
 
 namespace SoftwarePlanner
 {
-    public partial class UserProfileForm : Form
+    public partial class UserProfileForm : ParentForm
     {
         string email, username, password, role, name, surname, gender, skills, cv, portfolio, date_of_birth,
                 link, description, other, portfolio_title, portfolio_link;
@@ -232,19 +232,6 @@ namespace SoftwarePlanner
                 }
 
             }
-        }
-
-
-        private void αποσύνδεσηToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UserSearch.isSearchedUser = false;
-            Role.isVisitor = true;
-            Role.isClient = false;
-            Role.isDeveloper = false;
-            this.Hide();
-            HomeForm home = new HomeForm();
-            home.ShowDialog();
-            this.Close();
         }
 
         private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -560,15 +547,6 @@ namespace SoftwarePlanner
             }
         }
 
-        private void αρχικήToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            UserSearch.isSearchedUser = false;
-            HomeForm homeForm = new HomeForm();
-            homeForm.ShowDialog();
-            this.Close();
-        }
-
         private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -650,7 +628,6 @@ namespace SoftwarePlanner
                 developerVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Developer";
-                αποσύνδεσηToolStripMenuItem.Visible = true;
                 datePicker.Visible = false;
                 descriptionBox.Visible = false;
                 linkBox.Visible = false;
@@ -669,7 +646,6 @@ namespace SoftwarePlanner
                 developerVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Developer";
-                αποσύνδεσηToolStripMenuItem.Visible = true;
                 datePicker.Visible = false;
                 descriptionBox.Visible = false;
                 linkBox.Visible = false;
@@ -688,7 +664,6 @@ namespace SoftwarePlanner
                 clientVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Πελάτης";
-                αποσύνδεσηToolStripMenuItem.Visible = true;
                 datePicker.Visible = true;
                 descriptionBox.Visible = true;
                 linkBox.Visible = true;
@@ -707,7 +682,6 @@ namespace SoftwarePlanner
                 clientVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Πελάτης";
-                αποσύνδεσηToolStripMenuItem.Visible = true;
                 datePicker.Visible = true;
                 descriptionBox.Visible = true;
                 linkBox.Visible = true;
@@ -718,7 +692,6 @@ namespace SoftwarePlanner
             else
             {
                 roleComboBox.Enabled = true;
-                αποσύνδεσηToolStripMenuItem.Visible = false;
                 newsFeedTextBox.Visible = false;
                 newsFeedRichTextBox.Visible = false;
                 projectsTextBox.Visible = false;

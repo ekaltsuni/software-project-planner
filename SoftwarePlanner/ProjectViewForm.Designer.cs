@@ -47,9 +47,9 @@
             this.projectInfoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Info,
             this.Value});
-            this.projectInfoGrid.Location = new System.Drawing.Point(60, 76);
+            this.projectInfoGrid.Location = new System.Drawing.Point(60, 109);
             this.projectInfoGrid.Name = "projectInfoGrid";
-            this.projectInfoGrid.Size = new System.Drawing.Size(429, 593);
+            this.projectInfoGrid.Size = new System.Drawing.Size(429, 560);
             this.projectInfoGrid.TabIndex = 0;
             // 
             // Info
@@ -67,7 +67,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(748, 76);
+            this.dataGridView2.Location = new System.Drawing.Point(748, 109);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(495, 240);
             this.dataGridView2.TabIndex = 1;
@@ -100,7 +100,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label1.Location = new System.Drawing.Point(573, 9);
+            this.label1.Location = new System.Drawing.Point(573, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 25);
             this.label1.TabIndex = 5;

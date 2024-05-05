@@ -7,22 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SoftwarePlanner.AppConstants;
 
 namespace SoftwarePlanner
 {
     public partial class ParentForm : Form
     {
-        // TODO: change when actual login is implemented
-        bool isLoggedIn = true;
-        bool isClient = true;
-
         public ParentForm()
         {
             InitializeComponent();
-            if (isLoggedIn)
+            if (User.id >= 0)
             {
                 loginButton.Text = "Αποσύνδεση";
-                if (isClient)
+                loginButton.Click += new EventHandler(LogoutClickHandler);
+                ToolStripMenuItem profileButton = new ToolStripMenuItem();
+                profileButton.Name = "viewProfile";
+                profileButton.Text = "Προφίλ";
+                profileButton.Click += new EventHandler(CreateProjectClickHandler);
+                toolStripMenu.Items.Add(profileButton);
+                if (User.role.Equals("Πελάτης"))
                 {
                     ToolStripMenuItem createProjectButton = new ToolStripMenuItem();
                     createProjectButton.Name = "createProject";
@@ -37,10 +40,30 @@ namespace SoftwarePlanner
             }
         }
 
+        private void LogoutClickHandler(object sender, EventArgs e)
+        {
+            UserSearch.isSearchedUser = false;
+            Role.isVisitor = true;
+            Role.isClient = false;
+            Role.isDeveloper = false;
+            this.Hide();
+            HomeForm home = new HomeForm();
+            home.ShowDialog();
+            this.Close();
+        }
+
+
+
         private void CreateProjectClickHandler(object sender, EventArgs e) 
         {
             ProjectCreationForm projectCreationForm = new ProjectCreationForm();
             projectCreationForm.Show();
+        }
+
+        private void ViewProfileClickHandler(object sender, EventArgs e)
+        {
+            UserProfileForm userProfileForm = new UserProfileForm();
+            userProfileForm.Show();
         }
 
         protected void OnClosing(System.Windows.Forms.FormClosingEventArgs e)
@@ -49,6 +72,15 @@ namespace SoftwarePlanner
             {
                 Application.Exit();
             }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserSearch.isSearchedUser = false;
+            HomeForm homeForm = new HomeForm();
+            homeForm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -11,7 +11,7 @@ using static SoftwarePlanner.Translations;
 
 namespace SoftwarePlanner
 {
-    public partial class ProjectCreationForm : Form
+    public partial class ProjectCreationForm : ParentForm
     {
         public ProjectCreationForm()
         {

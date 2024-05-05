@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.loginButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,7 +39,8 @@
             // 
             this.toolStripMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(231)))), ((int)(((byte)(246)))));
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginButton});
+            this.loginButton,
+            this.toolStripButton1});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -54,6 +56,15 @@
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(56, 22);
             this.loginButton.Text = "Σύνδεση";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(58, 22);
+            this.toolStripButton1.Text = "Κεντρική";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // ParentForm
             // 
@@ -74,6 +85,7 @@
 
         private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripButton loginButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 
