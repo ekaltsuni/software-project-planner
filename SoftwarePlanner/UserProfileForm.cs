@@ -166,7 +166,7 @@ namespace SoftwarePlanner
                 {
                     if (reader.Read())
                     {
-                        for (int i = 0; i < clientVisibilityArray.Length; i++) clientVisibilityArray[i] = reader.GetInt32(i + 1);
+                        for (int i = 0; i < clientVisibilityArray.Length; i++) clientVisibilityArray[i] = reader.GetInt32(i);
 
                     }
                     for (int i = 0; i < clientVisibilityArray.Length; i++) clientVisibilityFields.SetItemChecked(i, clientVisibilityArray[i] == 1);
@@ -206,8 +206,10 @@ namespace SoftwarePlanner
                 {
                     if (reader.Read())
                     {
-                        for (int i = 0; i < devVisibilityArray.Length; i++) devVisibilityArray[i] = reader.GetInt32(i + 1);
-
+                        for (int i = 0; i < devVisibilityArray.Length; i++)
+                        {
+                            devVisibilityArray[i] = reader.GetInt32(i);
+                        }
                     }
                     for (int i = 0; i < devVisibilityArray.Length; i++) developerVisibilityFields.SetItemChecked(i, devVisibilityArray[i] == 1);
                 }
@@ -246,8 +248,11 @@ namespace SoftwarePlanner
         }
 
         private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
+        {            
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
 
         private void UserProfileForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -557,10 +562,10 @@ namespace SoftwarePlanner
 
         private void αρχικήToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             UserSearch.isSearchedUser = false;
             HomeForm homeForm = new HomeForm();
             homeForm.ShowDialog();
-            this.Hide();
             this.Close();
         }
 

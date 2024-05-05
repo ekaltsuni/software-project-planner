@@ -13,7 +13,7 @@ using static SoftwarePlanner.SQLConstants;
 
 namespace SoftwarePlanner
 {
-    public partial class ProjectViewForm : Form
+    public partial class ProjectViewForm : ParentForm
     {
         public ProjectViewForm(String projectName)
         {
@@ -36,6 +36,11 @@ namespace SoftwarePlanner
                     }
                 }
             }
+        }
+
+        private void ProjectViewForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            OnClosing(e);
         }
     }
 }

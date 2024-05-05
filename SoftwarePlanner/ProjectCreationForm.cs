@@ -206,8 +206,12 @@ namespace SoftwarePlanner
         }
 
         private void ProjectCreationForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
+        { 
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                MessageBox.Show("Closed by User", "UserClosing");
+                Application.Exit();
+            }
         }
     }
 }

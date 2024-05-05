@@ -43,9 +43,12 @@ namespace SoftwarePlanner
             projectCreationForm.Show();
         }
 
-        protected void OnClosing()
+        protected void OnClosing(System.Windows.Forms.FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
     }
 }

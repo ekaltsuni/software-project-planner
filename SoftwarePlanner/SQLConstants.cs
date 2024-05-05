@@ -50,7 +50,7 @@ namespace SoftwarePlanner
                                                                     gender_visibility_flag, skills_visibility_flag, 
                                                                     cv_visibility_flag, portfolio_visibility_flag, 
                                                                     id) VALUES
-                                                                    (@email_visibility_flag, @ username_visibility_flag,
+                                                                    (@email_visibility_flag, @username_visibility_flag,
                                                                      @name_visibility_flag, @surname_visibility_flag,
                                                                      @gender_visibility_flag, @skills_visibility_flag, 
                                                                     @cv_visibility_flag, @portfolio_visibility_flag,

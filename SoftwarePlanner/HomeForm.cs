@@ -152,13 +152,12 @@ namespace SoftwarePlanner
 
         private void userTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
+            DataGridView grid = sender as DataGridView;
             // string userText = userTable.Rows[0].Cells[0].Value?.ToString();
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DataGridViewRow clickedRow = userTable.Rows[e.RowIndex];
-                DataGridViewCell clickedCell = clickedRow.Cells[e.ColumnIndex];
-
-                string username = clickedCell.Value?.ToString();
+                if (grid == null || grid.CurrentRow.Cells[0].Value == null) return;
+                string username = grid.CurrentRow.Cells[0].Value.ToString().Trim();
                 if (!string.IsNullOrEmpty(username))
                 {
                     using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
@@ -167,42 +166,41 @@ namespace SoftwarePlanner
                         try
                         {
                             connection.Open();
-                            command.Parameters.AddWithValue("@username", username);
-                            command.Parameters.AddWithValue("@id", UserSearch.id);
-                            command.Parameters.AddWithValue("@username", UserSearch.role);
-
+                            command.Parameters.AddWithValue("@username", username);                          
                             using (SQLiteDataReader reader = command.ExecuteReader())
                             {
                                 if (reader.Read())
                                 {
                                     UserSearch.id = reader.GetInt32(reader.GetOrdinal("id"));
                                     UserSearch.role = reader.GetString(reader.GetOrdinal("role"));
-
                                     if (UserSearch.id != User.id && UserSearch.role.Equals("Developer"))
                                     {
                                         UserSearch.isSearchedUser = true;
                                         UserSearchedRole.isDeveloper = true;
                                         UserSearchedRole.isClient = false;
-                                        UserProfileForm userProfile = new UserProfileForm();
-                                        userProfile.Show();
                                         this.Hide();
+                                        UserProfileForm userProfile = new UserProfileForm();
+                                        userProfile.ShowDialog();
+                                        this.Close();
                                     }
                                     else if (UserSearch.id != User.id && UserSearch.role.Equals("Πελάτης"))
                                     {
                                         UserSearch.isSearchedUser = true;
                                         UserSearchedRole.isDeveloper = false;
                                         UserSearchedRole.isClient = true;
-                                        UserProfileForm userProfile = new UserProfileForm();
-                                        userProfile.Show();
                                         this.Hide();
+                                        UserProfileForm userProfile = new UserProfileForm();
+                                        userProfile.ShowDialog();
+                                        this.Close();
 
                                     }
                                     else if (UserSearch.id == User.id)
                                     {
                                         UserSearch.isSearchedUser = false;
-                                        UserProfileForm userProfile = new UserProfileForm();
-                                        userProfile.Show();
                                         this.Hide();
+                                        UserProfileForm userProfile = new UserProfileForm();
+                                        userProfile.ShowDialog();
+                                        this.Close();
                                     }
                                 }
                                 else
@@ -236,7 +234,7 @@ namespace SoftwarePlanner
 
         private void HomeForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            OnClosing();
+            OnClosing(e);
         }
     }
 }
