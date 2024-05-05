@@ -20,11 +20,13 @@ namespace SoftwarePlanner
             {
                 loginButton.Text = "Αποσύνδεση";
                 loginButton.Click += new EventHandler(LogoutClickHandler);
+
                 ToolStripMenuItem profileButton = new ToolStripMenuItem();
                 profileButton.Name = "viewProfile";
                 profileButton.Text = "Προφίλ";
-                profileButton.Click += new EventHandler(CreateProjectClickHandler);
+                profileButton.Click += new EventHandler(ViewProfileClickHandler);
                 toolStripMenu.Items.Add(profileButton);
+                
                 if (User.role.Equals("Πελάτης"))
                 {
                     ToolStripMenuItem createProjectButton = new ToolStripMenuItem();
@@ -56,14 +58,18 @@ namespace SoftwarePlanner
 
         private void CreateProjectClickHandler(object sender, EventArgs e) 
         {
+            this.Hide();
             ProjectCreationForm projectCreationForm = new ProjectCreationForm();
-            projectCreationForm.Show();
+            projectCreationForm.ShowDialog();
+            this.Close();
         }
 
         private void ViewProfileClickHandler(object sender, EventArgs e)
         {
+            this.Hide();
             UserProfileForm userProfileForm = new UserProfileForm();
-            userProfileForm.Show();
+            userProfileForm.ShowDialog();
+            this.Close();
         }
 
         protected void OnClosing(System.Windows.Forms.FormClosingEventArgs e)

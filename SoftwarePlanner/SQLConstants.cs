@@ -27,6 +27,7 @@ namespace SoftwarePlanner
                                                                 (@username, @password, @email, @role, @name, @surname, @gender, @signing_date)";
         public static readonly string RETURN_LATEST_USER_ID = "SELECT id FROM User ORDER BY id DESC LIMIT 1";
         public static readonly string RETURN_LATEST_PROJECT_ID = "SELECT project_id FROM Project ORDER BY project_id DESC LIMIT 1";
+
         // DEVELOPER
         public static readonly string RETURN_PORTFOLIO_VARIABLES = "SELECT portfolio_title, portfolio_link FROM Portfolio" +
           " WHERE id = @id";
@@ -150,9 +151,7 @@ namespace SoftwarePlanner
 
         // PROJECT
         public static readonly string RETURN_PROJECT_FULL = @"SELECT * 
-                                                              FROM Project p
-                                                              INNER JOIN ProjectPayment pp
-                                                                ON p.payment = pp.id  
+                                                              FROM Project p                                                             
                                                               WHERE p.title = @title";
         public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT title
                                                                 FROM Project p
@@ -177,6 +176,7 @@ namespace SoftwarePlanner
                                                                     (@project_id, @technology_id)";
         // DROPDOWNS
         public static readonly string RETURN_PROJECT_TYPES = "SELECT type FROM ProjectType";
+        public static readonly string RETURN_PROJECT_TYPE_NAME = "SELECT type FROM ProjectType WHERE id = @id";
         public static readonly string RETURN_ID_BY_PROJECT_TYPE = "SELECT id FROM ProjectType WHERE type = @type";
         public static readonly string RETURN_PROJECT_CATEGORIES = "SELECT name FROM ProjectCategory";
         public static readonly string RETURN_ID_BY_PROJECT_CATEGORY = "SELECT id FROM ProjectCategory WHERE name = @name";

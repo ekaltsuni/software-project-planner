@@ -234,14 +234,6 @@ namespace SoftwarePlanner
             }
         }
 
-        private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
-        {            
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Application.Exit();
-            }
-        }
-
         private void UserProfileForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             UserSearch.isSearchedUser = false;
@@ -701,5 +693,9 @@ namespace SoftwarePlanner
             }
         }
 
+        private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            OnClosing(e);
+        }
     }
 }
