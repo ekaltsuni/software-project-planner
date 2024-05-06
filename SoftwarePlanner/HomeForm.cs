@@ -10,6 +10,9 @@ namespace SoftwarePlanner
 {
     public partial class HomeForm : ParentForm
     {
+        private int userPage = 0;
+        private int projectPage = 0;
+
         public HomeForm()
         {
             InitializeComponent();
@@ -17,6 +20,11 @@ namespace SoftwarePlanner
             userFilter.Items.Add(UserFilterOption.CLIENT);
             userFilter.SelectedItem = UserFilterOption.DEVELOPER;
             UserSearch.isSearchedUser = false;
+
+            nextUserPage.Enabled = false;
+            previousUserPage.Enabled = false;
+            nextProjectPage.Enabled = false;
+            previousProjectPage.Enabled = false;
         }
 
         private void advancedSearchCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -78,11 +86,13 @@ namespace SoftwarePlanner
                         command.Parameters.AddWithValue("@maxRating", maxRating.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxRating.Text));
                         command.Parameters.AddWithValue("@minCount", minCount.Text.Trim().Equals("") ? -1 : int.Parse(minCount.Text));
                         command.Parameters.AddWithValue("@maxCount", maxCount.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxCount.Text));
+                        command.Parameters.AddWithValue("@page", 0);
                     }
                     else 
                     {
                         command = new SQLiteCommand(RETURN_DEV_SIMPLE, connection);
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@page", 0);
                     }
                 }
                 else
@@ -93,11 +103,13 @@ namespace SoftwarePlanner
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
                         command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
                         command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@page", 0);
                     }
                     else
                     {
                         command = new SQLiteCommand(RETURN_CLIENT_SIMPLE, connection);
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@page", 0);
                     }
                 }
                 using (command)
@@ -105,10 +117,14 @@ namespace SoftwarePlanner
                     connection.Open();
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
+                        int count = 0;
                         while (reader.Read())
                         {
+                            count++;
                             userTable.Rows.Add(reader.GetString(reader.GetOrdinal("username")));
                         }
+                        if (count > 10) nextUserPage.Enabled = true;
+                        else nextUserPage.Enabled = false;                        
                     }
                 }
             }
@@ -234,6 +250,89 @@ namespace SoftwarePlanner
         private void HomeForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             OnClosing(e);
+        }
+
+        private void nextUserPage_Click(object sender, EventArgs e)
+        {
+            userPage++;
+            previousUserPage.Enabled = true;
+            generalUserSearch();            
+        }
+
+        private void previousUserPage_Click(object sender, EventArgs e)
+        {
+            userPage--;
+            generalUserSearch();
+            if (userPage == 0)
+            {
+                previousUserPage.Enabled = false;
+            }
+        }
+
+        private void generalUserSearch()
+        {
+            userTable.Rows.Clear();
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                // TODO: sanitize inputs
+                SQLiteCommand command = new SQLiteCommand();
+                if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER))
+                {
+                    if (advancedUserSearchCheckBox.Checked)
+                    {
+                        command = new SQLiteCommand(RETURN_DEV_ADVANCED, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@minRating", minRating.Text.Trim().Equals("") ? -1 : int.Parse(minRating.Text));
+                        command.Parameters.AddWithValue("@maxRating", maxRating.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxRating.Text));
+                        command.Parameters.AddWithValue("@minCount", minCount.Text.Trim().Equals("") ? -1 : int.Parse(minCount.Text));
+                        command.Parameters.AddWithValue("@maxCount", maxCount.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxCount.Text));
+                        command.Parameters.AddWithValue("@page", userPage * 10);
+                    }
+                    else
+                    {
+                        command = new SQLiteCommand(RETURN_DEV_SIMPLE, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@page", userPage * 10);
+                    }
+                }
+                else
+                {
+                    if (advancedUserSearchCheckBox.Checked)
+                    {
+                        command = new SQLiteCommand(RETURN_CLIENT_ADVANCED, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@page", userPage * 10);
+                    }
+                    else
+                    {
+                        command = new SQLiteCommand(RETURN_CLIENT_SIMPLE, connection);
+                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
+                        command.Parameters.AddWithValue("@page", userPage * 10);
+                    }
+                }
+                using (command)
+                {
+                    connection.Open();
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        int count = 0;
+                        while (reader.Read())
+                        {
+                            count++;
+                            if (count < 10)
+                            {
+                                userTable.Rows.Add(reader.GetString(reader.GetOrdinal("username")));
+                            }                                                         
+                        }
+                        if (count > 10) nextUserPage.Enabled = true;
+                        else nextUserPage.Enabled = false;
+                    }
+                }
+            }
         }
     }
 }

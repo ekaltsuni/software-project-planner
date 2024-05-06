@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.searchUserBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,6 +70,10 @@
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectTable = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nextUserPage = new System.Windows.Forms.Button();
+            this.previousUserPage = new System.Windows.Forms.Button();
+            this.previousProjectPage = new System.Windows.Forms.Button();
+            this.nextProjectPage = new System.Windows.Forms.Button();
             this.devAdvancedSearchGroup.SuspendLayout();
             this.advancedSearchGroup.SuspendLayout();
             this.advancedProjectSearchGroup.SuspendLayout();
@@ -390,16 +398,32 @@
             this.userTable.AllowUserToResizeRows = false;
             this.userTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.userTable.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.userTable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.userTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.userTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.userTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.userTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Username});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.userTable.DefaultCellStyle = dataGridViewCellStyle2;
             this.userTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.userTable.Location = new System.Drawing.Point(84, 222);
             this.userTable.Name = "userTable";
             this.userTable.ReadOnly = true;
             this.userTable.RowHeadersWidth = 62;
-            this.userTable.Size = new System.Drawing.Size(520, 433);
+            this.userTable.Size = new System.Drawing.Size(520, 357);
             this.userTable.TabIndex = 31;
             this.userTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userTable_CellClick);
             // 
@@ -414,20 +438,36 @@
             // 
             this.projectTable.AllowUserToAddRows = false;
             this.projectTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.projectTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.projectTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.projectTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.projectTable.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.projectTable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.projectTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.projectTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.projectTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.projectTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.projectTable.DefaultCellStyle = dataGridViewCellStyle5;
             this.projectTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.projectTable.Location = new System.Drawing.Point(660, 222);
             this.projectTable.Name = "projectTable";
             this.projectTable.ReadOnly = true;
             this.projectTable.RowHeadersWidth = 62;
-            this.projectTable.Size = new System.Drawing.Size(520, 433);
+            this.projectTable.Size = new System.Drawing.Size(520, 357);
             this.projectTable.TabIndex = 32;
             this.projectTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectTable_CellClick);
             // 
@@ -438,11 +478,57 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // nextUserPage
+            // 
+            this.nextUserPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.nextUserPage.Location = new System.Drawing.Point(529, 595);
+            this.nextUserPage.Name = "nextUserPage";
+            this.nextUserPage.Size = new System.Drawing.Size(75, 23);
+            this.nextUserPage.TabIndex = 33;
+            this.nextUserPage.Text = ">";
+            this.nextUserPage.UseVisualStyleBackColor = true;
+            this.nextUserPage.Click += new System.EventHandler(this.nextUserPage_Click);
+            // 
+            // previousUserPage
+            // 
+            this.previousUserPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.previousUserPage.Location = new System.Drawing.Point(448, 595);
+            this.previousUserPage.Name = "previousUserPage";
+            this.previousUserPage.Size = new System.Drawing.Size(75, 23);
+            this.previousUserPage.TabIndex = 34;
+            this.previousUserPage.Text = "<";
+            this.previousUserPage.UseVisualStyleBackColor = true;
+            this.previousUserPage.Click += new System.EventHandler(this.previousUserPage_Click);
+            // 
+            // previousProjectPage
+            // 
+            this.previousProjectPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.previousProjectPage.Location = new System.Drawing.Point(1031, 595);
+            this.previousProjectPage.Name = "previousProjectPage";
+            this.previousProjectPage.Size = new System.Drawing.Size(75, 23);
+            this.previousProjectPage.TabIndex = 36;
+            this.previousProjectPage.Text = "<";
+            this.previousProjectPage.UseVisualStyleBackColor = true;
+            // 
+            // nextProjectPage
+            // 
+            this.nextProjectPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.nextProjectPage.Location = new System.Drawing.Point(1112, 595);
+            this.nextProjectPage.Name = "nextProjectPage";
+            this.nextProjectPage.Size = new System.Drawing.Size(75, 23);
+            this.nextProjectPage.TabIndex = 35;
+            this.nextProjectPage.Text = ">";
+            this.nextProjectPage.UseVisualStyleBackColor = true;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.previousProjectPage);
+            this.Controls.Add(this.nextProjectPage);
+            this.Controls.Add(this.previousUserPage);
+            this.Controls.Add(this.nextUserPage);
             this.Controls.Add(this.projectTable);
             this.Controls.Add(this.userTable);
             this.Controls.Add(this.advancedProjectSearchGroup);
@@ -477,6 +563,10 @@
             this.Controls.SetChildIndex(this.advancedProjectSearchGroup, 0);
             this.Controls.SetChildIndex(this.userTable, 0);
             this.Controls.SetChildIndex(this.projectTable, 0);
+            this.Controls.SetChildIndex(this.nextUserPage, 0);
+            this.Controls.SetChildIndex(this.previousUserPage, 0);
+            this.Controls.SetChildIndex(this.nextProjectPage, 0);
+            this.Controls.SetChildIndex(this.previousProjectPage, 0);
             this.devAdvancedSearchGroup.ResumeLayout(false);
             this.devAdvancedSearchGroup.PerformLayout();
             this.advancedSearchGroup.ResumeLayout(false);
@@ -528,5 +618,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridView projectTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button nextUserPage;
+        private System.Windows.Forms.Button previousUserPage;
+        private System.Windows.Forms.Button previousProjectPage;
+        private System.Windows.Forms.Button nextProjectPage;
     }
 }

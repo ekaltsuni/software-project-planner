@@ -34,6 +34,7 @@ namespace SoftwarePlanner
                 {
                     connection.Open();
                     command.Parameters.AddWithValue("username", "%" + username + "%");
+                    command.Parameters.AddWithValue("@page", 0);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

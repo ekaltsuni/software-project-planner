@@ -84,7 +84,8 @@ namespace SoftwarePlanner
                                                             FROM User u
                                                             INNER JOIN Developer d
                                                                 ON u.id = d.id
-                                                            WHERE u.username LIKE @username";
+                                                            WHERE u.username LIKE @username
+                                                            LIMIT 11 OFFSET @page";
         public static readonly string RETURN_DEV_ADVANCED = @"SELECT u.username
                                                               FROM User u
                                                               INNER JOIN Developer d
@@ -92,7 +93,8 @@ namespace SoftwarePlanner
                                                               WHERE u.username LIKE @username
                                                                 AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter
                                                                 AND d.rating BETWEEN @minRating AND @maxRating
-                                                                AND d.project_count BETWEEN @minCount AND @maxCount";
+                                                                AND d.project_count BETWEEN @minCount AND @maxCount
+                                                              LIMIT 11 OFFSET @page";
         // CLIENT
         public static readonly string CREATE_CLIENT_VARIABLES = @"INSERT OR IGNORE INTO Client 
                                                                   (id, date_of_birth, description, link)
@@ -108,14 +110,16 @@ namespace SoftwarePlanner
                                                                 INNER JOIN Client c
                                                                     ON u.id = c.id
                                                                 WHERE u.username LIKE @username
-                                                                    OR c.description LIKE @username";
+                                                                    OR c.description LIKE @username
+                                                                LIMIT 11 OFFSET @page";
         public static readonly string RETURN_CLIENT_ADVANCED = @"SELECT u.username
                                                                 FROM User u
                                                                 INNER JOIN Client c
                                                                     ON u.id = c.id
                                                                 WHERE (u.username LIKE @username
                                                                     OR c.description LIKE @username)
-                                                                    AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter";
+                                                                    AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter
+                                                                LIMIT 11 OFFSET @page";
 
         public static readonly string CREATE_CLIENT_VISIBILITY = @"INSERT OR IGNORE INTO Client
                                                                     (email_visibility_flag, username_visibility_flag, 
