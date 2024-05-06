@@ -16,6 +16,8 @@ namespace SoftwarePlanner
 {
     public partial class ProjectViewForm : ParentForm
     {
+        private int projectId;
+
         public ProjectViewForm(string projectName)
         {
             InitializeComponent();
@@ -38,6 +40,8 @@ namespace SoftwarePlanner
                 {
                     if (reader.Read())
                     {
+                        projectId = reader.GetInt32(reader.GetOrdinal("project_id"));
+
                         projectInfoGrid.Rows.Add("Τίτλος", reader.GetString(reader.GetOrdinal("title")));
                         projectInfoGrid.Rows.Add("Περιγραφή", reader.GetString(reader.GetOrdinal("description")));
                         projectInfoGrid.Rows.Add("Μέγιστη Τιμή", reader.GetInt64(reader.GetOrdinal("max_price")));
@@ -114,7 +118,7 @@ namespace SoftwarePlanner
 
         private void recommendationButton_Click(object sender, EventArgs e)
         {
-            ProjectRecommendationModal modal = new ProjectRecommendationModal();
+            ProjectRecommendationModal modal = new ProjectRecommendationModal(projectId);
             modal.ShowDialog();
         }
     }

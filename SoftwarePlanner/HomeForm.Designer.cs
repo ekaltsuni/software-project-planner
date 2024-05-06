@@ -386,6 +386,8 @@
             // 
             // userTable
             // 
+            this.userTable.AllowUserToAddRows = false;
+            this.userTable.AllowUserToResizeRows = false;
             this.userTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.userTable.BackgroundColor = System.Drawing.SystemColors.Control;
             this.userTable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -410,6 +412,8 @@
             // 
             // projectTable
             // 
+            this.projectTable.AllowUserToAddRows = false;
+            this.projectTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.projectTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.projectTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;

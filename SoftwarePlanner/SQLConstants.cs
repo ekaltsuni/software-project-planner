@@ -11,6 +11,7 @@ namespace SoftwarePlanner
         // GENERAL
         public static readonly string CONNECTION_STRING = "Data source=app-data.db;Version=3";
         public static readonly string RETURN_USER = "SELECT id FROM User WHERE username = @username AND password = @password";
+        public static readonly string RETURN_USER_ID = "SELECT id FROM User WHERE username = @username";
         public static readonly string RETURN_ROLE = "SELECT role FROM User WHERE id = @id";
         public static readonly string RETURN_SEARCH_USER_VARIABLES = "SELECT id, role FROM User WHERE username = @username";
 
@@ -34,7 +35,7 @@ namespace SoftwarePlanner
         public static readonly string CREATE_PORTFOLIO_VARIABLES = "INSERT or IGNORE INTO Portfolio (portfolio_title, portfolio_link, id) " +
             "VALUES (@portfolio_title, @portfolio_link, @id)";
         //public static readonly string CREATE_PORTFOLIO_ENTRY = "INSERT or IGNORE INTO Portfolio (portfolio_title, portfolio_link, id) " +
-    //"VALUES (@portfolio_title, @portfolio_link, @id)";
+        //"VALUES (@portfolio_title, @portfolio_link, @id)";
         public static readonly string UPDATE_PORTFOLIO_ENTRY = "UPDATE Portfolio SET portfolio_link = @portfolio_link WHERE id = @id AND portfolio_title = @portfolio_title";
         public static readonly string RETURN_SKILLS = "SELECT * FROM Skills WHERE id = @id";
         public static readonly string CREATE_SKILLS = @"INSERT OR IGNORE INTO Skills 
@@ -197,6 +198,8 @@ namespace SoftwarePlanner
         public static readonly string UPDATE_TECHNOLOGY = "INSERT OR IGNORE INTO Technology (description) VALUES (@description)";      
         public static readonly string RETURN_ID_BY_TECHNOLOGY = "SELECT id FROM Technology WHERE description = @description";
 
+        // NOTIFICATIONS
+        public static readonly string UPDATE_NOTIFICATIONS = "INSERT INTO UserNotification (user_id, project_id, actor_id) VALUES (@user, @project, @actor)";
 
         // UPDATE FIELDS VISIBILITY TO-DO
     }

@@ -40,6 +40,8 @@
             // 
             // userTable
             // 
+            this.userTable.AllowUserToAddRows = false;
+            this.userTable.AllowUserToResizeRows = false;
             this.userTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.userTable.BackgroundColor = System.Drawing.SystemColors.Control;
             this.userTable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -69,6 +71,7 @@
             this.userTable.RowHeadersWidth = 62;
             this.userTable.Size = new System.Drawing.Size(776, 366);
             this.userTable.TabIndex = 32;
+            this.userTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userTable_CellClick);
             // 
             // Username
             // 

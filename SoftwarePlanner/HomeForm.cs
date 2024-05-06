@@ -153,7 +153,6 @@ namespace SoftwarePlanner
         private void userTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
             DataGridView grid = sender as DataGridView;
-            // string userText = userTable.Rows[0].Cells[0].Value?.ToString();
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 if (grid == null || grid.CurrentRow.Cells[0].Value == null) return;
