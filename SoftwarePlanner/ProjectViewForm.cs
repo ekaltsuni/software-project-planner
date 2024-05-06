@@ -111,5 +111,11 @@ namespace SoftwarePlanner
         {
             OnClosing(e);
         }
+
+        private void recommendationButton_Click(object sender, EventArgs e)
+        {
+            ProjectRecommendationModal modal = new ProjectRecommendationModal();
+            modal.ShowDialog();
+        }
     }
 }

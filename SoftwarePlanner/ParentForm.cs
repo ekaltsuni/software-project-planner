@@ -27,7 +27,7 @@ namespace SoftwarePlanner
                 profileButton.Click += new EventHandler(ViewProfileClickHandler);
                 toolStripMenu.Items.Add(profileButton);
                 
-                if (User.role.Equals("Πελάτης"))
+                if (User.role != null && User.role.Equals("Πελάτης"))
                 {
                     ToolStripMenuItem createProjectButton = new ToolStripMenuItem();
                     createProjectButton.Name = "createProject";

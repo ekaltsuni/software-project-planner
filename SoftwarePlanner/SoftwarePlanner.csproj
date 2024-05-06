@@ -91,6 +91,12 @@
     <Compile Include="ProjectCreationForm.Designer.cs">
       <DependentUpon>ProjectCreationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectRecommendationModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectRecommendationModal.Designer.cs">
+      <DependentUpon>ProjectRecommendationModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectCreationForm.resx">
       <DependentUpon>ProjectCreationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectRecommendationModal.resx">
+      <DependentUpon>ProjectRecommendationModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectViewForm.resx">
       <DependentUpon>ProjectViewForm.cs</DependentUpon>
