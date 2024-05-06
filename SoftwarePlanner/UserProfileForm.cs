@@ -34,13 +34,15 @@ namespace SoftwarePlanner
             {
                 fillMajorFields(UserSearch.id);
                 fillDeveloperFields(UserSearch.id);
-                // check visibility
+                checkDevVisibility();
+                hidePrivateFields();
             }
             else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient == true)
             {
                 fillMajorFields(UserSearch.id);
                 fillClientFields(UserSearch.id);
-                // check visibility
+                checkClientVisibility();
+                hidePrivateFields();
             }
             else if (UserSearch.isSearchedUser == false && Role.isClient)
             {
@@ -691,6 +693,241 @@ namespace SoftwarePlanner
                 ratingsTextBox.Visible = false;
                 ratingsRichTextBox.Visible = false;
             }
+        }
+
+        private void checkDevVisibility()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(RETURN_DEVELOPER_VISIBILITY, connection))
+                {
+                    command.Parameters.AddWithValue("@id", UserSearch.id);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int emailVisibilityFlag = Convert.ToInt32(reader["email_visibility_flag"]);
+                            int usernameVisibilityFlag = Convert.ToInt32(reader["username_visibility_flag"]);
+                            int nameVisibilityFlag = Convert.ToInt32(reader["name_visibility_flag"]);
+                            int surnameVisibilityFlag = Convert.ToInt32(reader["surname_visibility_flag"]);
+                            int genderVisibilityFlag = Convert.ToInt32(reader["gender_visibility_flag"]);
+                            int skillsVisibilityFlag = Convert.ToInt32(reader["skills_visibility_flag"]);
+                            int cvVisibilityFlag = Convert.ToInt32(reader["cv_visibility_flag"]);
+                            int portfolioVisibilityFlag = Convert.ToInt32(reader["portfolio_visibility_flag"]);
+
+                            if (emailVisibilityFlag == 1)
+                            {
+                                textBox3.Visible = true;
+                                emailBox.Visible = true;
+                                emailBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox3.Visible = false;
+                                emailBox.Visible = false;
+                                emailBox.ReadOnly = true;
+                            }
+
+                            if (nameVisibilityFlag == 1)
+                            {
+                                textBox2.Visible = true;
+                                nameBox.Visible = true;
+                                nameBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox2.Visible = false;
+                                nameBox.Visible = false;
+                                nameBox.ReadOnly = true;
+                            }
+                            if (surnameVisibilityFlag == 1)
+                            {
+                                textBox8.Visible = true;
+                                surnameBox.Visible = true;
+                                surnameBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox8.Visible = false;
+                                surnameBox.Visible = false;
+                                surnameBox.ReadOnly = true;
+                            }
+                            if (genderVisibilityFlag == 1)
+                            {
+                                roleComboBox.Visible = true;
+                                roleComboBox.Enabled = false;
+                            }
+                            else
+                            {
+                                roleComboBox.Visible = false;
+                            }
+                            if (skillsVisibilityFlag == 1)
+                            {
+                                textBox11.Visible = true;
+                                skillsListBox.Visible = true;
+                                skillsListBox.Enabled = false;
+                                skillsBox.Visible = true; 
+                                skillsBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox11.Visible = false;
+                                skillsListBox.Visible = false;
+                                skillsBox.Visible = false;
+                                skillsBox.ReadOnly = true;
+                                skillsListBox.Enabled = false;
+                            }
+                            if (portfolioVisibilityFlag == 1)
+                            {
+                                textBox13.Visible = true;
+                                dataGridView.Visible = true;
+                                dataGridView.Enabled = false;
+                            }
+                            else
+                            {
+                                textBox13.Visible = false;
+                                dataGridView.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("An error occurred.");
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void checkClientVisibility()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(RETURN_CLIENT_VISIBILITY, connection))
+                {
+                    command.Parameters.AddWithValue("@id", UserSearch.id);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int emailVisibilityFlag = Convert.ToInt32(reader["email_visibility_flag"]);
+                            int usernameVisibilityFlag = Convert.ToInt32(reader["username_visibility_flag"]);
+                            int nameVisibilityFlag = Convert.ToInt32(reader["name_visibility_flag"]);
+                            int surnameVisibilityFlag = Convert.ToInt32(reader["surname_visibility_flag"]);
+                            int genderVisibilityFlag = Convert.ToInt32(reader["gender_visibility_flag"]);
+                            int dateVisibilityFlag = Convert.ToInt32(reader["date_of_birth_visibility_flag"]);
+                            int descriptionVisibilityFlag = Convert.ToInt32(reader["description_visibility_flag"]);
+                            int linkVisibilityFlag = Convert.ToInt32(reader["link_visibility_flag"]);
+
+                            if (emailVisibilityFlag == 1)
+                            {
+                                textBox3.Visible = true;
+                                emailBox.Visible = true;
+                                emailBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox3.Visible = false;
+                                emailBox.Visible = false;
+                                emailBox.ReadOnly = true;
+                            }
+
+                            if (nameVisibilityFlag == 1)
+                            {
+                                textBox2.Visible = true;
+                                nameBox.Visible = true;
+                                nameBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox2.Visible = false;
+                                nameBox.Visible = false;
+                                nameBox.ReadOnly = true;
+                            }
+                            if (surnameVisibilityFlag == 1)
+                            {
+                                textBox8.Visible = true;
+                                surnameBox.Visible = true;
+                                surnameBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox8.Visible = false;
+                                surnameBox.Visible = false;
+                                surnameBox.ReadOnly = true;
+                            }
+                            if (genderVisibilityFlag == 1)
+                            {
+                                roleComboBox.Visible = true;
+                                roleComboBox.Enabled = false;
+                            }
+                            else
+                            {
+                                roleComboBox.Visible = false;
+                            }
+                            if (dateVisibilityFlag == 1)
+                            {
+                                textBox10.Visible = true;
+                                datePicker.Visible = true;
+                                datePicker.Enabled = false;
+                            }
+                            else
+                            {
+                                textBox10.Visible = false;
+                                datePicker.Visible = false;
+                            }
+                            if (descriptionVisibilityFlag == 1)
+                            {
+                                textBox9.Visible = true;
+                                descriptionBox.Visible = true;
+                                descriptionBox.ReadOnly = true;
+                            }
+                            else
+                            {
+                                textBox9.Visible = false;
+                                descriptionBox.Visible = false;
+                            }
+                            if (linkVisibilityFlag == 1)
+                            {
+                                textBox18.Visible = true;
+                                linkBox.Visible = true;
+                                linkBox.Enabled = false;
+                            }
+                            else
+                            {
+                                textBox18.Visible = false;
+                                linkBox.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("An error occurred.");
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void hidePrivateFields()
+        {
+            usernameBox.ReadOnly = true;
+            textBox21.Visible = false;
+            textBox4.Visible = false;
+            textBox6.Visible = false;
+            passwordBox.Visible = false;
+            textBox7.Visible = false;
+            textBox5.Visible = false;
+            saveButton.Visible = false;
+            textBox14.Visible = false;
+            textBox15.Visible = false;
+            developerVisibilityFields.Visible = false;
+            clientVisibilityFields.Visible = false;
+            textBox1.Visible = false;
+            profileImagePictureBox.Enabled = false;
+
         }
 
         private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
