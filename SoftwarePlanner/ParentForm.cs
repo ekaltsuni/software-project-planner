@@ -16,7 +16,7 @@ namespace SoftwarePlanner
         public ParentForm()
         {
             InitializeComponent();
-/*            if (User.id >= 0)
+            if (User.id >= 0)
             {
                 loginButton.Text = "Αποσύνδεση";
                 loginButton.Click += new EventHandler(LogoutClickHandler);
@@ -39,7 +39,7 @@ namespace SoftwarePlanner
             else
             {
                 loginButton.Text = "Σύνδεση";
-            }*/
+            }
         }
 
         private void LogoutClickHandler(object sender, EventArgs e)

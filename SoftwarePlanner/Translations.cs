@@ -11,10 +11,10 @@ namespace SoftwarePlanner
         public static Dictionary<string, string> TranslationDictionary = new Dictionary<string, string> {
             { "PUBLIC", "Δημόσιο" },
             { "PRIVATE", "Ιδιωτικό"},
-            { "WEBSITE", "Website"},
+            { "WEBSITE", "Ιστοσελίδα"},
             { "ESHOP", "Ηλεκτρονικό κατάστημα"},
             { "PORTAL", "Portal"},
-            { "CORPORATE", "Εταιρικό"},
+            { "CORPORATE", "Εταιρική"},
             { "WORDPRESS", "Σελίδα Wordpress"},
             { "HOURLY", "Με την ώρα"},
             { "TOTAL", "Σύνολο"},
@@ -24,7 +24,7 @@ namespace SoftwarePlanner
             { "ONE_TO_THREE_MONTHS", "1 - 3 μήνες"},
             { "THREE_TO_SIX_MONTHS", "3 - 6 μήνες"},
             { "SIX_TO_TWELVE_MONTHS", "6 - 12 μήνες"},
-            { "OVER_YEAR", "1+ χρόνος"}
+            { "OVER_YEAR", "Πάνω από 1 χρόνος"}
         };
 
         public static string getTranslationKey(string translation)

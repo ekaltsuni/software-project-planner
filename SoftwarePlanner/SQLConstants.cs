@@ -179,10 +179,14 @@ namespace SoftwarePlanner
         public static readonly string RETURN_PROJECT_TYPE_NAME = "SELECT type FROM ProjectType WHERE id = @id";
         public static readonly string RETURN_ID_BY_PROJECT_TYPE = "SELECT id FROM ProjectType WHERE type = @type";
         public static readonly string RETURN_PROJECT_CATEGORIES = "SELECT name FROM ProjectCategory";
+        public static readonly string RETURN_PROJECT_CATEGORY_NAME = "SELECT name FROM ProjectCategory WHERE id = @id";
+        public static readonly string RETURN_PROJECT_SUBCATEGORY_NAME = "SELECT name FROM ProjectSubCategory WHERE id = @id";
         public static readonly string RETURN_ID_BY_PROJECT_CATEGORY = "SELECT id FROM ProjectCategory WHERE name = @name";
         public static readonly string RETURN_PROJECT_PAYMENT = "SELECT type FROM ProjectPayment";
+        public static readonly string RETURN_PROJECT_PAYMENT_NAME = "SELECT type FROM ProjectPayment WHERE id = @id";
         public static readonly string RETURN_ID_BY_PROJECT_PAYMENT = "SELECT id FROM ProjectPayment WHERE type = @type";
         public static readonly string RETURN_PROJECT_DURATION = "SELECT type FROM ProjectDuration";
+        public static readonly string RETURN_PROJECT_DURATION_NAME = "SELECT type FROM ProjectDuration WHERE id = @id";
         public static readonly string RETURN_ID_BY_PROJECT_DURATION = "SELECT id FROM ProjectDuration WHERE type = @type";
         public static readonly string RETURN_SUBCATEGORIES_BY_CATEGORY = @"SELECT ps.name
                                                                            FROM ProjectSubCategory ps
