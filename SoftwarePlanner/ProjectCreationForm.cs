@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using static SoftwarePlanner.AppConstants;
 using static SoftwarePlanner.SQLConstants;
 using static SoftwarePlanner.Translations;
 
@@ -82,7 +83,6 @@ namespace SoftwarePlanner
         private void saveButton_Click(object sender, EventArgs e)
         {
             List<int> technologyIds = updateTechnologiesInDB();
-            // TODO: sanitisation
             int price_visibility = visiblePriceRadioButton.Checked ? 1 : 0;
             int typeId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_TYPE, "@type", projectTypeDropdown.SelectedItem.ToString());
             int categoryId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_CATEGORY, "@name", projectCategoryDropdown.SelectedItem.ToString());
@@ -105,9 +105,22 @@ namespace SoftwarePlanner
                     baseCommand.Parameters.AddWithValue("@category", categoryId);
                     baseCommand.Parameters.AddWithValue("@subcategory", subCategoryId);
                     baseCommand.Parameters.AddWithValue("@payment", paymentId);
-                    baseCommand.Parameters.AddWithValue("@max_price", int.Parse(maxPriceBox.Text));
+                    int maxPrice = -1;
+                    if (int.TryParse(maxPriceBox.Text.Trim(), out maxPrice)) baseCommand.Parameters.AddWithValue("@max_price", maxPrice);
+                    else
+                    {
+                        MessageBox.Show("Invalid price input.");
+                        return;
+                    }
                     baseCommand.Parameters.AddWithValue("@duration", durationId);
-                    baseCommand.Parameters.AddWithValue("@bidding_duration", biddingDurationBox.Text);
+                    int biddingDuration = -1;
+                    if (int.TryParse(biddingDurationBox.Text.Trim(), out biddingDuration)) baseCommand.Parameters.AddWithValue("@bidding_duration", biddingDuration);
+                    else
+                    {
+                        MessageBox.Show("Invalid bidding duration input.");
+                        return;
+                    }
+                    baseCommand.Parameters.AddWithValue("@date", DateTime.Now.ToString(DATE_FORMAT));
                     baseCommand.ExecuteNonQuery();
 
                     int projectId = -1;

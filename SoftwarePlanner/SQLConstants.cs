@@ -163,22 +163,49 @@ namespace SoftwarePlanner
                                                                 WHERE p.title LIKE @title
                                                                     OR p.description LIKE @title
                                                                 LIMIT 11 OFFSET @page";
+        public static readonly string RETURN_PUBLIC_PROJECT_SIMPLE = @"SELECT title
+                                                                      FROM Project p
+                                                                      WHERE (p.title LIKE @title
+                                                                          OR p.description LIKE @title)
+                                                                          AND p.type = 2  
+                                                                      LIMIT 11 OFFSET @page";
         public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT title
                                                                 FROM Project p
                                                                 INNER JOIN ProjectCategory pc
-                                                                    ON pc.project_id = p.id
+                                                                    ON pc.id = p.category
+                                                                INNER JOIN ProjectSubCategory psc
+                                                                    ON psc.id = p.subcategory
                                                                 INNER JOIN ProjectTechnology pt
-                                                                    ON pt.project_id = p.id
+                                                                    ON pt.project_id = p.project_id
+                                                                INNER JOIN Technology t
+                                                                    ON t.id = pt.technology_id
                                                                 WHERE (p.title LIKE @title
                                                                     OR p.description LIKE @title)
-                                                                    AND pc.category LIKE @category AND pc.subcategory LIKE @subcategory
+                                                                    AND pc.name LIKE @category AND psc.name LIKE @subcategory
                                                                     AND p.date >= @dateBefore AND p.date <= @dateAfter
-                                                                    AND pt.category IN @technologies
+                                                                    AND t.description LIKE @technology
                                                                 LIMIT 11 OFFSET @page";
+        public static readonly string RETURN_PUBLIC_PROJECT_ADVANCED = @"SELECT title
+                                                                        FROM Project p
+                                                                        INNER JOIN ProjectCategory pc
+                                                                            ON pc.id = p.category
+                                                                        INNER JOIN ProjectSubCategory psc
+                                                                            ON psc.id = p.subcategory
+                                                                        INNER JOIN ProjectTechnology pt
+                                                                            ON pt.project_id = p.project_id
+                                                                        INNER JOIN Technology t
+                                                                            ON t.id = pt.technology_id
+                                                                        WHERE (p.title LIKE @title
+                                                                            OR p.description LIKE @title)
+                                                                            AND pc.name LIKE @category AND psc.name LIKE @subcategory
+                                                                            AND p.date >= @dateBefore AND p.date <= @dateAfter
+                                                                            AND t.description LIKE @technology
+                                                                            AND p.type = 2
+                                                                        LIMIT 11 OFFSET @page";
         public static readonly string SAVE_PROJECT = 
             @"INSERT INTO Project 
-             (title, description, type, price_visibility, category, subcategory, payment, max_price, duration, bidding_duration) VALUES
-             (@title, @description, @type, @price_visibility, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration)";
+             (title, description, type, price_visibility, category, subcategory, payment, max_price, duration, bidding_duration, date) VALUES
+             (@title, @description, @type, @price_visibility, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration, @date)";
         public static readonly string UPDATE_PROJECT_TECHNOLOGY = @"INSERT INTO ProjectTechnology (project_id, technology_id) VALUES
                                                                     (@project_id, @technology_id)";
         // DROPDOWNS
@@ -201,7 +228,8 @@ namespace SoftwarePlanner
                                                                                 ON pc.id = ps.category_id
                                                                            WHERE pc.name = @categoryName";
         public static readonly string RETURN_ID_BY_PROJECT_SUBCATEGORY = "SELECT id FROM ProjectSubCategory WHERE name = @name";
-        public static readonly string UPDATE_TECHNOLOGY = "INSERT OR IGNORE INTO Technology (description) VALUES (@description)";      
+        public static readonly string UPDATE_TECHNOLOGY = "INSERT OR IGNORE INTO Technology (description) VALUES (@description)";
+        public static readonly string RETURN_TECHNOLOGIES = "SELECT description FROM Technology";
         public static readonly string RETURN_ID_BY_TECHNOLOGY = "SELECT id FROM Technology WHERE description = @description";
 
         // NOTIFICATIONS

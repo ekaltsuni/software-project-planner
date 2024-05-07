@@ -53,17 +53,17 @@
             this.dateAfter = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.advancedSearchGroup = new System.Windows.Forms.GroupBox();
-            this.categoryDropdown = new System.Windows.Forms.ComboBox();
-            this.subcategoryDropdown = new System.Windows.Forms.ComboBox();
+            this.projectCategoryDropdown = new System.Windows.Forms.ComboBox();
+            this.projectSubcategoryDropdown = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.searchProjectButton = new System.Windows.Forms.Button();
             this.searchUserButton = new System.Windows.Forms.Button();
-            this.advancedProjectSearchBox = new System.Windows.Forms.CheckBox();
+            this.advancedProjectSearchCheckBox = new System.Windows.Forms.CheckBox();
             this.searchProjectBox = new System.Windows.Forms.TextBox();
             this.advancedProjectSearchGroup = new System.Windows.Forms.GroupBox();
             this.projectDateAfter = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.projectTechnologyDropdown = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.projectDateBefore = new System.Windows.Forms.DateTimePicker();
             this.userTable = new System.Windows.Forms.DataGridView();
@@ -259,25 +259,26 @@
             this.advancedSearchGroup.TabStop = false;
             this.advancedSearchGroup.Visible = false;
             // 
-            // categoryDropdown
+            // projectCategoryDropdown
             // 
-            this.categoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.categoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.categoryDropdown.FormattingEnabled = true;
-            this.categoryDropdown.Location = new System.Drawing.Point(6, 33);
-            this.categoryDropdown.Name = "categoryDropdown";
-            this.categoryDropdown.Size = new System.Drawing.Size(140, 26);
-            this.categoryDropdown.TabIndex = 20;
+            this.projectCategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.projectCategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.projectCategoryDropdown.FormattingEnabled = true;
+            this.projectCategoryDropdown.Location = new System.Drawing.Point(6, 33);
+            this.projectCategoryDropdown.Name = "projectCategoryDropdown";
+            this.projectCategoryDropdown.Size = new System.Drawing.Size(140, 26);
+            this.projectCategoryDropdown.TabIndex = 20;
+            this.projectCategoryDropdown.SelectedIndexChanged += new System.EventHandler(this.projectCategoryDropdown_SelectedIndexChanged);
             // 
-            // subcategoryDropdown
+            // projectSubcategoryDropdown
             // 
-            this.subcategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.subcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.subcategoryDropdown.FormattingEnabled = true;
-            this.subcategoryDropdown.Location = new System.Drawing.Point(152, 32);
-            this.subcategoryDropdown.Name = "subcategoryDropdown";
-            this.subcategoryDropdown.Size = new System.Drawing.Size(140, 26);
-            this.subcategoryDropdown.TabIndex = 21;
+            this.projectSubcategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.projectSubcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.projectSubcategoryDropdown.FormattingEnabled = true;
+            this.projectSubcategoryDropdown.Location = new System.Drawing.Point(152, 32);
+            this.projectSubcategoryDropdown.Name = "projectSubcategoryDropdown";
+            this.projectSubcategoryDropdown.Size = new System.Drawing.Size(140, 26);
+            this.projectSubcategoryDropdown.TabIndex = 21;
             // 
             // label9
             // 
@@ -311,17 +312,17 @@
             this.searchUserButton.UseVisualStyleBackColor = true;
             this.searchUserButton.Click += new System.EventHandler(this.searchUserButton_Click);
             // 
-            // advancedProjectSearchBox
+            // advancedProjectSearchCheckBox
             // 
-            this.advancedProjectSearchBox.AutoSize = true;
-            this.advancedProjectSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.advancedProjectSearchBox.Location = new System.Drawing.Point(1059, 100);
-            this.advancedProjectSearchBox.Name = "advancedProjectSearchBox";
-            this.advancedProjectSearchBox.Size = new System.Drawing.Size(128, 17);
-            this.advancedProjectSearchBox.TabIndex = 29;
-            this.advancedProjectSearchBox.Text = "Σύνθετη Αναζήτηση";
-            this.advancedProjectSearchBox.UseVisualStyleBackColor = true;
-            this.advancedProjectSearchBox.CheckedChanged += new System.EventHandler(this.advancedProjectSearchBox_CheckedChanged);
+            this.advancedProjectSearchCheckBox.AutoSize = true;
+            this.advancedProjectSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.advancedProjectSearchCheckBox.Location = new System.Drawing.Point(1059, 100);
+            this.advancedProjectSearchCheckBox.Name = "advancedProjectSearchCheckBox";
+            this.advancedProjectSearchCheckBox.Size = new System.Drawing.Size(128, 17);
+            this.advancedProjectSearchCheckBox.TabIndex = 29;
+            this.advancedProjectSearchCheckBox.Text = "Σύνθετη Αναζήτηση";
+            this.advancedProjectSearchCheckBox.UseVisualStyleBackColor = true;
+            this.advancedProjectSearchCheckBox.CheckedChanged += new System.EventHandler(this.advancedProjectSearchBox_CheckedChanged);
             // 
             // searchProjectBox
             // 
@@ -335,12 +336,12 @@
             // 
             this.advancedProjectSearchGroup.Controls.Add(this.projectDateAfter);
             this.advancedProjectSearchGroup.Controls.Add(this.label12);
-            this.advancedProjectSearchGroup.Controls.Add(this.comboBox1);
+            this.advancedProjectSearchGroup.Controls.Add(this.projectTechnologyDropdown);
             this.advancedProjectSearchGroup.Controls.Add(this.label11);
             this.advancedProjectSearchGroup.Controls.Add(this.projectDateBefore);
-            this.advancedProjectSearchGroup.Controls.Add(this.categoryDropdown);
+            this.advancedProjectSearchGroup.Controls.Add(this.projectCategoryDropdown);
             this.advancedProjectSearchGroup.Controls.Add(this.label9);
-            this.advancedProjectSearchGroup.Controls.Add(this.subcategoryDropdown);
+            this.advancedProjectSearchGroup.Controls.Add(this.projectSubcategoryDropdown);
             this.advancedProjectSearchGroup.Location = new System.Drawing.Point(660, 123);
             this.advancedProjectSearchGroup.Name = "advancedProjectSearchGroup";
             this.advancedProjectSearchGroup.Size = new System.Drawing.Size(520, 93);
@@ -365,15 +366,15 @@
             this.label12.TabIndex = 26;
             this.label12.Text = "Τεχνολογίες";
             // 
-            // comboBox1
+            // projectTechnologyDropdown
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(304, 33);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(140, 26);
-            this.comboBox1.TabIndex = 25;
+            this.projectTechnologyDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.projectTechnologyDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.projectTechnologyDropdown.FormattingEnabled = true;
+            this.projectTechnologyDropdown.Location = new System.Drawing.Point(304, 33);
+            this.projectTechnologyDropdown.Name = "projectTechnologyDropdown";
+            this.projectTechnologyDropdown.Size = new System.Drawing.Size(140, 26);
+            this.projectTechnologyDropdown.TabIndex = 25;
             // 
             // label11
             // 
@@ -534,7 +535,7 @@
             this.Controls.Add(this.projectTable);
             this.Controls.Add(this.userTable);
             this.Controls.Add(this.advancedProjectSearchGroup);
-            this.Controls.Add(this.advancedProjectSearchBox);
+            this.Controls.Add(this.advancedProjectSearchCheckBox);
             this.Controls.Add(this.searchProjectBox);
             this.Controls.Add(this.searchUserButton);
             this.Controls.Add(this.searchProjectButton);
@@ -545,10 +546,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchUserBox);
             this.Controls.Add(this.devAdvancedSearchGroup);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximizeBox = false;
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Κεντρική";
@@ -563,7 +562,7 @@
             this.Controls.SetChildIndex(this.searchProjectButton, 0);
             this.Controls.SetChildIndex(this.searchUserButton, 0);
             this.Controls.SetChildIndex(this.searchProjectBox, 0);
-            this.Controls.SetChildIndex(this.advancedProjectSearchBox, 0);
+            this.Controls.SetChildIndex(this.advancedProjectSearchCheckBox, 0);
             this.Controls.SetChildIndex(this.advancedProjectSearchGroup, 0);
             this.Controls.SetChildIndex(this.userTable, 0);
             this.Controls.SetChildIndex(this.projectTable, 0);
@@ -605,16 +604,16 @@
         private System.Windows.Forms.GroupBox advancedSearchGroup;
         private System.Windows.Forms.TextBox maxCount;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox categoryDropdown;
-        private System.Windows.Forms.ComboBox subcategoryDropdown;
+        private System.Windows.Forms.ComboBox projectCategoryDropdown;
+        private System.Windows.Forms.ComboBox projectSubcategoryDropdown;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button searchProjectButton;
         private System.Windows.Forms.Button searchUserButton;
-        private System.Windows.Forms.CheckBox advancedProjectSearchBox;
+        private System.Windows.Forms.CheckBox advancedProjectSearchCheckBox;
         private System.Windows.Forms.TextBox searchProjectBox;
         private System.Windows.Forms.GroupBox advancedProjectSearchGroup;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox projectTechnologyDropdown;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker projectDateBefore;
         private System.Windows.Forms.DateTimePicker projectDateAfter;

@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Windows.Forms;
 using static SoftwarePlanner.AppConstants;
 using static SoftwarePlanner.SQLConstants;
+using static SoftwarePlanner.Translations;
 
 namespace SoftwarePlanner
 {
@@ -16,15 +17,51 @@ namespace SoftwarePlanner
         public HomeForm()
         {
             InitializeComponent();
-            userFilter.Items.Add(UserFilterOption.DEVELOPER);
-            userFilter.Items.Add(UserFilterOption.CLIENT);
-            userFilter.SelectedItem = UserFilterOption.DEVELOPER;
+            populateDropdowns();
+            
             UserSearch.isSearchedUser = false;
 
             nextUserPage.Enabled = false;
             previousUserPage.Enabled = false;
             nextProjectPage.Enabled = false;
             previousProjectPage.Enabled = false;
+        }
+
+        private void populateDropdowns()
+        {
+            userFilter.Items.Add(UserFilterOption.DEVELOPER);
+            userFilter.Items.Add(UserFilterOption.CLIENT);
+            userFilter.SelectedItem = UserFilterOption.DEVELOPER;
+            
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(RETURN_PROJECT_CATEGORIES, connection))
+            {
+                {
+                    connection.Open();
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            projectCategoryDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
+                        }
+                    }
+                }
+            }
+
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(RETURN_TECHNOLOGIES, connection))
+            {
+                {
+                    connection.Open();
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            projectTechnologyDropdown.Items.Add(reader.GetString(reader.GetOrdinal("description")));
+                        }
+                    }
+                }
+            }
         }
 
         private void advancedSearchCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -40,19 +77,22 @@ namespace SoftwarePlanner
             else
             {
                 advancedSearchGroup.Visible = false;
-                devAdvancedSearchGroup.Visible = false;
+                devAdvancedSearchGroup.Visible = false;                
             }    
         }
 
         private void advancedProjectSearchBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (advancedProjectSearchBox.Checked)
+            if (advancedProjectSearchCheckBox.Checked)
             {
                 advancedProjectSearchGroup.Visible = true;
             }
             else
             {
                 advancedProjectSearchGroup.Visible = false;
+                projectCategoryDropdown.Items.Clear();
+                projectSubcategoryDropdown.Items.Clear();
+                projectTechnologyDropdown.Items.Clear();
             }
         }
 
@@ -188,7 +228,6 @@ namespace SoftwarePlanner
             userTable.Rows.Clear();
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             {
-                // TODO: sanitize inputs
                 SQLiteCommand command = new SQLiteCommand();
                 if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER))
                 {
@@ -198,10 +237,36 @@ namespace SoftwarePlanner
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
                         command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
                         command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
-                        command.Parameters.AddWithValue("@minRating", minRating.Text.Trim().Equals("") ? -1 : int.Parse(minRating.Text));
-                        command.Parameters.AddWithValue("@maxRating", maxRating.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxRating.Text));
-                        command.Parameters.AddWithValue("@minCount", minCount.Text.Trim().Equals("") ? -1 : int.Parse(minCount.Text));
-                        command.Parameters.AddWithValue("@maxCount", maxCount.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxCount.Text));
+                        int minRatingNum = -1;
+                        if (int.TryParse(minRating.Text.Trim(), out minRatingNum) || minRating.Text.Trim().Equals("")) command.Parameters.AddWithValue("@minRating", minRatingNum);
+                        else
+                        {
+                            MessageBox.Show("Invalid minimum rating.");
+                            return;
+                        }
+                        int maxRatingNum = -1;
+                        if (int.TryParse(maxRating.Text.Trim(), out maxRatingNum)) command.Parameters.AddWithValue("@maxRating", maxRatingNum);
+                        else if (maxRating.Text.Trim().Equals("")) command.Parameters.AddWithValue("@maxRating", int.MaxValue);
+                        else
+                        {
+                            MessageBox.Show("Invalid maximum rating.");
+                            return;
+                        }
+                        int minCountNum = -1;
+                        if (int.TryParse(minCount.Text.Trim(), out minCountNum) || minCount.Text.Trim().Equals("")) command.Parameters.AddWithValue("@minCount", minCountNum);
+                        else
+                        {
+                            MessageBox.Show("Invalid minimum count.");
+                            return;
+                        }
+                        int maxCountNum = -1;
+                        if (int.TryParse(maxCount.Text.Trim(), out maxCountNum)) command.Parameters.AddWithValue("@maxCount", maxCountNum);
+                        else if (maxCount.Text.Trim().Equals("")) command.Parameters.AddWithValue("@maxCount", int.MaxValue);
+                        else
+                        {
+                            MessageBox.Show("Invalid maximum count.");
+                            return;
+                        }                        
                         command.Parameters.AddWithValue("@page", userPage * 10);
                     }
                     else
@@ -271,22 +336,23 @@ namespace SoftwarePlanner
             projectTable.Rows.Clear();
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             {
-                // TODO: sanitize inputs
                 SQLiteCommand command = new SQLiteCommand();
-                if (advancedUserSearchCheckBox.Checked)
+                if (advancedProjectSearchCheckBox.Checked)
                 {
-                    command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
+                    if (User.id >= 0) command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
+                    else command = new SQLiteCommand(RETURN_PUBLIC_PROJECT_ADVANCED, connection);
                     command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
                     command.Parameters.AddWithValue("@dateBefore", projectDateBefore.Value.ToString(DATE_FORMAT));
                     command.Parameters.AddWithValue("@dateAfter", projectDateAfter.Value.ToString(DATE_FORMAT));
-                    command.Parameters.AddWithValue("@category", categoryDropdown.SelectedItem);
-                    command.Parameters.AddWithValue("@subcategory", subcategoryDropdown.SelectedItem);
-                    command.Parameters.AddWithValue("@technologies", new List<string>() { "TEST" });
+                    command.Parameters.AddWithValue("@category", projectCategoryDropdown.SelectedItem == null ? "%" : getTranslationKey(projectCategoryDropdown.SelectedItem.ToString()));
+                    command.Parameters.AddWithValue("@subcategory", projectSubcategoryDropdown.SelectedItem == null ? "%" : getTranslationKey(projectSubcategoryDropdown.SelectedItem.ToString()));
+                    command.Parameters.AddWithValue("@technology", projectTechnologyDropdown.SelectedItem == null ? "%" : projectTechnologyDropdown.SelectedItem.ToString());
                     command.Parameters.AddWithValue("@page", projectPage * 10);
                 }
                 else
                 {
-                    command = new SQLiteCommand(RETURN_PROJECT_SIMPLE, connection);
+                    if (User.id >= 0) command = new SQLiteCommand(RETURN_PROJECT_SIMPLE, connection);
+                    else command = new SQLiteCommand(RETURN_PUBLIC_PROJECT_SIMPLE, connection);
                     command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
                     command.Parameters.AddWithValue("@page", projectPage * 10);
                 }
@@ -311,6 +377,25 @@ namespace SoftwarePlanner
             }
         }
 
-      
+        private void projectCategoryDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            projectSubcategoryDropdown.Items.Clear();
+            projectSubcategoryDropdown.ResetText();
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(RETURN_SUBCATEGORIES_BY_CATEGORY, connection))
+            {
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@categoryName", getTranslationKey(projectCategoryDropdown.SelectedItem.ToString()));
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            projectSubcategoryDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
