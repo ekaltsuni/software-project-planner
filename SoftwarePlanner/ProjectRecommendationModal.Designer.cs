@@ -35,6 +35,8 @@
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchUserBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.previousUserPage = new System.Windows.Forms.Button();
+            this.nextUserPage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             this.userTable.AllowUserToResizeRows = false;
             this.userTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.userTable.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.userTable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.userTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
@@ -69,7 +71,7 @@
             this.userTable.Name = "userTable";
             this.userTable.ReadOnly = true;
             this.userTable.RowHeadersWidth = 62;
-            this.userTable.Size = new System.Drawing.Size(776, 366);
+            this.userTable.Size = new System.Drawing.Size(776, 322);
             this.userTable.TabIndex = 32;
             this.userTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userTable_CellClick);
             // 
@@ -99,11 +101,35 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "Όνομα Developer";
             // 
+            // previousUserPage
+            // 
+            this.previousUserPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.previousUserPage.Location = new System.Drawing.Point(632, 415);
+            this.previousUserPage.Name = "previousUserPage";
+            this.previousUserPage.Size = new System.Drawing.Size(75, 23);
+            this.previousUserPage.TabIndex = 36;
+            this.previousUserPage.Text = "<";
+            this.previousUserPage.UseVisualStyleBackColor = true;
+            this.previousUserPage.Click += new System.EventHandler(this.previousUserPage_Click);
+            // 
+            // nextUserPage
+            // 
+            this.nextUserPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.nextUserPage.Location = new System.Drawing.Point(713, 415);
+            this.nextUserPage.Name = "nextUserPage";
+            this.nextUserPage.Size = new System.Drawing.Size(75, 23);
+            this.nextUserPage.TabIndex = 35;
+            this.nextUserPage.Text = ">";
+            this.nextUserPage.UseVisualStyleBackColor = true;
+            this.nextUserPage.Click += new System.EventHandler(this.nextUserPage_Click);
+            // 
             // ProjectRecommendationModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.previousUserPage);
+            this.Controls.Add(this.nextUserPage);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchUserBox);
             this.Controls.Add(this.userTable);
@@ -123,5 +149,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.TextBox searchUserBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button previousUserPage;
+        private System.Windows.Forms.Button nextUserPage;
     }
 }

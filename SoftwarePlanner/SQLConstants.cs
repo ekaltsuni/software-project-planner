@@ -161,7 +161,8 @@ namespace SoftwarePlanner
         public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT title
                                                                 FROM Project p
                                                                 WHERE p.title LIKE @title
-                                                                    OR p.description LIKE @title";
+                                                                    OR p.description LIKE @title
+                                                                LIMIT 11 OFFSET @page";
         public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT title
                                                                 FROM Project p
                                                                 INNER JOIN ProjectCategory pc
@@ -172,7 +173,8 @@ namespace SoftwarePlanner
                                                                     OR p.description LIKE @title)
                                                                     AND pc.category LIKE @category AND pc.subcategory LIKE @subcategory
                                                                     AND p.date >= @dateBefore AND p.date <= @dateAfter
-                                                                    AND pt.category IN @technologies";
+                                                                    AND pt.category IN @technologies
+                                                                LIMIT 11 OFFSET @page";
         public static readonly string SAVE_PROJECT = 
             @"INSERT INTO Project 
              (title, description, type, price_visibility, category, subcategory, payment, max_price, duration, bidding_duration) VALUES

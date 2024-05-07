@@ -70,100 +70,14 @@ namespace SoftwarePlanner
 
         private void searchUserButton_Click(object sender, EventArgs e)
         {
-            userTable.Rows.Clear();
-            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            {
-                // TODO: sanitize inputs
-                SQLiteCommand command = new SQLiteCommand();
-                if (((UserFilterOption)userFilter.SelectedItem).Equals(UserFilterOption.DEVELOPER)) {
-                    if (advancedUserSearchCheckBox.Checked)
-                    {
-                        command = new SQLiteCommand(RETURN_DEV_ADVANCED, connection);
-                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
-                        command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
-                        command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
-                        command.Parameters.AddWithValue("@minRating", minRating.Text.Trim().Equals("") ? -1 : int.Parse(minRating.Text));
-                        command.Parameters.AddWithValue("@maxRating", maxRating.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxRating.Text));
-                        command.Parameters.AddWithValue("@minCount", minCount.Text.Trim().Equals("") ? -1 : int.Parse(minCount.Text));
-                        command.Parameters.AddWithValue("@maxCount", maxCount.Text.Trim().Equals("") ? int.MaxValue : int.Parse(maxCount.Text));
-                        command.Parameters.AddWithValue("@page", 0);
-                    }
-                    else 
-                    {
-                        command = new SQLiteCommand(RETURN_DEV_SIMPLE, connection);
-                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
-                        command.Parameters.AddWithValue("@page", 0);
-                    }
-                }
-                else
-                {
-                    if (advancedUserSearchCheckBox.Checked)
-                    {
-                        command = new SQLiteCommand(RETURN_CLIENT_ADVANCED, connection);
-                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
-                        command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
-                        command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
-                        command.Parameters.AddWithValue("@page", 0);
-                    }
-                    else
-                    {
-                        command = new SQLiteCommand(RETURN_CLIENT_SIMPLE, connection);
-                        command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
-                        command.Parameters.AddWithValue("@page", 0);
-                    }
-                }
-                using (command)
-                {
-                    connection.Open();
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        int count = 0;
-                        while (reader.Read())
-                        {
-                            count++;
-                            userTable.Rows.Add(reader.GetString(reader.GetOrdinal("username")));
-                        }
-                        if (count > 10) nextUserPage.Enabled = true;
-                        else nextUserPage.Enabled = false;                        
-                    }
-                }
-            }
+            userPage = 0;
+            generalUserSearch();
         }
 
         private void searchProjectButton_Click(object sender, EventArgs e)
         {
-            projectTable.Rows.Clear();
-            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            {
-                // TODO: sanitize inputs
-                SQLiteCommand command = new SQLiteCommand();               
-                if (advancedUserSearchCheckBox.Checked)
-                {
-                    command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
-                    command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
-                    command.Parameters.AddWithValue("@dateBefore", projectDateBefore.Value.ToString(DATE_FORMAT));
-                    command.Parameters.AddWithValue("@dateAfter", projectDateAfter.Value.ToString(DATE_FORMAT));
-                    command.Parameters.AddWithValue("@category", categoryDropdown.SelectedItem);
-                    command.Parameters.AddWithValue("@subcategory", subcategoryDropdown.SelectedItem);
-                    command.Parameters.AddWithValue("@technologies", new List<string>(){"TEST"});
-                }
-                else
-                {
-                    command = new SQLiteCommand(RETURN_PROJECT_SIMPLE, connection);
-                    command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
-                }              
-                using (command)
-                {
-                    connection.Open();
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            projectTable.Rows.Add(reader.GetString(reader.GetOrdinal("title")));
-                        }
-                    }
-                }
-            }
+            projectPage = 0;
+            generalProjectSearch();
         }
 
         private void userTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
@@ -334,5 +248,69 @@ namespace SoftwarePlanner
                 }
             }
         }
+
+        private void nextProjectPage_Click(object sender, EventArgs e)
+        {
+            projectPage++;
+            previousProjectPage.Enabled = true;
+            generalProjectSearch();
+        }
+
+        private void previousProjectPage_Click(object sender, EventArgs e)
+        {
+            projectPage--;
+            generalProjectSearch();
+            if (projectPage == 0)
+            {
+                previousProjectPage.Enabled = false;
+            }
+        }
+
+        private void generalProjectSearch()
+        {
+            projectTable.Rows.Clear();
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                // TODO: sanitize inputs
+                SQLiteCommand command = new SQLiteCommand();
+                if (advancedUserSearchCheckBox.Checked)
+                {
+                    command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
+                    command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
+                    command.Parameters.AddWithValue("@dateBefore", projectDateBefore.Value.ToString(DATE_FORMAT));
+                    command.Parameters.AddWithValue("@dateAfter", projectDateAfter.Value.ToString(DATE_FORMAT));
+                    command.Parameters.AddWithValue("@category", categoryDropdown.SelectedItem);
+                    command.Parameters.AddWithValue("@subcategory", subcategoryDropdown.SelectedItem);
+                    command.Parameters.AddWithValue("@technologies", new List<string>() { "TEST" });
+                    command.Parameters.AddWithValue("@page", projectPage * 10);
+                }
+                else
+                {
+                    command = new SQLiteCommand(RETURN_PROJECT_SIMPLE, connection);
+                    command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
+                    command.Parameters.AddWithValue("@page", projectPage * 10);
+                }
+                using (command)
+                {
+                    connection.Open();
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        int count = 0;
+                        while (reader.Read())
+                        {
+                            count++;
+                            if (count < 10)
+                            {
+                                projectTable.Rows.Add(reader.GetString(reader.GetOrdinal("title")));
+                            }
+                        }
+                        if (count > 10) nextProjectPage.Enabled = true;
+                        else nextProjectPage.Enabled = false;
+                    }
+                }
+            }
+        }
+
+      
     }
 }

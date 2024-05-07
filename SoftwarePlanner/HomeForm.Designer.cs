@@ -509,6 +509,7 @@
             this.previousProjectPage.TabIndex = 36;
             this.previousProjectPage.Text = "<";
             this.previousProjectPage.UseVisualStyleBackColor = true;
+            this.previousProjectPage.Click += new System.EventHandler(this.previousProjectPage_Click);
             // 
             // nextProjectPage
             // 
@@ -519,6 +520,7 @@
             this.nextProjectPage.TabIndex = 35;
             this.nextProjectPage.Text = ">";
             this.nextProjectPage.UseVisualStyleBackColor = true;
+            this.nextProjectPage.Click += new System.EventHandler(this.nextProjectPage_Click);
             // 
             // HomeForm
             // 
