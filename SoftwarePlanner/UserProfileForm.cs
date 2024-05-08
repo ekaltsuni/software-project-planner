@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
@@ -54,6 +55,7 @@ namespace SoftwarePlanner
             {
                 fillMajorFields(User.id);
                 fillDeveloperFields(User.id);
+                showNotifications(User.id);
             }
         }
 
@@ -687,7 +689,7 @@ namespace SoftwarePlanner
             {
                 roleComboBox.Enabled = true;
                 newsFeedTextBox.Visible = false;
-                newsFeedRichTextBox.Visible = false;
+                notificationsDataGrid.Visible = false;
                 projectsTextBox.Visible = false;
                 projectsRichTextBox.Visible = false;
                 ratingsTextBox.Visible = false;
@@ -928,6 +930,24 @@ namespace SoftwarePlanner
             textBox1.Visible = false;
             profileImagePictureBox.Enabled = false;
 
+        }
+
+        private void showNotifications(int matchedUserId)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(SHOW_NOTIFICATIONS, connection))
+                {
+                    command.Parameters.AddWithValue("@matchedUserId", matchedUserId);
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        notificationsDataGrid.DataSource = dataTable;
+                    }
+                }
+            }
         }
 
         private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)

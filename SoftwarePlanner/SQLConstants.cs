@@ -234,6 +234,17 @@ namespace SoftwarePlanner
 
         // NOTIFICATIONS
         public static readonly string UPDATE_NOTIFICATIONS = "INSERT INTO UserNotification (user_id, project_id, actor_id) VALUES (@user, @project, @actor)";
+        public static readonly string SHOW_NOTIFICATIONS = @"SELECT 
+                        U1.username AS Recommender,
+                        P.title AS Project
+                    FROM 
+                        UserNotification UN
+                    INNER JOIN 
+                        User U1 ON UN.actor_id = U1.id
+                    INNER JOIN 
+                        Project P ON UN.project_id = P.project_id
+                    WHERE 
+                        UN.user_id = @matchedUserId";
 
         // UPDATE FIELDS VISIBILITY TO-DO
     }
