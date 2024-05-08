@@ -22,6 +22,15 @@ namespace SoftwarePlanner
         {
             InitializeComponent();
             fillProjectFields(projectName);
+            populateOfferGrid();
+            if (User.role.Equals("Developer"))
+            {
+                assignButton.Text = "Προσφορά";
+            }
+            else
+            {
+                assignButton.Visible = false;
+            }
         }
 
         private void fillProjectFields(string projectName)
@@ -120,6 +129,63 @@ namespace SoftwarePlanner
         {
             ProjectRecommendationModal modal = new ProjectRecommendationModal(projectId);
             modal.ShowDialog();
+        }
+
+        private void assignButton_Click(object sender, EventArgs e)
+        {
+            if (User.role.Equals("Developer"))
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                using (SQLiteCommand existCommand = new SQLiteCommand(OFFER_EXISTS_BY_USER_AND_PROJECT, connection))
+                using (SQLiteCommand command = new SQLiteCommand(UPDATE_OFFER, connection))
+                {
+                    connection.Open();
+                    existCommand.Parameters.AddWithValue("@project_id", projectId);
+                    existCommand.Parameters.AddWithValue("@user_id", User.id);
+                    bool exist = Convert.ToInt32(existCommand.ExecuteScalar()) != 0;
+                    if (!exist)
+                    {
+                        command.Parameters.AddWithValue("@project", projectId);
+                        command.Parameters.AddWithValue("@user", User.id);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Η προσφορά σας αναρτήθηκε επιτυχώς.");
+                        populateOfferGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Έχετε υποβάλλει ήδη προσφορά για αυτό το έργο.");
+                    }
+                }
+            }
+            
+        }
+
+        private void populateOfferGrid()
+        {
+            offerGrid.Rows.Clear();
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(GET_OFFERS_BY_PROJECT_ID, connection))
+            using (SQLiteCommand userCommand = new SQLiteCommand(RETURN_USER_NAME, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@project_id", projectId);
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    int count = 0;
+                    while (reader.Read())
+                    {
+                        userCommand.Parameters.AddWithValue("@id", reader.GetInt32(reader.GetOrdinal("user_id")));
+                        using (SQLiteDataReader userReader = userCommand.ExecuteReader())
+                        {
+                            if (userReader.Read())
+                            {
+                                offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")));
+                            }
+                        }
+                        count++;
+                    }
+                }
+            }
         }
     }
 }

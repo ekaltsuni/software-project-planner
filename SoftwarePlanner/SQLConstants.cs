@@ -14,7 +14,7 @@ namespace SoftwarePlanner
         public static readonly string RETURN_USER_ID = "SELECT id FROM User WHERE username = @username";
         public static readonly string RETURN_ROLE = "SELECT role FROM User WHERE id = @id";
         public static readonly string RETURN_SEARCH_USER_VARIABLES = "SELECT id, role FROM User WHERE username = @username";
-
+        public static readonly string RETURN_USER_NAME = "SELECT username FROM User WHERE id = @id";
         public static readonly string RETURN_USER_VARIABLES = @"SELECT email, username, password, name, surname, image_data 
                                                                 FROM User 
                                                                 WHERE id = @id";
@@ -245,6 +245,16 @@ namespace SoftwarePlanner
                         Project P ON UN.project_id = P.project_id
                     WHERE 
                         UN.user_id = @matchedUserId";
+
+        // OFFERS AND ASSIGNMENTS
+        public static readonly string GET_OFFERS_BY_PROJECT_ID = "SELECT user_id FROM ProjectOffer WHERE project_id = @project_id";
+        public static readonly string UPDATE_OFFER = "INSERT INTO ProjectOffer (project_id, user_id) VALUES (@project, @user)";
+        public static readonly string OFFER_EXISTS_BY_USER_AND_PROJECT = @"SELECT COUNT(*) 
+                                                                           FROM ProjectOffer 
+                                                                            WHERE 
+                                                                                project_id = @project_id AND 
+                                                                                user_id = @user_id";
+
 
         // UPDATE FIELDS VISIBILITY TO-DO
     }
