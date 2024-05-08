@@ -31,6 +31,16 @@ namespace SoftwarePlanner
             {
                 assignButton.Visible = false;
             }
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(GET_ASSIGNED_USER, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@project_id", projectId);
+                if (command.ExecuteScalar() != DBNull.Value)
+                {
+                    offerGrid.Enabled = false;
+                }
+            }
         }
 
         private void fillProjectFields(string projectName)
@@ -163,6 +173,16 @@ namespace SoftwarePlanner
         private void populateOfferGrid()
         {
             offerGrid.Rows.Clear();
+            if (User.role.Equals("Πελάτης"))
+            {
+                DataGridViewButtonColumn actionColumn = new DataGridViewButtonColumn();
+                actionColumn.Name = "Ενέργειες";
+                int columnIndex = 2;
+                if (offerGrid.Columns["actions"] == null)
+                {
+                    offerGrid.Columns.Insert(columnIndex, actionColumn);
+                }
+            }
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(GET_OFFERS_BY_PROJECT_ID, connection))
             using (SQLiteCommand userCommand = new SQLiteCommand(RETURN_USER_NAME, connection))
@@ -179,12 +199,49 @@ namespace SoftwarePlanner
                         {
                             if (userReader.Read())
                             {
-                                offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")));
+                                if (User.role.Equals("Developer"))
+                                {
+                                    offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")));
+                                }
+                                else if (User.role.Equals("Πελάτης"))
+                                {
+                                    offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")), "Ανάθεση");
+                                }
                             }
                         }
                         count++;
                     }
                 }
+            }
+        }
+
+        private void offerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == offerGrid.Columns["Ενέργειες"].Index)
+            {
+                DataGridView grid = sender as DataGridView;
+                if (grid == null || grid.CurrentRow.Cells[0].Value == null) return;
+                string username = grid.CurrentRow.Cells[1].Value.ToString().Trim();
+                using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                using (SQLiteCommand userCommand = new SQLiteCommand(RETURN_USER_ID, connection))
+                using (SQLiteCommand command = new SQLiteCommand(ASSIGN_USER_TO_PROJECT, connection))
+                {
+                    connection.Open();
+                    userCommand.Parameters.AddWithValue("@username", username);
+                    using (SQLiteDataReader reader = userCommand.ExecuteReader()) 
+                    { 
+                        if (reader.Read())
+                        {
+                            command.Parameters.AddWithValue("@user_id", reader.GetInt32(reader.GetOrdinal("id")));
+                            command.Parameters.AddWithValue("@project_id", projectId);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Αναθέσατε το έργο στον/στην " + username + ".");
+                            offerGrid.Enabled = false;
+                        }
+                    }
+                    
+                }
+                
             }
         }
     }

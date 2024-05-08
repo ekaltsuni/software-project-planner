@@ -39,12 +39,12 @@
             this.Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.offerGrid = new System.Windows.Forms.DataGridView();
+            this.Offer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Developer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recommendationButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.assignButton = new System.Windows.Forms.Button();
-            this.Offer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Developer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -137,6 +137,19 @@
             this.offerGrid.ShowEditingIcon = false;
             this.offerGrid.Size = new System.Drawing.Size(655, 449);
             this.offerGrid.TabIndex = 1;
+            this.offerGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offerGrid_CellClick);
+            // 
+            // Offer
+            // 
+            this.Offer.HeaderText = "Προσφορά";
+            this.Offer.Name = "Offer";
+            this.Offer.ReadOnly = true;
+            // 
+            // Developer
+            // 
+            this.Developer.HeaderText = "Developer";
+            this.Developer.Name = "Developer";
+            this.Developer.ReadOnly = true;
             // 
             // recommendationButton
             // 
@@ -177,18 +190,6 @@
             this.assignButton.Text = "Προσφορά";
             this.assignButton.UseVisualStyleBackColor = true;
             this.assignButton.Click += new System.EventHandler(this.assignButton_Click);
-            // 
-            // Offer
-            // 
-            this.Offer.HeaderText = "Προσφορά";
-            this.Offer.Name = "Offer";
-            this.Offer.ReadOnly = true;
-            // 
-            // Developer
-            // 
-            this.Developer.HeaderText = "Developer";
-            this.Developer.Name = "Developer";
-            this.Developer.ReadOnly = true;
             // 
             // ProjectViewForm
             // 

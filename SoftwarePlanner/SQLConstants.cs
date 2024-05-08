@@ -202,12 +202,12 @@ namespace SoftwarePlanner
                                                                             AND t.description LIKE @technology
                                                                             AND p.type = 2
                                                                         LIMIT 11 OFFSET @page";
-        public static readonly string SAVE_PROJECT = 
-            @"INSERT INTO Project 
+        public static readonly string SAVE_PROJECT = @"INSERT INTO Project 
              (title, description, type, price_visibility, category, subcategory, payment, max_price, duration, bidding_duration, date) VALUES
              (@title, @description, @type, @price_visibility, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration, @date)";
         public static readonly string UPDATE_PROJECT_TECHNOLOGY = @"INSERT INTO ProjectTechnology (project_id, technology_id) VALUES
                                                                     (@project_id, @technology_id)";
+        public static readonly string ASSIGN_USER_TO_PROJECT = "UPDATE Project SET user_id = @user_id WHERE project_id = @project_id";
         // DROPDOWNS
         public static readonly string RETURN_PROJECT_TYPES = "SELECT type FROM ProjectType";
         public static readonly string RETURN_PROJECT_TYPE_NAME = "SELECT type FROM ProjectType WHERE id = @id";
@@ -247,6 +247,7 @@ namespace SoftwarePlanner
                         UN.user_id = @matchedUserId";
 
         // OFFERS AND ASSIGNMENTS
+        public static readonly string GET_ASSIGNED_USER = "SELECT user_id FROM Project WHERE project_id = @project_id";
         public static readonly string GET_OFFERS_BY_PROJECT_ID = "SELECT user_id FROM ProjectOffer WHERE project_id = @project_id";
         public static readonly string UPDATE_OFFER = "INSERT INTO ProjectOffer (project_id, user_id) VALUES (@project, @user)";
         public static readonly string OFFER_EXISTS_BY_USER_AND_PROJECT = @"SELECT COUNT(*) 
