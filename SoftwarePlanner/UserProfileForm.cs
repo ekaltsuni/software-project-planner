@@ -37,6 +37,7 @@ namespace SoftwarePlanner
                 fillDeveloperFields(UserSearch.id);
                 checkDevVisibility();
                 hidePrivateFields();
+         
             }
             else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient == true)
             {
@@ -56,6 +57,8 @@ namespace SoftwarePlanner
                 fillMajorFields(User.id);
                 fillDeveloperFields(User.id);
                 showNotifications(User.id);
+                showOffers(User.id);
+                showProjects(User.id);
             }
         }
 
@@ -689,9 +692,11 @@ namespace SoftwarePlanner
             {
                 roleComboBox.Enabled = true;
                 newsFeedTextBox.Visible = false;
+                offersTextBox.Visible = false;
                 notificationsDataGrid.Visible = false;
+                offersDataGrid.Visible = false;
                 projectsTextBox.Visible = false;
-                projectsRichTextBox.Visible = false;
+                projectsDataGrid.Visible = false;
                 ratingsTextBox.Visible = false;
                 ratingsRichTextBox.Visible = false;
             }
@@ -945,6 +950,42 @@ namespace SoftwarePlanner
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
                         notificationsDataGrid.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        private void showOffers(int matchedUserId) 
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(SHOW_OFFERS, connection))
+                {
+                    command.Parameters.AddWithValue("@matchedUserId", matchedUserId);
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        offersDataGrid.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        private void showProjects(int matchedUserId)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(SHOW_ASSIGNED_PROJECTS, connection))
+                {
+                    command.Parameters.AddWithValue("@matchedUserId", matchedUserId);
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        projectsDataGrid.DataSource = dataTable;
                     }
                 }
             }

@@ -46,37 +46,7 @@ namespace SoftwarePlanner
                                                             javascript = @javascript, php = @php, python = @python, ruby = @ruby, 
                                                             other = @other 
                                                         WHERE id = @id";
-        public static readonly string CREATE_DEVELOPER_VISIBILITY = @"INSERT OR IGNORE INTO Developer
-                                                                    (email_visibility_flag, username_visibility_flag, 
-                                                                    name_visibility_flag, surname_visibility_flag, 
-                                                                    gender_visibility_flag, skills_visibility_flag, 
-                                                                    cv_visibility_flag, portfolio_visibility_flag, 
-                                                                    id) VALUES
-                                                                    (@email_visibility_flag, @username_visibility_flag,
-                                                                     @name_visibility_flag, @surname_visibility_flag,
-                                                                     @gender_visibility_flag, @skills_visibility_flag, 
-                                                                    @cv_visibility_flag, @portfolio_visibility_flag,
-                                                                    @id)";
-        public static readonly string UPDATE_DEVELOPER_VISIBILITY = @"UPDATE Developer SET
-                                                                    email_visibility_flag = @email_visibility_flag,
-                                                                    username_visibility_flag = @username_visibility_flag,
-                                                                    name_visibility_flag = @name_visibility_flag,
-                                                                    surname_visibility_flag = @surname_visibility_flag,
-                                                                    gender_visibility_flag = @gender_visibility_flag,
-                                                                    skills_visibility_flag = @skills_visibility_flag,
-                                                                    cv_visibility_flag = @cv_visibility_flag, 
-                                                                    portfolio_visibility_flag = @portfolio_visibility_flag
-                                                                    WHERE id = @id";
-        public static readonly string RETURN_DEVELOPER_VISIBILITY = @"SELECT
-                                                                    email_visibility_flag,
-                                                                    username_visibility_flag,
-                                                                    name_visibility_flag,
-                                                                    surname_visibility_flag,
-                                                                    gender_visibility_flag,
-                                                                    skills_visibility_flag,
-                                                                    cv_visibility_flag, 
-                                                                    portfolio_visibility_flag FROM Developer
-                                                                    WHERE id = @id";
+ 
         public static readonly string UPDATE_DEVELOPER_VARIABLES = @"UPDATE OR IGNORE Developer SET
                                                                         skills = @skills, cv = @cv, portfolio_links = @portfolio_links
                                                                      WHERE id = @id";
@@ -120,39 +90,6 @@ namespace SoftwarePlanner
                                                                     OR c.description LIKE @username)
                                                                     AND u.signing_date >= @dateBefore AND u.signing_date <= @dateAfter
                                                                 LIMIT 11 OFFSET @page";
-
-        public static readonly string CREATE_CLIENT_VISIBILITY = @"INSERT OR IGNORE INTO Client
-                                                                    (email_visibility_flag, username_visibility_flag, 
-                                                                    name_visibility_flag, surname_visibility_flag, 
-                                                                    gender_visibility_flag, date_of_birth_visibility_flag, 
-                                                                    description_visibility_flag, link_visibility_flag, 
-                                                                    id) VALUES
-                                                                    (@email_visibility_flag, @username_visibility_flag,
-                                                                     @name_visibility_flag, @surname_visibility_flag,
-                                                                     @gender_visibility_flag, @date_of_birth_visibility_flag, 
-                                                                    @description_visibility_flag, @link_visibility_flag,
-                                                                    @id)";
-
-        public static readonly string UPDATE_CLIENT_VISIBILITY = @"UPDATE Client SET
-                                                                    email_visibility_flag = @email_visibility_flag,
-                                                                    username_visibility_flag = @username_visibility_flag,
-                                                                    name_visibility_flag = @name_visibility_flag,
-                                                                    surname_visibility_flag = @surname_visibility_flag,
-                                                                    gender_visibility_flag = @gender_visibility_flag,
-                                                                    date_of_birth_visibility_flag = @date_of_birth_visibility_flag,
-                                                                    description_visibility_flag = @description_visibility_flag, 
-                                                                    link_visibility_flag = @link_visibility_flag
-                                                                    WHERE id = @id";
-        public static readonly string RETURN_CLIENT_VISIBILITY = @"SELECT
-                                                                    email_visibility_flag,
-                                                                    username_visibility_flag,
-                                                                    name_visibility_flag,
-                                                                    surname_visibility_flag,
-                                                                    gender_visibility_flag,
-                                                                    date_of_birth_visibility_flag,
-                                                                    description_visibility_flag, 
-                                                                    link_visibility_flag FROM Client
-                                                                    WHERE id = @id";
 
         // PROJECT
         public static readonly string RETURN_PROJECT_FULL = @"SELECT * 
@@ -255,8 +192,86 @@ namespace SoftwarePlanner
                                                                             WHERE 
                                                                                 project_id = @project_id AND 
                                                                                 user_id = @user_id";
+        public static readonly string SHOW_OFFERS = @"SELECT
+                        p.title AS ProjectTitle,
+                        po.status AS Status
+                    FROM
+                        ProjectOffer po
+                    INNER JOIN
+                        User u1 ON po.user_id = u1.id
+                    INNER JOIN
+                        Project p ON po.project_id = p.project_id
+                    WHERE 
+                        po.user_id = @matchedUserId";
 
+        public static readonly string SHOW_ASSIGNED_PROJECTS = @"SELECT title AS Project, description AS Details, status AS Status
+                                                                    FROM Project 
+                                                                    WHERE user_id = @matchedUserId";
 
-        // UPDATE FIELDS VISIBILITY TO-DO
+        //  VISIBILITY
+        public static readonly string CREATE_DEVELOPER_VISIBILITY = @"INSERT OR IGNORE INTO Developer
+                                                                    (email_visibility_flag, username_visibility_flag, 
+                                                                    name_visibility_flag, surname_visibility_flag, 
+                                                                    gender_visibility_flag, skills_visibility_flag, 
+                                                                    cv_visibility_flag, portfolio_visibility_flag, 
+                                                                    id) VALUES
+                                                                    (@email_visibility_flag, @username_visibility_flag,
+                                                                     @name_visibility_flag, @surname_visibility_flag,
+                                                                     @gender_visibility_flag, @skills_visibility_flag, 
+                                                                    @cv_visibility_flag, @portfolio_visibility_flag,
+                                                                    @id)";
+        public static readonly string UPDATE_DEVELOPER_VISIBILITY = @"UPDATE Developer SET
+                                                                    email_visibility_flag = @email_visibility_flag,
+                                                                    username_visibility_flag = @username_visibility_flag,
+                                                                    name_visibility_flag = @name_visibility_flag,
+                                                                    surname_visibility_flag = @surname_visibility_flag,
+                                                                    gender_visibility_flag = @gender_visibility_flag,
+                                                                    skills_visibility_flag = @skills_visibility_flag,
+                                                                    cv_visibility_flag = @cv_visibility_flag, 
+                                                                    portfolio_visibility_flag = @portfolio_visibility_flag
+                                                                    WHERE id = @id";
+        public static readonly string RETURN_DEVELOPER_VISIBILITY = @"SELECT
+                                                                    email_visibility_flag,
+                                                                    username_visibility_flag,
+                                                                    name_visibility_flag,
+                                                                    surname_visibility_flag,
+                                                                    gender_visibility_flag,
+                                                                    skills_visibility_flag,
+                                                                    cv_visibility_flag, 
+                                                                    portfolio_visibility_flag FROM Developer
+                                                                    WHERE id = @id";
+        public static readonly string CREATE_CLIENT_VISIBILITY = @"INSERT OR IGNORE INTO Client
+                                                                    (email_visibility_flag, username_visibility_flag, 
+                                                                    name_visibility_flag, surname_visibility_flag, 
+                                                                    gender_visibility_flag, date_of_birth_visibility_flag, 
+                                                                    description_visibility_flag, link_visibility_flag, 
+                                                                    id) VALUES
+                                                                    (@email_visibility_flag, @username_visibility_flag,
+                                                                     @name_visibility_flag, @surname_visibility_flag,
+                                                                     @gender_visibility_flag, @date_of_birth_visibility_flag, 
+                                                                    @description_visibility_flag, @link_visibility_flag,
+                                                                    @id)";
+
+        public static readonly string UPDATE_CLIENT_VISIBILITY = @"UPDATE Client SET
+                                                                    email_visibility_flag = @email_visibility_flag,
+                                                                    username_visibility_flag = @username_visibility_flag,
+                                                                    name_visibility_flag = @name_visibility_flag,
+                                                                    surname_visibility_flag = @surname_visibility_flag,
+                                                                    gender_visibility_flag = @gender_visibility_flag,
+                                                                    date_of_birth_visibility_flag = @date_of_birth_visibility_flag,
+                                                                    description_visibility_flag = @description_visibility_flag, 
+                                                                    link_visibility_flag = @link_visibility_flag
+                                                                    WHERE id = @id";
+
+        public static readonly string RETURN_CLIENT_VISIBILITY = @"SELECT
+                                                                    email_visibility_flag,
+                                                                    username_visibility_flag,
+                                                                    name_visibility_flag,
+                                                                    surname_visibility_flag,
+                                                                    gender_visibility_flag,
+                                                                    date_of_birth_visibility_flag,
+                                                                    description_visibility_flag, 
+                                                                    link_visibility_flag FROM Client
+                                                                    WHERE id = @id";
     }
 }
