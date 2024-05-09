@@ -66,6 +66,7 @@ namespace SoftwarePlanner
 
         private void ViewProfileClickHandler(object sender, EventArgs e)
         {
+            UserSearch.isSearchedUser = false;
             this.Hide();
             UserProfileForm userProfileForm = new UserProfileForm();
             userProfileForm.ShowDialog();

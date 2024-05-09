@@ -299,7 +299,7 @@ namespace SoftwarePlanner
                                     {
                                         UserSearch.id = reader.GetInt32(reader.GetOrdinal("id"));
                                         UserSearch.role = reader.GetString(reader.GetOrdinal("role"));                                      
-                                        UserSearch.isSearchedUser = true;m
+                                        UserSearch.isSearchedUser = true;
                                         UserSearchedRole.isDeveloper = true;
                                         UserSearchedRole.isClient = false;
                                         this.Hide();
