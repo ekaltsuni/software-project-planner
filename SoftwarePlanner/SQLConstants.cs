@@ -196,7 +196,8 @@ namespace SoftwarePlanner
                                                                                 user_id = @user_id";
         public static readonly string SHOW_OFFERS = @"SELECT
                         p.title AS ProjectTitle,
-                        po.status AS Status
+                        po.status AS Status,
+                        p.project_id AS ProjectID
                     FROM
                         ProjectOffer po
                     INNER JOIN
@@ -205,6 +206,9 @@ namespace SoftwarePlanner
                         Project p ON po.project_id = p.project_id
                     WHERE 
                         po.user_id = @matchedUserId";
+
+        public static readonly string UPDATE_OFFER_STATUS = "UPDATE ProjectOffer SET status = @status WHERE project_id = @projectId AND user_id = @userId";
+
 
         public static readonly string SHOW_ASSIGNED_PROJECTS = @"SELECT title AS Project, description AS Details, status AS Status
                                                                     FROM Project 
@@ -216,6 +220,8 @@ namespace SoftwarePlanner
                                                                   INNER JOIN User u
                                                                         ON u.id = pc.user_id
                                                                   WHERE pc.project_id = @project_id";
+        public static readonly string UPDATE_PROJECT_ASSIGNMENT = @"UPDATE Project SET user_id = @userId WHERE project_id = @projectId";
+
         //  VISIBILITY
         public static readonly string CREATE_DEVELOPER_VISIBILITY = @"INSERT OR IGNORE INTO Developer
                                                                     (email_visibility_flag, username_visibility_flag, 
