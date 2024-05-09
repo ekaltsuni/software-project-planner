@@ -16,7 +16,7 @@ namespace SoftwarePlanner
         public ParentForm()
         {
             InitializeComponent();
-            if (User.id >= 0)
+            if (!Role.isVisitor)
             {
                 loginButton.Text = "Αποσύνδεση";
                 loginButton.Click += new EventHandler(LogoutClickHandler);
@@ -27,13 +27,21 @@ namespace SoftwarePlanner
                 profileButton.Click += new EventHandler(ViewProfileClickHandler);
                 toolStripMenu.Items.Add(profileButton);
                 
-                if (User.role != null && User.role.Equals("Πελάτης"))
+                if (User.role.Equals("Πελάτης"))
                 {
                     ToolStripMenuItem createProjectButton = new ToolStripMenuItem();
                     createProjectButton.Name = "createProject";
                     createProjectButton.Text = "Νέο Έργο";
                     createProjectButton.Click += new EventHandler(CreateProjectClickHandler);
                     toolStripMenu.Items.Add(createProjectButton);
+                }
+                else if (User.role.Equals("Developer"))
+                {
+                    ToolStripMenuItem createCategoryButton = new ToolStripMenuItem();
+                    createCategoryButton.Name = "createCategory";
+                    createCategoryButton.Text = "Νέα Κατηγορία";
+                    createCategoryButton.Click += new EventHandler(CreateCategoryClickHandler);
+                    toolStripMenu.Items.Add(createCategoryButton);
                 }
             }
             else
@@ -54,14 +62,18 @@ namespace SoftwarePlanner
             this.Close();
         }
 
-
-
         private void CreateProjectClickHandler(object sender, EventArgs e) 
         {
             this.Hide();
             ProjectCreationForm projectCreationForm = new ProjectCreationForm();
             projectCreationForm.ShowDialog();
             this.Close();
+        }
+
+        private void CreateCategoryClickHandler(object sender, EventArgs e)
+        {
+            CategoryCreationModal categoryCreationModal = new CategoryCreationModal();
+            categoryCreationModal.ShowDialog();
         }
 
         private void ViewProfileClickHandler(object sender, EventArgs e)

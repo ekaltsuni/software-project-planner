@@ -66,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConstants.cs" />
+    <Compile Include="CategoryCreationModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryCreationModal.Designer.cs">
+      <DependentUpon>CategoryCreationModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="UserProfileForm.Designer.cs">
       <DependentUpon>UserProfileForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CategoryCreationModal.resx">
+      <DependentUpon>CategoryCreationModal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>

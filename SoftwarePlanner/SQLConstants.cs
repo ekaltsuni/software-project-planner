@@ -145,6 +145,7 @@ namespace SoftwarePlanner
         public static readonly string UPDATE_PROJECT_TECHNOLOGY = @"INSERT INTO ProjectTechnology (project_id, technology_id) VALUES
                                                                     (@project_id, @technology_id)";
         public static readonly string ASSIGN_USER_TO_PROJECT = "UPDATE Project SET user_id = @user_id WHERE project_id = @project_id";
+        public static readonly string ADD_CATEGORY = "INSERT OR IGNORE INTO ProjectCategory (name) VALUES (@name)";
         // DROPDOWNS
         public static readonly string RETURN_PROJECT_TYPES = "SELECT type FROM ProjectType";
         public static readonly string RETURN_PROJECT_TYPE_NAME = "SELECT type FROM ProjectType WHERE id = @id";
