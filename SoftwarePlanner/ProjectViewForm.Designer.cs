@@ -34,6 +34,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectViewForm));
             this.projectInfoGrid = new System.Windows.Forms.DataGridView();
             this.Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,10 +48,16 @@
             this.recommendationButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.assignButton = new System.Windows.Forms.Button();
+            this.offerButton = new System.Windows.Forms.Button();
+            this.commentGrid = new System.Windows.Forms.DataGridView();
+            this.commentBox = new System.Windows.Forms.RichTextBox();
+            this.commentButton = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commentGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // projectInfoGrid
@@ -135,7 +145,7 @@
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.offerGrid.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.offerGrid.ShowEditingIcon = false;
-            this.offerGrid.Size = new System.Drawing.Size(655, 449);
+            this.offerGrid.Size = new System.Drawing.Size(655, 207);
             this.offerGrid.TabIndex = 1;
             this.offerGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offerGrid_CellClick);
             // 
@@ -153,7 +163,7 @@
             // 
             // recommendationButton
             // 
-            this.recommendationButton.Location = new System.Drawing.Point(60, 566);
+            this.recommendationButton.Location = new System.Drawing.Point(60, 448);
             this.recommendationButton.Name = "recommendationButton";
             this.recommendationButton.Size = new System.Drawing.Size(429, 49);
             this.recommendationButton.TabIndex = 4;
@@ -176,27 +186,103 @@
             this.groupBox1.Controls.Add(this.offerGrid);
             this.groupBox1.Location = new System.Drawing.Point(528, 109);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(724, 508);
+            this.groupBox1.Size = new System.Drawing.Size(724, 278);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Προσφορές";
             // 
-            // assignButton
+            // offerButton
             // 
-            this.assignButton.Location = new System.Drawing.Point(60, 459);
-            this.assignButton.Name = "assignButton";
-            this.assignButton.Size = new System.Drawing.Size(429, 49);
-            this.assignButton.TabIndex = 8;
-            this.assignButton.Text = "Προσφορά";
-            this.assignButton.UseVisualStyleBackColor = true;
-            this.assignButton.Click += new System.EventHandler(this.assignButton_Click);
+            this.offerButton.Location = new System.Drawing.Point(60, 393);
+            this.offerButton.Name = "offerButton";
+            this.offerButton.Size = new System.Drawing.Size(429, 49);
+            this.offerButton.TabIndex = 8;
+            this.offerButton.Text = "Προσφορά";
+            this.offerButton.UseVisualStyleBackColor = true;
+            this.offerButton.Click += new System.EventHandler(this.assignButton_Click);
+            // 
+            // commentGrid
+            // 
+            this.commentGrid.AllowUserToAddRows = false;
+            this.commentGrid.AllowUserToDeleteRows = false;
+            this.commentGrid.AllowUserToResizeRows = false;
+            this.commentGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.commentGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.commentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.commentGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.user});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.commentGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            this.commentGrid.Location = new System.Drawing.Point(528, 393);
+            this.commentGrid.Name = "commentGrid";
+            this.commentGrid.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.commentGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.commentGrid.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.commentGrid.ShowEditingIcon = false;
+            this.commentGrid.Size = new System.Drawing.Size(724, 175);
+            this.commentGrid.TabIndex = 2;
+            // 
+            // commentBox
+            // 
+            this.commentBox.Location = new System.Drawing.Point(528, 578);
+            this.commentBox.Name = "commentBox";
+            this.commentBox.Size = new System.Drawing.Size(542, 49);
+            this.commentBox.TabIndex = 9;
+            this.commentBox.Text = "";
+            // 
+            // commentButton
+            // 
+            this.commentButton.Location = new System.Drawing.Point(1076, 578);
+            this.commentButton.Name = "commentButton";
+            this.commentButton.Size = new System.Drawing.Size(176, 49);
+            this.commentButton.TabIndex = 10;
+            this.commentButton.Text = "Υποβολή";
+            this.commentButton.UseVisualStyleBackColor = true;
+            this.commentButton.Click += new System.EventHandler(this.commentButton_Click);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Σχόλιο";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // user
+            // 
+            this.user.HeaderText = "Χρήστης";
+            this.user.Name = "user";
+            this.user.ReadOnly = true;
             // 
             // ProjectViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.assignButton);
+            this.Controls.Add(this.commentButton);
+            this.Controls.Add(this.commentBox);
+            this.Controls.Add(this.commentGrid);
+            this.Controls.Add(this.offerButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.recommendationButton);
@@ -210,10 +296,14 @@
             this.Controls.SetChildIndex(this.recommendationButton, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.Controls.SetChildIndex(this.assignButton, 0);
+            this.Controls.SetChildIndex(this.offerButton, 0);
+            this.Controls.SetChildIndex(this.commentGrid, 0);
+            this.Controls.SetChildIndex(this.commentBox, 0);
+            this.Controls.SetChildIndex(this.commentButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.commentGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,8 +318,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Info;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button assignButton;
+        private System.Windows.Forms.Button offerButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Offer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Developer;
+        private System.Windows.Forms.DataGridView commentGrid;
+        private System.Windows.Forms.RichTextBox commentBox;
+        private System.Windows.Forms.Button commentButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user;
     }
 }

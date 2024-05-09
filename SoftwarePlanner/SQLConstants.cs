@@ -187,6 +187,7 @@ namespace SoftwarePlanner
         public static readonly string GET_ASSIGNED_USER = "SELECT user_id FROM Project WHERE project_id = @project_id";
         public static readonly string GET_OFFERS_BY_PROJECT_ID = "SELECT user_id FROM ProjectOffer WHERE project_id = @project_id";
         public static readonly string UPDATE_OFFER = "INSERT INTO ProjectOffer (project_id, user_id) VALUES (@project, @user)";
+        public static readonly string REMOVE_OFFER = "DELETE FROM ProjectOffer WHERE user_id = @user_id AND project_id = @project_id";
         public static readonly string OFFER_EXISTS_BY_USER_AND_PROJECT = @"SELECT COUNT(*) 
                                                                            FROM ProjectOffer 
                                                                             WHERE 
@@ -207,7 +208,13 @@ namespace SoftwarePlanner
         public static readonly string SHOW_ASSIGNED_PROJECTS = @"SELECT title AS Project, description AS Details, status AS Status
                                                                     FROM Project 
                                                                     WHERE user_id = @matchedUserId";
-
+        // COMMENTS
+        public static readonly string ADD_COMMENT = "INSERT INTO ProjectComment (project_id, user_id, comment) VALUES (@project_id, @user_id, @comment)";
+        public static readonly string GET_COMMENTS_BY_PROJECT = @"SELECT pc.comment, u.username
+                                                                  FROM ProjectComment pc
+                                                                  INNER JOIN User u
+                                                                        ON u.id = pc.user_id
+                                                                  WHERE pc.project_id = @project_id";
         //  VISIBILITY
         public static readonly string CREATE_DEVELOPER_VISIBILITY = @"INSERT OR IGNORE INTO Developer
                                                                     (email_visibility_flag, username_visibility_flag, 

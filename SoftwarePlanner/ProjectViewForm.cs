@@ -11,36 +11,45 @@ using System.Windows.Forms;
 using static SoftwarePlanner.AppConstants;
 using static SoftwarePlanner.SQLConstants;
 using static SoftwarePlanner.Translations;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SoftwarePlanner
 {
     public partial class ProjectViewForm : ParentForm
     {
         private int projectId;
+        private bool isAssigned = false;
+        private bool canOffer = true;
 
         public ProjectViewForm(string projectName)
         {
             InitializeComponent();
             fillProjectFields(projectName);
-            populateOfferGrid();
-            if (User.role.Equals("Developer"))
-            {
-                assignButton.Text = "Προσφορά";
-            }
-            else
-            {
-                assignButton.Visible = false;
-            }
+            populateOfferGrid();            
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(GET_ASSIGNED_USER, connection))
+            using (SQLiteCommand userCommand = new SQLiteCommand(RETURN_USER_NAME, connection))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@project_id", projectId);
                 if (command.ExecuteScalar() != DBNull.Value)
                 {
+                    groupBox1.Text = "Έχει ανατεθεί";
+                    isAssigned = true;
                     offerGrid.Enabled = false;
+                    userCommand.Parameters.AddWithValue("@id", Convert.ToInt32(command.ExecuteScalar()));
+                    using (SQLiteDataReader reader = userCommand.ExecuteReader())
+                    {
+                        if (reader.Read()) projectInfoGrid.Rows.Add("Developer", reader.GetString(reader.GetOrdinal("username")));
+                    }                   
                 }
             }
+            if (!User.role.Equals("Developer") || isAssigned)
+            {
+                offerButton.Visible = false;
+            }
+            populateCommentGrid();
         }
 
         private void fillProjectFields(string projectName)
@@ -145,27 +154,44 @@ namespace SoftwarePlanner
         {
             if (User.role.Equals("Developer"))
             {
-                using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-                using (SQLiteCommand existCommand = new SQLiteCommand(OFFER_EXISTS_BY_USER_AND_PROJECT, connection))
-                using (SQLiteCommand command = new SQLiteCommand(UPDATE_OFFER, connection))
+                if (canOffer)
                 {
-                    connection.Open();
-                    existCommand.Parameters.AddWithValue("@project_id", projectId);
-                    existCommand.Parameters.AddWithValue("@user_id", User.id);
-                    bool exist = Convert.ToInt32(existCommand.ExecuteScalar()) != 0;
-                    if (!exist)
+                    using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                    using (SQLiteCommand existCommand = new SQLiteCommand(OFFER_EXISTS_BY_USER_AND_PROJECT, connection))
+                    using (SQLiteCommand command = new SQLiteCommand(UPDATE_OFFER, connection))
                     {
-                        command.Parameters.AddWithValue("@project", projectId);
-                        command.Parameters.AddWithValue("@user", User.id);
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Η προσφορά σας αναρτήθηκε επιτυχώς.");
-                        populateOfferGrid();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Έχετε υποβάλλει ήδη προσφορά για αυτό το έργο.");
+                        connection.Open();
+                        existCommand.Parameters.AddWithValue("@project_id", projectId);
+                        existCommand.Parameters.AddWithValue("@user_id", User.id);
+                        bool exist = Convert.ToInt32(existCommand.ExecuteScalar()) != 0;
+                        if (!exist)
+                        {
+                            command.Parameters.AddWithValue("@project", projectId);
+                            command.Parameters.AddWithValue("@user", User.id);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Η προσφορά σας αναρτήθηκε επιτυχώς.");
+                            populateOfferGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Έχετε υποβάλλει ήδη προσφορά για αυτό το έργο.");
+                        }
                     }
                 }
+                else
+                {
+                    using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                    using (SQLiteCommand command = new SQLiteCommand(REMOVE_OFFER, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@project_id", projectId);
+                        command.Parameters.AddWithValue("@user_id", User.id);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Η προσφορά σας αποσύρθηκε.");
+                        populateOfferGrid();
+                    }
+                }
+               
             }
             
         }
@@ -194,6 +220,11 @@ namespace SoftwarePlanner
                     int count = 0;
                     while (reader.Read())
                     {
+                        if (User.id == reader.GetInt32(reader.GetOrdinal("user_id")))
+                        {
+                            offerButton.Text = "Ακύρωση Προσφοράς";
+                            canOffer = false;
+                        }
                         userCommand.Parameters.AddWithValue("@id", reader.GetInt32(reader.GetOrdinal("user_id")));
                         using (SQLiteDataReader userReader = userCommand.ExecuteReader())
                         {
@@ -242,6 +273,52 @@ namespace SoftwarePlanner
                     
                 }
                 
+            }
+        }
+
+        private void commentButton_Click(object sender, EventArgs e)
+        {
+            if (Role.isVisitor)
+            {
+                MessageBox.Show("Παρακαλώ συνδεθείτε ή δημιουργήστε λογαριασμό.");
+                return;
+            }
+            if (!commentBox.Text.Trim().Equals(""))
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                using (SQLiteCommand command = new SQLiteCommand(ADD_COMMENT, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@project_id", projectId);
+                    command.Parameters.AddWithValue("@user_id", User.id);
+                    command.Parameters.AddWithValue("@comment", commentBox.Text.Trim());
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Το σχόλιό σας αναρτήθηκε επιτυχώς.");
+                }
+                populateCommentGrid();
+            }
+            else
+            {
+                MessageBox.Show("Παρακαλώ προσθέστε ένα σχόλιο.");
+            }
+        }
+
+        private void populateCommentGrid()
+        {
+            commentGrid.Rows.Clear();
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(GET_COMMENTS_BY_PROJECT, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@project_id", projectId);
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        commentGrid.Rows.Add(reader.GetString(reader.GetOrdinal("comment")), reader.GetString(reader.GetOrdinal("username")));
+                    }
+                }
+
             }
         }
     }
