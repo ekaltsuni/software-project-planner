@@ -45,9 +45,14 @@ namespace SoftwarePlanner
                     }                   
                 }
             }
-            if (!User.role.Equals("Developer") || isAssigned)
+            if (!User.role.Equals("Developer"))
             {
                 offerButton.Visible = false;
+            }
+            if (isAssigned)
+            {
+                offerButton.Visible = false;
+                recommendationButton.Visible = false;
             }
             populateCommentGrid();
         }
@@ -273,6 +278,50 @@ namespace SoftwarePlanner
                     
                 }
                 
+            }
+            else
+            {
+                if (Role.isClient)
+                {
+                    string username = offerGrid.CurrentRow.Cells[1].Value.ToString().Trim();
+                    if (!string.IsNullOrEmpty(username))
+                    {
+                        using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                        using (SQLiteCommand command = new SQLiteCommand(RETURN_SEARCH_USER_VARIABLES, connection))
+                        {
+                            try
+                            {
+                                connection.Open();
+                                command.Parameters.AddWithValue("@username", username);
+                                using (SQLiteDataReader reader = command.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        UserSearch.id = reader.GetInt32(reader.GetOrdinal("id"));
+                                        UserSearch.role = reader.GetString(reader.GetOrdinal("role"));                                      
+                                        UserSearch.isSearchedUser = true;m
+                                        UserSearchedRole.isDeveloper = true;
+                                        UserSearchedRole.isClient = false;
+                                        this.Hide();
+                                        UserProfileForm userProfile = new UserProfileForm();
+                                        userProfile.ShowDialog();
+                                        this.Close();                                                                             
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("User not found.");
+                                    }
+
+                                }
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("An error occurred " + ex.Message);
+                            }
+                        }
+                    }
+                }
             }
         }
 
