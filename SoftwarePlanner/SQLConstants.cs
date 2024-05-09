@@ -213,6 +213,7 @@ namespace SoftwarePlanner
         public static readonly string SHOW_ASSIGNED_PROJECTS = @"SELECT title AS Project, description AS Details, status AS Status
                                                                     FROM Project 
                                                                     WHERE user_id = @matchedUserId";
+        public static readonly string UPDATE_PROJECT_ASSIGNMENT = @"UPDATE Project SET user_id = @userId WHERE project_id = @projectId";
         // COMMENTS
         public static readonly string ADD_COMMENT = "INSERT INTO ProjectComment (project_id, user_id, comment) VALUES (@project_id, @user_id, @comment)";
         public static readonly string GET_COMMENTS_BY_PROJECT = @"SELECT pc.comment, u.username
@@ -220,8 +221,6 @@ namespace SoftwarePlanner
                                                                   INNER JOIN User u
                                                                         ON u.id = pc.user_id
                                                                   WHERE pc.project_id = @project_id";
-        public static readonly string UPDATE_PROJECT_ASSIGNMENT = @"UPDATE Project SET user_id = @userId WHERE project_id = @projectId";
-
         //  VISIBILITY
         public static readonly string CREATE_DEVELOPER_VISIBILITY = @"INSERT OR IGNORE INTO Developer
                                                                     (email_visibility_flag, username_visibility_flag, 
