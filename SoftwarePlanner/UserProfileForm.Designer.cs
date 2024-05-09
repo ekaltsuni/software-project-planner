@@ -696,6 +696,7 @@
             this.offersDataGrid.RowTemplate.Height = 28;
             this.offersDataGrid.Size = new System.Drawing.Size(464, 189);
             this.offersDataGrid.TabIndex = 51;
+            this.offersDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offersDataGrid_CellContentClick);
             // 
             // offersTextBox
             // 

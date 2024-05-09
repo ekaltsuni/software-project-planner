@@ -20,6 +20,8 @@ namespace SoftwarePlanner
         int[] skillArray = new int[8];
         int[] devVisibilityArray = new int[8];
         int[] clientVisibilityArray = new int[8];
+        private int selectedProjectId = -1;
+        private int selectedUserId = -1;
 
 
         public UserProfileForm()
@@ -37,7 +39,7 @@ namespace SoftwarePlanner
                 fillDeveloperFields(UserSearch.id);
                 checkDevVisibility();
                 hidePrivateFields();
-         
+
             }
             else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient == true)
             {
@@ -208,7 +210,7 @@ namespace SoftwarePlanner
                     for (int i = 0; i < skillArray.Length; i++) skillsListBox.SetItemChecked(i, skillArray[i] == 1);
                     skillsBox.Text = other;
                 }
-                
+
                 using (SQLiteDataReader reader = visibilityCommand.ExecuteReader())
                 {
                     if (reader.Read())
@@ -421,7 +423,7 @@ namespace SoftwarePlanner
                     // Update visibility setting
                     using (SQLiteDataReader reader = userIDcommand.ExecuteReader())
                     {
-                        if (reader.Read()) 
+                        if (reader.Read())
                         {
                             visibilityCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
                             visibilityCommand.Parameters.AddWithValue("@email_visibility_flag", returnClientVisibilityFlag(0));
@@ -434,7 +436,7 @@ namespace SoftwarePlanner
                             visibilityCommand.Parameters.AddWithValue("@link_visibility_flag", returnClientVisibilityFlag(7));
                             visibilityCommand.ExecuteNonQuery();
                         }
-                    }                   
+                    }
 
                     MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                 }
@@ -501,6 +503,84 @@ namespace SoftwarePlanner
         {
             return developerVisibilityFields.GetItemChecked(index) ? 1 : 0;
         }
+
+        private void offersDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                int clickedRowIndex = e.RowIndex;
+                DataGridViewRow clickedRow = offersDataGrid.Rows[clickedRowIndex];
+
+                // Retrieve project ID and user ID from the clicked row
+                selectedProjectId = Convert.ToInt32(clickedRow.Cells["ProjectID"].Value);
+
+                // Show a message box with different actions based on the selected row
+                DialogResult result = MessageBox.Show("Would you like to accept this project?",
+                    "Project Assignment", MessageBoxButtons.YesNoCancel);
+
+                // Perform different actions based on the user's choice
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        UpdateProjectAssignment(selectedProjectId, User.id, "Accepted");
+                        MessageBox.Show($"Project is assigned.");
+                        break;
+                    case DialogResult.No:
+                        // Do something for the "No" option
+                        UpdateProjectOfferStatus(selectedProjectId, User.id, "Declined");
+                        MessageBox.Show($"Project is declined");
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+
+                // Reset selected IDs
+                selectedProjectId = -1;
+                selectedUserId = -1;
+            }
+        }
+
+        private void UpdateProjectAssignment(int projectId, int userId, string status)
+        {
+
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand(UPDATE_PROJECT_ASSIGNMENT, connection))
+                {
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.Parameters.AddWithValue("@projectId", projectId);
+                    command.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand command = new SQLiteCommand(UPDATE_OFFER_STATUS, connection))
+                {
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@projectId", projectId);
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void UpdateProjectOfferStatus(int projectId, int userId, string status)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand(UPDATE_OFFER_STATUS, connection))
+                {
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@projectId", projectId);
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
 
         private int returnClientVisibilityFlag(int index) 
         {
