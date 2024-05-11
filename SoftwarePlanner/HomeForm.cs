@@ -146,30 +146,17 @@ namespace SoftwarePlanner
                                     {
                                         UserSearch.isSearchedUser = true;
                                         UserSearchedRole.isDeveloper = true;
-                                        UserSearchedRole.isClient = false;
-                                        this.Hide();
-                                        UserProfileForm userProfile = new UserProfileForm();
-                                        userProfile.ShowDialog();
-                                        this.Close();
+                                        UserSearchedRole.isClient = false;                                        
                                     }
                                     else if (UserSearch.id != User.id && UserSearch.role.Equals("Πελάτης"))
                                     {
                                         UserSearch.isSearchedUser = true;
                                         UserSearchedRole.isDeveloper = false;
                                         UserSearchedRole.isClient = true;
-                                        this.Hide();
-                                        UserProfileForm userProfile = new UserProfileForm();
-                                        userProfile.ShowDialog();
-                                        this.Close();
-
                                     }
                                     else if (UserSearch.id == User.id)
                                     {
                                         UserSearch.isSearchedUser = false;
-                                        this.Hide();
-                                        UserProfileForm userProfile = new UserProfileForm();
-                                        userProfile.ShowDialog();
-                                        this.Close();
                                     }
                                 }
                                 else
@@ -179,12 +166,15 @@ namespace SoftwarePlanner
 
                             }
                         }
-
                         catch (Exception ex)
                         {
                             MessageBox.Show("An error occurred " + ex.Message);
                         }
                     }
+                    this.Hide();
+                    UserProfileForm userProfile = new UserProfileForm();
+                    userProfile.ShowDialog();
+                    this.Close();
                 }
             }
         }

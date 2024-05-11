@@ -16,6 +16,11 @@ namespace SoftwarePlanner
         public ParentForm()
         {
             InitializeComponent();
+            setToolstripOptions();
+        }
+
+        private void setToolstripOptions()
+        {
             if (!Role.isVisitor)
             {
                 loginButton.Text = "Αποσύνδεση";
@@ -26,8 +31,8 @@ namespace SoftwarePlanner
                 profileButton.Text = "Προφίλ";
                 profileButton.Click += new EventHandler(ViewProfileClickHandler);
                 toolStripMenu.Items.Add(profileButton);
-                
-                if (User.role.Equals("Πελάτης"))
+
+                /*if (User.role.Equals("Πελάτης"))
                 {
                     ToolStripMenuItem createProjectButton = new ToolStripMenuItem();
                     createProjectButton.Name = "createProject";
@@ -42,11 +47,12 @@ namespace SoftwarePlanner
                     createCategoryButton.Text = "Νέα Κατηγορία";
                     createCategoryButton.Click += new EventHandler(CreateCategoryClickHandler);
                     toolStripMenu.Items.Add(createCategoryButton);
-                }
+                }*/
             }
             else
             {
                 loginButton.Text = "Σύνδεση";
+                loginButton.Click += new EventHandler(LoginClickHandler);
             }
         }
 
@@ -56,9 +62,18 @@ namespace SoftwarePlanner
             Role.isVisitor = true;
             Role.isClient = false;
             Role.isDeveloper = false;
+            setToolstripOptions();
             this.Hide();
             HomeForm home = new HomeForm();
             home.ShowDialog();
+            this.Close();
+        }
+
+        private void LoginClickHandler(object sender, EventArgs e)
+        {            
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
             this.Close();
         }
 

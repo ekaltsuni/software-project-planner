@@ -49,6 +49,10 @@ namespace SoftwarePlanner
             {
                 offerButton.Visible = false;
             }
+            if (Role.isAdmin)
+            {
+                deleteButton.Visible = true;
+            }
             if (isAssigned)
             {
                 offerButton.Visible = false;
@@ -368,6 +372,31 @@ namespace SoftwarePlanner
                     }
                 }
 
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            delete(DELETE_PROJECT_COMMENT);
+            delete(DELETE_PROJECT_OFFER);
+            delete(DELETE_PROJECT_TECHNOLOGY);
+            delete(DELETE_PROJECT_NOTIFICATION);
+            delete(DELETE_PROJECT);            
+            MessageBox.Show("Το έργο διαγράφηκε.");
+            this.Hide();
+            HomeForm home = new HomeForm();
+            home.ShowDialog();
+            this.Close();
+        }
+
+        private void delete(string command_name)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(command_name, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@id", projectId);
+                command.ExecuteNonQuery();
             }
         }
     }

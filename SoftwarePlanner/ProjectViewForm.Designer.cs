@@ -50,10 +50,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.offerButton = new System.Windows.Forms.Button();
             this.commentGrid = new System.Windows.Forms.DataGridView();
-            this.commentBox = new System.Windows.Forms.RichTextBox();
-            this.commentButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentBox = new System.Windows.Forms.RichTextBox();
+            this.commentButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -244,6 +245,18 @@
             this.commentGrid.Size = new System.Drawing.Size(724, 175);
             this.commentGrid.TabIndex = 2;
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Σχόλιο";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // user
+            // 
+            this.user.HeaderText = "Χρήστης";
+            this.user.Name = "user";
+            this.user.ReadOnly = true;
+            // 
             // commentBox
             // 
             this.commentBox.Location = new System.Drawing.Point(528, 578);
@@ -262,23 +275,26 @@
             this.commentButton.UseVisualStyleBackColor = true;
             this.commentButton.Click += new System.EventHandler(this.commentButton_Click);
             // 
-            // dataGridViewTextBoxColumn2
+            // deleteButton
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Σχόλιο";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // user
-            // 
-            this.user.HeaderText = "Χρήστης";
-            this.user.Name = "user";
-            this.user.ReadOnly = true;
+            this.deleteButton.BackColor = System.Drawing.Color.Red;
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.Location = new System.Drawing.Point(60, 574);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(125, 53);
+            this.deleteButton.TabIndex = 53;
+            this.deleteButton.Text = "Διαγραφή";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // ProjectViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.commentButton);
             this.Controls.Add(this.commentBox);
             this.Controls.Add(this.commentGrid);
@@ -300,6 +316,7 @@
             this.Controls.SetChildIndex(this.commentGrid, 0);
             this.Controls.SetChildIndex(this.commentBox, 0);
             this.Controls.SetChildIndex(this.commentButton, 0);
+            this.Controls.SetChildIndex(this.deleteButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -326,5 +343,6 @@
         private System.Windows.Forms.Button commentButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn user;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

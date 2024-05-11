@@ -53,6 +53,7 @@ namespace SoftwarePlanner
         {
             if (User.role.Equals("Developer"))
             {
+                Role.isAdmin = false;
                 Role.isDeveloper = true;
                 Role.isClient = false;
                 Role.isVisitor = false;
@@ -60,12 +61,21 @@ namespace SoftwarePlanner
             }
             else if (User.role.Equals("Πελάτης"))
             {
+                Role.isAdmin = false;
                 Role.isDeveloper = false;
                 Role.isClient = true;
                 Role.isVisitor = false;
             }
+            else if (User.role.Equals("Admin"))
+            {
+                Role.isAdmin = true;
+                Role.isDeveloper = false;
+                Role.isClient = false;
+                Role.isVisitor = false;
+            }
             else
             {
+                Role.isAdmin = false;
                 Role.isVisitor = true;
                 Role.isDeveloper = false;
                 Role.isClient = false;

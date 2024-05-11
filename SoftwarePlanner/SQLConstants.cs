@@ -28,7 +28,16 @@ namespace SoftwarePlanner
                                                                 (@username, @password, @email, @role, @name, @surname, @gender, @signing_date)";
         public static readonly string RETURN_LATEST_USER_ID = "SELECT id FROM User ORDER BY id DESC LIMIT 1";
         public static readonly string RETURN_LATEST_PROJECT_ID = "SELECT project_id FROM Project ORDER BY project_id DESC LIMIT 1";
-
+        // DELETE USER
+        public static readonly string DELETE_USER_DEVELOPER = "DELETE FROM Developer WHERE id = @id";
+        public static readonly string DELETE_USER_CLIENT = "DELETE FROM Client WHERE id = @id";
+        public static readonly string DELETE_USER_PORTFOLIO = "DELETE FROM Portfolio WHERE id = @id";
+        public static readonly string DELETE_USER_OFFER = "DELETE FROM ProjectOffer WHERE user_id = @id";
+        public static readonly string DELETE_USER_COMMENT = "DELETE FROM ProjectComment WHERE user_id = @id";
+        public static readonly string DELETE_USER_PROJECT = "DELETE FROM Project WHERE user_id = @id";
+        public static readonly string DELETE_USER_SKILL = "DELETE FROM Skills WHERE id = @id";
+        public static readonly string DELETE_USER_NOTIFICATION = "DELETE FROM UserNotification WHERE user_id = @id OR actor_id = @id";
+        public static readonly string DELETE_USER = "DELETE FROM User WHERE id = @id";
         // DEVELOPER
         public static readonly string RETURN_PORTFOLIO_VARIABLES = "SELECT portfolio_title, portfolio_link FROM Portfolio" +
           " WHERE id = @id";
@@ -146,6 +155,11 @@ namespace SoftwarePlanner
                                                                     (@project_id, @technology_id)";
         public static readonly string ASSIGN_USER_TO_PROJECT = "UPDATE Project SET user_id = @user_id WHERE project_id = @project_id";
         public static readonly string ADD_CATEGORY = "INSERT OR IGNORE INTO ProjectCategory (name) VALUES (@name)";
+        public static readonly string DELETE_PROJECT_COMMENT = "DELETE FROM ProjectComment WHERE project_id = @id";
+        public static readonly string DELETE_PROJECT_OFFER = "DELETE FROM ProjectOffer WHERE project_id = @id";
+        public static readonly string DELETE_PROJECT_TECHNOLOGY = "DELETE FROM ProjectTechnology WHERE project_id = @id";
+        public static readonly string DELETE_PROJECT_NOTIFICATION = "DELETE FROM UserNotification WHERE project_id = @id";
+        public static readonly string DELETE_PROJECT = "DELETE FROM Project WHERE project_id = @id";
         // DROPDOWNS
         public static readonly string RETURN_PROJECT_TYPES = "SELECT type FROM ProjectType";
         public static readonly string RETURN_PROJECT_TYPE_NAME = "SELECT type FROM ProjectType WHERE id = @id";

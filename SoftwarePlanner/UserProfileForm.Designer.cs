@@ -75,6 +75,7 @@
             this.projectsDataGrid = new System.Windows.Forms.DataGridView();
             this.offersDataGrid = new System.Windows.Forms.DataGridView();
             this.offersTextBox = new System.Windows.Forms.TextBox();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).BeginInit();
@@ -537,7 +538,7 @@
             // 
             this.datePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datePicker.Location = new System.Drawing.Point(49, 573);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.datePicker.Margin = new System.Windows.Forms.Padding(2);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(135, 20);
             this.datePicker.TabIndex = 44;
@@ -558,7 +559,7 @@
             // 
             this.descriptionBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionBox.Location = new System.Drawing.Point(457, 274);
-            this.descriptionBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.descriptionBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionBox.MaxLength = 300;
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(295, 31);
@@ -570,7 +571,7 @@
             // 
             this.skillsBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.skillsBox.Location = new System.Drawing.Point(569, 274);
-            this.skillsBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.skillsBox.Margin = new System.Windows.Forms.Padding(2);
             this.skillsBox.MaxLength = 300;
             this.skillsBox.Name = "skillsBox";
             this.skillsBox.Size = new System.Drawing.Size(184, 64);
@@ -592,7 +593,7 @@
             "Python",
             "Ruby"});
             this.skillsListBox.Location = new System.Drawing.Point(457, 274);
-            this.skillsListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.skillsListBox.Margin = new System.Windows.Forms.Padding(2);
             this.skillsListBox.Name = "skillsListBox";
             this.skillsListBox.Size = new System.Drawing.Size(109, 64);
             this.skillsListBox.TabIndex = 45;
@@ -606,7 +607,7 @@
             this.Title,
             this.Column1});
             this.dataGridView.Location = new System.Drawing.Point(457, 465);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
@@ -634,7 +635,7 @@
             this.notificationsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.notificationsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.notificationsDataGrid.Location = new System.Drawing.Point(880, 241);
-            this.notificationsDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.notificationsDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.notificationsDataGrid.Name = "notificationsDataGrid";
             this.notificationsDataGrid.ReadOnly = true;
             this.notificationsDataGrid.RowHeadersWidth = 62;
@@ -648,7 +649,7 @@
             this.projectsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.projectsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.projectsDataGrid.Location = new System.Drawing.Point(880, 415);
-            this.projectsDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.projectsDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.projectsDataGrid.Name = "projectsDataGrid";
             this.projectsDataGrid.ReadOnly = true;
             this.projectsDataGrid.RowHeadersWidth = 62;
@@ -662,7 +663,7 @@
             this.offersDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.offersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.offersDataGrid.Location = new System.Drawing.Point(880, 83);
-            this.offersDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.offersDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.offersDataGrid.Name = "offersDataGrid";
             this.offersDataGrid.ReadOnly = true;
             this.offersDataGrid.RowHeadersWidth = 62;
@@ -685,6 +686,20 @@
             this.offersTextBox.TabIndex = 50;
             this.offersTextBox.Text = " Προσφορές";
             // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.Red;
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.Location = new System.Drawing.Point(626, 593);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(125, 53);
+            this.deleteButton.TabIndex = 52;
+            this.deleteButton.Text = "Διαγραφή";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,6 +707,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.offersDataGrid);
             this.Controls.Add(this.offersTextBox);
             this.Controls.Add(this.projectsDataGrid);
@@ -788,6 +804,7 @@
             this.Controls.SetChildIndex(this.projectsDataGrid, 0);
             this.Controls.SetChildIndex(this.offersTextBox, 0);
             this.Controls.SetChildIndex(this.offersDataGrid, 0);
+            this.Controls.SetChildIndex(this.deleteButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).EndInit();
@@ -845,5 +862,6 @@
         private System.Windows.Forms.DataGridView projectsDataGrid;
         private System.Windows.Forms.DataGridView offersDataGrid;
         private System.Windows.Forms.TextBox offersTextBox;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

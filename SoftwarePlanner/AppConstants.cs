@@ -50,6 +50,13 @@ namespace SoftwarePlanner
 
         public static class Role
         {
+            private static bool _isAdmin;
+            public static bool isAdmin
+            {
+                get { return _isAdmin; }
+                set { _isAdmin = value; }
+            }
+
             private static bool _isDeveloper;
             public static bool isDeveloper
             {
