@@ -18,7 +18,9 @@ namespace SoftwarePlanner
         {
             InitializeComponent();
             populateDropdowns();
-            
+            generalProjectSearch();
+            this.projectTable.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+
             UserSearch.isSearchedUser = false;
 
             nextUserPage.Enabled = false;
@@ -184,7 +186,7 @@ namespace SoftwarePlanner
         private void projectTable_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
             DataGridView grid = sender as DataGridView;
-            if (grid == null || grid.CurrentRow.Cells[0].Value == null) return;
+            if (grid == null || grid.CurrentRow.Cells[0].Value == null || e.RowIndex < 0) return;
             this.Hide();
             ProjectViewForm form = new ProjectViewForm(grid.CurrentRow.Cells[0].Value.ToString().Trim());
             form.ShowDialog();
@@ -347,6 +349,7 @@ namespace SoftwarePlanner
                     command.Parameters.AddWithValue("@page", projectPage * 10);
                 }
                 using (command)
+                using (SQLiteCommand offerCommand = new SQLiteCommand(GET_NUMBER_OF_OFFERS_BY_PROJECT_ID, connection))
                 {
                     connection.Open();
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -354,10 +357,18 @@ namespace SoftwarePlanner
                         int count = 0;
                         while (reader.Read())
                         {
+                            offerCommand.Parameters.AddWithValue("@project_id", reader.GetInt32(reader.GetOrdinal("project_id")));
+                            int offerNum = Convert.ToInt32(offerCommand.ExecuteScalar());                         
                             count++;
                             if (count < 10)
                             {
-                                projectTable.Rows.Add(reader.GetString(reader.GetOrdinal("title")));
+                                if (reader[3].GetType() != typeof(DBNull)) {
+                                    projectTable.Rows.Add(reader.GetString(reader.GetOrdinal("title")), offerNum, reader.GetString(reader.GetOrdinal("date")), reader.GetInt32(reader.GetOrdinal("max_price")));
+                                }
+                                else
+                                {
+                                    projectTable.Rows.Add(reader.GetString(reader.GetOrdinal("title")), offerNum, reader.GetString(reader.GetOrdinal("date")), "Δεν υπάρχει");
+                                }
                             }
                         }
                         if (count > 10) nextProjectPage.Enabled = true;

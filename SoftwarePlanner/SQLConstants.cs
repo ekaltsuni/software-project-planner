@@ -103,19 +103,22 @@ namespace SoftwarePlanner
         // PROJECT
         public static readonly string RETURN_PROJECT_FULL = @"SELECT * 
                                                               FROM Project p                                                             
-                                                              WHERE p.title = @title";
-        public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT title
+                                                              WHERE p.title = @title
+                                                              ORDER BY date";
+        public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT project_id, title, date, max_price
                                                                 FROM Project p
                                                                 WHERE p.title LIKE @title
                                                                     OR p.description LIKE @title
+                                                                ORDER BY date
                                                                 LIMIT 11 OFFSET @page";
-        public static readonly string RETURN_PUBLIC_PROJECT_SIMPLE = @"SELECT title
+        public static readonly string RETURN_PUBLIC_PROJECT_SIMPLE = @"SELECT project_id, title, date, max_price
                                                                       FROM Project p
                                                                       WHERE (p.title LIKE @title
                                                                           OR p.description LIKE @title)
                                                                           AND p.type = 2  
+                                                                      ORDER BY date
                                                                       LIMIT 11 OFFSET @page";
-        public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT title
+        public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT project_id, title, date, max_price
                                                                 FROM Project p
                                                                 INNER JOIN ProjectCategory pc
                                                                     ON pc.id = p.category
@@ -130,8 +133,9 @@ namespace SoftwarePlanner
                                                                     AND pc.name LIKE @category AND psc.name LIKE @subcategory
                                                                     AND p.date >= @dateBefore AND p.date <= @dateAfter
                                                                     AND t.description LIKE @technology
+                                                                ORDER BY date
                                                                 LIMIT 11 OFFSET @page";
-        public static readonly string RETURN_PUBLIC_PROJECT_ADVANCED = @"SELECT title
+        public static readonly string RETURN_PUBLIC_PROJECT_ADVANCED = @"SELECT project_id, title, date, max_price
                                                                         FROM Project p
                                                                         INNER JOIN ProjectCategory pc
                                                                             ON pc.id = p.category
@@ -147,6 +151,7 @@ namespace SoftwarePlanner
                                                                             AND p.date >= @dateBefore AND p.date <= @dateAfter
                                                                             AND t.description LIKE @technology
                                                                             AND p.type = 2
+                                                                        ORDER BY date
                                                                         LIMIT 11 OFFSET @page";
         public static readonly string SAVE_PROJECT = @"INSERT INTO Project 
              (title, description, type, category, subcategory, payment, max_price, duration, bidding_duration, date) VALUES
@@ -201,6 +206,7 @@ namespace SoftwarePlanner
         // OFFERS AND ASSIGNMENTS
         public static readonly string GET_ASSIGNED_USER = "SELECT user_id FROM Project WHERE project_id = @project_id";
         public static readonly string GET_OFFERS_BY_PROJECT_ID = "SELECT user_id, date FROM ProjectOffer WHERE project_id = @project_id";
+        public static readonly string GET_NUMBER_OF_OFFERS_BY_PROJECT_ID = "SELECT COUNT(*) FROM ProjectOffer WHERE project_id = @project_id";
         public static readonly string UPDATE_OFFER = "INSERT INTO ProjectOffer (project_id, user_id, date) VALUES (@project, @user, @date)";
         public static readonly string REMOVE_OFFER = "DELETE FROM ProjectOffer WHERE user_id = @user_id AND project_id = @project_id";
         public static readonly string OFFER_EXISTS_BY_USER_AND_PROJECT = @"SELECT COUNT(*) 

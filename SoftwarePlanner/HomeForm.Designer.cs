@@ -70,6 +70,9 @@
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectTable = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OfferCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nextUserPage = new System.Windows.Forms.Button();
             this.previousUserPage = new System.Windows.Forms.Button();
             this.previousProjectPage = new System.Windows.Forms.Button();
@@ -446,7 +449,7 @@
             this.projectTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -454,10 +457,13 @@
             this.projectTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.projectTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.projectTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
+            this.dataGridViewTextBoxColumn1,
+            this.OfferCount,
+            this.Date,
+            this.MaxPrice});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -478,6 +484,24 @@
             this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // OfferCount
+            // 
+            this.OfferCount.HeaderText = "Προσφορές";
+            this.OfferCount.Name = "OfferCount";
+            this.OfferCount.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Ημερομηνία";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // MaxPrice
+            // 
+            this.MaxPrice.HeaderText = "Μέγιστη Τιμή";
+            this.MaxPrice.Name = "MaxPrice";
+            this.MaxPrice.ReadOnly = true;
             // 
             // nextUserPage
             // 
@@ -625,5 +649,8 @@
         private System.Windows.Forms.Button previousUserPage;
         private System.Windows.Forms.Button previousProjectPage;
         private System.Windows.Forms.Button nextProjectPage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OfferCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaxPrice;
     }
 }
