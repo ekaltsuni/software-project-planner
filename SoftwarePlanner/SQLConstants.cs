@@ -149,8 +149,8 @@ namespace SoftwarePlanner
                                                                             AND p.type = 2
                                                                         LIMIT 11 OFFSET @page";
         public static readonly string SAVE_PROJECT = @"INSERT INTO Project 
-             (title, description, type, price_visibility, category, subcategory, payment, max_price, duration, bidding_duration, date) VALUES
-             (@title, @description, @type, @price_visibility, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration, @date)";
+             (title, description, type, category, subcategory, payment, max_price, duration, bidding_duration, date) VALUES
+             (@title, @description, @type, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration, @date)";
         public static readonly string UPDATE_PROJECT_TECHNOLOGY = @"INSERT INTO ProjectTechnology (project_id, technology_id) VALUES
                                                                     (@project_id, @technology_id)";
         public static readonly string ASSIGN_USER_TO_PROJECT = "UPDATE Project SET user_id = @user_id WHERE project_id = @project_id";

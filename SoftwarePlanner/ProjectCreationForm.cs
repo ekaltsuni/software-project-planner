@@ -83,12 +83,11 @@ namespace SoftwarePlanner
         private void saveButton_Click(object sender, EventArgs e)
         {
             List<int> technologyIds = updateTechnologiesInDB();
-            int price_visibility = visiblePriceRadioButton.Checked ? 1 : 0;
             int typeId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_TYPE, "@type", projectTypeDropdown.SelectedItem.ToString());
             int categoryId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_CATEGORY, "@name", projectCategoryDropdown.SelectedItem.ToString());
             int subCategoryId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_SUBCATEGORY, "@name", projectSubcategoryDropdown.SelectedItem.ToString());
             int paymentId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_PAYMENT, "@type", projectPaymentDropdown.SelectedItem.ToString());
-            int durationId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_DURATION, "@type", projectDurationDropdown.SelectedItem.ToString());
+            int durationId = getIdOfDropdownItem(RETURN_ID_BY_PROJECT_DURATION, "@type", projectDurationDropdown.SelectedItem != null ? projectDurationDropdown.SelectedItem.ToString() : null);
 
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand baseCommand = new SQLiteCommand(SAVE_PROJECT, connection))
@@ -101,20 +100,22 @@ namespace SoftwarePlanner
                     baseCommand.Parameters.AddWithValue("@title", titleBox.Text);
                     baseCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
                     baseCommand.Parameters.AddWithValue("@type", typeId);
-                    baseCommand.Parameters.AddWithValue("@price_visibility", price_visibility);
                     baseCommand.Parameters.AddWithValue("@category", categoryId);
                     baseCommand.Parameters.AddWithValue("@subcategory", subCategoryId);
                     baseCommand.Parameters.AddWithValue("@payment", paymentId);
                     int maxPrice = -1;
                     if (int.TryParse(maxPriceBox.Text.Trim(), out maxPrice)) baseCommand.Parameters.AddWithValue("@max_price", maxPrice);
+                    else if (maxPriceBox.Text.Trim().Length == 0) baseCommand.Parameters.AddWithValue("@max_price", null);
                     else
                     {
                         MessageBox.Show("Invalid price input.");
                         return;
                     }
-                    baseCommand.Parameters.AddWithValue("@duration", durationId);
+                    if (durationId != -1) baseCommand.Parameters.AddWithValue("@duration", durationId);
+                    else baseCommand.Parameters.AddWithValue("@duration", null);
                     int biddingDuration = -1;
                     if (int.TryParse(biddingDurationBox.Text.Trim(), out biddingDuration)) baseCommand.Parameters.AddWithValue("@bidding_duration", biddingDuration);
+                    else if (biddingDurationBox.Text.Trim().Length == 0) baseCommand.Parameters.AddWithValue("@bidding_duration", null);
                     else
                     {
                         MessageBox.Show("Invalid bidding duration input.");
@@ -137,6 +138,10 @@ namespace SoftwarePlanner
 
                     MessageBox.Show("Το έργο σας αποθηκεύτηκε επιτυχώς.");
                 }
+                this.Hide();
+                HomeForm home = new HomeForm();
+                home.ShowDialog();
+                this.Close();
             }
         }
 
@@ -215,15 +220,6 @@ namespace SoftwarePlanner
                         }
                     }
                 }
-            }
-        }
-
-        private void ProjectCreationForm_FormClosing(object sender, FormClosingEventArgs e)
-        { 
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                MessageBox.Show("Closed by User", "UserClosing");
-                Application.Exit();
             }
         }
     }

@@ -32,16 +32,12 @@
             this.titleBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.descriptionBox = new System.Windows.Forms.RichTextBox();
-            this.visiblePriceRadioButton = new System.Windows.Forms.RadioButton();
-            this.invisiblePriceRadioButton = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.projectTypeDropdown = new System.Windows.Forms.ComboBox();
             this.projectCategoryDropdown = new System.Windows.Forms.ComboBox();
             this.projectSubcategoryDropdown = new System.Windows.Forms.ComboBox();
             this.projectPaymentDropdown = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,7 +51,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.technologyBox = new System.Windows.Forms.RichTextBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // titleBox
@@ -85,40 +80,6 @@
             this.descriptionBox.TabIndex = 3;
             this.descriptionBox.Text = "";
             // 
-            // visiblePriceRadioButton
-            // 
-            this.visiblePriceRadioButton.AutoSize = true;
-            this.visiblePriceRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.visiblePriceRadioButton.Location = new System.Drawing.Point(6, 19);
-            this.visiblePriceRadioButton.Name = "visiblePriceRadioButton";
-            this.visiblePriceRadioButton.Size = new System.Drawing.Size(50, 22);
-            this.visiblePriceRadioButton.TabIndex = 4;
-            this.visiblePriceRadioButton.TabStop = true;
-            this.visiblePriceRadioButton.Text = "Ναι";
-            this.visiblePriceRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // invisiblePriceRadioButton
-            // 
-            this.invisiblePriceRadioButton.AutoSize = true;
-            this.invisiblePriceRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.invisiblePriceRadioButton.Location = new System.Drawing.Point(62, 19);
-            this.invisiblePriceRadioButton.Name = "invisiblePriceRadioButton";
-            this.invisiblePriceRadioButton.Size = new System.Drawing.Size(50, 22);
-            this.invisiblePriceRadioButton.TabIndex = 5;
-            this.invisiblePriceRadioButton.TabStop = true;
-            this.invisiblePriceRadioButton.Text = "Όχι";
-            this.invisiblePriceRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.visiblePriceRadioButton);
-            this.groupBox1.Controls.Add(this.invisiblePriceRadioButton);
-            this.groupBox1.Location = new System.Drawing.Point(322, 361);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(120, 48);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            // 
             // projectTypeDropdown
             // 
             this.projectTypeDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
@@ -132,7 +93,7 @@
             // 
             this.projectCategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectCategoryDropdown.FormattingEnabled = true;
-            this.projectCategoryDropdown.Location = new System.Drawing.Point(242, 433);
+            this.projectCategoryDropdown.Location = new System.Drawing.Point(242, 364);
             this.projectCategoryDropdown.Name = "projectCategoryDropdown";
             this.projectCategoryDropdown.Size = new System.Drawing.Size(200, 26);
             this.projectCategoryDropdown.TabIndex = 9;
@@ -142,7 +103,7 @@
             // 
             this.projectSubcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectSubcategoryDropdown.FormattingEnabled = true;
-            this.projectSubcategoryDropdown.Location = new System.Drawing.Point(242, 488);
+            this.projectSubcategoryDropdown.Location = new System.Drawing.Point(242, 419);
             this.projectSubcategoryDropdown.Name = "projectSubcategoryDropdown";
             this.projectSubcategoryDropdown.Size = new System.Drawing.Size(200, 26);
             this.projectSubcategoryDropdown.TabIndex = 10;
@@ -151,7 +112,7 @@
             // 
             this.projectPaymentDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectPaymentDropdown.FormattingEnabled = true;
-            this.projectPaymentDropdown.Location = new System.Drawing.Point(242, 543);
+            this.projectPaymentDropdown.Location = new System.Drawing.Point(242, 474);
             this.projectPaymentDropdown.Name = "projectPaymentDropdown";
             this.projectPaymentDropdown.Size = new System.Drawing.Size(200, 26);
             this.projectPaymentDropdown.TabIndex = 11;
@@ -176,21 +137,11 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Τύπος Έργου *";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label4.Location = new System.Drawing.Point(86, 381);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(209, 18);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Εμφάνιση Τιμής Προσφοράς *";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label5.Location = new System.Drawing.Point(86, 436);
+            this.label5.Location = new System.Drawing.Point(86, 367);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 18);
             this.label5.TabIndex = 15;
@@ -200,7 +151,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label6.Location = new System.Drawing.Point(86, 491);
+            this.label6.Location = new System.Drawing.Point(86, 422);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 18);
             this.label6.TabIndex = 16;
@@ -210,7 +161,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label7.Location = new System.Drawing.Point(86, 546);
+            this.label7.Location = new System.Drawing.Point(86, 477);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(139, 18);
             this.label7.TabIndex = 17;
@@ -222,7 +173,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(89, 587);
+            this.textBox5.Location = new System.Drawing.Point(89, 518);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(200, 13);
@@ -334,35 +285,28 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.projectPaymentDropdown);
             this.Controls.Add(this.projectSubcategoryDropdown);
             this.Controls.Add(this.projectCategoryDropdown);
             this.Controls.Add(this.projectTypeDropdown);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.descriptionBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.titleBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "ProjectCreationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Δημιουργία Έργου";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectCreationForm_FormClosing);
             this.Controls.SetChildIndex(this.titleBox, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.descriptionBox, 0);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.projectTypeDropdown, 0);
             this.Controls.SetChildIndex(this.projectCategoryDropdown, 0);
             this.Controls.SetChildIndex(this.projectSubcategoryDropdown, 0);
             this.Controls.SetChildIndex(this.projectPaymentDropdown, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.label7, 0);
@@ -376,8 +320,6 @@
             this.Controls.SetChildIndex(this.label11, 0);
             this.Controls.SetChildIndex(this.technologyBox, 0);
             this.Controls.SetChildIndex(this.saveButton, 0);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,16 +330,12 @@
         private System.Windows.Forms.TextBox titleBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox descriptionBox;
-        private System.Windows.Forms.RadioButton visiblePriceRadioButton;
-        private System.Windows.Forms.RadioButton invisiblePriceRadioButton;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox projectTypeDropdown;
         private System.Windows.Forms.ComboBox projectCategoryDropdown;
         private System.Windows.Forms.ComboBox projectSubcategoryDropdown;
         private System.Windows.Forms.ComboBox projectPaymentDropdown;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
