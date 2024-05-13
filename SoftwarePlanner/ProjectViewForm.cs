@@ -177,6 +177,7 @@ namespace SoftwarePlanner
                         {
                             command.Parameters.AddWithValue("@project", projectId);
                             command.Parameters.AddWithValue("@user", User.id);
+                            command.Parameters.AddWithValue("@date", DateTime.Now.ToString(DATE_FORMAT));
                             command.ExecuteNonQuery();
                             MessageBox.Show("Η προσφορά σας αναρτήθηκε επιτυχώς.");
                             populateOfferGrid();
@@ -212,7 +213,7 @@ namespace SoftwarePlanner
             {
                 DataGridViewButtonColumn actionColumn = new DataGridViewButtonColumn();
                 actionColumn.Name = "Ενέργειες";
-                int columnIndex = 2;
+                int columnIndex = 3;
                 if (offerGrid.Columns["actions"] == null)
                 {
                     offerGrid.Columns.Insert(columnIndex, actionColumn);
@@ -241,11 +242,11 @@ namespace SoftwarePlanner
                             {
                                 if (User.role.Equals("Developer"))
                                 {
-                                    offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")));
+                                    offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")), reader.GetString(reader.GetOrdinal("date")));
                                 }
                                 else if (User.role.Equals("Πελάτης"))
                                 {
-                                    offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")), "Ανάθεση");
+                                    offerGrid.Rows.Add("Προσφορά #" + (count + 1), userReader.GetString(userReader.GetOrdinal("username")), reader.GetString(reader.GetOrdinal("date")), "Ανάθεση");
                                 }
                             }
                         }

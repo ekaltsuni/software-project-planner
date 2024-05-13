@@ -200,8 +200,8 @@ namespace SoftwarePlanner
 
         // OFFERS AND ASSIGNMENTS
         public static readonly string GET_ASSIGNED_USER = "SELECT user_id FROM Project WHERE project_id = @project_id";
-        public static readonly string GET_OFFERS_BY_PROJECT_ID = "SELECT user_id FROM ProjectOffer WHERE project_id = @project_id";
-        public static readonly string UPDATE_OFFER = "INSERT INTO ProjectOffer (project_id, user_id) VALUES (@project, @user)";
+        public static readonly string GET_OFFERS_BY_PROJECT_ID = "SELECT user_id, date FROM ProjectOffer WHERE project_id = @project_id";
+        public static readonly string UPDATE_OFFER = "INSERT INTO ProjectOffer (project_id, user_id, date) VALUES (@project, @user, @date)";
         public static readonly string REMOVE_OFFER = "DELETE FROM ProjectOffer WHERE user_id = @user_id AND project_id = @project_id";
         public static readonly string OFFER_EXISTS_BY_USER_AND_PROJECT = @"SELECT COUNT(*) 
                                                                            FROM ProjectOffer 

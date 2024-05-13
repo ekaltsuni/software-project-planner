@@ -32,7 +32,7 @@ namespace SoftwarePlanner
                 profileButton.Click += new EventHandler(ViewProfileClickHandler);
                 toolStripMenu.Items.Add(profileButton);
 
-                /*if (User.role.Equals("Πελάτης"))
+                if (Role.isClient)
                 {
                     ToolStripMenuItem createProjectButton = new ToolStripMenuItem();
                     createProjectButton.Name = "createProject";
@@ -40,14 +40,14 @@ namespace SoftwarePlanner
                     createProjectButton.Click += new EventHandler(CreateProjectClickHandler);
                     toolStripMenu.Items.Add(createProjectButton);
                 }
-                else if (User.role.Equals("Developer"))
+                else if (Role.isDeveloper)
                 {
                     ToolStripMenuItem createCategoryButton = new ToolStripMenuItem();
                     createCategoryButton.Name = "createCategory";
                     createCategoryButton.Text = "Νέα Κατηγορία";
                     createCategoryButton.Click += new EventHandler(CreateCategoryClickHandler);
                     toolStripMenu.Items.Add(createCategoryButton);
-                }*/
+                }
             }
             else
             {

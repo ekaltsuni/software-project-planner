@@ -55,6 +55,7 @@
             this.commentBox = new System.Windows.Forms.RichTextBox();
             this.commentButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -123,7 +124,8 @@
             this.offerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.offerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Offer,
-            this.Developer});
+            this.Developer,
+            this.Date});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
@@ -289,6 +291,12 @@
             this.deleteButton.Visible = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // Date
+            // 
+            this.Date.HeaderText = "Ημερομηνία";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
             // ProjectViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,5 +352,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn user;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
     }
 }

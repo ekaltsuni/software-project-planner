@@ -38,14 +38,18 @@ namespace SoftwarePlanner
                             User.id = reader.GetInt32(reader.GetOrdinal("id"));
                             getRole();
                             login();
-                            this.Hide();
-                            UserProfileForm userProfile = new UserProfileForm();
-                            userProfile.ShowDialog();
-                            this.Close();
                         }
-                        else MessageBox.Show("Λανθασμένο όνομα χρήστη ή κωδικός.");
+                        else
+                        {
+                            MessageBox.Show("Λανθασμένο όνομα χρήστη ή κωδικός.");
+                            return;
+                        }
                     }
                 }
+                this.Hide();
+                UserProfileForm userProfile = new UserProfileForm();
+                userProfile.ShowDialog();
+                this.Close();
             }
             else MessageBox.Show("Παρακαλώ συμπληρώστε όνομα & κωδικό.");
         }
