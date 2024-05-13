@@ -29,7 +29,6 @@ namespace SoftwarePlanner
         {
             InitializeComponent();
             initialState();
-
         }
 
         private void UserProfileForm_Load(object sender, EventArgs e)
@@ -101,7 +100,6 @@ namespace SoftwarePlanner
                         {
                             surnameBox.Text = "";
                         }
-
                         if (reader["image_data"] != DBNull.Value)
                         {
                             byte[] imageData = (byte[])reader["image_data"];

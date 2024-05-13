@@ -116,5 +116,10 @@ namespace SoftwarePlanner
             homeForm.ShowDialog();
             this.Close();
         }
+
+        private void ParentForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0) Application.Exit();
+        }
     }
 }
