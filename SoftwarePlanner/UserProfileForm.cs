@@ -131,11 +131,12 @@ namespace SoftwarePlanner
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(RETURN_CLIENT_VARIABLES, connection))
             using (SQLiteCommand visibilityCommand = new SQLiteCommand(RETURN_CLIENT_VISIBILITY, connection))
-
+            using (SQLiteCommand projectCommand = new SQLiteCommand(RETURN_PROJECT_BY_CLIENT, connection))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@id", id);
                 visibilityCommand.Parameters.AddWithValue("@id", id);
+                projectCommand.Parameters.AddWithValue("@client_id", id);
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -178,6 +179,13 @@ namespace SoftwarePlanner
 
                     }
                     for (int i = 0; i < clientVisibilityArray.Length; i++) clientVisibilityFields.SetItemChecked(i, clientVisibilityArray[i] == 1);
+                }
+                using (SQLiteDataReader reader = projectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        clientProjectGrid.Rows.Add(reader.GetString(reader.GetOrdinal("title")), reader.GetInt32(reader.GetOrdinal("finished")) == 1 ? "Ναι" : "Όχι");
+                    }
                 }
 
             }
@@ -587,6 +595,14 @@ namespace SoftwarePlanner
             }
         }
 
+        private void clientProjectGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            if (grid == null || grid.CurrentRow.Cells[0].Value == null || e.RowIndex < 0) return;
+            ratingForm ratingForm = new ratingForm(grid.CurrentRow.Cells[0].Value.ToString(), grid.CurrentRow.Cells[1]);
+            ratingForm.ShowDialog();
+        }
+
         private int returnClientVisibilityFlag(int index) 
         {
             return clientVisibilityFields.GetItemChecked(index)? 1 : 0;
@@ -703,6 +719,7 @@ namespace SoftwarePlanner
             getRole();
             if (UserSearch.isSearchedUser == false && Role.isDeveloper == true)           
             {
+                devBox.Visible = true;
                 textBox9.Visible = false;
                 textBox10.Visible = false;
                 textBox11.Visible = true;
@@ -739,6 +756,7 @@ namespace SoftwarePlanner
             }
             else if (UserSearch.isSearchedUser == false && Role.isClient == true)
             {
+                clientBox.Visible = true;
                 textBox9.Visible = true;
                 textBox10.Visible = true;
                 textBox11.Visible = false;
@@ -783,7 +801,6 @@ namespace SoftwarePlanner
                 projectsTextBox.Visible = false;
                 projectsDataGrid.Visible = false;
                 ratingsTextBox.Visible = false;
-                ratingsRichTextBox.Visible = false;
             }
             if (Role.isAdmin && UserSearch.isSearchedUser)
             {

@@ -103,6 +103,7 @@ namespace SoftwarePlanner
                     baseCommand.Parameters.AddWithValue("@category", categoryId);
                     baseCommand.Parameters.AddWithValue("@subcategory", subCategoryId);
                     baseCommand.Parameters.AddWithValue("@payment", paymentId);
+                    baseCommand.Parameters.AddWithValue("@client_id", User.id);
                     int maxPrice = -1;
                     if (int.TryParse(maxPriceBox.Text.Trim(), out maxPrice)) baseCommand.Parameters.AddWithValue("@max_price", maxPrice);
                     else if (maxPriceBox.Text.Trim().Length == 0) baseCommand.Parameters.AddWithValue("@max_price", null);

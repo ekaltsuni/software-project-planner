@@ -74,6 +74,7 @@ namespace SoftwarePlanner
                                                                 AND d.rating BETWEEN @minRating AND @maxRating
                                                                 AND d.project_count BETWEEN @minCount AND @maxCount
                                                               LIMIT 11 OFFSET @page";
+        public static readonly string UPDATE_RATING_AND_COUNT = "UPDATE Developer SET rating = rating + @rating, project_count = project_count + 1 WHERE id = @id";
         // CLIENT
         public static readonly string CREATE_CLIENT_VARIABLES = @"INSERT OR IGNORE INTO Client 
                                                                   (id, date_of_birth, description, link)
@@ -105,6 +106,7 @@ namespace SoftwarePlanner
                                                               FROM Project p                                                             
                                                               WHERE p.title = @title
                                                               ORDER BY date";
+        public static readonly string RETURN_PROJECT_BY_CLIENT = "SELECT title, finished FROM Project WHERE client_id = @client_id";
         public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT project_id, title, date, max_price
                                                                 FROM Project p
                                                                 WHERE p.title LIKE @title
@@ -154,8 +156,8 @@ namespace SoftwarePlanner
                                                                         ORDER BY date
                                                                         LIMIT 11 OFFSET @page";
         public static readonly string SAVE_PROJECT = @"INSERT INTO Project 
-             (title, description, type, category, subcategory, payment, max_price, duration, bidding_duration, date) VALUES
-             (@title, @description, @type, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration, @date)";
+             (title, description, type, category, subcategory, payment, max_price, duration, bidding_duration, date, client_id, finished) VALUES
+             (@title, @description, @type, @category, @subcategory, @payment, @max_price, @duration, @bidding_duration, @date, @client_id, false)";
         public static readonly string UPDATE_PROJECT_TECHNOLOGY = @"INSERT INTO ProjectTechnology (project_id, technology_id) VALUES
                                                                     (@project_id, @technology_id)";
         public static readonly string ASSIGN_USER_TO_PROJECT = "UPDATE Project SET user_id = @user_id WHERE project_id = @project_id";
@@ -165,6 +167,7 @@ namespace SoftwarePlanner
         public static readonly string DELETE_PROJECT_TECHNOLOGY = "DELETE FROM ProjectTechnology WHERE project_id = @id";
         public static readonly string DELETE_PROJECT_NOTIFICATION = "DELETE FROM UserNotification WHERE project_id = @id";
         public static readonly string DELETE_PROJECT = "DELETE FROM Project WHERE project_id = @id";
+        public static readonly string COMPLETE_PROJECT = "UPDATE Project SET finished = 1 WHERE project_id = @project_id";
         // DROPDOWNS
         public static readonly string RETURN_PROJECT_TYPES = "SELECT type FROM ProjectType";
         public static readonly string RETURN_PROJECT_TYPE_NAME = "SELECT type FROM ProjectType WHERE id = @id";
@@ -241,6 +244,8 @@ namespace SoftwarePlanner
                                                                   INNER JOIN User u
                                                                         ON u.id = pc.user_id
                                                                   WHERE pc.project_id = @project_id";
+        // RATINGS
+        public static readonly string UPDATE_USER_RATING = "INSERT INTO UserRating (user_id, project_id, rating, comment) VALUES (@user_id, @project_id, @rating, @comment)";
         //  VISIBILITY
         public static readonly string CREATE_DEVELOPER_VISIBILITY = @"INSERT OR IGNORE INTO Developer
                                                                     (email_visibility_flag, username_visibility_flag, 

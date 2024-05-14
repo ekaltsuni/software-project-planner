@@ -54,7 +54,6 @@
             this.developerVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.newsFeedTextBox = new System.Windows.Forms.TextBox();
             this.projectsTextBox = new System.Windows.Forms.TextBox();
-            this.ratingsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.ratingsTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.profileImagePictureBox = new System.Windows.Forms.PictureBox();
@@ -76,11 +75,22 @@
             this.offersDataGrid = new System.Windows.Forms.DataGridView();
             this.offersTextBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.ratingGrid = new System.Windows.Forms.DataGridView();
+            this.devBox = new System.Windows.Forms.GroupBox();
+            this.clientBox = new System.Windows.Forms.GroupBox();
+            this.clientProjectGrid = new System.Windows.Forms.DataGridView();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.projectTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offersDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ratingGrid)).BeginInit();
+            this.devBox.SuspendLayout();
+            this.clientBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientProjectGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox3
@@ -400,7 +410,7 @@
             this.newsFeedTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.newsFeedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newsFeedTextBox.ForeColor = System.Drawing.Color.White;
-            this.newsFeedTextBox.Location = new System.Drawing.Point(880, 224);
+            this.newsFeedTextBox.Location = new System.Drawing.Point(64, 183);
             this.newsFeedTextBox.Name = "newsFeedTextBox";
             this.newsFeedTextBox.ReadOnly = true;
             this.newsFeedTextBox.Size = new System.Drawing.Size(350, 17);
@@ -414,22 +424,12 @@
             this.projectsTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.projectsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectsTextBox.ForeColor = System.Drawing.Color.White;
-            this.projectsTextBox.Location = new System.Drawing.Point(880, 397);
+            this.projectsTextBox.Location = new System.Drawing.Point(64, 342);
             this.projectsTextBox.Name = "projectsTextBox";
             this.projectsTextBox.ReadOnly = true;
             this.projectsTextBox.Size = new System.Drawing.Size(350, 17);
             this.projectsTextBox.TabIndex = 31;
             this.projectsTextBox.Text = " Έργα";
-            // 
-            // ratingsRichTextBox
-            // 
-            this.ratingsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ratingsRichTextBox.Location = new System.Drawing.Point(880, 564);
-            this.ratingsRichTextBox.Name = "ratingsRichTextBox";
-            this.ratingsRichTextBox.ReadOnly = true;
-            this.ratingsRichTextBox.Size = new System.Drawing.Size(350, 83);
-            this.ratingsRichTextBox.TabIndex = 32;
-            this.ratingsRichTextBox.Text = "";
             // 
             // ratingsTextBox
             // 
@@ -438,7 +438,7 @@
             this.ratingsTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.ratingsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ratingsTextBox.ForeColor = System.Drawing.Color.White;
-            this.ratingsTextBox.Location = new System.Drawing.Point(880, 545);
+            this.ratingsTextBox.Location = new System.Drawing.Point(64, 490);
             this.ratingsTextBox.Name = "ratingsTextBox";
             this.ratingsTextBox.ReadOnly = true;
             this.ratingsTextBox.Size = new System.Drawing.Size(350, 17);
@@ -631,24 +631,32 @@
             // 
             // notificationsDataGrid
             // 
+            this.notificationsDataGrid.AllowUserToAddRows = false;
+            this.notificationsDataGrid.AllowUserToDeleteRows = false;
+            this.notificationsDataGrid.AllowUserToResizeRows = false;
+            this.notificationsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.notificationsDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.notificationsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.notificationsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.notificationsDataGrid.Location = new System.Drawing.Point(880, 241);
+            this.notificationsDataGrid.Location = new System.Drawing.Point(64, 200);
             this.notificationsDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.notificationsDataGrid.Name = "notificationsDataGrid";
             this.notificationsDataGrid.ReadOnly = true;
             this.notificationsDataGrid.RowHeadersWidth = 62;
             this.notificationsDataGrid.RowTemplate.Height = 28;
-            this.notificationsDataGrid.Size = new System.Drawing.Size(309, 143);
+            this.notificationsDataGrid.Size = new System.Drawing.Size(350, 115);
             this.notificationsDataGrid.TabIndex = 48;
             // 
             // projectsDataGrid
             // 
+            this.projectsDataGrid.AllowUserToAddRows = false;
+            this.projectsDataGrid.AllowUserToDeleteRows = false;
+            this.projectsDataGrid.AllowUserToResizeRows = false;
+            this.projectsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.projectsDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.projectsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.projectsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.projectsDataGrid.Location = new System.Drawing.Point(880, 415);
+            this.projectsDataGrid.Location = new System.Drawing.Point(64, 360);
             this.projectsDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.projectsDataGrid.Name = "projectsDataGrid";
             this.projectsDataGrid.ReadOnly = true;
@@ -659,16 +667,20 @@
             // 
             // offersDataGrid
             // 
+            this.offersDataGrid.AllowUserToAddRows = false;
+            this.offersDataGrid.AllowUserToDeleteRows = false;
+            this.offersDataGrid.AllowUserToResizeRows = false;
+            this.offersDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.offersDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.offersDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.offersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.offersDataGrid.Location = new System.Drawing.Point(880, 83);
+            this.offersDataGrid.Location = new System.Drawing.Point(64, 42);
             this.offersDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.offersDataGrid.Name = "offersDataGrid";
             this.offersDataGrid.ReadOnly = true;
             this.offersDataGrid.RowHeadersWidth = 62;
             this.offersDataGrid.RowTemplate.Height = 28;
-            this.offersDataGrid.Size = new System.Drawing.Size(309, 123);
+            this.offersDataGrid.Size = new System.Drawing.Size(350, 123);
             this.offersDataGrid.TabIndex = 51;
             this.offersDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offersDataGrid_CellContentClick);
             // 
@@ -679,7 +691,7 @@
             this.offersTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.offersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.offersTextBox.ForeColor = System.Drawing.Color.White;
-            this.offersTextBox.Location = new System.Drawing.Point(880, 66);
+            this.offersTextBox.Location = new System.Drawing.Point(64, 25);
             this.offersTextBox.Name = "offersTextBox";
             this.offersTextBox.ReadOnly = true;
             this.offersTextBox.Size = new System.Drawing.Size(350, 17);
@@ -700,6 +712,99 @@
             this.deleteButton.Visible = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // ratingGrid
+            // 
+            this.ratingGrid.AllowUserToAddRows = false;
+            this.ratingGrid.AllowUserToDeleteRows = false;
+            this.ratingGrid.AllowUserToResizeRows = false;
+            this.ratingGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ratingGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.ratingGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ratingGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ratingGrid.Location = new System.Drawing.Point(880, 550);
+            this.ratingGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.ratingGrid.Name = "ratingGrid";
+            this.ratingGrid.ReadOnly = true;
+            this.ratingGrid.RowHeadersWidth = 62;
+            this.ratingGrid.RowTemplate.Height = 28;
+            this.ratingGrid.Size = new System.Drawing.Size(350, 113);
+            this.ratingGrid.TabIndex = 53;
+            // 
+            // devBox
+            // 
+            this.devBox.Controls.Add(this.offersDataGrid);
+            this.devBox.Controls.Add(this.offersTextBox);
+            this.devBox.Controls.Add(this.projectsDataGrid);
+            this.devBox.Controls.Add(this.notificationsDataGrid);
+            this.devBox.Controls.Add(this.ratingsTextBox);
+            this.devBox.Controls.Add(this.projectsTextBox);
+            this.devBox.Controls.Add(this.newsFeedTextBox);
+            this.devBox.Location = new System.Drawing.Point(806, 41);
+            this.devBox.Name = "devBox";
+            this.devBox.Size = new System.Drawing.Size(446, 621);
+            this.devBox.TabIndex = 54;
+            this.devBox.TabStop = false;
+            this.devBox.Visible = false;
+            // 
+            // clientBox
+            // 
+            this.clientBox.Controls.Add(this.clientProjectGrid);
+            this.clientBox.Controls.Add(this.textBox16);
+            this.clientBox.Location = new System.Drawing.Point(806, 41);
+            this.clientBox.Name = "clientBox";
+            this.clientBox.Size = new System.Drawing.Size(445, 319);
+            this.clientBox.TabIndex = 55;
+            this.clientBox.TabStop = false;
+            this.clientBox.Visible = false;
+            // 
+            // clientProjectGrid
+            // 
+            this.clientProjectGrid.AllowUserToAddRows = false;
+            this.clientProjectGrid.AllowUserToDeleteRows = false;
+            this.clientProjectGrid.AllowUserToResizeRows = false;
+            this.clientProjectGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.clientProjectGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.clientProjectGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.clientProjectGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientProjectGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.projectTitle,
+            this.finished});
+            this.clientProjectGrid.Location = new System.Drawing.Point(47, 35);
+            this.clientProjectGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.clientProjectGrid.Name = "clientProjectGrid";
+            this.clientProjectGrid.ReadOnly = true;
+            this.clientProjectGrid.RowHeadersWidth = 62;
+            this.clientProjectGrid.RowTemplate.Height = 28;
+            this.clientProjectGrid.Size = new System.Drawing.Size(350, 262);
+            this.clientProjectGrid.TabIndex = 51;
+            this.clientProjectGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientProjectGrid_CellClick);
+            // 
+            // textBox16
+            // 
+            this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox16.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox16.ForeColor = System.Drawing.Color.White;
+            this.textBox16.Location = new System.Drawing.Point(47, 17);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
+            this.textBox16.Size = new System.Drawing.Size(350, 17);
+            this.textBox16.TabIndex = 50;
+            this.textBox16.Text = " Έργα";
+            // 
+            // projectTitle
+            // 
+            this.projectTitle.HeaderText = "Τίτλος";
+            this.projectTitle.Name = "projectTitle";
+            this.projectTitle.ReadOnly = true;
+            // 
+            // finished
+            // 
+            this.finished.HeaderText = "Ολοκληρωμένο";
+            this.finished.Name = "finished";
+            this.finished.ReadOnly = true;
+            // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,11 +812,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.clientBox);
+            this.Controls.Add(this.devBox);
+            this.Controls.Add(this.ratingGrid);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.offersDataGrid);
-            this.Controls.Add(this.offersTextBox);
-            this.Controls.Add(this.projectsDataGrid);
-            this.Controls.Add(this.notificationsDataGrid);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.profileImagePictureBox);
             this.Controls.Add(this.skillsListBox);
@@ -726,10 +830,6 @@
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.ratingsTextBox);
-            this.Controls.Add(this.ratingsRichTextBox);
-            this.Controls.Add(this.projectsTextBox);
-            this.Controls.Add(this.newsFeedTextBox);
             this.Controls.Add(this.developerVisibilityFields);
             this.Controls.Add(this.clientVisibilityFields);
             this.Controls.Add(this.textBox15);
@@ -782,10 +882,6 @@
             this.Controls.SetChildIndex(this.textBox15, 0);
             this.Controls.SetChildIndex(this.clientVisibilityFields, 0);
             this.Controls.SetChildIndex(this.developerVisibilityFields, 0);
-            this.Controls.SetChildIndex(this.newsFeedTextBox, 0);
-            this.Controls.SetChildIndex(this.projectsTextBox, 0);
-            this.Controls.SetChildIndex(this.ratingsRichTextBox, 0);
-            this.Controls.SetChildIndex(this.ratingsTextBox, 0);
             this.Controls.SetChildIndex(this.saveButton, 0);
             this.Controls.SetChildIndex(this.passwordBox, 0);
             this.Controls.SetChildIndex(this.textBox9, 0);
@@ -800,16 +896,21 @@
             this.Controls.SetChildIndex(this.skillsListBox, 0);
             this.Controls.SetChildIndex(this.profileImagePictureBox, 0);
             this.Controls.SetChildIndex(this.dataGridView, 0);
-            this.Controls.SetChildIndex(this.notificationsDataGrid, 0);
-            this.Controls.SetChildIndex(this.projectsDataGrid, 0);
-            this.Controls.SetChildIndex(this.offersTextBox, 0);
-            this.Controls.SetChildIndex(this.offersDataGrid, 0);
             this.Controls.SetChildIndex(this.deleteButton, 0);
+            this.Controls.SetChildIndex(this.ratingGrid, 0);
+            this.Controls.SetChildIndex(this.devBox, 0);
+            this.Controls.SetChildIndex(this.clientBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offersDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ratingGrid)).EndInit();
+            this.devBox.ResumeLayout(false);
+            this.devBox.PerformLayout();
+            this.clientBox.ResumeLayout(false);
+            this.clientBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientProjectGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -841,7 +942,6 @@
         private System.Windows.Forms.CheckedListBox developerVisibilityFields;
         private System.Windows.Forms.TextBox newsFeedTextBox;
         private System.Windows.Forms.TextBox projectsTextBox;
-        private System.Windows.Forms.RichTextBox ratingsRichTextBox;
         private System.Windows.Forms.TextBox ratingsTextBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.PictureBox profileImagePictureBox;
@@ -863,5 +963,12 @@
         private System.Windows.Forms.DataGridView offersDataGrid;
         private System.Windows.Forms.TextBox offersTextBox;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridView ratingGrid;
+        private System.Windows.Forms.GroupBox devBox;
+        private System.Windows.Forms.GroupBox clientBox;
+        private System.Windows.Forms.DataGridView clientProjectGrid;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finished;
     }
 }
