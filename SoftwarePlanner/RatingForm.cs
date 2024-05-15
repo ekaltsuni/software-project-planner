@@ -28,6 +28,7 @@ namespace SoftwarePlanner
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING)) 
             using (SQLiteCommand command = new SQLiteCommand(RETURN_PROJECT_FULL, connection))
             using (SQLiteCommand userCommand = new SQLiteCommand(RETURN_USER_NAME, connection))
+            using (SQLiteCommand ratingCommand = new SQLiteCommand(RETURN_RATING, connection))
             { 
                 connection.Open();
                 command.Parameters.AddWithValue("@title", projectName);
@@ -57,8 +58,20 @@ namespace SoftwarePlanner
                     }
                 }
                 else devBox.Text = "Χωρίς ανάθεση";
+                if (finished)
+                {
+                    ratingCommand.Parameters.AddWithValue("@project_id", projectId);
+                    using (SQLiteDataReader reader = ratingCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            changeRating(reader.GetInt32(reader.GetOrdinal("rating")), true);
+                            commentBox.Text = reader.GetString(reader.GetOrdinal("comment"));
+                        }
+                    }
+                }
             }
-            if (finished)
+            if (finished || userId == -1)
             {
                 completionButton.Enabled = false;
                 commentBox.Enabled = false;
@@ -67,32 +80,32 @@ namespace SoftwarePlanner
 
         private void star1_Click(object sender, EventArgs e)
         {
-            changeRating(1);
+            changeRating(1, false);
         }
 
         private void star2_Click(object sender, EventArgs e)
         {
-            changeRating(2);
+            changeRating(2, false);
         }
 
         private void star3_Click(object sender, EventArgs e)
         {
-            changeRating(3);
+            changeRating(3, false);
         }
 
         private void star4_Click(object sender, EventArgs e)
         {
-            changeRating(4);
+            changeRating(4, false);
         }
 
         private void star5_Click(object sender, EventArgs e)
         {
-            changeRating(5);
+            changeRating(5, false);
         }
 
-        private void changeRating(int rating)
+        private void changeRating(int rating, bool fromDB)
         {
-            if (!finished)
+            if ((!finished && userId != -1) || fromDB)
             {
                 this.rating = rating;
                 ratingGiven = true;

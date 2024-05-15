@@ -246,6 +246,7 @@ namespace SoftwarePlanner
                                                                   WHERE pc.project_id = @project_id";
         // RATINGS
         public static readonly string UPDATE_USER_RATING = "INSERT INTO UserRating (user_id, project_id, rating, comment) VALUES (@user_id, @project_id, @rating, @comment)";
+        public static readonly string RETURN_RATING = "SELECT rating, comment FROM UserRating WHERE project_id = @project_id";
         //  VISIBILITY
         public static readonly string CREATE_DEVELOPER_VISIBILITY = @"INSERT OR IGNORE INTO Developer
                                                                     (email_visibility_flag, username_visibility_flag, 
