@@ -26,25 +26,8 @@ namespace SoftwarePlanner
         {
             InitializeComponent();
             fillProjectFields(projectName);
-            populateOfferGrid();            
-            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(GET_ASSIGNED_USER, connection))
-            using (SQLiteCommand userCommand = new SQLiteCommand(RETURN_USER_NAME, connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@project_id", projectId);
-                if (command.ExecuteScalar() != DBNull.Value)
-                {
-                    groupBox1.Text = "Έχει ανατεθεί";
-                    isAssigned = true;
-                    offerGrid.Enabled = false;
-                    userCommand.Parameters.AddWithValue("@id", Convert.ToInt32(command.ExecuteScalar()));
-                    using (SQLiteDataReader reader = userCommand.ExecuteReader())
-                    {
-                        if (reader.Read()) projectInfoGrid.Rows.Add("Developer", reader.GetString(reader.GetOrdinal("username")));
-                    }                   
-                }
-            }
+            populateOfferGrid();
+            showAssignedDev();
             if (!User.role.Equals("Developer"))
             {
                 offerButton.Visible = false;
@@ -56,6 +39,7 @@ namespace SoftwarePlanner
             if (isAssigned)
             {
                 offerButton.Visible = false;
+                recommendationButton.Visible = false;
                 recommendationButton.Visible = false;
             }
             populateCommentGrid();
@@ -81,6 +65,7 @@ namespace SoftwarePlanner
 
                         projectInfoGrid.Rows.Add("Τίτλος", reader.GetString(reader.GetOrdinal("title")));
                         projectInfoGrid.Rows.Add("Περιγραφή", reader.GetString(reader.GetOrdinal("description")));
+                        projectInfoGrid.Rows.Add("Ολοκληρωμένο", reader.GetInt32(reader.GetOrdinal("finished")) == 0 ? "Όχι" : "Ναι");
                         projectInfoGrid.Rows.Add("Μέγιστη Τιμή", reader.GetInt64(reader.GetOrdinal("max_price")) + "€");
                         projectInfoGrid.Rows.Add("Διάρκεια Προσφορών", reader.GetInt64(reader.GetOrdinal("bidding_duration")));
 
@@ -181,6 +166,7 @@ namespace SoftwarePlanner
                             command.ExecuteNonQuery();
                             MessageBox.Show("Η προσφορά σας αναρτήθηκε επιτυχώς.");
                             populateOfferGrid();
+                            showAssignedDev();
                         }
                         else
                         {
@@ -228,12 +214,14 @@ namespace SoftwarePlanner
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     int count = 0;
+                    bool offered = false;
                     while (reader.Read())
                     {
                         if (User.id == reader.GetInt32(reader.GetOrdinal("user_id")))
                         {
                             offerButton.Text = "Ακύρωση Προσφοράς";
                             canOffer = false;
+                            offered = true;
                         }
                         userCommand.Parameters.AddWithValue("@id", reader.GetInt32(reader.GetOrdinal("user_id")));
                         using (SQLiteDataReader userReader = userCommand.ExecuteReader())
@@ -251,6 +239,37 @@ namespace SoftwarePlanner
                             }
                         }
                         count++;
+                    }
+                    if (!offered)
+                    {
+                        canOffer = true;
+                        offerButton.Text = "Προσφορά";
+                    }
+                }
+            }
+        }
+
+        private void showAssignedDev()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(GET_ASSIGNED_USER, connection))
+            using (SQLiteCommand userCommand = new SQLiteCommand(RETURN_USER_NAME, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@project_id", projectId);
+                if (command.ExecuteScalar() != DBNull.Value)
+                {
+                    offerGroup.Visible = false;
+                    assignmentGroup.Visible = true;
+                    isAssigned = true;
+                    userCommand.Parameters.AddWithValue("@id", Convert.ToInt32(command.ExecuteScalar()));
+                    using (SQLiteDataReader reader = userCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            assignmentBox.Text = reader.GetString(reader.GetOrdinal("username"));
+                            projectInfoGrid.Rows.Add("Developer", reader.GetString(reader.GetOrdinal("username")));
+                        }
                     }
                 }
             }
@@ -278,6 +297,7 @@ namespace SoftwarePlanner
                             command.ExecuteNonQuery();
                             MessageBox.Show("Αναθέσατε το έργο στον/στην " + username + ".");
                             offerGrid.Enabled = false;
+                            showAssignedDev();
                         }
                     }
                     

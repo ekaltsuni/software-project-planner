@@ -45,9 +45,13 @@
             this.offerGrid = new System.Windows.Forms.DataGridView();
             this.Offer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Developer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recommendationButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.offerGroup = new System.Windows.Forms.GroupBox();
+            this.assignmentGroup = new System.Windows.Forms.GroupBox();
+            this.assignmentBox = new System.Windows.Forms.TextBox();
+            this.assignmentLabel = new System.Windows.Forms.Label();
             this.offerButton = new System.Windows.Forms.Button();
             this.commentGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,10 +59,10 @@
             this.commentBox = new System.Windows.Forms.RichTextBox();
             this.commentButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.offerGroup.SuspendLayout();
+            this.assignmentGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commentGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,6 +168,12 @@
             this.Developer.Name = "Developer";
             this.Developer.ReadOnly = true;
             // 
+            // Date
+            // 
+            this.Date.HeaderText = "Ημερομηνία";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
             // recommendationButton
             // 
             this.recommendationButton.Location = new System.Drawing.Point(60, 448);
@@ -184,15 +194,47 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Προβολή Έργου";
             // 
-            // groupBox1
+            // offerGroup
             // 
-            this.groupBox1.Controls.Add(this.offerGrid);
-            this.groupBox1.Location = new System.Drawing.Point(528, 109);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(724, 278);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Προσφορές";
+            this.offerGroup.Controls.Add(this.offerGrid);
+            this.offerGroup.Location = new System.Drawing.Point(528, 109);
+            this.offerGroup.Name = "offerGroup";
+            this.offerGroup.Size = new System.Drawing.Size(724, 278);
+            this.offerGroup.TabIndex = 7;
+            this.offerGroup.TabStop = false;
+            this.offerGroup.Text = "Προσφορές";
+            // 
+            // assignmentGroup
+            // 
+            this.assignmentGroup.Controls.Add(this.assignmentBox);
+            this.assignmentGroup.Controls.Add(this.assignmentLabel);
+            this.assignmentGroup.Location = new System.Drawing.Point(528, 109);
+            this.assignmentGroup.Name = "assignmentGroup";
+            this.assignmentGroup.Size = new System.Drawing.Size(724, 100);
+            this.assignmentGroup.TabIndex = 56;
+            this.assignmentGroup.TabStop = false;
+            this.assignmentGroup.Visible = false;
+            // 
+            // assignmentBox
+            // 
+            this.assignmentBox.Enabled = false;
+            this.assignmentBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.assignmentBox.Location = new System.Drawing.Point(301, 34);
+            this.assignmentBox.Name = "assignmentBox";
+            this.assignmentBox.ReadOnly = true;
+            this.assignmentBox.Size = new System.Drawing.Size(404, 31);
+            this.assignmentBox.TabIndex = 55;
+            // 
+            // assignmentLabel
+            // 
+            this.assignmentLabel.AutoSize = true;
+            this.assignmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.assignmentLabel.ForeColor = System.Drawing.Color.Red;
+            this.assignmentLabel.Location = new System.Drawing.Point(39, 37);
+            this.assignmentLabel.Name = "assignmentLabel";
+            this.assignmentLabel.Size = new System.Drawing.Size(256, 25);
+            this.assignmentLabel.TabIndex = 54;
+            this.assignmentLabel.Text = "Έχει ανατεθεί στον/στην:";
             // 
             // offerButton
             // 
@@ -291,12 +333,6 @@
             this.deleteButton.Visible = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // Date
-            // 
-            this.Date.HeaderText = "Ημερομηνία";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
             // ProjectViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,7 +343,8 @@
             this.Controls.Add(this.commentBox);
             this.Controls.Add(this.commentGrid);
             this.Controls.Add(this.offerButton);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.assignmentGroup);
+            this.Controls.Add(this.offerGroup);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.recommendationButton);
             this.Controls.Add(this.projectInfoGrid);
@@ -319,7 +356,8 @@
             this.Controls.SetChildIndex(this.projectInfoGrid, 0);
             this.Controls.SetChildIndex(this.recommendationButton, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.offerGroup, 0);
+            this.Controls.SetChildIndex(this.assignmentGroup, 0);
             this.Controls.SetChildIndex(this.offerButton, 0);
             this.Controls.SetChildIndex(this.commentGrid, 0);
             this.Controls.SetChildIndex(this.commentBox, 0);
@@ -327,7 +365,9 @@
             this.Controls.SetChildIndex(this.deleteButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.projectInfoGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerGrid)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.offerGroup.ResumeLayout(false);
+            this.assignmentGroup.ResumeLayout(false);
+            this.assignmentGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commentGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -342,7 +382,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Info;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox offerGroup;
         private System.Windows.Forms.Button offerButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Offer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Developer;
@@ -353,5 +393,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn user;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.GroupBox assignmentGroup;
+        private System.Windows.Forms.TextBox assignmentBox;
+        private System.Windows.Forms.Label assignmentLabel;
     }
 }
