@@ -262,7 +262,7 @@ namespace SoftwarePlanner
                 {
                     while (reader.Read())
                     {
-                        commentGrid.Rows.Add(reader.GetString(reader.GetOrdinal("comment")));
+                        commentGrid.Rows.Add(reader.GetString(reader.GetOrdinal("title")), reader.GetString(reader.GetOrdinal("comment")));
                     }
                 }
             }

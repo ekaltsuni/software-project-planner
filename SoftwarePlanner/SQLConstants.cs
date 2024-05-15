@@ -47,7 +47,11 @@ namespace SoftwarePlanner
         //"VALUES (@portfolio_title, @portfolio_link, @id)";
         public static readonly string UPDATE_PORTFOLIO_ENTRY = "UPDATE Portfolio SET portfolio_link = @portfolio_link WHERE id = @id AND portfolio_title = @portfolio_title";
         public static readonly string RETURN_DEV_RATING = "SELECT rating, project_count FROM Developer WHERE id = @id";
-        public static readonly string RETURN_DEV_COMMENT = "SELECT comment FROM UserRating WHERE user_id = @id";
+        public static readonly string RETURN_DEV_COMMENT = @"SELECT p.title, ur.comment 
+                                                            FROM UserRating ur
+                                                            INNER JOIN Project p
+                                                                ON p.project_id = ur.project_id
+                                                            WHERE ur.user_id = @id";
         public static readonly string RETURN_SKILLS = "SELECT * FROM Skills WHERE id = @id";
         public static readonly string CREATE_SKILLS = @"INSERT OR IGNORE INTO Skills 
                                                         (c, css, html, java, javascript, php, python, ruby, other, id) VALUES 

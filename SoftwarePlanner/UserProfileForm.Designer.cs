@@ -76,7 +76,6 @@
             this.offersTextBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.commentGrid = new System.Windows.Forms.DataGridView();
-            this.comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devBox = new System.Windows.Forms.GroupBox();
             this.ratingBox = new System.Windows.Forms.TextBox();
             this.ratingLabel = new System.Windows.Forms.TextBox();
@@ -85,6 +84,8 @@
             this.projectTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox16 = new System.Windows.Forms.TextBox();
+            this.project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).BeginInit();
@@ -441,10 +442,10 @@
             this.commentLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.commentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.commentLabel.ForeColor = System.Drawing.Color.White;
-            this.commentLabel.Location = new System.Drawing.Point(831, 530);
+            this.commentLabel.Location = new System.Drawing.Point(806, 530);
             this.commentLabel.Name = "commentLabel";
             this.commentLabel.ReadOnly = true;
-            this.commentLabel.Size = new System.Drawing.Size(277, 17);
+            this.commentLabel.Size = new System.Drawing.Size(313, 17);
             this.commentLabel.TabIndex = 33;
             this.commentLabel.Text = " Αξιολογήσεις";
             this.commentLabel.Visible = false;
@@ -605,6 +606,9 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -726,22 +730,17 @@
             this.commentGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.commentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.commentGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.project,
             this.comment});
-            this.commentGrid.Location = new System.Drawing.Point(831, 548);
+            this.commentGrid.Location = new System.Drawing.Point(806, 548);
             this.commentGrid.Margin = new System.Windows.Forms.Padding(2);
             this.commentGrid.Name = "commentGrid";
             this.commentGrid.ReadOnly = true;
             this.commentGrid.RowHeadersWidth = 62;
             this.commentGrid.RowTemplate.Height = 28;
-            this.commentGrid.Size = new System.Drawing.Size(277, 89);
+            this.commentGrid.Size = new System.Drawing.Size(313, 89);
             this.commentGrid.TabIndex = 53;
             this.commentGrid.Visible = false;
-            // 
-            // comment
-            // 
-            this.comment.HeaderText = "Σχόλιο";
-            this.comment.Name = "comment";
-            this.comment.ReadOnly = true;
             // 
             // devBox
             // 
@@ -761,10 +760,10 @@
             // ratingBox
             // 
             this.ratingBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 54.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.ratingBox.Location = new System.Drawing.Point(1124, 547);
+            this.ratingBox.Location = new System.Drawing.Point(1140, 547);
             this.ratingBox.Name = "ratingBox";
             this.ratingBox.ReadOnly = true;
-            this.ratingBox.Size = new System.Drawing.Size(111, 90);
+            this.ratingBox.Size = new System.Drawing.Size(112, 90);
             this.ratingBox.TabIndex = 55;
             this.ratingBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ratingBox.Visible = false;
@@ -776,7 +775,7 @@
             this.ratingLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.ratingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ratingLabel.ForeColor = System.Drawing.Color.White;
-            this.ratingLabel.Location = new System.Drawing.Point(1124, 530);
+            this.ratingLabel.Location = new System.Drawing.Point(1140, 530);
             this.ratingLabel.Name = "ratingLabel";
             this.ratingLabel.ReadOnly = true;
             this.ratingLabel.Size = new System.Drawing.Size(111, 17);
@@ -842,6 +841,18 @@
             this.textBox16.Size = new System.Drawing.Size(350, 17);
             this.textBox16.TabIndex = 50;
             this.textBox16.Text = " Έργα";
+            // 
+            // project
+            // 
+            this.project.HeaderText = "Έργο";
+            this.project.Name = "project";
+            this.project.ReadOnly = true;
+            // 
+            // comment
+            // 
+            this.comment.HeaderText = "Σχόλιο";
+            this.comment.Name = "comment";
+            this.comment.ReadOnly = true;
             // 
             // UserProfileForm
             // 
@@ -1016,6 +1027,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finished;
         private System.Windows.Forms.TextBox ratingLabel;
         private System.Windows.Forms.TextBox ratingBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn project;
         private System.Windows.Forms.DataGridViewTextBoxColumn comment;
     }
 }
