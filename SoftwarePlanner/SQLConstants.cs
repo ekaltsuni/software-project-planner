@@ -320,5 +320,10 @@ namespace SoftwarePlanner
                                                                     description_visibility_flag, 
                                                                     link_visibility_flag FROM Client
                                                                     WHERE id = @id";
+
+        // TRANSLATIONS
+        public static readonly string GET_TRANSLATION = "SELECT value FROM Translation WHERE key = @key";
+        public static readonly string GET_KEY = "SELECT key FROM Translation WHERE value = @value";
+        public static readonly string UPDATE_TRANSLATIONS = "INSERT OR IGNORE INTO Translation (key, value) VALUES (@key, @value)";
     }
 }

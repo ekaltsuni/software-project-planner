@@ -44,7 +44,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectCategoryDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
+                            projectCategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
                         }
                     }
                 }
@@ -392,7 +392,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectSubcategoryDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
+                            projectSubcategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
                         }
                     }
                 }

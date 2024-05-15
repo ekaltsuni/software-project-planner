@@ -104,7 +104,7 @@ namespace SoftwarePlanner
                 {
                     if (typeReader.Read())
                     {
-                        projectInfoGrid.Rows.Add("Τύπος", TranslationDictionary[typeReader.GetString(typeReader.GetOrdinal("type"))]);
+                        projectInfoGrid.Rows.Add("Τύπος", getTranslation(typeReader.GetString(typeReader.GetOrdinal("type"))));
                     }
                 }
                 durationCommand.Parameters.AddWithValue("@id", durationId.ToString());
@@ -112,7 +112,7 @@ namespace SoftwarePlanner
                 {
                     if (durationReader.Read())
                     {
-                        projectInfoGrid.Rows.Add("Διάρκεια", TranslationDictionary[durationReader.GetString(durationReader.GetOrdinal("type"))]);
+                        projectInfoGrid.Rows.Add("Διάρκεια", getTranslation(durationReader.GetString(durationReader.GetOrdinal("type"))));
                     }
                 }
                 categoryCommand.Parameters.AddWithValue("@id", categoryId.ToString());
@@ -120,7 +120,7 @@ namespace SoftwarePlanner
                 {
                     if (categoryReader.Read())
                     {
-                        projectInfoGrid.Rows.Add("Κατηγορία", TranslationDictionary[categoryReader.GetString(categoryReader.GetOrdinal("name"))]);
+                        projectInfoGrid.Rows.Add("Κατηγορία", getTranslation(categoryReader.GetString(categoryReader.GetOrdinal("name"))));
                     }
                 }
                 subCategoryCommand.Parameters.AddWithValue("@id", subCategoryId.ToString());
@@ -128,7 +128,7 @@ namespace SoftwarePlanner
                 {
                     if (subCategoryReader.Read())
                     {
-                        projectInfoGrid.Rows.Add("Υποκατηγορία", TranslationDictionary[subCategoryReader.GetString(subCategoryReader.GetOrdinal("name"))]);
+                        projectInfoGrid.Rows.Add("Υποκατηγορία", getTranslation(subCategoryReader.GetString(subCategoryReader.GetOrdinal("name"))));
                     }
                 }
                 paymentCommand.Parameters.AddWithValue("@id", paymentId.ToString());
@@ -136,7 +136,7 @@ namespace SoftwarePlanner
                 {
                     if (paymentReader.Read())
                     {
-                        projectInfoGrid.Rows.Add("Τρόπος Πληρωμής", TranslationDictionary[paymentReader.GetString(paymentReader.GetOrdinal("type"))]);
+                        projectInfoGrid.Rows.Add("Τρόπος Πληρωμής", getTranslation(paymentReader.GetString(paymentReader.GetOrdinal("type"))));
                     }
                 }
             }

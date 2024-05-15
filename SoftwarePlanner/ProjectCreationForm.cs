@@ -31,7 +31,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectTypeDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("type"))]);
+                            projectTypeDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("type"))));
                         }
                     }
                 }
@@ -45,7 +45,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectCategoryDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
+                            projectCategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
                         }
                     }
                 }
@@ -59,7 +59,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectPaymentDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("type"))]);
+                            projectPaymentDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("type"))));
                         }
                     }
                 }
@@ -73,7 +73,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectDurationDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("type"))]);
+                            projectDurationDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("type"))));
                         }
                     }
                 }
@@ -217,7 +217,7 @@ namespace SoftwarePlanner
                     {
                         while (reader.Read())
                         {
-                            projectSubcategoryDropdown.Items.Add(TranslationDictionary[reader.GetString(reader.GetOrdinal("name"))]);
+                            projectSubcategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
                         }
                     }
                 }

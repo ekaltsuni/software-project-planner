@@ -26,10 +26,14 @@ namespace SoftwarePlanner
             {
                 using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
                 using (SQLiteCommand command = new SQLiteCommand(ADD_CATEGORY, connection))
+                using (SQLiteCommand translationCommand = new SQLiteCommand(UPDATE_TRANSLATIONS, connection))
                 { 
                     connection.Open();
-                    command.Parameters.AddWithValue("@name", categoryBox.Text.Trim());
-                    //command.ExecuteNonQuery();
+                    command.Parameters.AddWithValue("@name", categoryBox.Text.Trim().ToUpper());
+                    translationCommand.Parameters.AddWithValue("@key", categoryBox.Text.Trim().ToUpper());
+                    translationCommand.Parameters.AddWithValue("@value", categoryBox.Text.Trim());
+                    command.ExecuteNonQuery();
+                    translationCommand.ExecuteNonQuery();
                     MessageBox.Show("Η κατηγορία " + categoryBox.Text.Trim() + " προστέθηκε.");
                 }
             }
