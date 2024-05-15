@@ -39,7 +39,7 @@ namespace SoftwarePlanner
                 fillDeveloperFields(UserSearch.id);
                 checkDevVisibility();
                 hidePrivateFields();
-
+                showRatings();
             }
             else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient == true)
             {
@@ -52,7 +52,6 @@ namespace SoftwarePlanner
             {
                 fillMajorFields(User.id);
                 fillClientFields(User.id);
-
             }
             else if (UserSearch.isSearchedUser == false && Role.isDeveloper)
             {
@@ -61,6 +60,7 @@ namespace SoftwarePlanner
                 showNotifications(User.id);
                 showOffers(User.id);
                 showProjects(User.id);
+                showRatings();
             }
         }
 
@@ -198,12 +198,16 @@ namespace SoftwarePlanner
             //using (SQLiteCommand cvCommand = new SQLiteCommand(AppConstants.RETURN_CV, connection))
             using (SQLiteCommand portfolioCommand = new SQLiteCommand(RETURN_PORTFOLIO_VARIABLES, connection))
             using (SQLiteCommand visibilityCommand = new SQLiteCommand(RETURN_DEVELOPER_VISIBILITY, connection))
+            using (SQLiteCommand ratingCommand = new SQLiteCommand(RETURN_DEV_RATING, connection))
+            using (SQLiteCommand commentCommand = new SQLiteCommand(RETURN_DEV_COMMENT, connection))
             {
                 connection.Open();
                 skillsCommand.Parameters.AddWithValue("@id", id);
                 //cvCommand.Parameters.AddWithValue("@id", User.id);
                 portfolioCommand.Parameters.AddWithValue("@id", id);
                 visibilityCommand.Parameters.AddWithValue("@id", id);
+                ratingCommand.Parameters.AddWithValue("@id", id);
+                commentCommand.Parameters.AddWithValue("@id", id);
                 using (SQLiteDataReader reader = skillsCommand.ExecuteReader())
                 {
                     if (reader.Read())
@@ -216,7 +220,6 @@ namespace SoftwarePlanner
                     for (int i = 0; i < skillArray.Length; i++) skillsListBox.SetItemChecked(i, skillArray[i] == 1);
                     skillsBox.Text = other;
                 }
-
                 using (SQLiteDataReader reader = visibilityCommand.ExecuteReader())
                 {
                     if (reader.Read())
@@ -245,7 +248,23 @@ namespace SoftwarePlanner
                     }
 
                 }
-
+                using (SQLiteDataReader reader = ratingCommand.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        int projectCount = reader.GetInt32(reader.GetOrdinal("project_count"));
+                        int rating = reader.GetInt32(reader.GetOrdinal("rating"));
+                        if (projectCount != 0) ratingBox.Text = Convert.ToString(Math.Round((double)rating / projectCount, 2));
+                        else ratingBox.Text = "-";
+                    }
+                }
+                using (SQLiteDataReader reader = commentCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        commentGrid.Rows.Add(reader.GetString(reader.GetOrdinal("comment")));
+                    }
+                }
             }
         }
 
@@ -612,12 +631,12 @@ namespace SoftwarePlanner
         {
             if (roleComboBox.SelectedIndex == 0)
             {
-                textBox9.Visible = true;
-                textBox10.Visible = true;
-                textBox11.Visible = false;
-                textBox12.Visible = false;
-                textBox13.Visible = false;
-                textBox18.Visible = true;
+                descriptionLabel.Visible = true;
+                dateLabel.Visible = true;
+                skillLabel.Visible = false;
+                cvLabel.Visible = false;
+                portfolioLabel.Visible = false;
+                linkLabel.Visible = true;
                 datePicker.Visible = true;
                 descriptionBox.Visible = true;
                 linkBox.Visible = true;
@@ -630,12 +649,12 @@ namespace SoftwarePlanner
             }
             else if (roleComboBox.SelectedIndex == 1)
             {
-                textBox9.Visible = false;
-                textBox10.Visible = false;
-                textBox11.Visible = true;
-                textBox12.Visible = true;
-                textBox13.Visible = true;
-                textBox18.Visible = false;
+                descriptionLabel.Visible = false;
+                dateLabel.Visible = false;
+                skillLabel.Visible = true;
+                cvLabel.Visible = true;
+                portfolioLabel.Visible = true;
+                linkLabel.Visible = false;
                 datePicker.Visible = false;
                 descriptionBox.Visible = false;
                 linkBox.Visible = false;
@@ -720,12 +739,12 @@ namespace SoftwarePlanner
             if (UserSearch.isSearchedUser == false && Role.isDeveloper == true)           
             {
                 devBox.Visible = true;
-                textBox9.Visible = false;
-                textBox10.Visible = false;
-                textBox11.Visible = true;
-                textBox12.Visible = true;
-                textBox13.Visible = true;
-                textBox18.Visible = false;
+                descriptionLabel.Visible = false;
+                dateLabel.Visible = false;
+                skillLabel.Visible = true;
+                cvLabel.Visible = true;
+                portfolioLabel.Visible = true;
+                linkLabel.Visible = false;
                 developerVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Developer";
@@ -738,12 +757,12 @@ namespace SoftwarePlanner
             }
             else if (UserSearch.isSearchedUser == true && UserSearchedRole.isDeveloper)
             {
-                textBox9.Visible = false;
-                textBox10.Visible = false;
-                textBox11.Visible = true;
-                textBox12.Visible = true;
-                textBox13.Visible = true;
-                textBox18.Visible = false;
+                descriptionLabel.Visible = false;
+                dateLabel.Visible = false;
+                skillLabel.Visible = true;
+                cvLabel.Visible = true;
+                portfolioLabel.Visible = true;
+                linkLabel.Visible = false;
                 developerVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Developer";
@@ -757,12 +776,12 @@ namespace SoftwarePlanner
             else if (UserSearch.isSearchedUser == false && Role.isClient == true)
             {
                 clientBox.Visible = true;
-                textBox9.Visible = true;
-                textBox10.Visible = true;
-                textBox11.Visible = false;
-                textBox12.Visible = false;
-                textBox13.Visible = false;
-                textBox18.Visible = true;
+                descriptionLabel.Visible = true;
+                dateLabel.Visible = true;
+                skillLabel.Visible = false;
+                cvLabel.Visible = false;
+                portfolioLabel.Visible = false;
+                linkLabel.Visible = true;
                 clientVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Πελάτης";
@@ -775,12 +794,12 @@ namespace SoftwarePlanner
             }
             else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient)
             {
-                textBox9.Visible = true;
-                textBox10.Visible = true;
-                textBox11.Visible = false;
-                textBox12.Visible = false;
-                textBox13.Visible = false;
-                textBox18.Visible = true;
+                descriptionLabel.Visible = true;
+                dateLabel.Visible = true;
+                skillLabel.Visible = false;
+                cvLabel.Visible = false;
+                portfolioLabel.Visible = false;
+                linkLabel.Visible = true;
                 clientVisibilityFields.Visible = true;
                 roleComboBox.Enabled = false;
                 roleComboBox.Text = "Πελάτης";
@@ -800,7 +819,7 @@ namespace SoftwarePlanner
                 offersDataGrid.Visible = false;
                 projectsTextBox.Visible = false;
                 projectsDataGrid.Visible = false;
-                ratingsTextBox.Visible = false;
+                commentLabel.Visible = false;
             }
             if (Role.isAdmin && UserSearch.isSearchedUser)
             {
@@ -830,38 +849,38 @@ namespace SoftwarePlanner
 
                         if (emailVisibilityFlag == 1)
                         {
-                            textBox3.Visible = true;
+                            emailLabel.Visible = true;
                             emailBox.Visible = true;
                             emailBox.ReadOnly = true;
                         }
                         else
                         {
-                            textBox3.Visible = false;
+                            emailLabel.Visible = false;
                             emailBox.Visible = false;
                             emailBox.ReadOnly = true;
                         }
 
                         if (nameVisibilityFlag == 1)
                         {
-                            textBox2.Visible = true;
+                            nameLabel.Visible = true;
                             nameBox.Visible = true;
                             nameBox.ReadOnly = true;
                         }
                         else
                         {
-                            textBox2.Visible = false;
+                            nameLabel.Visible = false;
                             nameBox.Visible = false;
                             nameBox.ReadOnly = true;
                         }
                         if (surnameVisibilityFlag == 1)
                         {
-                            textBox8.Visible = true;
+                            surnameLabel.Visible = true;
                             surnameBox.Visible = true;
                             surnameBox.ReadOnly = true;
                         }
                         else
                         {
-                            textBox8.Visible = false;
+                            surnameLabel.Visible = false;
                             surnameBox.Visible = false;
                             surnameBox.ReadOnly = true;
                         }
@@ -876,7 +895,7 @@ namespace SoftwarePlanner
                         }
                         if (skillsVisibilityFlag == 1)
                         {
-                            textBox11.Visible = true;
+                            skillLabel.Visible = true;
                             skillsListBox.Visible = true;
                             skillsListBox.Enabled = false;
                             skillsBox.Visible = true; 
@@ -884,7 +903,7 @@ namespace SoftwarePlanner
                         }
                         else
                         {
-                            textBox11.Visible = false;
+                            skillLabel.Visible = false;
                             skillsListBox.Visible = false;
                             skillsBox.Visible = false;
                             skillsBox.ReadOnly = true;
@@ -892,13 +911,13 @@ namespace SoftwarePlanner
                         }
                         if (portfolioVisibilityFlag == 1)
                         {
-                            textBox13.Visible = true;
+                            portfolioLabel.Visible = true;
                             dataGridView.Visible = true;
                             dataGridView.Enabled = false;
                         }
                         else
                         {
-                            textBox13.Visible = false;
+                            portfolioLabel.Visible = false;
                             dataGridView.Visible = false;
                         }
                     }
@@ -932,38 +951,38 @@ namespace SoftwarePlanner
 
                         if (emailVisibilityFlag == 1)
                         {
-                            textBox3.Visible = true;
+                            emailLabel.Visible = true;
                             emailBox.Visible = true;
                             emailBox.ReadOnly = true;
                         }
                         else
                         {
-                            textBox3.Visible = false;
+                            emailLabel.Visible = false;
                             emailBox.Visible = false;
                             emailBox.ReadOnly = true;
                         }
 
                         if (nameVisibilityFlag == 1)
                         {
-                            textBox2.Visible = true;
+                            nameLabel.Visible = true;
                             nameBox.Visible = true;
                             nameBox.ReadOnly = true;
                         }
                         else
                         {
-                            textBox2.Visible = false;
+                            nameLabel.Visible = false;
                             nameBox.Visible = false;
                             nameBox.ReadOnly = true;
                         }
                         if (surnameVisibilityFlag == 1)
                         {
-                            textBox8.Visible = true;
+                            surnameLabel.Visible = true;
                             surnameBox.Visible = true;
                             surnameBox.ReadOnly = true;
                         }
                         else
                         {
-                            textBox8.Visible = false;
+                            surnameLabel.Visible = false;
                             surnameBox.Visible = false;
                             surnameBox.ReadOnly = true;
                         }
@@ -978,35 +997,35 @@ namespace SoftwarePlanner
                         }
                         if (dateVisibilityFlag == 1)
                         {
-                            textBox10.Visible = true;
+                            dateLabel.Visible = true;
                             datePicker.Visible = true;
                             datePicker.Enabled = false;
                         }
                         else
                         {
-                            textBox10.Visible = false;
+                            dateLabel.Visible = false;
                             datePicker.Visible = false;
                         }
                         if (descriptionVisibilityFlag == 1)
                         {
-                            textBox9.Visible = true;
+                            descriptionLabel.Visible = true;
                             descriptionBox.Visible = true;
                             descriptionBox.ReadOnly = true;
                         }
                         else
                         {
-                            textBox9.Visible = false;
+                            descriptionLabel.Visible = false;
                             descriptionBox.Visible = false;
                         }
                         if (linkVisibilityFlag == 1)
                         {
-                            textBox18.Visible = true;
+                            linkLabel.Visible = true;
                             linkBox.Visible = true;
                             linkBox.Enabled = false;
                         }
                         else
                         {
-                            textBox18.Visible = false;
+                            linkLabel.Visible = false;
                             linkBox.Visible = false;
                         }
                     }
@@ -1021,20 +1040,20 @@ namespace SoftwarePlanner
         private void hidePrivateFields()
         {
             usernameBox.ReadOnly = true;
-            textBox21.Visible = false;
-            textBox4.Visible = false;
-            textBox6.Visible = false;
+            usernameRequiredLabel.Visible = false;
+            passwordLabel.Visible = false;
+            passwordRequiredLabel.Visible = false;
             passwordBox.Visible = false;
-            textBox7.Visible = false;
-            textBox5.Visible = false;
+            roleRequiredLabel.Visible = false;
+            requiredLabel.Visible = false;
             saveButton.Visible = false;
-            textBox14.Visible = false;
-            textBox15.Visible = false;
+            configLabel.Visible = false;
+            visibleLabel.Visible = false;
             developerVisibilityFields.Visible = false;
             clientVisibilityFields.Visible = false;
-            textBox1.Visible = false;
+            emailRequiredLabel.Visible = false;
             profileImagePictureBox.Enabled = false;
-
+            cvLabel.Visible = false;
         }
 
         private void showNotifications(int matchedUserId)
@@ -1083,6 +1102,14 @@ namespace SoftwarePlanner
                     projectsDataGrid.DataSource = dataTable;
                 }
             }
+        }
+
+        private void showRatings()
+        {
+            ratingLabel.Visible = true;
+            ratingBox.Visible = true;
+            commentLabel.Visible = true;
+            commentGrid.Visible = true;
         }
 
         private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)

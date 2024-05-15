@@ -29,39 +29,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfileForm));
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.TextBox();
             this.emailBox = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.roleComboBox = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.emailRequiredLabel = new System.Windows.Forms.TextBox();
+            this.requiredLabel = new System.Windows.Forms.TextBox();
+            this.passwordRequiredLabel = new System.Windows.Forms.TextBox();
+            this.roleRequiredLabel = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.TextBox();
             this.nameBox = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.surnameLabel = new System.Windows.Forms.TextBox();
             this.surnameBox = new System.Windows.Forms.TextBox();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.profileImageTextBox = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.dateLabel = new System.Windows.Forms.TextBox();
+            this.skillLabel = new System.Windows.Forms.TextBox();
+            this.cvLabel = new System.Windows.Forms.TextBox();
+            this.portfolioLabel = new System.Windows.Forms.TextBox();
+            this.configLabel = new System.Windows.Forms.TextBox();
+            this.visibleLabel = new System.Windows.Forms.TextBox();
             this.clientVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.developerVisibilityFields = new System.Windows.Forms.CheckedListBox();
             this.newsFeedTextBox = new System.Windows.Forms.TextBox();
             this.projectsTextBox = new System.Windows.Forms.TextBox();
-            this.ratingsTextBox = new System.Windows.Forms.TextBox();
+            this.commentLabel = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.profileImagePictureBox = new System.Windows.Forms.PictureBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.descriptionLabel = new System.Windows.Forms.TextBox();
+            this.linkLabel = new System.Windows.Forms.TextBox();
             this.usernameBox = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.usernameRequiredLabel = new System.Windows.Forms.TextBox();
+            this.usernameLabel = new System.Windows.Forms.TextBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.linkBox = new System.Windows.Forms.TextBox();
             this.descriptionBox = new System.Windows.Forms.RichTextBox();
@@ -75,37 +75,40 @@
             this.offersDataGrid = new System.Windows.Forms.DataGridView();
             this.offersTextBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.ratingGrid = new System.Windows.Forms.DataGridView();
+            this.commentGrid = new System.Windows.Forms.DataGridView();
+            this.comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devBox = new System.Windows.Forms.GroupBox();
+            this.ratingBox = new System.Windows.Forms.TextBox();
+            this.ratingLabel = new System.Windows.Forms.TextBox();
             this.clientBox = new System.Windows.Forms.GroupBox();
             this.clientProjectGrid = new System.Windows.Forms.DataGridView();
-            this.textBox16 = new System.Windows.Forms.TextBox();
             this.projectTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offersDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ratingGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commentGrid)).BeginInit();
             this.devBox.SuspendLayout();
             this.clientBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientProjectGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox3
+            // emailLabel
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(50, 161);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(200, 15);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "Email";
+            this.emailLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.emailLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.emailLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailLabel.Location = new System.Drawing.Point(50, 161);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.ReadOnly = true;
+            this.emailLabel.Size = new System.Drawing.Size(200, 15);
+            this.emailLabel.TabIndex = 2;
+            this.emailLabel.TabStop = false;
+            this.emailLabel.Text = "Email";
             // 
             // emailBox
             // 
@@ -116,18 +119,18 @@
             this.emailBox.Size = new System.Drawing.Size(172, 22);
             this.emailBox.TabIndex = 2;
             // 
-            // textBox4
+            // passwordLabel
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(50, 118);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(200, 15);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "Password";
+            this.passwordLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.passwordLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passwordLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Location = new System.Drawing.Point(50, 118);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.ReadOnly = true;
+            this.passwordLabel.Size = new System.Drawing.Size(200, 15);
+            this.passwordLabel.TabIndex = 4;
+            this.passwordLabel.Text = "Password";
             // 
             // passwordBox
             // 
@@ -156,73 +159,73 @@
             this.roleComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             this.roleComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
-            // textBox1
+            // emailRequiredLabel
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox1.Location = new System.Drawing.Point(87, 161);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(27, 15);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "*";
+            this.emailRequiredLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.emailRequiredLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.emailRequiredLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.emailRequiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailRequiredLabel.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.emailRequiredLabel.Location = new System.Drawing.Point(87, 161);
+            this.emailRequiredLabel.Name = "emailRequiredLabel";
+            this.emailRequiredLabel.ReadOnly = true;
+            this.emailRequiredLabel.Size = new System.Drawing.Size(27, 15);
+            this.emailRequiredLabel.TabIndex = 8;
+            this.emailRequiredLabel.Text = "*";
             // 
-            // textBox5
+            // requiredLabel
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(50, 260);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(200, 13);
-            this.textBox5.TabIndex = 9;
-            this.textBox5.Text = "*Υποχρεωτικό Πεδίο";
+            this.requiredLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.requiredLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.requiredLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.requiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requiredLabel.Location = new System.Drawing.Point(50, 260);
+            this.requiredLabel.Name = "requiredLabel";
+            this.requiredLabel.ReadOnly = true;
+            this.requiredLabel.Size = new System.Drawing.Size(200, 13);
+            this.requiredLabel.TabIndex = 9;
+            this.requiredLabel.Text = "*Υποχρεωτικό Πεδίο";
             // 
-            // textBox6
+            // passwordRequiredLabel
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox6.Location = new System.Drawing.Point(113, 118);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(20, 15);
-            this.textBox6.TabIndex = 10;
-            this.textBox6.Text = "*";
+            this.passwordRequiredLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.passwordRequiredLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passwordRequiredLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.passwordRequiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordRequiredLabel.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.passwordRequiredLabel.Location = new System.Drawing.Point(113, 118);
+            this.passwordRequiredLabel.Name = "passwordRequiredLabel";
+            this.passwordRequiredLabel.ReadOnly = true;
+            this.passwordRequiredLabel.Size = new System.Drawing.Size(20, 15);
+            this.passwordRequiredLabel.TabIndex = 10;
+            this.passwordRequiredLabel.Text = "*";
             // 
-            // textBox7
+            // roleRequiredLabel
             // 
-            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox7.Location = new System.Drawing.Point(213, 202);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(27, 15);
-            this.textBox7.TabIndex = 11;
-            this.textBox7.Text = "*";
+            this.roleRequiredLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.roleRequiredLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.roleRequiredLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.roleRequiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roleRequiredLabel.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.roleRequiredLabel.Location = new System.Drawing.Point(213, 202);
+            this.roleRequiredLabel.Name = "roleRequiredLabel";
+            this.roleRequiredLabel.ReadOnly = true;
+            this.roleRequiredLabel.Size = new System.Drawing.Size(27, 15);
+            this.roleRequiredLabel.TabIndex = 11;
+            this.roleRequiredLabel.Text = "*";
             // 
-            // textBox2
+            // nameLabel
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(50, 297);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(200, 15);
-            this.textBox2.TabIndex = 12;
-            this.textBox2.Text = "Όνομα";
+            this.nameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.nameLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nameLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(50, 297);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.ReadOnly = true;
+            this.nameLabel.Size = new System.Drawing.Size(200, 15);
+            this.nameLabel.TabIndex = 12;
+            this.nameLabel.Text = "Όνομα";
             // 
             // nameBox
             // 
@@ -233,18 +236,18 @@
             this.nameBox.Size = new System.Drawing.Size(172, 22);
             this.nameBox.TabIndex = 4;
             // 
-            // textBox8
+            // surnameLabel
             // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(50, 341);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(200, 15);
-            this.textBox8.TabIndex = 14;
-            this.textBox8.Text = "Επίθετο";
+            this.surnameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.surnameLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.surnameLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.surnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.surnameLabel.Location = new System.Drawing.Point(50, 341);
+            this.surnameLabel.Name = "surnameLabel";
+            this.surnameLabel.ReadOnly = true;
+            this.surnameLabel.Size = new System.Drawing.Size(200, 15);
+            this.surnameLabel.TabIndex = 14;
+            this.surnameLabel.Text = "Επίθετο";
             // 
             // surnameBox
             // 
@@ -284,88 +287,88 @@
             this.profileImageTextBox.TabIndex = 17;
             this.profileImageTextBox.Text = "Εικόνα Προφίλ";
             // 
-            // textBox10
+            // dateLabel
             // 
-            this.textBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(52, 545);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(200, 15);
-            this.textBox10.TabIndex = 18;
-            this.textBox10.Text = "Ημερομηνία Γέννησης";
-            this.textBox10.Visible = false;
+            this.dateLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.dateLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dateLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLabel.Location = new System.Drawing.Point(52, 545);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.ReadOnly = true;
+            this.dateLabel.Size = new System.Drawing.Size(200, 15);
+            this.dateLabel.TabIndex = 18;
+            this.dateLabel.Text = "Ημερομηνία Γέννησης";
+            this.dateLabel.Visible = false;
             // 
-            // textBox11
+            // skillLabel
             // 
-            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(457, 254);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(200, 15);
-            this.textBox11.TabIndex = 19;
-            this.textBox11.Text = "Δεξιότητες";
-            this.textBox11.Visible = false;
+            this.skillLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.skillLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.skillLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.skillLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skillLabel.Location = new System.Drawing.Point(457, 254);
+            this.skillLabel.Name = "skillLabel";
+            this.skillLabel.ReadOnly = true;
+            this.skillLabel.Size = new System.Drawing.Size(200, 15);
+            this.skillLabel.TabIndex = 19;
+            this.skillLabel.Text = "Δεξιότητες";
+            this.skillLabel.Visible = false;
             // 
-            // textBox12
+            // cvLabel
             // 
-            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(457, 369);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(200, 15);
-            this.textBox12.TabIndex = 20;
-            this.textBox12.Text = "Υποβολή Βιογραφικού";
-            this.textBox12.Visible = false;
+            this.cvLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.cvLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cvLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.cvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cvLabel.Location = new System.Drawing.Point(457, 369);
+            this.cvLabel.Name = "cvLabel";
+            this.cvLabel.ReadOnly = true;
+            this.cvLabel.Size = new System.Drawing.Size(200, 15);
+            this.cvLabel.TabIndex = 20;
+            this.cvLabel.Text = "Υποβολή Βιογραφικού";
+            this.cvLabel.Visible = false;
             // 
-            // textBox13
+            // portfolioLabel
             // 
-            this.textBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox13.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(457, 445);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(200, 15);
-            this.textBox13.TabIndex = 21;
-            this.textBox13.Text = "Portfolio";
-            this.textBox13.Visible = false;
+            this.portfolioLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.portfolioLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.portfolioLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.portfolioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.portfolioLabel.Location = new System.Drawing.Point(457, 445);
+            this.portfolioLabel.Name = "portfolioLabel";
+            this.portfolioLabel.ReadOnly = true;
+            this.portfolioLabel.Size = new System.Drawing.Size(200, 15);
+            this.portfolioLabel.TabIndex = 21;
+            this.portfolioLabel.Text = "Portfolio";
+            this.portfolioLabel.Visible = false;
             // 
-            // textBox14
+            // configLabel
             // 
-            this.textBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.ForeColor = System.Drawing.Color.White;
-            this.textBox14.Location = new System.Drawing.Point(457, 65);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(246, 17);
-            this.textBox14.TabIndex = 22;
-            this.textBox14.Text = " Ρυθμίσεις Προφίλ";
+            this.configLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.configLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.configLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.configLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.configLabel.ForeColor = System.Drawing.Color.White;
+            this.configLabel.Location = new System.Drawing.Point(457, 65);
+            this.configLabel.Name = "configLabel";
+            this.configLabel.ReadOnly = true;
+            this.configLabel.Size = new System.Drawing.Size(246, 17);
+            this.configLabel.TabIndex = 22;
+            this.configLabel.Text = " Ρυθμίσεις Προφίλ";
             // 
-            // textBox15
+            // visibleLabel
             // 
-            this.textBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(457, 90);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(200, 15);
-            this.textBox15.TabIndex = 24;
-            this.textBox15.Text = "Επιλέξτε Ορατά Πεδία";
+            this.visibleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.visibleLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.visibleLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.visibleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visibleLabel.Location = new System.Drawing.Point(457, 90);
+            this.visibleLabel.Name = "visibleLabel";
+            this.visibleLabel.ReadOnly = true;
+            this.visibleLabel.Size = new System.Drawing.Size(200, 15);
+            this.visibleLabel.TabIndex = 24;
+            this.visibleLabel.Text = "Επιλέξτε Ορατά Πεδία";
             // 
             // clientVisibilityFields
             // 
@@ -431,19 +434,20 @@
             this.projectsTextBox.TabIndex = 31;
             this.projectsTextBox.Text = " Έργα";
             // 
-            // ratingsTextBox
+            // commentLabel
             // 
-            this.ratingsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
-            this.ratingsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ratingsTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.ratingsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ratingsTextBox.ForeColor = System.Drawing.Color.White;
-            this.ratingsTextBox.Location = new System.Drawing.Point(64, 490);
-            this.ratingsTextBox.Name = "ratingsTextBox";
-            this.ratingsTextBox.ReadOnly = true;
-            this.ratingsTextBox.Size = new System.Drawing.Size(350, 17);
-            this.ratingsTextBox.TabIndex = 33;
-            this.ratingsTextBox.Text = " Αξιολογήσεις";
+            this.commentLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.commentLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.commentLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.commentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.commentLabel.ForeColor = System.Drawing.Color.White;
+            this.commentLabel.Location = new System.Drawing.Point(831, 530);
+            this.commentLabel.Name = "commentLabel";
+            this.commentLabel.ReadOnly = true;
+            this.commentLabel.Size = new System.Drawing.Size(277, 17);
+            this.commentLabel.TabIndex = 33;
+            this.commentLabel.Text = " Αξιολογήσεις";
+            this.commentLabel.Visible = false;
             // 
             // saveButton
             // 
@@ -470,33 +474,33 @@
             this.profileImagePictureBox.TabStop = false;
             this.profileImagePictureBox.Click += new System.EventHandler(this.profileImagePictureBox_Click);
             // 
-            // textBox9
+            // descriptionLabel
             // 
-            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(457, 250);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(200, 15);
-            this.textBox9.TabIndex = 39;
-            this.textBox9.Text = "Περιγραφή";
-            this.textBox9.Visible = false;
+            this.descriptionLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.descriptionLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.descriptionLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionLabel.Location = new System.Drawing.Point(457, 250);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.ReadOnly = true;
+            this.descriptionLabel.Size = new System.Drawing.Size(200, 15);
+            this.descriptionLabel.TabIndex = 39;
+            this.descriptionLabel.Text = "Περιγραφή";
+            this.descriptionLabel.Visible = false;
             // 
-            // textBox18
+            // linkLabel
             // 
-            this.textBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox18.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox18.Location = new System.Drawing.Point(457, 373);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.ReadOnly = true;
-            this.textBox18.Size = new System.Drawing.Size(200, 15);
-            this.textBox18.TabIndex = 40;
-            this.textBox18.Text = "Σύνδεσμος";
-            this.textBox18.Visible = false;
+            this.linkLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.linkLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.linkLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.linkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel.Location = new System.Drawing.Point(457, 373);
+            this.linkLabel.Name = "linkLabel";
+            this.linkLabel.ReadOnly = true;
+            this.linkLabel.Size = new System.Drawing.Size(200, 15);
+            this.linkLabel.TabIndex = 40;
+            this.linkLabel.Text = "Σύνδεσμος";
+            this.linkLabel.Visible = false;
             // 
             // usernameBox
             // 
@@ -507,32 +511,32 @@
             this.usernameBox.Size = new System.Drawing.Size(172, 22);
             this.usernameBox.TabIndex = 0;
             // 
-            // textBox21
+            // usernameRequiredLabel
             // 
-            this.textBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox21.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox21.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBox21.Location = new System.Drawing.Point(117, 72);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(20, 15);
-            this.textBox21.TabIndex = 43;
-            this.textBox21.Text = "*";
+            this.usernameRequiredLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.usernameRequiredLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.usernameRequiredLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.usernameRequiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameRequiredLabel.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.usernameRequiredLabel.Location = new System.Drawing.Point(117, 72);
+            this.usernameRequiredLabel.Name = "usernameRequiredLabel";
+            this.usernameRequiredLabel.ReadOnly = true;
+            this.usernameRequiredLabel.Size = new System.Drawing.Size(20, 15);
+            this.usernameRequiredLabel.TabIndex = 43;
+            this.usernameRequiredLabel.Text = "*";
             // 
-            // textBox22
+            // usernameLabel
             // 
-            this.textBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox22.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox22.Location = new System.Drawing.Point(50, 76);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.ReadOnly = true;
-            this.textBox22.Size = new System.Drawing.Size(200, 15);
-            this.textBox22.TabIndex = 41;
-            this.textBox22.Text = "Username";
+            this.usernameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.usernameLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.usernameLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.Location = new System.Drawing.Point(50, 76);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.ReadOnly = true;
+            this.usernameLabel.Size = new System.Drawing.Size(200, 15);
+            this.usernameLabel.TabIndex = 41;
+            this.usernameLabel.Text = "Username";
             // 
             // datePicker
             // 
@@ -712,23 +716,32 @@
             this.deleteButton.Visible = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // ratingGrid
+            // commentGrid
             // 
-            this.ratingGrid.AllowUserToAddRows = false;
-            this.ratingGrid.AllowUserToDeleteRows = false;
-            this.ratingGrid.AllowUserToResizeRows = false;
-            this.ratingGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ratingGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.ratingGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ratingGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ratingGrid.Location = new System.Drawing.Point(880, 550);
-            this.ratingGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.ratingGrid.Name = "ratingGrid";
-            this.ratingGrid.ReadOnly = true;
-            this.ratingGrid.RowHeadersWidth = 62;
-            this.ratingGrid.RowTemplate.Height = 28;
-            this.ratingGrid.Size = new System.Drawing.Size(350, 113);
-            this.ratingGrid.TabIndex = 53;
+            this.commentGrid.AllowUserToAddRows = false;
+            this.commentGrid.AllowUserToDeleteRows = false;
+            this.commentGrid.AllowUserToResizeRows = false;
+            this.commentGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.commentGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.commentGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.commentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.commentGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.comment});
+            this.commentGrid.Location = new System.Drawing.Point(831, 548);
+            this.commentGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.commentGrid.Name = "commentGrid";
+            this.commentGrid.ReadOnly = true;
+            this.commentGrid.RowHeadersWidth = 62;
+            this.commentGrid.RowTemplate.Height = 28;
+            this.commentGrid.Size = new System.Drawing.Size(277, 89);
+            this.commentGrid.TabIndex = 53;
+            this.commentGrid.Visible = false;
+            // 
+            // comment
+            // 
+            this.comment.HeaderText = "Σχόλιο";
+            this.comment.Name = "comment";
+            this.comment.ReadOnly = true;
             // 
             // devBox
             // 
@@ -736,15 +749,40 @@
             this.devBox.Controls.Add(this.offersTextBox);
             this.devBox.Controls.Add(this.projectsDataGrid);
             this.devBox.Controls.Add(this.notificationsDataGrid);
-            this.devBox.Controls.Add(this.ratingsTextBox);
             this.devBox.Controls.Add(this.projectsTextBox);
             this.devBox.Controls.Add(this.newsFeedTextBox);
             this.devBox.Location = new System.Drawing.Point(806, 41);
             this.devBox.Name = "devBox";
-            this.devBox.Size = new System.Drawing.Size(446, 621);
+            this.devBox.Size = new System.Drawing.Size(446, 483);
             this.devBox.TabIndex = 54;
             this.devBox.TabStop = false;
             this.devBox.Visible = false;
+            // 
+            // ratingBox
+            // 
+            this.ratingBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 54.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.ratingBox.Location = new System.Drawing.Point(1124, 547);
+            this.ratingBox.Name = "ratingBox";
+            this.ratingBox.ReadOnly = true;
+            this.ratingBox.Size = new System.Drawing.Size(111, 90);
+            this.ratingBox.TabIndex = 55;
+            this.ratingBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ratingBox.Visible = false;
+            // 
+            // ratingLabel
+            // 
+            this.ratingLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.ratingLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ratingLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.ratingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ratingLabel.ForeColor = System.Drawing.Color.White;
+            this.ratingLabel.Location = new System.Drawing.Point(1124, 530);
+            this.ratingLabel.Name = "ratingLabel";
+            this.ratingLabel.ReadOnly = true;
+            this.ratingLabel.Size = new System.Drawing.Size(111, 17);
+            this.ratingLabel.TabIndex = 54;
+            this.ratingLabel.Text = "Βαθμός";
+            this.ratingLabel.Visible = false;
             // 
             // clientBox
             // 
@@ -779,6 +817,18 @@
             this.clientProjectGrid.TabIndex = 51;
             this.clientProjectGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientProjectGrid_CellClick);
             // 
+            // projectTitle
+            // 
+            this.projectTitle.HeaderText = "Τίτλος";
+            this.projectTitle.Name = "projectTitle";
+            this.projectTitle.ReadOnly = true;
+            // 
+            // finished
+            // 
+            this.finished.HeaderText = "Ολοκληρωμένο";
+            this.finished.Name = "finished";
+            this.finished.ReadOnly = true;
+            // 
             // textBox16
             // 
             this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
@@ -793,18 +843,6 @@
             this.textBox16.TabIndex = 50;
             this.textBox16.Text = " Έργα";
             // 
-            // projectTitle
-            // 
-            this.projectTitle.HeaderText = "Τίτλος";
-            this.projectTitle.Name = "projectTitle";
-            this.projectTitle.ReadOnly = true;
-            // 
-            // finished
-            // 
-            this.finished.HeaderText = "Ολοκληρωμένο";
-            this.finished.Name = "finished";
-            this.finished.ReadOnly = true;
-            // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -812,46 +850,49 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.ratingBox);
             this.Controls.Add(this.clientBox);
-            this.Controls.Add(this.devBox);
-            this.Controls.Add(this.ratingGrid);
+            this.Controls.Add(this.ratingLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.commentGrid);
             this.Controls.Add(this.profileImagePictureBox);
             this.Controls.Add(this.skillsListBox);
             this.Controls.Add(this.skillsBox);
+            this.Controls.Add(this.commentLabel);
             this.Controls.Add(this.descriptionBox);
             this.Controls.Add(this.linkBox);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.usernameBox);
-            this.Controls.Add(this.textBox21);
-            this.Controls.Add(this.textBox22);
-            this.Controls.Add(this.textBox18);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.usernameRequiredLabel);
+            this.Controls.Add(this.usernameLabel);
+            this.Controls.Add(this.linkLabel);
+            this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.developerVisibilityFields);
             this.Controls.Add(this.clientVisibilityFields);
-            this.Controls.Add(this.textBox15);
-            this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.visibleLabel);
+            this.Controls.Add(this.configLabel);
+            this.Controls.Add(this.portfolioLabel);
+            this.Controls.Add(this.cvLabel);
+            this.Controls.Add(this.skillLabel);
+            this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.profileImageTextBox);
             this.Controls.Add(this.genderComboBox);
             this.Controls.Add(this.surnameBox);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.nameBox);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.roleRequiredLabel);
+            this.Controls.Add(this.passwordRequiredLabel);
+            this.Controls.Add(this.requiredLabel);
+            this.Controls.Add(this.emailRequiredLabel);
             this.Controls.Add(this.roleComboBox);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.emailBox);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.emailLabel);
+            this.Controls.Add(this.devBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserProfileForm";
@@ -860,52 +901,55 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserProfileForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserProfileForm_FormClosed);
             this.Load += new System.EventHandler(this.UserProfileForm_Load);
-            this.Controls.SetChildIndex(this.textBox3, 0);
+            this.Controls.SetChildIndex(this.devBox, 0);
+            this.Controls.SetChildIndex(this.emailLabel, 0);
             this.Controls.SetChildIndex(this.emailBox, 0);
-            this.Controls.SetChildIndex(this.textBox4, 0);
+            this.Controls.SetChildIndex(this.passwordLabel, 0);
             this.Controls.SetChildIndex(this.roleComboBox, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.textBox5, 0);
-            this.Controls.SetChildIndex(this.textBox6, 0);
-            this.Controls.SetChildIndex(this.textBox7, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
+            this.Controls.SetChildIndex(this.emailRequiredLabel, 0);
+            this.Controls.SetChildIndex(this.requiredLabel, 0);
+            this.Controls.SetChildIndex(this.passwordRequiredLabel, 0);
+            this.Controls.SetChildIndex(this.roleRequiredLabel, 0);
+            this.Controls.SetChildIndex(this.nameLabel, 0);
             this.Controls.SetChildIndex(this.nameBox, 0);
-            this.Controls.SetChildIndex(this.textBox8, 0);
+            this.Controls.SetChildIndex(this.surnameLabel, 0);
             this.Controls.SetChildIndex(this.surnameBox, 0);
             this.Controls.SetChildIndex(this.genderComboBox, 0);
             this.Controls.SetChildIndex(this.profileImageTextBox, 0);
-            this.Controls.SetChildIndex(this.textBox10, 0);
-            this.Controls.SetChildIndex(this.textBox11, 0);
-            this.Controls.SetChildIndex(this.textBox12, 0);
-            this.Controls.SetChildIndex(this.textBox13, 0);
-            this.Controls.SetChildIndex(this.textBox14, 0);
-            this.Controls.SetChildIndex(this.textBox15, 0);
+            this.Controls.SetChildIndex(this.dateLabel, 0);
+            this.Controls.SetChildIndex(this.skillLabel, 0);
+            this.Controls.SetChildIndex(this.cvLabel, 0);
+            this.Controls.SetChildIndex(this.portfolioLabel, 0);
+            this.Controls.SetChildIndex(this.configLabel, 0);
+            this.Controls.SetChildIndex(this.visibleLabel, 0);
             this.Controls.SetChildIndex(this.clientVisibilityFields, 0);
             this.Controls.SetChildIndex(this.developerVisibilityFields, 0);
             this.Controls.SetChildIndex(this.saveButton, 0);
             this.Controls.SetChildIndex(this.passwordBox, 0);
-            this.Controls.SetChildIndex(this.textBox9, 0);
-            this.Controls.SetChildIndex(this.textBox18, 0);
-            this.Controls.SetChildIndex(this.textBox22, 0);
-            this.Controls.SetChildIndex(this.textBox21, 0);
+            this.Controls.SetChildIndex(this.descriptionLabel, 0);
+            this.Controls.SetChildIndex(this.linkLabel, 0);
+            this.Controls.SetChildIndex(this.usernameLabel, 0);
+            this.Controls.SetChildIndex(this.usernameRequiredLabel, 0);
             this.Controls.SetChildIndex(this.usernameBox, 0);
             this.Controls.SetChildIndex(this.datePicker, 0);
             this.Controls.SetChildIndex(this.linkBox, 0);
             this.Controls.SetChildIndex(this.descriptionBox, 0);
+            this.Controls.SetChildIndex(this.commentLabel, 0);
             this.Controls.SetChildIndex(this.skillsBox, 0);
             this.Controls.SetChildIndex(this.skillsListBox, 0);
             this.Controls.SetChildIndex(this.profileImagePictureBox, 0);
+            this.Controls.SetChildIndex(this.commentGrid, 0);
             this.Controls.SetChildIndex(this.dataGridView, 0);
             this.Controls.SetChildIndex(this.deleteButton, 0);
-            this.Controls.SetChildIndex(this.ratingGrid, 0);
-            this.Controls.SetChildIndex(this.devBox, 0);
+            this.Controls.SetChildIndex(this.ratingLabel, 0);
             this.Controls.SetChildIndex(this.clientBox, 0);
+            this.Controls.SetChildIndex(this.ratingBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offersDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ratingGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commentGrid)).EndInit();
             this.devBox.ResumeLayout(false);
             this.devBox.PerformLayout();
             this.clientBox.ResumeLayout(false);
@@ -917,39 +961,39 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox emailLabel;
         private System.Windows.Forms.TextBox emailBox;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox passwordLabel;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.ComboBox roleComboBox;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox emailRequiredLabel;
+        private System.Windows.Forms.TextBox requiredLabel;
+        private System.Windows.Forms.TextBox passwordRequiredLabel;
+        private System.Windows.Forms.TextBox roleRequiredLabel;
+        private System.Windows.Forms.TextBox nameLabel;
         private System.Windows.Forms.TextBox nameBox;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox surnameLabel;
         private System.Windows.Forms.TextBox surnameBox;
         private System.Windows.Forms.ComboBox genderComboBox;
         private System.Windows.Forms.TextBox profileImageTextBox;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox dateLabel;
+        private System.Windows.Forms.TextBox skillLabel;
+        private System.Windows.Forms.TextBox cvLabel;
+        private System.Windows.Forms.TextBox portfolioLabel;
+        private System.Windows.Forms.TextBox configLabel;
+        private System.Windows.Forms.TextBox visibleLabel;
         private System.Windows.Forms.CheckedListBox clientVisibilityFields;
         private System.Windows.Forms.CheckedListBox developerVisibilityFields;
         private System.Windows.Forms.TextBox newsFeedTextBox;
         private System.Windows.Forms.TextBox projectsTextBox;
-        private System.Windows.Forms.TextBox ratingsTextBox;
+        private System.Windows.Forms.TextBox commentLabel;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.PictureBox profileImagePictureBox;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox descriptionLabel;
+        private System.Windows.Forms.TextBox linkLabel;
         private System.Windows.Forms.TextBox usernameBox;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox usernameRequiredLabel;
+        private System.Windows.Forms.TextBox usernameLabel;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.TextBox linkBox;
         private System.Windows.Forms.RichTextBox descriptionBox;
@@ -963,12 +1007,15 @@
         private System.Windows.Forms.DataGridView offersDataGrid;
         private System.Windows.Forms.TextBox offersTextBox;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.DataGridView ratingGrid;
+        private System.Windows.Forms.DataGridView commentGrid;
         private System.Windows.Forms.GroupBox devBox;
         private System.Windows.Forms.GroupBox clientBox;
         private System.Windows.Forms.DataGridView clientProjectGrid;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.DataGridViewTextBoxColumn projectTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn finished;
+        private System.Windows.Forms.TextBox ratingLabel;
+        private System.Windows.Forms.TextBox ratingBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comment;
     }
 }
