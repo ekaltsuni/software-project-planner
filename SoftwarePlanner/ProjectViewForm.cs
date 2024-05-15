@@ -21,6 +21,7 @@ namespace SoftwarePlanner
         private int projectId;
         private bool isAssigned = false;
         private bool canOffer = true;
+        private int clientId = -1;
 
         public ProjectViewForm(string projectName)
         {
@@ -39,7 +40,6 @@ namespace SoftwarePlanner
             if (isAssigned)
             {
                 offerButton.Visible = false;
-                recommendationButton.Visible = false;
                 recommendationButton.Visible = false;
             }
             populateCommentGrid();
@@ -62,15 +62,24 @@ namespace SoftwarePlanner
                     if (reader.Read())
                     {
                         projectId = reader.GetInt32(reader.GetOrdinal("project_id"));
-
+                        clientId = reader.GetInt32(reader.GetOrdinal("client_id"));
                         projectInfoGrid.Rows.Add("Τίτλος", reader.GetString(reader.GetOrdinal("title")));
                         projectInfoGrid.Rows.Add("Περιγραφή", reader.GetString(reader.GetOrdinal("description")));
+                        projectInfoGrid.Rows.Add("Δημιουργός", reader.GetString(reader.GetOrdinal("username")));
                         projectInfoGrid.Rows.Add("Ολοκληρωμένο", reader.GetInt32(reader.GetOrdinal("finished")) == 0 ? "Όχι" : "Ναι");
-                        projectInfoGrid.Rows.Add("Μέγιστη Τιμή", reader.GetInt64(reader.GetOrdinal("max_price")) + "€");
-                        projectInfoGrid.Rows.Add("Διάρκεια Προσφορών", reader.GetInt64(reader.GetOrdinal("bidding_duration")));
-
+                        if (reader[5].GetType() != typeof(DBNull))
+                        {
+                            projectInfoGrid.Rows.Add("Μέγιστη Τιμή", reader.GetInt64(reader.GetOrdinal("max_price")) + "€");
+                        }
+                        if (reader[7].GetType() != typeof(DBNull))
+                        {
+                            projectInfoGrid.Rows.Add("Διάρκεια Προσφορών", reader.GetInt64(reader.GetOrdinal("bidding_duration")));
+                        }
                         typeId = reader.GetInt32(reader.GetOrdinal("type"));
-                        durationId = reader.GetInt32(reader.GetOrdinal("duration"));
+                        if (reader[6].GetType() != typeof(DBNull))
+                        {
+                            durationId = reader.GetInt32(reader.GetOrdinal("duration"));
+                        }
                         categoryId = reader.GetInt32(reader.GetOrdinal("category"));
                         subCategoryId = reader.GetInt32(reader.GetOrdinal("subcategory"));
                         paymentId = reader.GetInt32(reader.GetOrdinal("payment"));
@@ -195,7 +204,7 @@ namespace SoftwarePlanner
         private void populateOfferGrid()
         {
             offerGrid.Rows.Clear();
-            if (User.role.Equals("Πελάτης"))
+            if (User.id == clientId)
             {
                 DataGridViewButtonColumn actionColumn = new DataGridViewButtonColumn();
                 actionColumn.Name = "Ενέργειες";
@@ -277,7 +286,7 @@ namespace SoftwarePlanner
 
         private void offerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == offerGrid.Columns["Ενέργειες"].Index)
+            if (offerGrid.Columns["Ενέργειες"] != null && e.ColumnIndex == offerGrid.Columns["Ενέργειες"].Index)
             {
                 DataGridView grid = sender as DataGridView;
                 if (grid == null || grid.CurrentRow.Cells[0].Value == null) return;

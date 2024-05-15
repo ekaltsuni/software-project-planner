@@ -109,7 +109,9 @@ namespace SoftwarePlanner
 
         // PROJECT
         public static readonly string RETURN_PROJECT_FULL = @"SELECT * 
-                                                              FROM Project p                                                             
+                                                              FROM Project p 
+                                                              INNER JOIN User u
+                                                                ON u.id = p.client_id
                                                               WHERE p.title = @title
                                                               ORDER BY date";
         public static readonly string RETURN_PROJECT_BY_CLIENT = "SELECT title, finished FROM Project WHERE client_id = @client_id";
