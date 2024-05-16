@@ -12,6 +12,7 @@ namespace SoftwarePlanner
         public static readonly string CONNECTION_STRING = "Data source=app-data.db;Version=3";
         public static readonly string RETURN_USER = "SELECT id FROM User WHERE username = @username AND password = @password";
         public static readonly string RETURN_USER_ID = "SELECT id FROM User WHERE username = @username";
+        public static readonly string FIND_EMAIL = "SELECT COUNT(*) FROM User WHERE email = @email";
         public static readonly string RETURN_ROLE = "SELECT role FROM User WHERE id = @id";
         public static readonly string RETURN_SEARCH_USER_VARIABLES = "SELECT id, role FROM User WHERE username = @username";
         public static readonly string RETURN_USER_NAME = "SELECT username FROM User WHERE id = @id";

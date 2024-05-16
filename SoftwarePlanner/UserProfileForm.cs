@@ -281,26 +281,43 @@ namespace SoftwarePlanner
             else
             {
                 if (!string.IsNullOrEmpty(usernameBox.Text) &&
-                    !string.IsNullOrEmpty(passwordBox.Text) &&
+                    !string.IsNullOrEmpty(passwordBox.Text) && passwordBox.Text.Length >= 6 &&
                     !string.IsNullOrEmpty(emailBox.Text) &&
                     roleComboBox.SelectedIndex == 0)
                 {
                     createClient();
                 }
                 else if (!string.IsNullOrEmpty(usernameBox.Text) &&
-                    !string.IsNullOrEmpty(passwordBox.Text) &&
+                    !string.IsNullOrEmpty(passwordBox.Text) && passwordBox.Text.Length >= 6 &&
                     !string.IsNullOrEmpty(emailBox.Text) &&
                     roleComboBox.SelectedIndex == 1)
                 {
                     createDeveloper();
                 }
-                else MessageBox.Show("Παρακαλώ συμπληρώστε τα υποχρεωτικά πεδία.");
+                else MessageBox.Show("Ελλιπή πεδία ή κωδικός κάτω από 6 χαρακτήρες.");
             }
             updateProfileImage();
         }
 
         private void updateDeveloper()
         {
+            if (passwordBox.Text.Length < 6)
+            {
+                MessageBox.Show("Ο κωδικός πρέπει να είναι πάνω από 6 χαρακτήρες.");
+                return;
+            }
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@email", emailBox.Text);
+                int res = Convert.ToInt32(command.ExecuteScalar());
+                if (res > 0)
+                {
+                    MessageBox.Show("Το email υπάρχει ήδη στο σύστημα.");
+                    return;
+                }
+            }
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(UPDATE_USER_VARIABLES, connection))
             using (SQLiteCommand skillsCommand = new SQLiteCommand(UPDATE_SKILLS, connection))
@@ -355,65 +372,98 @@ namespace SoftwarePlanner
         private void createDeveloper()
         {
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@email", emailBox.Text);
+                int res = Convert.ToInt32(command.ExecuteScalar());
+                if (res > 0)
+                {
+                    MessageBox.Show("Το email υπάρχει ήδη στο σύστημα.");
+                    return;
+                }
+            }
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(CREATE_USER_VARIABLES, connection))
             using (SQLiteCommand userIDcommand = new SQLiteCommand(RETURN_LATEST_USER_ID, connection))
             using (SQLiteCommand skillsCommand = new SQLiteCommand(CREATE_SKILLS, connection))
             using (SQLiteCommand portfolioCommand = new SQLiteCommand(CREATE_PORTFOLIO_VARIABLES, connection))
             using (SQLiteCommand visibilityCommand = new SQLiteCommand(CREATE_DEVELOPER_VISIBILITY, connection))
             {
-                    connection.Open();
-                    command.Parameters.AddWithValue("@username", usernameBox.Text);
-                    command.Parameters.AddWithValue("@password", passwordBox.Text);
-                    command.Parameters.AddWithValue("@email", emailBox.Text);
-                    command.Parameters.AddWithValue("@role", roleComboBox.Text);
-                    command.Parameters.AddWithValue("@name", nameBox.Text);
-                    command.Parameters.AddWithValue("@surname", surnameBox.Text);
-                    command.Parameters.AddWithValue("@gender", genderComboBox.Text);
-                    command.Parameters.AddWithValue("@signing_date", DateTime.Now.ToString("yyyy-MM-dd"));
-                    command.ExecuteNonQuery();
-                    using (SQLiteDataReader reader = userIDcommand.ExecuteReader())
+                connection.Open();
+                command.Parameters.AddWithValue("@username", usernameBox.Text);
+                command.Parameters.AddWithValue("@password", passwordBox.Text);
+                command.Parameters.AddWithValue("@email", emailBox.Text);
+                command.Parameters.AddWithValue("@role", roleComboBox.Text);
+                command.Parameters.AddWithValue("@name", nameBox.Text);
+                command.Parameters.AddWithValue("@surname", surnameBox.Text);
+                command.Parameters.AddWithValue("@gender", genderComboBox.Text);
+                command.Parameters.AddWithValue("@signing_date", DateTime.Now.ToString("yyyy-MM-dd"));
+                command.ExecuteNonQuery();
+                using (SQLiteDataReader reader = userIDcommand.ExecuteReader())
+                {
+                    if (reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            // Update skill related fields
-                            skillsCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
-                            skillsCommand.Parameters.AddWithValue("@other", skillsBox.Text);
-                            skillsCommand.Parameters.AddWithValue("@c", returnFlag(0));
-                            skillsCommand.Parameters.AddWithValue("@css", returnFlag(1));
-                            skillsCommand.Parameters.AddWithValue("@html", returnFlag(2));
-                            skillsCommand.Parameters.AddWithValue("@java", returnFlag(3));
-                            skillsCommand.Parameters.AddWithValue("@javascript", returnFlag(4));
-                            skillsCommand.Parameters.AddWithValue("@php", returnFlag(5));
-                            skillsCommand.Parameters.AddWithValue("@python", returnFlag(6));
-                            skillsCommand.Parameters.AddWithValue("@ruby", returnFlag(7));
-                            skillsCommand.ExecuteNonQuery();
+                        // Update skill related fields
+                        skillsCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
+                        skillsCommand.Parameters.AddWithValue("@other", skillsBox.Text);
+                        skillsCommand.Parameters.AddWithValue("@c", returnFlag(0));
+                        skillsCommand.Parameters.AddWithValue("@css", returnFlag(1));
+                        skillsCommand.Parameters.AddWithValue("@html", returnFlag(2));
+                        skillsCommand.Parameters.AddWithValue("@java", returnFlag(3));
+                        skillsCommand.Parameters.AddWithValue("@javascript", returnFlag(4));
+                        skillsCommand.Parameters.AddWithValue("@php", returnFlag(5));
+                        skillsCommand.Parameters.AddWithValue("@python", returnFlag(6));
+                        skillsCommand.Parameters.AddWithValue("@ruby", returnFlag(7));
+                        skillsCommand.ExecuteNonQuery();
 
-                            readPortfolio();
-                            portfolioCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
-                            portfolioCommand.Parameters.AddWithValue("@portfolio_title", portfolio_title);
-                            portfolioCommand.Parameters.AddWithValue("@portfolio_link", portfolio_link);
-                            portfolioCommand.ExecuteNonQuery();
+                        readPortfolio();
+                        portfolioCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
+                        portfolioCommand.Parameters.AddWithValue("@portfolio_title", portfolio_title);
+                        portfolioCommand.Parameters.AddWithValue("@portfolio_link", portfolio_link);
+                        portfolioCommand.ExecuteNonQuery();
 
-                            // Update visibility settings
-                            visibilityCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
-                            visibilityCommand.Parameters.AddWithValue("@email_visibility_flag", returnDevVisibilityFlag(0));
-                            visibilityCommand.Parameters.AddWithValue("@username_visibility_flag", returnDevVisibilityFlag(1));
-                            visibilityCommand.Parameters.AddWithValue("@name_visibility_flag", returnDevVisibilityFlag(2));
-                            visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnDevVisibilityFlag(3));
-                            visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnDevVisibilityFlag(4));
-                            visibilityCommand.Parameters.AddWithValue("@skills_visibility_flag", returnDevVisibilityFlag(5));
-                            visibilityCommand.Parameters.AddWithValue("@cv_visibility_flag", returnDevVisibilityFlag(6));
-                            visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(7));
-                            visibilityCommand.ExecuteNonQuery();
+                        // Update visibility settings
+                        visibilityCommand.Parameters.AddWithValue("@id", reader.GetInt32(0));
+                        visibilityCommand.Parameters.AddWithValue("@email_visibility_flag", returnDevVisibilityFlag(0));
+                        visibilityCommand.Parameters.AddWithValue("@username_visibility_flag", returnDevVisibilityFlag(1));
+                        visibilityCommand.Parameters.AddWithValue("@name_visibility_flag", returnDevVisibilityFlag(2));
+                        visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnDevVisibilityFlag(3));
+                        visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnDevVisibilityFlag(4));
+                        visibilityCommand.Parameters.AddWithValue("@skills_visibility_flag", returnDevVisibilityFlag(5));
+                        visibilityCommand.Parameters.AddWithValue("@cv_visibility_flag", returnDevVisibilityFlag(6));
+                        visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(7));
+                        visibilityCommand.ExecuteNonQuery();
 
-                            MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
-                        }
+                        MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
                     }
+                }
+                this.Hide();
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog();
+                this.Close();
             }
         }
 
         private void updateClient()
         {
+            if (passwordBox.Text.Length < 6)
+            {
+                MessageBox.Show("Ο κωδικός πρέπει να είναι πάνω από 6 χαρακτήρες.");
+                return;
+            }
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@email", emailBox.Text);
+                int res = Convert.ToInt32(command.ExecuteScalar());
+                if (res > 0)
+                { 
+                    MessageBox.Show("Το email υπάρχει ήδη στο σύστημα.");
+                    return;
+                }              
+            }
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(UPDATE_USER_VARIABLES, connection))
             using (SQLiteCommand clientOnlyCommand = new SQLiteCommand(UPDATE_CLIENT_VARIABLES, connection))
@@ -462,6 +512,18 @@ namespace SoftwarePlanner
         private void createClient()
         {
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@email", emailBox.Text);
+                int res = Convert.ToInt32(command.ExecuteScalar());
+                if (res > 0)
+                {
+                    MessageBox.Show("Το email υπάρχει ήδη στο σύστημα.");
+                    return;
+                }
+            }
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand command = new SQLiteCommand(CREATE_USER_VARIABLES, connection))
             using (SQLiteCommand userIDcommand = new SQLiteCommand(RETURN_LATEST_USER_ID, connection))
             using (SQLiteCommand clientCommand = new SQLiteCommand(CREATE_CLIENT_VARIABLES, connection))
@@ -505,6 +567,10 @@ namespace SoftwarePlanner
                     }
                 }
             }
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            this.Close();
         }
 
         private int returnFlag(int index)
