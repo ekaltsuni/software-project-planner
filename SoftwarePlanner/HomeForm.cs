@@ -227,8 +227,16 @@ namespace SoftwarePlanner
                     {
                         command = new SQLiteCommand(RETURN_DEV_ADVANCED, connection);
                         command.Parameters.AddWithValue("@username", "%" + searchUserBox.Text + "%");
-                        command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
-                        command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
+                        if (dateCheckBox.Checked)
+                        {
+                            command.Parameters.AddWithValue("@dateBefore", dateBefore.Value.ToString(DATE_FORMAT));
+                            command.Parameters.AddWithValue("@dateAfter", dateAfter.Value.ToString(DATE_FORMAT));
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue("@dateBefore", new DateTime(1900,1,1).ToString(DATE_FORMAT));
+                            command.Parameters.AddWithValue("@dateAfter", new DateTime(3000, 1, 1).ToString(DATE_FORMAT));
+                        }
                         int minRatingNum = -1;
                         if (int.TryParse(minRating.Text.Trim(), out minRatingNum) || minRating.Text.Trim().Equals("")) command.Parameters.AddWithValue("@minRating", minRatingNum);
                         else
@@ -334,8 +342,16 @@ namespace SoftwarePlanner
                     if (User.id >= 0) command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
                     else command = new SQLiteCommand(RETURN_PUBLIC_PROJECT_ADVANCED, connection);
                     command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
-                    command.Parameters.AddWithValue("@dateBefore", projectDateBefore.Value.ToString(DATE_FORMAT));
-                    command.Parameters.AddWithValue("@dateAfter", projectDateAfter.Value.ToString(DATE_FORMAT));
+                    if (projectDateBox.Checked)
+                    {
+                        command.Parameters.AddWithValue("@dateBefore", projectDateBefore.Value.ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@dateAfter", projectDateAfter.Value.ToString(DATE_FORMAT));
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@dateBefore", new DateTime(1900, 1, 1).ToString(DATE_FORMAT));
+                        command.Parameters.AddWithValue("@dateAfter", new DateTime(3000, 1, 1).ToString(DATE_FORMAT));
+                    }                   
                     command.Parameters.AddWithValue("@category", projectCategoryDropdown.SelectedItem == null ? "%" : getTranslationKey(projectCategoryDropdown.SelectedItem.ToString()));
                     command.Parameters.AddWithValue("@subcategory", projectSubcategoryDropdown.SelectedItem == null ? "%" : getTranslationKey(projectSubcategoryDropdown.SelectedItem.ToString()));
                     command.Parameters.AddWithValue("@technology", projectTechnologyDropdown.SelectedItem == null ? "%" : projectTechnologyDropdown.SelectedItem.ToString());

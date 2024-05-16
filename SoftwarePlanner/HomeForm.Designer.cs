@@ -77,6 +77,8 @@
             this.previousUserPage = new System.Windows.Forms.Button();
             this.previousProjectPage = new System.Windows.Forms.Button();
             this.nextProjectPage = new System.Windows.Forms.Button();
+            this.dateCheckBox = new System.Windows.Forms.CheckBox();
+            this.projectDateBox = new System.Windows.Forms.CheckBox();
             this.devAdvancedSearchGroup.SuspendLayout();
             this.advancedSearchGroup.SuspendLayout();
             this.advancedProjectSearchGroup.SuspendLayout();
@@ -251,6 +253,7 @@
             // 
             // advancedSearchGroup
             // 
+            this.advancedSearchGroup.Controls.Add(this.dateCheckBox);
             this.advancedSearchGroup.Controls.Add(this.label6);
             this.advancedSearchGroup.Controls.Add(this.label7);
             this.advancedSearchGroup.Controls.Add(this.dateBefore);
@@ -337,6 +340,7 @@
             // 
             // advancedProjectSearchGroup
             // 
+            this.advancedProjectSearchGroup.Controls.Add(this.projectDateBox);
             this.advancedProjectSearchGroup.Controls.Add(this.projectDateAfter);
             this.advancedProjectSearchGroup.Controls.Add(this.label12);
             this.advancedProjectSearchGroup.Controls.Add(this.projectTechnologyDropdown);
@@ -547,6 +551,24 @@
             this.nextProjectPage.UseVisualStyleBackColor = true;
             this.nextProjectPage.Click += new System.EventHandler(this.nextProjectPage_Click);
             // 
+            // dateCheckBox
+            // 
+            this.dateCheckBox.AutoSize = true;
+            this.dateCheckBox.Location = new System.Drawing.Point(404, 23);
+            this.dateCheckBox.Name = "dateCheckBox";
+            this.dateCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.dateCheckBox.TabIndex = 19;
+            this.dateCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // projectDateBox
+            // 
+            this.projectDateBox.AutoSize = true;
+            this.projectDateBox.Location = new System.Drawing.Point(371, 66);
+            this.projectDateBox.Name = "projectDateBox";
+            this.projectDateBox.Size = new System.Drawing.Size(15, 14);
+            this.projectDateBox.TabIndex = 20;
+            this.projectDateBox.UseVisualStyleBackColor = true;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,5 +674,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OfferCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxPrice;
+        private System.Windows.Forms.CheckBox dateCheckBox;
+        private System.Windows.Forms.CheckBox projectDateBox;
     }
 }

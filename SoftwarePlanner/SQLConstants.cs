@@ -115,20 +115,20 @@ namespace SoftwarePlanner
                                                               WHERE p.title = @title
                                                               ORDER BY date";
         public static readonly string RETURN_PROJECT_BY_CLIENT = "SELECT title, finished FROM Project WHERE client_id = @client_id";
-        public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT project_id, title, date, max_price
+        public static readonly string RETURN_PROJECT_SIMPLE = @"SELECT p.project_id, p.title, p.date, p.max_price
                                                                 FROM Project p
                                                                 WHERE p.title LIKE @title
                                                                     OR p.description LIKE @title
                                                                 ORDER BY date
                                                                 LIMIT 11 OFFSET @page";
-        public static readonly string RETURN_PUBLIC_PROJECT_SIMPLE = @"SELECT project_id, title, date, max_price
+        public static readonly string RETURN_PUBLIC_PROJECT_SIMPLE = @"SELECT p.project_id, p.title, p.date, p.max_price
                                                                       FROM Project p
                                                                       WHERE (p.title LIKE @title
                                                                           OR p.description LIKE @title)
                                                                           AND p.type = 2  
                                                                       ORDER BY date
                                                                       LIMIT 11 OFFSET @page";
-        public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT project_id, title, date, max_price
+        public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT p.project_id, p.title, p.date, p.max_price
                                                                 FROM Project p
                                                                 INNER JOIN ProjectCategory pc
                                                                     ON pc.id = p.category
@@ -145,7 +145,7 @@ namespace SoftwarePlanner
                                                                     AND t.description LIKE @technology
                                                                 ORDER BY date
                                                                 LIMIT 11 OFFSET @page";
-        public static readonly string RETURN_PUBLIC_PROJECT_ADVANCED = @"SELECT project_id, title, date, max_price
+        public static readonly string RETURN_PUBLIC_PROJECT_ADVANCED = @"SELECT p.project_id, p.title, p.date, p.max_price
                                                                         FROM Project p
                                                                         INNER JOIN ProjectCategory pc
                                                                             ON pc.id = p.category
