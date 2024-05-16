@@ -339,7 +339,7 @@ namespace SoftwarePlanner
                 SQLiteCommand command = new SQLiteCommand();
                 if (advancedProjectSearchCheckBox.Checked)
                 {
-                    if (User.id >= 0) command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
+                    if (!Role.isVisitor) command = new SQLiteCommand(RETURN_PROJECT_ADVANCED, connection);
                     else command = new SQLiteCommand(RETURN_PUBLIC_PROJECT_ADVANCED, connection);
                     command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
                     if (projectDateBox.Checked)
@@ -359,7 +359,7 @@ namespace SoftwarePlanner
                 }
                 else
                 {
-                    if (User.id >= 0) command = new SQLiteCommand(RETURN_PROJECT_SIMPLE, connection);
+                    if (!Role.isVisitor) command = new SQLiteCommand(RETURN_PROJECT_SIMPLE, connection);
                     else command = new SQLiteCommand(RETURN_PUBLIC_PROJECT_SIMPLE, connection);
                     command.Parameters.AddWithValue("@title", "%" + searchProjectBox.Text + "%");
                     command.Parameters.AddWithValue("@page", projectPage * 10);
