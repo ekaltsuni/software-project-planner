@@ -82,6 +82,7 @@
             // 
             // projectTypeDropdown
             // 
+            this.projectTypeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.projectTypeDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectTypeDropdown.FormattingEnabled = true;
             this.projectTypeDropdown.Location = new System.Drawing.Point(242, 323);
@@ -91,6 +92,7 @@
             // 
             // projectCategoryDropdown
             // 
+            this.projectCategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.projectCategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectCategoryDropdown.FormattingEnabled = true;
             this.projectCategoryDropdown.Location = new System.Drawing.Point(242, 364);
@@ -101,6 +103,7 @@
             // 
             // projectSubcategoryDropdown
             // 
+            this.projectSubcategoryDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.projectSubcategoryDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectSubcategoryDropdown.FormattingEnabled = true;
             this.projectSubcategoryDropdown.Location = new System.Drawing.Point(242, 419);
@@ -110,6 +113,7 @@
             // 
             // projectPaymentDropdown
             // 
+            this.projectPaymentDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.projectPaymentDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectPaymentDropdown.FormattingEnabled = true;
             this.projectPaymentDropdown.Location = new System.Drawing.Point(242, 474);
@@ -210,6 +214,7 @@
             // 
             // projectDurationDropdown
             // 
+            this.projectDurationDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.projectDurationDropdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.projectDurationDropdown.FormattingEnabled = true;
             this.projectDurationDropdown.Location = new System.Drawing.Point(713, 364);

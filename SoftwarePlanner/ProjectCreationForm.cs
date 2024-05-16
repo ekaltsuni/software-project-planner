@@ -78,6 +78,11 @@ namespace SoftwarePlanner
                     }
                 }
             }
+
+            projectTypeDropdown.SelectedItem = projectTypeDropdown.Items[0];
+            projectCategoryDropdown.SelectedItem = projectCategoryDropdown.Items[0];
+            projectSubcategoryDropdown.SelectedItem = projectSubcategoryDropdown.Items[0];
+            projectPaymentDropdown.SelectedItem = projectPaymentDropdown.Items[0];
         }
 
         private void saveButton_Click(object sender, EventArgs e)

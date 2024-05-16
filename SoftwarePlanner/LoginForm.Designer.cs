@@ -37,6 +37,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.enterButton = new System.Windows.Forms.Button();
             this.registerLink = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,12 +131,29 @@
             this.registerLink.Text = "Ή δημιουργήστε ένα καινούριο προφίλ >>";
             this.registerLink.Click += new System.EventHandler(this.registerLink_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(90)))), ((int)(((byte)(118)))));
+            this.textBox2.Location = new System.Drawing.Point(196, 617);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(146, 16);
+            this.textBox2.TabIndex = 14;
+            this.textBox2.Text = "Είσοδος ως επισκέπτης";
+            this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.registerLink);
             this.Controls.Add(this.enterButton);
             this.Controls.Add(this.textBox1);
@@ -168,5 +186,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button enterButton;
         private System.Windows.Forms.TextBox registerLink;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

@@ -94,5 +94,17 @@ namespace SoftwarePlanner
             userProfile.ShowDialog();
             this.Close();
         }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            UserSearch.isSearchedUser = false;
+            Role.isVisitor = true;
+            Role.isClient = false;
+            Role.isDeveloper = false;
+            this.Hide();
+            HomeForm home = new HomeForm();
+            home.ShowDialog();
+            this.Close();
+        }
     }
 }

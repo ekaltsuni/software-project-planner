@@ -634,7 +634,6 @@ namespace SoftwarePlanner
                 descriptionLabel.Visible = true;
                 dateLabel.Visible = true;
                 skillLabel.Visible = false;
-                cvLabel.Visible = false;
                 portfolioLabel.Visible = false;
                 linkLabel.Visible = true;
                 datePicker.Visible = true;
@@ -652,7 +651,6 @@ namespace SoftwarePlanner
                 descriptionLabel.Visible = false;
                 dateLabel.Visible = false;
                 skillLabel.Visible = true;
-                cvLabel.Visible = true;
                 portfolioLabel.Visible = true;
                 linkLabel.Visible = false;
                 datePicker.Visible = false;
@@ -735,6 +733,7 @@ namespace SoftwarePlanner
 
         private void initialState()
         {
+            roleComboBox.SelectedItem = roleComboBox.Items[0];
             getRole();
             if (UserSearch.isSearchedUser == false && Role.isDeveloper == true)           
             {
@@ -742,7 +741,6 @@ namespace SoftwarePlanner
                 descriptionLabel.Visible = false;
                 dateLabel.Visible = false;
                 skillLabel.Visible = true;
-                cvLabel.Visible = true;
                 portfolioLabel.Visible = true;
                 linkLabel.Visible = false;
                 developerVisibilityFields.Visible = true;
@@ -760,7 +758,6 @@ namespace SoftwarePlanner
                 descriptionLabel.Visible = false;
                 dateLabel.Visible = false;
                 skillLabel.Visible = true;
-                cvLabel.Visible = true;
                 portfolioLabel.Visible = true;
                 linkLabel.Visible = false;
                 developerVisibilityFields.Visible = true;
@@ -779,7 +776,6 @@ namespace SoftwarePlanner
                 descriptionLabel.Visible = true;
                 dateLabel.Visible = true;
                 skillLabel.Visible = false;
-                cvLabel.Visible = false;
                 portfolioLabel.Visible = false;
                 linkLabel.Visible = true;
                 clientVisibilityFields.Visible = true;
@@ -797,7 +793,6 @@ namespace SoftwarePlanner
                 descriptionLabel.Visible = true;
                 dateLabel.Visible = true;
                 skillLabel.Visible = false;
-                cvLabel.Visible = false;
                 portfolioLabel.Visible = false;
                 linkLabel.Visible = true;
                 clientVisibilityFields.Visible = true;
@@ -1053,7 +1048,6 @@ namespace SoftwarePlanner
             clientVisibilityFields.Visible = false;
             emailRequiredLabel.Visible = false;
             profileImagePictureBox.Enabled = false;
-            cvLabel.Visible = false;
         }
 
         private void showNotifications(int matchedUserId)

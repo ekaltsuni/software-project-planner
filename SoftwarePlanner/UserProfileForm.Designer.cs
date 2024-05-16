@@ -46,7 +46,6 @@
             this.profileImageTextBox = new System.Windows.Forms.TextBox();
             this.dateLabel = new System.Windows.Forms.TextBox();
             this.skillLabel = new System.Windows.Forms.TextBox();
-            this.cvLabel = new System.Windows.Forms.TextBox();
             this.portfolioLabel = new System.Windows.Forms.TextBox();
             this.configLabel = new System.Windows.Forms.TextBox();
             this.visibleLabel = new System.Windows.Forms.TextBox();
@@ -76,6 +75,8 @@
             this.offersTextBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.commentGrid = new System.Windows.Forms.DataGridView();
+            this.project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devBox = new System.Windows.Forms.GroupBox();
             this.ratingBox = new System.Windows.Forms.TextBox();
             this.ratingLabel = new System.Windows.Forms.TextBox();
@@ -84,8 +85,6 @@
             this.projectTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.project = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.profileImagePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsDataGrid)).BeginInit();
@@ -145,6 +144,7 @@
             // 
             // roleComboBox
             // 
+            this.roleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roleComboBox.FormattingEnabled = true;
             this.roleComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -156,7 +156,6 @@
             this.roleComboBox.Size = new System.Drawing.Size(157, 24);
             this.roleComboBox.TabIndex = 3;
             this.roleComboBox.TabStop = false;
-            this.roleComboBox.Text = "Ρόλος";
             this.roleComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             this.roleComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
@@ -315,20 +314,6 @@
             this.skillLabel.TabIndex = 19;
             this.skillLabel.Text = "Δεξιότητες";
             this.skillLabel.Visible = false;
-            // 
-            // cvLabel
-            // 
-            this.cvLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.cvLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cvLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.cvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cvLabel.Location = new System.Drawing.Point(457, 369);
-            this.cvLabel.Name = "cvLabel";
-            this.cvLabel.ReadOnly = true;
-            this.cvLabel.Size = new System.Drawing.Size(200, 15);
-            this.cvLabel.TabIndex = 20;
-            this.cvLabel.Text = "Υποβολή Βιογραφικού";
-            this.cvLabel.Visible = false;
             // 
             // portfolioLabel
             // 
@@ -742,6 +727,18 @@
             this.commentGrid.TabIndex = 53;
             this.commentGrid.Visible = false;
             // 
+            // project
+            // 
+            this.project.HeaderText = "Έργο";
+            this.project.Name = "project";
+            this.project.ReadOnly = true;
+            // 
+            // comment
+            // 
+            this.comment.HeaderText = "Σχόλιο";
+            this.comment.Name = "comment";
+            this.comment.ReadOnly = true;
+            // 
             // devBox
             // 
             this.devBox.Controls.Add(this.offersDataGrid);
@@ -842,18 +839,6 @@
             this.textBox16.TabIndex = 50;
             this.textBox16.Text = " Έργα";
             // 
-            // project
-            // 
-            this.project.HeaderText = "Έργο";
-            this.project.Name = "project";
-            this.project.ReadOnly = true;
-            // 
-            // comment
-            // 
-            this.comment.HeaderText = "Σχόλιο";
-            this.comment.Name = "comment";
-            this.comment.ReadOnly = true;
-            // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -886,7 +871,6 @@
             this.Controls.Add(this.visibleLabel);
             this.Controls.Add(this.configLabel);
             this.Controls.Add(this.portfolioLabel);
-            this.Controls.Add(this.cvLabel);
             this.Controls.Add(this.skillLabel);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.profileImageTextBox);
@@ -929,7 +913,6 @@
             this.Controls.SetChildIndex(this.profileImageTextBox, 0);
             this.Controls.SetChildIndex(this.dateLabel, 0);
             this.Controls.SetChildIndex(this.skillLabel, 0);
-            this.Controls.SetChildIndex(this.cvLabel, 0);
             this.Controls.SetChildIndex(this.portfolioLabel, 0);
             this.Controls.SetChildIndex(this.configLabel, 0);
             this.Controls.SetChildIndex(this.visibleLabel, 0);
@@ -989,7 +972,6 @@
         private System.Windows.Forms.TextBox profileImageTextBox;
         private System.Windows.Forms.TextBox dateLabel;
         private System.Windows.Forms.TextBox skillLabel;
-        private System.Windows.Forms.TextBox cvLabel;
         private System.Windows.Forms.TextBox portfolioLabel;
         private System.Windows.Forms.TextBox configLabel;
         private System.Windows.Forms.TextBox visibleLabel;
