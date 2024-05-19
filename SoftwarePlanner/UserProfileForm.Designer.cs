@@ -260,6 +260,7 @@
             // 
             // genderComboBox
             // 
+            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Items.AddRange(new object[] {
@@ -271,7 +272,6 @@
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(157, 24);
             this.genderComboBox.TabIndex = 6;
-            this.genderComboBox.Text = "Φύλο";
             this.genderComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
             // 
             // profileImageTextBox
@@ -384,7 +384,6 @@
             "Επίθετο",
             "Φύλο",
             "Δεξιότητες",
-            "Βιογραφικό",
             "Portfolio"});
             this.developerVisibilityFields.Location = new System.Drawing.Point(457, 117);
             this.developerVisibilityFields.Name = "developerVisibilityFields";
@@ -591,7 +590,6 @@
             // 
             // dataGridView
             // 
-            this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));

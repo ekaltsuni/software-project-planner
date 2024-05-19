@@ -306,6 +306,7 @@ namespace SoftwarePlanner
                             command.ExecuteNonQuery();
                             MessageBox.Show("Αναθέσατε το έργο στον/στην " + username + ".");
                             offerGrid.Enabled = false;
+                            recommendationButton.Visible = false;
                             showAssignedDev();
                         }
                     }

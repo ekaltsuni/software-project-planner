@@ -19,7 +19,7 @@ namespace SoftwarePlanner
         string selectedImagePath = "";
         DateTime dateOfBirth;
         int[] skillArray = new int[8];
-        int[] devVisibilityArray = new int[8];
+        int[] devVisibilityArray = new int[7];
         int[] clientVisibilityArray = new int[8];
         private int selectedProjectId = -1;
         private int selectedUserId = -1;
@@ -33,7 +33,7 @@ namespace SoftwarePlanner
 
         private void UserProfileForm_Load(object sender, EventArgs e)
         {
-            if (UserSearch.isSearchedUser == true && UserSearchedRole.isDeveloper == true)
+            if (UserSearch.isSearchedUser && UserSearchedRole.isDeveloper)
             {
                 fillMajorFields(UserSearch.id);
                 fillDeveloperFields(UserSearch.id);
@@ -41,19 +41,19 @@ namespace SoftwarePlanner
                 hidePrivateFields();
                 showRatings();
             }
-            else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient == true)
+            else if (UserSearch.isSearchedUser && UserSearchedRole.isClient)
             {
                 fillMajorFields(UserSearch.id);
                 fillClientFields(UserSearch.id);
                 checkClientVisibility();
                 hidePrivateFields();
-            }
-            else if (UserSearch.isSearchedUser == false && Role.isClient)
+            }           
+            else if (!UserSearch.isSearchedUser && Role.isClient)
             {
                 fillMajorFields(User.id);
                 fillClientFields(User.id);
             }
-            else if (UserSearch.isSearchedUser == false && Role.isDeveloper)
+            else if (!UserSearch.isSearchedUser && Role.isDeveloper)
             {
                 fillMajorFields(User.id);
                 fillDeveloperFields(User.id);
@@ -61,6 +61,10 @@ namespace SoftwarePlanner
                 showOffers(User.id);
                 showProjects(User.id);
                 showRatings();
+            }
+            else if (!UserSearch.isSearchedUser && Role.isAdmin)
+            {
+                fillMajorFields(User.id);
             }
         }
 
@@ -80,7 +84,7 @@ namespace SoftwarePlanner
                         email = reader.GetString(reader.GetOrdinal("email"));
                         username = reader.GetString(reader.GetOrdinal("username"));
                         password = reader.GetString(reader.GetOrdinal("password"));
-
+                        gender = reader.GetString(reader.GetOrdinal("gender"));
                         if (!reader.IsDBNull(reader.GetOrdinal("name")))
                         {
                             name = reader.GetString(reader.GetOrdinal("name"));
@@ -99,7 +103,7 @@ namespace SoftwarePlanner
                         else
                         {
                             surnameBox.Text = "";
-                        }
+                        }                        
                         if (reader["image_data"] != DBNull.Value)
                         {
                             byte[] imageData = (byte[])reader["image_data"];
@@ -120,6 +124,7 @@ namespace SoftwarePlanner
                         usernameBox.Text = username;
                         emailBox.Text = email;
                         passwordBox.Text = password;
+                        genderComboBox.SelectedItem = gender;
                     }
 
                 }
@@ -195,7 +200,6 @@ namespace SoftwarePlanner
         {
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
             using (SQLiteCommand skillsCommand = new SQLiteCommand(RETURN_SKILLS, connection))
-            //using (SQLiteCommand cvCommand = new SQLiteCommand(AppConstants.RETURN_CV, connection))
             using (SQLiteCommand portfolioCommand = new SQLiteCommand(RETURN_PORTFOLIO_VARIABLES, connection))
             using (SQLiteCommand visibilityCommand = new SQLiteCommand(RETURN_DEVELOPER_VISIBILITY, connection))
             using (SQLiteCommand ratingCommand = new SQLiteCommand(RETURN_DEV_RATING, connection))
@@ -203,7 +207,6 @@ namespace SoftwarePlanner
             {
                 connection.Open();
                 skillsCommand.Parameters.AddWithValue("@id", id);
-                //cvCommand.Parameters.AddWithValue("@id", User.id);
                 portfolioCommand.Parameters.AddWithValue("@id", id);
                 visibilityCommand.Parameters.AddWithValue("@id", id);
                 ratingCommand.Parameters.AddWithValue("@id", id);
@@ -231,13 +234,6 @@ namespace SoftwarePlanner
                     }
                     for (int i = 0; i < devVisibilityArray.Length; i++) developerVisibilityFields.SetItemChecked(i, devVisibilityArray[i] == 1);
                 }
-                /*using (SQLiteDataReader reader = cvCommand.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        //cv
-                    }
-                } */
                 using (SQLiteDataReader reader = portfolioCommand.ExecuteReader())
                 {
                     while (reader.Read())
@@ -252,9 +248,17 @@ namespace SoftwarePlanner
                 {
                     if (reader.Read())
                     {
-                        int projectCount = reader.GetInt32(reader.GetOrdinal("project_count"));
-                        int rating = reader.GetInt32(reader.GetOrdinal("rating"));
-                        if (projectCount != 0) ratingBox.Text = Convert.ToString(Math.Round((double)rating / projectCount, 2));
+                        int projectCount = 0;
+                        if (!reader.IsDBNull(reader.GetOrdinal("project_count")))
+                        {
+                            projectCount = reader.GetInt32(reader.GetOrdinal("project_count"));
+                        }
+                        int rating = 0;
+                        if (!reader.IsDBNull(reader.GetOrdinal("rating")))
+                        {
+                            rating = reader.GetInt32(reader.GetOrdinal("rating"));
+                        }
+                        if (projectCount != 0) ratingBox.Text = Convert.ToString(Math.Round((double)rating / projectCount, 1));
                         else ratingBox.Text = "-";
                     }
                 }
@@ -307,10 +311,11 @@ namespace SoftwarePlanner
                 return;
             }
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL, connection))
+            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL_AND_NOT_ID, connection))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@email", emailBox.Text);
+                command.Parameters.AddWithValue("@id", User.id);
                 int res = Convert.ToInt32(command.ExecuteScalar());
                 if (res > 0)
                 {
@@ -361,8 +366,7 @@ namespace SoftwarePlanner
                 visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnDevVisibilityFlag(3));
                 visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnDevVisibilityFlag(4));
                 visibilityCommand.Parameters.AddWithValue("@skills_visibility_flag", returnDevVisibilityFlag(5));
-                visibilityCommand.Parameters.AddWithValue("@cv_visibility_flag", returnDevVisibilityFlag(6));
-                visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(7));
+                visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(6));
                 visibilityCommand.ExecuteNonQuery();
 
                 MessageBox.Show("Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
@@ -431,8 +435,7 @@ namespace SoftwarePlanner
                         visibilityCommand.Parameters.AddWithValue("@surname_visibility_flag", returnDevVisibilityFlag(3));
                         visibilityCommand.Parameters.AddWithValue("@gender_visibility_flag", returnDevVisibilityFlag(4));
                         visibilityCommand.Parameters.AddWithValue("@skills_visibility_flag", returnDevVisibilityFlag(5));
-                        visibilityCommand.Parameters.AddWithValue("@cv_visibility_flag", returnDevVisibilityFlag(6));
-                        visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(7));
+                        visibilityCommand.Parameters.AddWithValue("@portfolio_visibility_flag", returnDevVisibilityFlag(6));
                         visibilityCommand.ExecuteNonQuery();
 
                         MessageBox.Show("Τα στοιχεία σας αποθηκεύτηκαν με επιτυχία.");
@@ -453,10 +456,11 @@ namespace SoftwarePlanner
                 return;
             }
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL, connection))
+            using (SQLiteCommand command = new SQLiteCommand(FIND_EMAIL_AND_NOT_ID, connection))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@email", emailBox.Text);
+                command.Parameters.AddWithValue("@id", User.id);
                 int res = Convert.ToInt32(command.ExecuteScalar());
                 if (res > 0)
                 { 
@@ -539,6 +543,7 @@ namespace SoftwarePlanner
                 command.Parameters.AddWithValue("@surname", surnameBox.Text);
                 command.Parameters.AddWithValue("@gender", genderComboBox.Text);
                 command.Parameters.AddWithValue("@signing_date", DateTime.Now.ToString("yyyy-MM-dd"));
+                command.ExecuteNonQuery();
                 using (SQLiteDataReader reader = userIDcommand.ExecuteReader())
                 {
                     if (reader.Read())
@@ -548,7 +553,6 @@ namespace SoftwarePlanner
                         clientCommand.Parameters.AddWithValue("@date_of_birth", datePicker.Value.ToString(DATE_FORMAT));
                         clientCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
                         clientCommand.Parameters.AddWithValue("@link", linkBox.Text);
-                        command.ExecuteNonQuery();
                         clientCommand.ExecuteNonQuery();
 
                         // Update visibility
@@ -605,8 +609,8 @@ namespace SoftwarePlanner
                         MessageBox.Show($"Project is assigned.");
                         break;
                     case DialogResult.No:
-                        // Do something for the "No" option
-                        UpdateProjectOfferStatus(selectedProjectId, User.id, "Declined");
+                        RemoveProjectAssignment(selectedProjectId);
+                        RemoveProjectOfferStatus(selectedProjectId, User.id);
                         MessageBox.Show($"Project is declined");
                         break;
                     case DialogResult.Cancel:
@@ -637,14 +641,23 @@ namespace SoftwarePlanner
                 offerCommand.ExecuteNonQuery();
             }
         }
-
-        private void UpdateProjectOfferStatus(int projectId, int userId, string status)
+        private void RemoveProjectAssignment(int projectId)
         {
+
             using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(UPDATE_OFFER_STATUS, connection))
+            using (SQLiteCommand command = new SQLiteCommand(REMOVE_PROJECT_ASSIGNMENT, connection))
             {
                 connection.Open();
-                command.Parameters.AddWithValue("@status", status);
+                command.Parameters.AddWithValue("@projectId", projectId);
+                command.ExecuteNonQuery();
+            }
+        }
+        private void RemoveProjectOfferStatus(int projectId, int userId)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (SQLiteCommand command = new SQLiteCommand(REMOVE_OFFER_STATUS, connection))
+            {
+                connection.Open();
                 command.Parameters.AddWithValue("@projectId", projectId);
                 command.Parameters.AddWithValue("@userId", userId);
                 command.ExecuteNonQuery();
@@ -800,8 +813,9 @@ namespace SoftwarePlanner
         private void initialState()
         {
             roleComboBox.SelectedItem = roleComboBox.Items[0];
+            genderComboBox.SelectedItem = genderComboBox.Items[0];
             getRole();
-            if (UserSearch.isSearchedUser == false && Role.isDeveloper == true)           
+            if (!UserSearch.isSearchedUser && Role.isDeveloper)           
             {
                 devBox.Visible = true;
                 descriptionLabel.Visible = false;
@@ -819,7 +833,7 @@ namespace SoftwarePlanner
                 skillsBox.Visible = true;
                 skillsListBox.Visible = true;
             }
-            else if (UserSearch.isSearchedUser == true && UserSearchedRole.isDeveloper)
+            else if (UserSearch.isSearchedUser && UserSearchedRole.isDeveloper)
             {
                 descriptionLabel.Visible = false;
                 dateLabel.Visible = false;
@@ -836,7 +850,7 @@ namespace SoftwarePlanner
                 skillsBox.Visible = true;
                 skillsListBox.Visible = true;
             }
-            else if (UserSearch.isSearchedUser == false && Role.isClient == true)
+            else if (!UserSearch.isSearchedUser && Role.isClient)
             {
                 clientBox.Visible = true;
                 descriptionLabel.Visible = true;
@@ -854,7 +868,7 @@ namespace SoftwarePlanner
                 skillsBox.Visible= false;
                 skillsListBox.Visible = false;
             }
-            else if (UserSearch.isSearchedUser == true && UserSearchedRole.isClient)
+            else if (UserSearch.isSearchedUser && UserSearchedRole.isClient)
             {
                 descriptionLabel.Visible = true;
                 dateLabel.Visible = true;
@@ -885,6 +899,31 @@ namespace SoftwarePlanner
             if (Role.isAdmin && UserSearch.isSearchedUser)
             {
                 deleteButton.Visible = true;
+            } 
+            else if (Role.isAdmin && !UserSearch.isSearchedUser)
+            {
+                devBox.Visible = false;
+                descriptionLabel.Visible = false;
+                dateLabel.Visible = false;
+                skillLabel.Visible = false;
+                portfolioLabel.Visible = false;
+                linkLabel.Visible = false;
+                developerVisibilityFields.Visible = false;
+                roleComboBox.Visible = false;
+                datePicker.Visible = false;
+                descriptionBox.Visible = false;
+                linkBox.Visible = false;
+                dataGridView.Visible = false;
+                skillsBox.Visible = false;
+                skillsListBox.Visible = false;
+                configLabel.Visible = false;
+                visibleLabel.Visible = false;
+                developerVisibilityFields.Visible = false;
+                roleRequiredLabel.Visible = false;
+                clientVisibilityFields.Visible = false;
+                profileImageTextBox.Visible = false;
+                profileImagePictureBox.Visible = false;
+                genderComboBox.Visible = false;
             }
         }
 

@@ -140,6 +140,7 @@ namespace SoftwarePlanner
                 using (SQLiteCommand command = new SQLiteCommand(UPDATE_USER_RATING, connection))
                 using (SQLiteCommand completeCommand = new SQLiteCommand(COMPLETE_PROJECT, connection))
                 using (SQLiteCommand userCommand = new SQLiteCommand(UPDATE_RATING_AND_COUNT, connection))
+                using (SQLiteCommand offerCommand = new SQLiteCommand(REMOVE_OFFER, connection))
                 {
                     connection.Open();
                     command.Parameters.AddWithValue("@user_id", userId);
@@ -149,10 +150,13 @@ namespace SoftwarePlanner
                     completeCommand.Parameters.AddWithValue("@project_id", projectId);
                     userCommand.Parameters.AddWithValue("@rating", rating);
                     userCommand.Parameters.AddWithValue("@id", userId);
+                    offerCommand.Parameters.AddWithValue("@userId", userId);
+                    offerCommand.Parameters.AddWithValue("@projectId", projectId);
 
                     command.ExecuteNonQuery();
                     completeCommand.ExecuteNonQuery();
                     userCommand.ExecuteNonQuery();
+                    offerCommand.ExecuteNonQuery();
 
                     MessageBox.Show("Η κριτική δημοσιεύθηκε.");
                     finished = true;

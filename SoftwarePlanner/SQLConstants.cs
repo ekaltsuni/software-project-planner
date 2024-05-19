@@ -13,10 +13,11 @@ namespace SoftwarePlanner
         public static readonly string RETURN_USER = "SELECT id FROM User WHERE username = @username AND password = @password";
         public static readonly string RETURN_USER_ID = "SELECT id FROM User WHERE username = @username";
         public static readonly string FIND_EMAIL = "SELECT COUNT(*) FROM User WHERE email = @email";
+        public static readonly string FIND_EMAIL_AND_NOT_ID = "SELECT COUNT(*) FROM User WHERE email = @email AND id != @id";
         public static readonly string RETURN_ROLE = "SELECT role FROM User WHERE id = @id";
         public static readonly string RETURN_SEARCH_USER_VARIABLES = "SELECT id, role FROM User WHERE username = @username";
         public static readonly string RETURN_USER_NAME = "SELECT username FROM User WHERE id = @id";
-        public static readonly string RETURN_USER_VARIABLES = @"SELECT email, username, password, name, surname, image_data 
+        public static readonly string RETURN_USER_VARIABLES = @"SELECT email, username, password, name, surname, image_data, gender
                                                                 FROM User 
                                                                 WHERE id = @id";
         public static readonly string UPDATE_USER_VARIABLES = @"UPDATE OR IGNORE User SET 
@@ -44,8 +45,6 @@ namespace SoftwarePlanner
           " WHERE id = @id";
         public static readonly string CREATE_PORTFOLIO_VARIABLES = "INSERT or IGNORE INTO Portfolio (portfolio_title, portfolio_link, id) " +
             "VALUES (@portfolio_title, @portfolio_link, @id)";
-        //public static readonly string CREATE_PORTFOLIO_ENTRY = "INSERT or IGNORE INTO Portfolio (portfolio_title, portfolio_link, id) " +
-        //"VALUES (@portfolio_title, @portfolio_link, @id)";
         public static readonly string UPDATE_PORTFOLIO_ENTRY = "UPDATE Portfolio SET portfolio_link = @portfolio_link WHERE id = @id AND portfolio_title = @portfolio_title";
         public static readonly string RETURN_DEV_RATING = "SELECT rating, project_count FROM Developer WHERE id = @id";
         public static readonly string RETURN_DEV_COMMENT = @"SELECT p.title, ur.comment 
@@ -240,12 +239,13 @@ namespace SoftwarePlanner
                         po.user_id = @matchedUserId";
 
         public static readonly string UPDATE_OFFER_STATUS = "UPDATE ProjectOffer SET status = @status WHERE project_id = @projectId AND user_id = @userId";
-
+        public static readonly string REMOVE_OFFER_STATUS = "DELETE FROM ProjectOffer WHERE project_id = @projectId AND user_id = @userId";
 
         public static readonly string SHOW_ASSIGNED_PROJECTS = @"SELECT title AS Project, description AS Details, status AS Status
                                                                     FROM Project 
                                                                     WHERE user_id = @matchedUserId";
         public static readonly string UPDATE_PROJECT_ASSIGNMENT = @"UPDATE Project SET user_id = @userId WHERE project_id = @projectId";
+        public static readonly string REMOVE_PROJECT_ASSIGNMENT = @"UPDATE Project SET user_id = NULL WHERE project_id = @projectId";
         // COMMENTS
         public static readonly string ADD_COMMENT = "INSERT INTO ProjectComment (project_id, user_id, comment) VALUES (@project_id, @user_id, @comment)";
         public static readonly string GET_COMMENTS_BY_PROJECT = @"SELECT pc.comment, u.username
@@ -261,22 +261,20 @@ namespace SoftwarePlanner
                                                                     (email_visibility_flag, username_visibility_flag, 
                                                                     name_visibility_flag, surname_visibility_flag, 
                                                                     gender_visibility_flag, skills_visibility_flag, 
-                                                                    cv_visibility_flag, portfolio_visibility_flag, 
-                                                                    id) VALUES
+                                                                    portfolio_visibility_flag, 
+                                                                    id, rating, project_count) VALUES
                                                                     (@email_visibility_flag, @username_visibility_flag,
                                                                      @name_visibility_flag, @surname_visibility_flag,
                                                                      @gender_visibility_flag, @skills_visibility_flag, 
-                                                                    @cv_visibility_flag, @portfolio_visibility_flag,
-                                                                    @id)";
+                                                                     @portfolio_visibility_flag,
+                                                                    @id,0,0)";
         public static readonly string UPDATE_DEVELOPER_VISIBILITY = @"UPDATE Developer SET
                                                                     email_visibility_flag = @email_visibility_flag,
                                                                     username_visibility_flag = @username_visibility_flag,
                                                                     name_visibility_flag = @name_visibility_flag,
                                                                     surname_visibility_flag = @surname_visibility_flag,
                                                                     gender_visibility_flag = @gender_visibility_flag,
-                                                                    skills_visibility_flag = @skills_visibility_flag,
-                                                                    cv_visibility_flag = @cv_visibility_flag, 
-                                                                    portfolio_visibility_flag = @portfolio_visibility_flag
+                                                                    skills_visibility_flag = @skills_visibility_flag,                                                                              portfolio_visibility_flag = @portfolio_visibility_flag
                                                                     WHERE id = @id";
         public static readonly string RETURN_DEVELOPER_VISIBILITY = @"SELECT
                                                                     email_visibility_flag,
