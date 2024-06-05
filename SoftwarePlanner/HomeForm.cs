@@ -33,37 +33,7 @@ namespace SoftwarePlanner
         {
             userFilter.Items.Add(UserFilterOption.DEVELOPER);
             userFilter.Items.Add(UserFilterOption.CLIENT);
-            userFilter.SelectedItem = UserFilterOption.DEVELOPER;
-            
-            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(RETURN_PROJECT_CATEGORIES, connection))
-            {
-                {
-                    connection.Open();
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            projectCategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
-                        }
-                    }
-                }
-            }
-
-            using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            using (SQLiteCommand command = new SQLiteCommand(RETURN_TECHNOLOGIES, connection))
-            {
-                {
-                    connection.Open();
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            projectTechnologyDropdown.Items.Add(reader.GetString(reader.GetOrdinal("description")));
-                        }
-                    }
-                }
-            }
+            userFilter.SelectedItem = UserFilterOption.DEVELOPER;           
         }
 
         private void advancedSearchCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -87,6 +57,35 @@ namespace SoftwarePlanner
         {
             if (advancedProjectSearchCheckBox.Checked)
             {
+                using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                using (SQLiteCommand command = new SQLiteCommand(RETURN_PROJECT_CATEGORIES, connection))
+                {
+                    {
+                        connection.Open();
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                projectCategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
+                            }
+                        }
+                    }
+                }
+
+                using (SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING))
+                using (SQLiteCommand command = new SQLiteCommand(RETURN_TECHNOLOGIES, connection))
+                {
+                    {
+                        connection.Open();
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                projectTechnologyDropdown.Items.Add(reader.GetString(reader.GetOrdinal("description")));
+                            }
+                        }
+                    }
+                }
                 advancedProjectSearchGroup.Visible = true;
             }
             else

@@ -128,7 +128,7 @@ namespace SoftwarePlanner
                                                                           AND p.type = 2  
                                                                       ORDER BY date
                                                                       LIMIT 11 OFFSET @page";
-        public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT p.project_id, p.title, p.date, p.max_price
+        public static readonly string RETURN_PROJECT_ADVANCED = @"SELECT DISTINCT p.project_id, p.title, p.date, p.max_price
                                                                 FROM Project p
                                                                 INNER JOIN ProjectCategory pc
                                                                     ON pc.id = p.category

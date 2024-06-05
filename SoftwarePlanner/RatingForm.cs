@@ -150,8 +150,8 @@ namespace SoftwarePlanner
                     completeCommand.Parameters.AddWithValue("@project_id", projectId);
                     userCommand.Parameters.AddWithValue("@rating", rating);
                     userCommand.Parameters.AddWithValue("@id", userId);
-                    offerCommand.Parameters.AddWithValue("@userId", userId);
-                    offerCommand.Parameters.AddWithValue("@projectId", projectId);
+                    offerCommand.Parameters.AddWithValue("@user_id", userId);
+                    offerCommand.Parameters.AddWithValue("@project_id", projectId);
 
                     command.ExecuteNonQuery();
                     completeCommand.ExecuteNonQuery();

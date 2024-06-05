@@ -220,10 +220,18 @@ namespace SoftwarePlanner
                     command.Parameters.AddWithValue("@categoryName", getTranslationKey(projectCategoryDropdown.SelectedItem.ToString()));
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            projectSubcategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
+                            while (reader.Read())
+                            {
+                                projectSubcategoryDropdown.Items.Add(getTranslation(reader.GetString(reader.GetOrdinal("name"))));
+                            }
                         }
+                        else
+                        {
+                            projectSubcategoryDropdown.Items.Add("Καμία Επιλογή");
+                        }
+
                     }
                 }
             }
